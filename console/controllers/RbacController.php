@@ -174,7 +174,9 @@ class RbacController extends Controller
         $auth->add($funcionario);
         $auth->addChild($funcionario, $createCliente);
         $auth->addChild($funcionario, $updateCliente);
-
+        $auth->addChild($funcionario,$createReserva);
+        $auth->addChild($funcionario,$updateReserva);
+        $auth->addChild($funcionario,$deleteReserva);
 
         // add "cliente" role and give this role the "updatePost" permission
         $cliente=$auth->createRole('cliente');
