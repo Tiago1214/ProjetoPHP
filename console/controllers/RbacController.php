@@ -177,12 +177,39 @@ class RbacController extends Controller
         $auth->addChild($funcionario,$createReserva);
         $auth->addChild($funcionario,$updateReserva);
         $auth->addChild($funcionario,$deleteReserva);
+        $auth->addChild($funcionario,$createComentario);
+        $auth->addChild($funcionario,$updateComentario);
+        $auth->addChild($funcionario,$deleteComentario);
+        $auth->addChild($funcionario,$createIva);
+        $auth->addChild($funcionario,$updateIva);
+        $auth->addChild($funcionario,$createMesa);
+        $auth->addChild($funcionario,$updateMesa);
+        $auth->addChild($funcionario,$createCategoria);
+        $auth->addChild($funcionario,$updateCategoria);
+        $auth->addChild($funcionario,$createArtigo);
+        $auth->addChild($funcionario,$updateArtigo);
+        $auth->addChild($funcionario,$deleteArtigo);
+        $auth->addChild($funcionario,$createLinhaPedido);
+        $auth->addChild($funcionario,$updateLinhaPedido);
+        $auth->addChild($funcionario,$deleteLinhaPedido);
+        $auth->addChild($funcionario,$createPedido);
+        $auth->addChild($funcionario,$updatePedido);
+        $auth->addChild($funcionario,$deletePedido);
 
         // add "cliente" role and give this role the "updatePost" permission
         $cliente=$auth->createRole('cliente');
         $auth->add($cliente);
-
-
+        $auth->addChild($cliente,$createReserva);
+        $auth->addChild($cliente,$updateReserva);
+        $auth->addChild($cliente,$deleteReserva);
+        $auth->addChild($cliente,$createComentario);
+        $auth->addChild($cliente,$updateComentario);
+        $auth->addChild($cliente,$deleteComentario);
+        $auth->addChild($cliente,$createPedido);
+        $auth->addChild($cliente,$updatePedido);
+        $auth->addChild($cliente,$createLinhaPedido);
+        $auth->addChild($cliente,$updateLinhaPedido);
+        $auth->addChild($cliente,$deleteLinhaPedido);
         // Assign roles to users. 1 and 2 are IDs returned by IdentityInterface::getId()
         // usually implemented in your User model.
         $auth->assign($cliente,3);
