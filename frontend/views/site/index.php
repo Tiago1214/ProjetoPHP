@@ -7,10 +7,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h1 class="m-b-20"><strong>Welcome To <br> Live Dinner Restaurant</strong></h1>
-                        <p class="m-b-40">See how your users experience your website in realtime or view  <br>
-                            trends to see any changes in performance over time.</p>
-                        <p><a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Reservation</a></p>
+                        <h1 class="m-b-20"><strong>Bem Vindo ao <br> 100% Português</strong></h1>
+                        <p class="m-b-40">Experimente os nossos Menus</p>
+                        <p><a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Ver Menus</a></p>
                     </div>
                 </div>
             </div>
@@ -20,10 +19,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h1 class="m-b-20"><strong>Welcome To <br> Live Dinner Restaurant</strong></h1>
-                        <p class="m-b-40">See how your users experience your website in realtime or view  <br>
-                            trends to see any changes in performance over time.</p>
-                        <p><a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Reservation</a></p>
+                        <h1 class="m-b-20"><strong>Bem Vindo ao <br> 100% Português</strong></h1>
+                        <p class="m-b-40">Experimente os nossos Menus</p>
+                        <p><a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Ver Menus</a></p>
                     </div>
                 </div>
             </div>
@@ -33,10 +31,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h1 class="m-b-20"><strong>Welcome To <br> Yamifood Restaurant</strong></h1>
-                        <p class="m-b-40">See how your users experience your website in realtime or view  <br>
-                            trends to see any changes in performance over time.</p>
-                        <p><a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Reservation</a></p>
+                        <h1 class="m-b-20"><strong>Bem Vindo ao <br> 100% Português</strong></h1>
+                        <p class="m-b-40">Experimente os nossos Menus</p>
+                        <p><a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Ver Menus</a></p>
                     </div>
                 </div>
             </div>
@@ -55,11 +52,14 @@
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-12 text-center">
                 <div class="inner-column">
-                    <h1>Welcome To <span>Live Dinner Restaurant</span></h1>
-                    <h4>Little Story</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque auctor suscipit feugiat. Ut at pellentesque ante, sed convallis arcu. Nullam facilisis, eros in eleifend luctus, odio ante sodales augue, eget lacinia lectus erat et sem. </p>
-                    <p>Sed semper orci sit amet porta placerat. Etiam quis finibus eros. Sed aliquam metus lorem, a pellentesque tellus pretium a. Nulla placerat elit in justo vestibulum, et maximus sem pulvinar.</p>
-                    <a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Reservation</a>
+                    <h1>Bem Vindo ao <span> 100% Português</span></h1>
+                    <h4>Pequena História</h4>
+                    <p>Desde o nosso modesto começo, em 2005, com um pequeno espaço na elegante cidade de Leiria, o desenvolvimento da 100% Português
+                        foi animado com a energia para cozinhar e servir comida apenas portuguêsa. Em contraste com outros restaurantes, o 100% Português
+                        foi feito com a experiência de apenas pessoas portuguesas que fazem com que todos os pratos sejam únicos. Sabemos que muitas pessoas
+                        adoram comida portuguêsa, e que nem todos tem a essencia que tornam a comida portuguêsa comum tão saborosa, assim, o 100% Português
+                        tem como principal objetivo dar a conhecer os tipicos pratos portugueses.</p>
+                    <a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Sobre Nós</a>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
@@ -76,7 +76,7 @@
         <div class="row">
             <div class="col-md-8 ml-auto mr-auto text-center">
                 <p class="lead ">
-                    " If you're not the one cooking, stay out of the way and compliment the chef. "
+                    " Se você não é o único a cozinhar, fique fora do caminho e elogie o chef. "
                 </p>
                 <span class="lead">Michael Strahan</span>
             </div>
@@ -91,8 +91,8 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="heading-title text-center">
-                    <h2>Special Menu</h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+                    <h2>Menu</h2>
+                    <p>Veja os Nossos Melhores Menus</p>
                 </div>
             </div>
         </div>
@@ -100,10 +100,10 @@
         <div class="row inner-menu-box">
             <div class="col-3">
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">All</a>
-                    <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Drinks</a>
-                    <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Lunch</</a>
-                    <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Dinner</a>
+                    <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Tudo</a>
+                    <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Bebidas</a>
+                    <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Comida</</a>
+                    <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Sobremesas</a>
                 </div>
             </div>
 
@@ -335,8 +335,8 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="heading-title text-center">
-                    <h2>Gallery</h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+                    <h2>Galeria</h2>
+                    <p>Tenha uma melhor noção dos nossos pratos atravéz da nossa galeria de fotos!</p>
                 </div>
             </div>
         </div>
@@ -384,8 +384,8 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="heading-title text-center">
-                    <h2>Customer Reviews</h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+                    <h2>Comentários</h2>
+                    <p>Veja a opinião dos nossos clientes</p>
                 </div>
             </div>
         </div>
@@ -397,25 +397,29 @@
                             <div class="img-box p-1 border rounded-circle m-auto">
                                 <img class="d-block w-100 rounded-circle" src="images/quotations-button.png" alt="">
                             </div>
-                            <h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase">Paul Mitchel</strong></h5>
-                            <h6 class="text-dark m-0">Web Developer</h6>
-                            <p class="m-0 pt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor, varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper malesuada ante. Idac bibendum scelerisque non non purus. Suspendisse varius nibh non aliquet.</p>
+                            <h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase">Paulo Cardoso</strong></h5>
+                            <h6 class="text-dark m-0">Engenheiro Informático</h6>
+                            <p class="m-0 pt-3">De facto uma refeição surpreendente. Não é o melhor restaurante do mundo mas
+                                não está tão atrás dos melhores com certeza. Não bebo vinho mas possui uma ementa completa.</p>
                         </div>
                         <div class="carousel-item text-center">
                             <div class="img-box p-1 border rounded-circle m-auto">
                                 <img class="d-block w-100 rounded-circle" src="images/quotations-button.png" alt="">
                             </div>
-                            <h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase">Steve Fonsi</strong></h5>
-                            <h6 class="text-dark m-0">Web Designer</h6>
-                            <p class="m-0 pt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor, varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper malesuada ante. Idac bibendum scelerisque non non purus. Suspendisse varius nibh non aliquet.</p>
+                            <h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase">João Filipe</strong></h5>
+                            <h6 class="text-dark m-0">Advogado</h6>
+                            <p class="m-0 pt-3">Excepcional do início ao fim. Esta é a segunda visita a este restaurante. Tudo perfeito:
+                                atendimento caloroso , uma refeição perfeita e um chef que tem prazer em receber os clientes. Parabéns!</p>
                         </div>
                         <div class="carousel-item text-center">
                             <div class="img-box p-1 border rounded-circle m-auto">
                                 <img class="d-block w-100 rounded-circle" src="images/quotations-button.png" alt="">
                             </div>
-                            <h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase">Daniel vebar</strong></h5>
-                            <h6 class="text-dark m-0">Seo Analyst</h6>
-                            <p class="m-0 pt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor, varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper malesuada ante. Idac bibendum scelerisque non non purus. Suspendisse varius nibh non aliquet.</p>
+                            <h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase">Margarida Correia </strong></h5>
+                            <h6 class="text-dark m-0">Analista</h6>
+                            <p class="m-0 pt-3"> Fomos jantar no restaurante e tivemos uma bela experiencia gastronômica, apesar do preço,
+                                exagerado. Garçons e maître extremamente atenciosos e eficientes. O restaurante em si é lindo,
+                                com as mesas tendo privacidade e jardins muito bonitos </p>
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#reviews" role="button" data-slide="prev">
@@ -440,9 +444,9 @@
             <div class="col-md-4 arrow-right">
                 <i class="fa fa-volume-control-phone"></i>
                 <div class="overflow-hidden">
-                    <h4>Phone</h4>
+                    <h4>Telefone</h4>
                     <p class="lead">
-                        +01 123-456-4590
+                        +351 249 551 125
                     </p>
                 </div>
             </div>
@@ -451,16 +455,16 @@
                 <div class="overflow-hidden">
                     <h4>Email</h4>
                     <p class="lead">
-                        yourmail@gmail.com
+                        info@100portugues.com
                     </p>
                 </div>
             </div>
             <div class="col-md-4">
                 <i class="fa fa-map-marker"></i>
                 <div class="overflow-hidden">
-                    <h4>Location</h4>
+                    <h4>Localização</h4>
                     <p class="lead">
-                        800, Lorem Street, US
+                        Rua Pricnipal, nº3, Leiria
                     </p>
                 </div>
             </div>

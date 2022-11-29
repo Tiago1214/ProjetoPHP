@@ -3,12 +3,17 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-6">
-                <h3>About Us</h3>
-                <p>Integer cursus scelerisque ipsum id efficitur. Donec a dui fringilla, gravida lorem ac, semper magna.
-                    Aenean rhoncus ac lectus a interdum. Vivamus semper posuere dui.</p>
+                <h3>Sobre Nós</h3>
+                <p>Desde o nosso modesto começo, em 2005, com um pequeno espaço na elegante cidade de Leiria,
+                    o desenvolvimento da 100% Português foi animado com a energia para cozinhar e servir comida apenas portuguêsa.
+                    Em contraste com outros restaurantes, o 100% Português foi feito com a experiência de
+                    apenas pessoas portuguesas que fazem com que todos os pratos sejam únicos.
+                    Sabemos que muitas pessoas adoram comida portuguêsa, e que nem todos tem a essencia que tornam a comida portuguêsa
+                    comum tão saborosa, assim, o 100% Português tem como principal objetivo dar a conhecer os tipicos pratos portugueses.</p>
             </div>
             <div class="col-lg-3 col-md-6">
-                <h3>Subscribe</h3>
+                <h3>Redes Sociais</h3>
+                <!--
                 <div class="subscribe_form">
                     <form class="subscribe_form">
                         <input name="EMAIL" id="subs-email" class="form_input" placeholder="Email Address..."
@@ -17,6 +22,7 @@
                         <div class="clearfix"></div>
                     </form>
                 </div>
+                -->
                 <ul class="list-inline f-social">
                     <li class="list-inline-item"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
                     <li class="list-inline-item"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
@@ -27,17 +33,16 @@
                 </ul>
             </div>
             <div class="col-lg-3 col-md-6">
-                <h3>Contact information</h3>
-                <p class="lead">Ipsum Street, Lorem Tower, MO, Columbia, 508000</p>
-                <p class="lead"><a href="#">+01 2000 800 9999</a></p>
-                <p><a href="#"> info@admin.com</a></p>
+                <h3>Contactos</h3>
+                <p class="lead">Rua Pricnipal, nº3, Leiria</p>
+                <p class="lead"><a href="#">+351 249 551 125</a></p>
+                <p><a href="#"> info@100portugues.com</a></p>
             </div>
             <div class="col-lg-3 col-md-6">
-                <h3>Opening hours</h3>
-                <p><span class="text-color">Monday: </span>Closed</p>
-                <p><span class="text-color">Tue-Wed :</span> 9:Am - 10PM</p>
-                <p><span class="text-color">Thu-Fri :</span> 9:Am - 10PM</p>
-                <p><span class="text-color">Sat-Sun :</span> 5:PM - 10PM</p>
+                <h3>Horário de Funcionamento</h3>
+                <p><span class="text-color">Segunda-Feira: </span></p><p>Fechado</p>
+                <p><span class="text-color">Terça-Feira a Quinta-Feira :</span></p> <p>09:00 - 23:00</p>
+                <p><span class="text-color">Sexta-Feira a Domingo :</span></p> <p>06:00 - 01:00</p>
             </div>
         </div>
     </div>
@@ -46,9 +51,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <p class="company-name">All Rights Reserved. &copy; 2018 <a href="#">Live Dinner Restaurant</a>
+                    <p class="company-name">Copyright &copy; 2022 <a href="#">100% Português</a>
                         Design By :
-                        <a href="https://html.design/">html design</a></p>
+                        <a href="#">GerSoft</a></p>
                 </div>
             </div>
         </div>

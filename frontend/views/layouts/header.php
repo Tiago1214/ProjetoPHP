@@ -17,23 +17,22 @@ use yii\bootstrap5\Html; ?>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active"><a class="nav-link" href="<?= Url::to('../site/index'); ?>">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?= Url::to('../site/menu'); ?>">Menu</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="">Takeaway</a></li>
+                    <li class="nav-item"><a class="nav-link" href="reservation.php">Reservas</a></li>
+                    <!--
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Pages</a>
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Reservas</a>
+
                         <div class="dropdown-menu" aria-labelledby="dropdown-a">
-                            <a class="dropdown-item" href="reservation.php">Reservation</a>
-                            <a class="dropdown-item" href="stuff.php">Stuff</a>
-                            <a class="dropdown-item" href="gallery.html">Gallery</a>
+                            <a class="dropdown-item" href="reservation.php">Marcar Reserva</a>
+                            <a class="dropdown-item" href="stuff.php">Visualizar Reservas</a>
                         </div>
+
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Blog</a>
-                        <div class="dropdown-menu" aria-labelledby="dropdown-a">
-                            <a class="dropdown-item" href="blog.php">blog</a>
-                            <a class="dropdown-item" href="blog-details.php">blog Single</a>
-                        </div>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
+                    -->
+                    <li class="nav-item"><a class="nav-link" href="about.php">Sobre Nós</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.php">Contactos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
                 </ul>
             </div>
         </div>
