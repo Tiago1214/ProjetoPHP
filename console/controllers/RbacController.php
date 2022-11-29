@@ -17,17 +17,9 @@ class RbacController extends Controller
         $create->description='Criar registo de qualquer tabela';
         $auth->add($create);
         // Criar Clientes
-        $createCliente = $auth->createPermission('createcliente');
-        $createCliente->description = 'Criar Cliente';
-        $auth->add($createCliente);
-        //Criar Funcionários
-        $createFuncionario=$auth->createPermission('createfuncionario');
-        $createFuncionario->description='Criar Funcionário';
-        $auth->add($createFuncionario);
-        //Criar Administradores
-        $createAdmin=$auth->createPermission('createadmin');
-        $createAdmin->description='Criar Administrador';
-        $auth->add($createAdmin);
+        $createUtilizador = $auth->createPermission('createutilizador');
+        $createUtilizador->description = 'Criar Cliente';
+        $auth->add($createUtilizador);
         //Criar Comentário
         $createComentario=$auth->createPermission('createcomentario');
         $createComentario->description='Criar comentário';
@@ -71,17 +63,9 @@ class RbacController extends Controller
         $update->description='Editar qualquer registo';
         $auth->add($update);
         // Editar Clientes
-        $updateCliente = $auth->createPermission('updatecliente');
-        $updateCliente->description = 'Editar Cliente';
-        $auth->add($updateCliente);
-        //Editar Funcionários
-        $updateFuncionario = $auth->createPermission('updatefuncionario');
-        $updateFuncionario->description = 'Editar Funcionário';
-        $auth->add($updateFuncionario);
-        //Editar Administradores
-        $updateAdmin = $auth->createPermission('updateadmin');
-        $updateAdmin->description = 'Editar Administrador';
-        $auth->add($updateAdmin);
+        $updateUtilizador = $auth->createPermission('updateutilizador');
+        $updateUtilizador->description = 'Editar Utilizador';
+        $auth->add($updateUtilizador);
         //Editar Comentário
         $updateComentario=$auth->createPermission('updatecomentario');
         $updateComentario->description='Editar Comentário';
@@ -168,12 +152,42 @@ class RbacController extends Controller
         $auth->addChild($admin,$create);
         $auth->addChild($admin,$update);
         $auth->addChild($admin,$delete);
+        $auth->addChild($admin,$createComentario);
+        $auth->addChild($admin,$updateComentario);
+        $auth->addChild($admin,$deleteComentario);
+        $auth->addChild($admin,$createReserva);
+        $auth->addChild($admin,$updateReserva);
+        $auth->addChild($admin,$deleteReserva);
+        $auth->addChild($admin,$createUtilizador);
+        $auth->addChild($admin,$updateUtilizador);
+        $auth->addChild($admin,$createMetodoPagamento);
+        $auth->addChild($admin,$updateMetodoPagamento);
+        $auth->addChild($admin,$deleteMetodoPagamento);
+        $auth->addChild($admin,$createMesa);
+        $auth->addChild($admin,$updateMesa);
+        $auth->addChild($admin,$deleteMesa);
+        $auth->addChild($admin,$createIva);
+        $auth->addChild($admin,$updateIva);
+        $auth->addChild($admin,$deleteIva);
+        $auth->addChild($admin,$createPedido);
+        $auth->addChild($admin,$updatePedido);
+        $auth->addChild($admin,$deletePedido);
+        $auth->addChild($admin,$createLinhaPedido);
+        $auth->addChild($admin,$updateLinhaPedido);
+        $auth->addChild($admin,$deleteLinhaPedido);
+        $auth->addChild($admin,$createArtigo);
+        $auth->addChild($admin,$updateArtigo);
+        $auth->addChild($admin,$deleteArtigo);
+        $auth->addChild($admin,$createCategoria);
+        $auth->addChild($admin,$updateCategoria);
+        $auth->addChild($admin,$deleteCategoria);
+
 
         // add "funcionario" role and give this role the "updatePost" permission
         $funcionario = $auth->createRole('funcionario');
         $auth->add($funcionario);
-        $auth->addChild($funcionario, $createCliente);
-        $auth->addChild($funcionario, $updateCliente);
+        $auth->addChild($funcionario, $updateUtilizador);
+        $auth->addChild($funcionario, $createUtilizador);
         $auth->addChild($funcionario,$createReserva);
         $auth->addChild($funcionario,$updateReserva);
         $auth->addChild($funcionario,$deleteReserva);
@@ -207,6 +221,7 @@ class RbacController extends Controller
         $auth->addChild($cliente,$deleteComentario);
         $auth->addChild($cliente,$createPedido);
         $auth->addChild($cliente,$updatePedido);
+        $auth->addChild($cliente,$deletePedido);
         $auth->addChild($cliente,$createLinhaPedido);
         $auth->addChild($cliente,$updateLinhaPedido);
         $auth->addChild($cliente,$deleteLinhaPedido);
