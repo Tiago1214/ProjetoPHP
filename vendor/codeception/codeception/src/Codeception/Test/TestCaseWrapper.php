@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Codeception\Test;
 
 use Codeception\Exception\UselessTestException;
-use Codeception\ResultAggregator;
 use Codeception\Test\Interfaces\Dependent;
 use Codeception\Test\Interfaces\Descriptive;
 use Codeception\Test\Interfaces\Reported;
@@ -26,8 +25,6 @@ use ReflectionClass;
 class TestCaseWrapper extends Test implements Reported, Dependent, StrictCoverage, TestInterface, Descriptive
 {
     private Metadata $metadata;
-
-    private ?ResultAggregator $resultAggregator = null;
 
     /**
      * @var array<string, mixed>
@@ -79,20 +76,6 @@ class TestCaseWrapper extends Test implements Reported, Dependent, StrictCoverag
     {
         return $this->metadata;
     }
-
-    public function getResultAggregator(): ResultAggregator
-    {
-        if ($this->resultAggregator === null) {
-            throw new \LogicException('ResultAggregator is not set');
-        }
-        return $this->resultAggregator;
-    }
-
-    public function setResultAggregator(?ResultAggregator $resultAggregator): void
-    {
-        $this->resultAggregator = $resultAggregator;
-    }
-
 
     public function fetchDependencies(): array
     {
@@ -163,11 +146,19 @@ class TestCaseWrapper extends Test implements Reported, Dependent, StrictCoverag
         ) {
             throw new UselessTestException(
                 sprintf(
-                    'This test is annotated with "@doesNotPerformAssertions" but performed %d assertions',
+                    'This test indicates it does not perform assertions but %d assertions were performed',
                     $numberOfAssertionsPerformed
                 )
             );
         }
+    }
+
+    /**
+     * Is the test expected to not perform assertions with `expectNotToPerformAssertions`?
+     */
+    protected function doesNotPerformAssertions(): bool
+    {
+         return $this->testCase->doesNotPerformAssertions();
     }
 
     public function toString(): string
