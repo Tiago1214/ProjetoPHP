@@ -16,9 +16,10 @@ use Yii;
  * @property string $data
  * @property string|null $imagem
  * @property int $estado
- * @property int $linha_pedido_id
- * @property int $categorias_id
  * @property int $iva_id
+ * @property int $categoria_id
+ *
+ * @property LinhaPedido[] $linhaPedidos
  */
 class Artigo extends \yii\db\ActiveRecord
 {
@@ -36,8 +37,8 @@ class Artigo extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nome', 'descricao', 'referencia', 'quantidade', 'preco', 'data', 'estado', 'linha_pedido_id', 'categorias_id', 'iva_id'], 'required'],
-            [['quantidade', 'estado', 'linha_pedido_id', 'categorias_id', 'iva_id'], 'integer'],
+            [['nome', 'descricao', 'referencia', 'quantidade', 'preco', 'data', 'estado', 'iva_id', 'categoria_id'], 'required'],
+            [['quantidade', 'estado', 'iva_id', 'categoria_id'], 'integer'],
             [['preco'], 'number'],
             [['data'], 'safe'],
             [['nome'], 'string', 'max' => 200],
@@ -61,9 +62,18 @@ class Artigo extends \yii\db\ActiveRecord
             'data' => 'Data',
             'imagem' => 'Imagem',
             'estado' => 'Estado',
-            'linha_pedido_id' => 'Linha Pedido ID',
-            'categorias_id' => 'Categorias ID',
             'iva_id' => 'Iva ID',
+            'categoria_id' => 'Categoria ID',
         ];
+    }
+
+    /**
+     * Gets query for [[LinhaPedidos]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getLinhaPedidos()
+    {
+        return $this->hasMany(LinhaPedido::class, ['artigo_id' => 'id']);
     }
 }

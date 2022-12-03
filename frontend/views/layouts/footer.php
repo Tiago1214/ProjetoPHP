@@ -34,15 +34,14 @@
             </div>
             <div class="col-lg-3 col-md-6">
                 <h3>Contactos</h3>
-                <p class="lead">Rua Pricnipal, nº3, Leiria</p>
+                <p class="lead">Rua Principal, nº3, Leiria</p>
                 <p class="lead"><a href="#">+351 249 551 125</a></p>
                 <p><a href="#"> info@100portugues.com</a></p>
             </div>
             <div class="col-lg-3 col-md-6">
                 <h3>Horário de Funcionamento</h3>
                 <p><span class="text-color">Segunda-Feira: </span></p><p>Fechado</p>
-                <p><span class="text-color">Terça-Feira a Quinta-Feira :</span></p> <p>09:00 - 23:00</p>
-                <p><span class="text-color">Sexta-Feira a Domingo :</span></p> <p>06:00 - 01:00</p>
+                <p><span class="text-color">Terça-Feira a Domingo :</span></p> <p>09:00 - 15:00 19:30 - 23:00</p>
             </div>
         </div>
     </div>

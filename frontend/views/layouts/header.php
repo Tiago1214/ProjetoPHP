@@ -18,18 +18,14 @@ use yii\bootstrap5\Html; ?>
                     <li class="nav-item active"><a class="nav-link" href="<?= Url::to('../site/index'); ?>">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?= Url::to('../site/menu'); ?>">Menu</a></li>
                     <li class="nav-item"><a class="nav-link" href="">Takeaway</a></li>
-                    <li class="nav-item"><a class="nav-link" href="reservation.php">Reservas</a></li>
-                    <!--
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Reservas</a>
-
                         <div class="dropdown-menu" aria-labelledby="dropdown-a">
                             <a class="dropdown-item" href="reservation.php">Marcar Reserva</a>
                             <a class="dropdown-item" href="stuff.php">Visualizar Reservas</a>
                         </div>
-
                     </li>
-                    -->
+
                     <li class="nav-item"><a class="nav-link" href="about.php">Sobre Nós</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.php">Contactos</a></li>
                     <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>

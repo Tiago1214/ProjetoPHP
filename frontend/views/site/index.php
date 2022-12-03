@@ -1,5 +1,6 @@
-<!-- Start slides -->
-<?php use yii\bootstrap5\Html; ?>
+<?php
+use yii\helpers\Url;
+use yii\bootstrap5\Html; ?>
 <div id="slides" class="cover-slides">
     <ul class="slides-container">
         <li class="text-left">
@@ -9,31 +10,31 @@
                     <div class="col-md-12">
                         <h1 class="m-b-20"><strong>Bem Vindo ao <br> 100% Português</strong></h1>
                         <p class="m-b-40">Experimente os nossos Menus</p>
-                        <p><a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Ver Menus</a></p>
+                        <p><a class="btn btn-lg btn-circle btn-outline-new-white" href="<?= Url::to('../site/menu')?>">Ver Menus</a></p>
                     </div>
                 </div>
             </div>
         </li>
         <li class="text-left">
-            <img src="images/slider-02.jpg" alt="">
+            <?= Html::img('@web/images/slider-02.jpg') ?>
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                         <h1 class="m-b-20"><strong>Bem Vindo ao <br> 100% Português</strong></h1>
                         <p class="m-b-40">Experimente os nossos Menus</p>
-                        <p><a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Ver Menus</a></p>
+                        <p><a class="btn btn-lg btn-circle btn-outline-new-white" href="<?= Url::to('../site/menu')?>">Ver Menus</a></p>
                     </div>
                 </div>
             </div>
         </li>
         <li class="text-left">
-            <img src="images/slider-03.jpg" alt="">
+            <?= Html::img('@web/images/slider-03.jpg') ?>
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                         <h1 class="m-b-20"><strong>Bem Vindo ao <br> 100% Português</strong></h1>
                         <p class="m-b-40">Experimente os nossos Menus</p>
-                        <p><a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Ver Menus</a></p>
+                        <p><a class="btn btn-lg btn-circle btn-outline-new-white" href="<?= Url::to('../site/menu')?>">Ver Menus</a></p>
                     </div>
                 </div>
             </div>
@@ -50,6 +51,7 @@
 <div class="about-section-box">
     <div class="container">
         <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-12 text-center"></div>
             <div class="col-lg-6 col-md-6 col-sm-12 text-center">
                 <div class="inner-column">
                     <h1>Bem Vindo ao <span> 100% Português</span></h1>
@@ -61,9 +63,6 @@
                         tem como principal objetivo dar a conhecer os tipicos pratos portugueses.</p>
                     <a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Sobre Nós</a>
                 </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-12">
-                <img src="images/about-img.jpg" alt="" class="img-fluid">
             </div>
         </div>
     </div>

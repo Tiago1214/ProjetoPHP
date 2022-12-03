@@ -3,12 +3,6 @@ use yii\helpers\Url;
 use yii\bootstrap5\Html;
 ?>
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="<?= Url::to('http://localhost/gersoft/backend/web/');?>" class="brand-link">
-        <img src="<?= Html::img('@web/images/GERSOFT-removebg-preview.png'); ?>" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">GerSoft</span>
-    </a>
-
     <!-- Sidebar -->
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
@@ -17,7 +11,7 @@ use yii\bootstrap5\Html;
                 <img src="<?=$assetDir?>/img/AdminLTELogo.png" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block"><?= Yii::$app->user->identity->username ?></a>
+                <a href="<?= Url::to('../site/index'); ?>" class="d-block"><?= Yii::$app->user->identity->username; ?></a>
             </div>
         </div>
 
