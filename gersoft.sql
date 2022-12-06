@@ -18,6 +18,9 @@
 --
 -- Table structure for table `artigo`
 --
+Drop schema if exists gersoft;
+create schema gersoft;
+use gersoft;
 
 DROP TABLE IF EXISTS `artigo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
