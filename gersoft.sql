@@ -72,6 +72,7 @@ CREATE TABLE `auth_assignment` (
 
 LOCK TABLES `auth_assignment` WRITE;
 /*!40000 ALTER TABLE `auth_assignment` DISABLE KEYS */;
+INSERT INTO `auth_assignment` VALUES ('admin','1',1670331511),('cliente','3',1670331511),('funcionario','2',1670331511);
 /*!40000 ALTER TABLE `auth_assignment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -103,6 +104,7 @@ CREATE TABLE `auth_item` (
 
 LOCK TABLES `auth_item` WRITE;
 /*!40000 ALTER TABLE `auth_item` DISABLE KEYS */;
+INSERT INTO `auth_item` VALUES ('admin',1,NULL,NULL,NULL,1670331511,1670331511),('cliente',1,NULL,NULL,NULL,1670331511,1670331511),('create',2,'Criar registo de qualquer tabela',NULL,NULL,1670331511,1670331511),('createartigo',2,'Criar Artigo',NULL,NULL,1670331511,1670331511),('createcategoria',2,'Criar Categoria',NULL,NULL,1670331511,1670331511),('createcomentario',2,'Criar comentário',NULL,NULL,1670331511,1670331511),('createiva',2,'Criar Iva',NULL,NULL,1670331511,1670331511),('createlinhapedido',2,'Criar Linha de pedido',NULL,NULL,1670331511,1670331511),('createmesa',2,'Criar Mesa',NULL,NULL,1670331511,1670331511),('createmetodopagamento',2,'Criar Método Pagamento',NULL,NULL,1670331511,1670331511),('createpedido',2,'Criar Pedido',NULL,NULL,1670331511,1670331511),('createreserva',2,'Criar reserva',NULL,NULL,1670331511,1670331511),('createutilizador',2,'Criar Cliente',NULL,NULL,1670331511,1670331511),('delete',2,'Apagar',NULL,NULL,1670331511,1670331511),('deleteartigo',2,'Apagar Artigo',NULL,NULL,1670331511,1670331511),('deletecategoria',2,'Apagar Categoria',NULL,NULL,1670331511,1670331511),('deletecomentario',2,'Apagar comentário',NULL,NULL,1670331511,1670331511),('deleteiva',2,'Apagar taxa de iva',NULL,NULL,1670331511,1670331511),('deletelinhapedido',2,'Apagar linha pedido',NULL,NULL,1670331511,1670331511),('deletemesa',2,'Apagar Mesa',NULL,NULL,1670331511,1670331511),('deletemetodopagamento',2,'Apagar método pagamento',NULL,NULL,1670331511,1670331511),('deletepedido',2,'Apagar pedido',NULL,NULL,1670331511,1670331511),('deletereserva',2,'Apagar Reserva',NULL,NULL,1670331511,1670331511),('funcionario',1,NULL,NULL,NULL,1670331511,1670331511),('update',2,'Editar qualquer registo',NULL,NULL,1670331511,1670331511),('updateartigo',2,'Editar Artigo',NULL,NULL,1670331511,1670331511),('updatecategoria',2,'Editar Categoria',NULL,NULL,1670331511,1670331511),('updatecomentario',2,'Editar Comentário',NULL,NULL,1670331511,1670331511),('updateiva',2,'Editar taxa de iva',NULL,NULL,1670331511,1670331511),('updatelinhapedido',2,'Editar linha de pedido',NULL,NULL,1670331511,1670331511),('updatemesa',2,'Editar Mesa',NULL,NULL,1670331511,1670331511),('updatemetodopagamento',2,'Editar Método Pagamento',NULL,NULL,1670331511,1670331511),('updatepedido',2,'Editar pedido',NULL,NULL,1670331511,1670331511),('updatereserva',2,'Editar Reserva',NULL,NULL,1670331511,1670331511),('updateutilizador',2,'Editar Utilizador',NULL,NULL,1670331511,1670331511);
 /*!40000 ALTER TABLE `auth_item` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -129,6 +131,7 @@ CREATE TABLE `auth_item_child` (
 
 LOCK TABLES `auth_item_child` WRITE;
 /*!40000 ALTER TABLE `auth_item_child` DISABLE KEYS */;
+INSERT INTO `auth_item_child` VALUES ('admin','create'),('admin','createartigo'),('funcionario','createartigo'),('admin','createcategoria'),('funcionario','createcategoria'),('admin','createcomentario'),('cliente','createcomentario'),('funcionario','createcomentario'),('admin','createiva'),('funcionario','createiva'),('admin','createlinhapedido'),('cliente','createlinhapedido'),('funcionario','createlinhapedido'),('admin','createmesa'),('funcionario','createmesa'),('admin','createmetodopagamento'),('admin','createpedido'),('cliente','createpedido'),('funcionario','createpedido'),('admin','createreserva'),('cliente','createreserva'),('funcionario','createreserva'),('admin','createutilizador'),('funcionario','createutilizador'),('admin','delete'),('admin','deleteartigo'),('funcionario','deleteartigo'),('admin','deletecategoria'),('admin','deletecomentario'),('cliente','deletecomentario'),('funcionario','deletecomentario'),('admin','deleteiva'),('admin','deletelinhapedido'),('cliente','deletelinhapedido'),('funcionario','deletelinhapedido'),('admin','deletemesa'),('admin','deletemetodopagamento'),('admin','deletepedido'),('cliente','deletepedido'),('funcionario','deletepedido'),('admin','deletereserva'),('cliente','deletereserva'),('funcionario','deletereserva'),('admin','update'),('admin','updateartigo'),('funcionario','updateartigo'),('admin','updatecategoria'),('funcionario','updatecategoria'),('admin','updatecomentario'),('cliente','updatecomentario'),('funcionario','updatecomentario'),('admin','updateiva'),('funcionario','updateiva'),('admin','updatelinhapedido'),('cliente','updatelinhapedido'),('funcionario','updatelinhapedido'),('admin','updatemesa'),('funcionario','updatemesa'),('admin','updatemetodopagamento'),('admin','updatepedido'),('cliente','updatepedido'),('funcionario','updatepedido'),('admin','updatereserva'),('cliente','updatereserva'),('funcionario','updatereserva'),('admin','updateutilizador'),('funcionario','updateutilizador');
 /*!40000 ALTER TABLE `auth_item_child` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -363,6 +366,7 @@ CREATE TABLE `migration` (
 
 LOCK TABLES `migration` WRITE;
 /*!40000 ALTER TABLE `migration` DISABLE KEYS */;
+INSERT INTO `migration` VALUES ('m000000_000000_base',1670331359),('m130524_201442_init',1670331361),('m190124_110200_add_verification_token_column_to_user_table',1670331361),('m140506_102106_rbac_init',1670331427),('m170907_052038_rbac_add_index_on_auth_assignment_user_id',1670331427),('m180523_151638_rbac_updates_indexes_without_prefix',1670331427),('m200409_110543_rbac_update_mssql_trigger',1670331427);
 /*!40000 ALTER TABLE `migration` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -502,4 +506,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-06 12:28:08
+-- Dump completed on 2022-12-06 13:03:11
