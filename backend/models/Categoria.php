@@ -10,6 +10,7 @@ use Yii;
  * @property int $id
  * @property string $nome
  * @property string $descricao
+ * @property int $estado
  */
 class Categoria extends \yii\db\ActiveRecord
 {
@@ -27,7 +28,8 @@ class Categoria extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nome', 'descricao'], 'required'],
+            [['nome', 'descricao', 'estado'], 'required'],
+            [['estado'], 'integer'],
             [['nome'], 'string', 'max' => 200],
             [['descricao'], 'string', 'max' => 255],
         ];
@@ -42,6 +44,7 @@ class Categoria extends \yii\db\ActiveRecord
             'id' => 'ID',
             'nome' => 'Nome',
             'descricao' => 'Descricao',
+            'estado' => 'Estado',
         ];
     }
 }

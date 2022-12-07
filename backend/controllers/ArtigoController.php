@@ -50,14 +50,14 @@ class ArtigoController extends Controller
     /**
      * Displays a single Artigo model.
      * @param int $id ID
-     * @param int $categorias_id Categorias ID
+     * @param int $categoria_id Categoria ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id, $categorias_id)
+    public function actionView($id, $categoria_id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($id, $categorias_id),
+            'model' => $this->findModel($id, $categoria_id),
         ]);
     }
 
@@ -72,7 +72,7 @@ class ArtigoController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id, 'categorias_id' => $model->categorias_id]);
+                return $this->redirect(['view', 'id' => $model->id, 'categoria_id' => $model->categoria_id]);
             }
         } else {
             $model->loadDefaultValues();
@@ -87,16 +87,16 @@ class ArtigoController extends Controller
      * Updates an existing Artigo model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
-     * @param int $categorias_id Categorias ID
+     * @param int $categoria_id Categoria ID
      * @return string|\yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id, $categorias_id)
+    public function actionUpdate($id, $categoria_id)
     {
-        $model = $this->findModel($id, $categorias_id);
+        $model = $this->findModel($id, $categoria_id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id, 'categorias_id' => $model->categorias_id]);
+            return $this->redirect(['view', 'id' => $model->id, 'categoria_id' => $model->categoria_id]);
         }
 
         return $this->render('update', [
@@ -108,13 +108,13 @@ class ArtigoController extends Controller
      * Deletes an existing Artigo model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
-     * @param int $categorias_id Categorias ID
+     * @param int $categoria_id Categoria ID
      * @return \yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id, $categorias_id)
+    public function actionDelete($id, $categoria_id)
     {
-        $this->findModel($id, $categorias_id)->delete();
+        $this->findModel($id, $categoria_id)->delete();
 
         return $this->redirect(['index']);
     }
@@ -123,13 +123,13 @@ class ArtigoController extends Controller
      * Finds the Artigo model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @param int $categorias_id Categorias ID
+     * @param int $categoria_id Categoria ID
      * @return Artigo the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id, $categorias_id)
+    protected function findModel($id, $categoria_id)
     {
-        if (($model = Artigo::findOne(['id' => $id, 'categorias_id' => $categorias_id])) !== null) {
+        if (($model = Artigo::findOne(['id' => $id, 'categoria_id' => $categoria_id])) !== null) {
             return $model;
         }
 

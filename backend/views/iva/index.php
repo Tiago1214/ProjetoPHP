@@ -28,19 +28,30 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
             'descricao',
             'taxaiva',
-            'estado',
             [
-                'class' => ActionColumn::className(),
+                'attribute' => 'estado',
+                'value' => function($model){
+                    if($model->estado == '0'){
+                        return 'Inativo';
+                    }
+                    else if($model->estado=='1'){
+                        return 'Ativo';
+                    }
+                    else{
+                        return 'Erro';
+                    }
+                }
+            ],
+            [
+                'class' => 'yii\grid\ActionColumn', 'template' => '{view}{update} ',
                 'urlCreator' => function ($action, Iva $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }
             ],
         ],
-    ]); ?>
 
+    ]); ?>
 
 </div>
