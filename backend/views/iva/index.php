@@ -45,7 +45,17 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             ],
             [
-                'class' => 'yii\grid\ActionColumn', 'template' => '{view}{update} ',
+                'buttons' => [
+                    'Ativar' => function($url,$model, $id) {     // render your custom button
+                        if($model->estado==0){
+                            return Html::a('Ativar', ['/iva/estado', 'id' => $id], ['class'=>'btn btn-success']) ;
+                        }
+                        else if($model->estado==1){
+                            return Html::a('Desativar', ['/iva/estado', 'id' => $id], ['class'=>'btn btn-danger']) ;
+                        }
+                    }
+                ],
+                'class' => 'yii\grid\ActionColumn', 'template' => '{view}{update}{Ativar}',
                 'urlCreator' => function ($action, Iva $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }

@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /** @var yii\web\View $this */
 /** @var backend\models\Iva $model */
 
-$this->title = $model->id;
+$this->title = $model->descricao;
 $this->params['breadcrumbs'][] = ['label' => 'Ivas', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
@@ -17,13 +17,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
     </p>
 
     <?= DetailView::widget([
@@ -32,7 +25,20 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'descricao',
             'taxaiva',
-            'estado',
+            [
+                'attribute' => 'estado',
+                'value' => function($model){
+                    if($model->estado == 0){
+                        return 'Desativado';
+                    }
+                    else if($model->estado==1){
+                        return 'Ativado';
+                    }
+                    else{
+                        return 'Erro';
+                    }
+                }
+            ],
         ],
     ]) ?>
 

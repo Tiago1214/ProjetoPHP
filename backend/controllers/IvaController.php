@@ -117,6 +117,27 @@ class IvaController extends Controller
     }
 
     /**
+     * Ativar ou Desativar uma categoria.
+     * Dependendo se o item está ativado ou não esta função vai fazer com que se mude o estado da categoria
+     * @param int $id ID
+     * @return \yii\web\Response
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionEstado($id){
+        $iva=$this->findModel($id);
+        if($iva->estado==0){
+            $iva->estado=1;
+            $iva->save();
+        }
+        else if($iva->estado==1){
+            $iva->estado=0;
+            $iva->save();
+        }
+
+        return $this->redirect('../iva/index');
+    }
+
+    /**
      * Finds the Iva model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
