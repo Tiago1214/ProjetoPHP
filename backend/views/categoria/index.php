@@ -29,11 +29,34 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
             'nome',
             'descricao',
             [
-                'class' => ActionColumn::className(),
+                'attribute' => 'estado',
+                'value' => function($model){
+                    if($model->estado == 0){
+                        return 'Inativo';
+                    }
+                    else if($model->estado==1){
+                        return 'Ativo';
+                    }
+                    else{
+                        return 'Erro';
+                    }
+                }
+            ],
+            [
+                'buttons' => [
+                    'Ativar' => function($url,$model, $id) {     // render your custom button
+                        if($model->estado==0){
+                            return Html::a('Ativar', ['/categoria/estado', 'id' => $id], ['class'=>'btn btn-success']) ;
+                        }
+                        else if($model->estado==1){
+                            return Html::a('Desativar', ['/categoria/estado', 'id' => $id], ['class'=>'btn btn-danger']) ;
+                        }
+                    }
+                ],
+                'class' => 'yii\grid\ActionColumn', 'template' => '{view}{update}{Ativar}',
                 'urlCreator' => function ($action, Categoria $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }

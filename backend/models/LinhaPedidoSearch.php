@@ -17,7 +17,7 @@ class LinhaPedidoSearch extends LinhaPedido
     public function rules()
     {
         return [
-            [['id', 'pedido_id'], 'integer'],
+            [['id', 'pedido_id', 'artigo_id'], 'integer'],
             [['data', 'preco', 'iva'], 'safe'],
         ];
     }
@@ -61,6 +61,7 @@ class LinhaPedidoSearch extends LinhaPedido
             'id' => $this->id,
             'data' => $this->data,
             'pedido_id' => $this->pedido_id,
+            'artigo_id' => $this->artigo_id,
         ]);
 
         $query->andFilterWhere(['like', 'preco', $this->preco])

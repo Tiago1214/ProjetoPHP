@@ -17,7 +17,7 @@ class CategoriaSearch extends Categoria
     public function rules()
     {
         return [
-            [['id'], 'integer'],
+            [['id', 'estado'], 'integer'],
             [['nome', 'descricao'], 'safe'],
         ];
     }
@@ -59,6 +59,7 @@ class CategoriaSearch extends Categoria
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'estado' => $this->estado,
         ]);
 
         $query->andFilterWhere(['like', 'nome', $this->nome])

@@ -28,11 +28,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'estado')->textInput() ?>
 
-    <?= $form->field($model, 'linha_pedido_id')->textInput() ?>
-
-    <?= $form->field($model, 'categorias_id')->textInput() ?>
-
     <?= $form->field($model, 'iva_id')->textInput() ?>
+
+    <?= $form->field($model, 'categoria_id')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

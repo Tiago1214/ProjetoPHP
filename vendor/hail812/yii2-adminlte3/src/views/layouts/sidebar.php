@@ -69,10 +69,10 @@ use yii\bootstrap5\Html;
                             ['label' => 'Desativar Artigos', 'iconStyle' => 'far'],
                         ]
                     ],
-                    ['label' => 'Categorias', 'iconStyle' => 'far'],
-                    ['label' => 'Iva', 'iconStyle' => 'far'],
-                    ['label' => 'Comentário', 'iconStyle' => 'far'],
-                    ['label' => 'Empresa', 'iconStyle' => 'far'],
+                    ['label' => 'Categorias', 'iconStyle' => 'far','url' => ['categoria/index']],
+                    ['label' => 'Iva', 'iconStyle' => 'far','url' => ['iva/index']],
+                    ['label' => 'Comentário', 'iconStyle' => 'far','url' => ['comentario/index']],
+                    ['label' => 'Empresa', 'iconStyle' => 'far','url' => ['empresa/index']],
                 ],
             ]);
             ?>

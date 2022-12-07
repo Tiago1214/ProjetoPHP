@@ -16,6 +16,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'descricao')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'estado')->dropDownList([0=>'Desativo',1=>'Ativo']) ?>
+
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>

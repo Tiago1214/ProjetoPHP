@@ -33,11 +33,9 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'estado') ?>
 
-    <?php // echo $form->field($model, 'linha_pedido_id') ?>
-
-    <?php // echo $form->field($model, 'categorias_id') ?>
-
     <?php // echo $form->field($model, 'iva_id') ?>
+
+    <?php // echo $form->field($model, 'categoria_id') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

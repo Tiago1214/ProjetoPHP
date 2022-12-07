@@ -117,6 +117,27 @@ class CategoriaController extends Controller
     }
 
     /**
+     * Ativar ou Desativar uma categoria.
+     * Dependendo se o item está ativado ou não esta função vai fazer com que se mude o estado da categoria
+     * @param int $id ID
+     * @return \yii\web\Response
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionEstado($id){
+        $categoria=Categoria::find($id);
+
+        if($categoria->estado==0){
+            $categoria->estado=1;
+            echo 'ssss';
+        }
+        else if($categoria->estado==1){
+            $categoria->estado=0;
+        }
+
+        return $this->redirect('../categoria/index');
+    }
+
+    /**
      * Finds the Categoria model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID

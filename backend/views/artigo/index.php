@@ -38,13 +38,12 @@ $this->params['breadcrumbs'][] = $this->title;
             //'data',
             //'imagem',
             //'estado',
-            //'linha_pedido_id',
-            //'categorias_id',
             //'iva_id',
+            //'categoria_id',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Artigo $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'id' => $model->id, 'categorias_id' => $model->categorias_id]);
+                    return Url::toRoute([$action, 'id' => $model->id, 'categoria_id' => $model->categoria_id]);
                  }
             ],
         ],
