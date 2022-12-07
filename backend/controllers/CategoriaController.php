@@ -128,6 +128,7 @@ class CategoriaController extends Controller
 
         if($categoria->estado==0){
             $categoria->estado=1;
+            echo 's';
         }
         else if($categoria->estado==1){
             $categoria->estado=0;
