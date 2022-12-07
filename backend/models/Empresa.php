@@ -34,11 +34,12 @@ class Empresa extends \yii\db\ActiveRecord
     {
         return [
             [['nomeempresa', 'email', 'telefone', 'nif', 'morada', 'codpostal', 'capitalsocial'], 'required'],
-            [['capitalsocial'], 'integer'],
+            [['capitalsocial'], 'number'],
             [['nomeempresa'], 'string', 'max' => 150],
             [['email', 'morada'], 'string', 'max' => 200],
-            [['telefone', 'codpostal'], 'string', 'max' => 20],
-            [['nif'], 'string', 'max' => 45],
+            [['telefone'], 'string', 'max' => 9],
+            [['codpostal'],'string','max'=>8],
+            [['nif'], 'number', 'max' => 9],
             [['localidade'], 'string', 'max' => 255],
         ];
     }
