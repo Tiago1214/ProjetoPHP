@@ -35,10 +35,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'estado',
                 'value' => function($model){
                     if($model->estado == 0){
-                        return 'Inativo';
+                        return 'Desativado';
                     }
                     else if($model->estado==1){
-                        return 'Ativo';
+                        return 'Ativado';
                     }
                     else{
                         return 'Erro';

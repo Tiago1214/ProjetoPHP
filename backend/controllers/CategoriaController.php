@@ -124,13 +124,15 @@ class CategoriaController extends Controller
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionEstado($id){
-        $categoria=Categoria::find($id);
+        $categoria=$this->findModel($id);
 
         if($categoria->estado==0){
             $categoria->estado=1;
+            $categoria->save();
         }
         else if($categoria->estado==1){
             $categoria->estado=0;
+            $categoria->save();
         }
 
         return $this->redirect('../categoria/index');
