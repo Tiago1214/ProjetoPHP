@@ -43,6 +43,7 @@ class Artigo extends \yii\db\ActiveRecord
             [['data'], 'safe'],
             [['nome'], 'string', 'max' => 200],
             [['descricao', 'imagem'], 'string', 'max' => 255],
+            [['imagem'],'file','extensions'=>'jpg, jpeg, png','skipOnEmpty' => true],
             [['referencia'], 'string', 'max' => 45],
         ];
     }
@@ -62,8 +63,8 @@ class Artigo extends \yii\db\ActiveRecord
             'data' => 'Data',
             'imagem' => 'Imagem',
             'estado' => 'Estado',
-            'iva_id' => 'Iva ID',
-            'categoria_id' => 'Categoria ID',
+            'iva_id' => 'Taxa de Iva',
+            'categoria_id' => 'Categoria ',
         ];
     }
 

@@ -22,15 +22,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'preco')->textInput() ?>
 
-    <?= $form->field($model, 'data')->textInput() ?>
-
-    <?= $form->field($model, 'imagem')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'estado')->textInput() ?>
+    <?= $form->field($model, 'imagem')->fileInput() ?>
 
     <?= $form->field($model, 'iva_id')->textInput() ?>
 
     <?= $form->field($model, 'categoria_id')->textInput() ?>
+
+    <?= $form->field($model, 'estado')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

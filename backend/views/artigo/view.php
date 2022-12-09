@@ -2,11 +2,12 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use Yii;
 
 /** @var yii\web\View $this */
 /** @var backend\models\Artigo $model */
 
-$this->title = $model->id;
+$this->title = $model->nome;
 $this->params['breadcrumbs'][] = ['label' => 'Artigos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
@@ -36,10 +37,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'quantidade',
             'preco',
             'data',
-            'imagem',
             'estado',
             'iva_id',
             'categoria_id',
+            [
+                'attribute'=>'imagem',
+                'value'=>'http://localhost/gersoft/images'.'/'.$model->imagem,
+                'format'=>['image',['width'=>'100','height'=>'100']]
+            ]
         ],
     ]) ?>
 

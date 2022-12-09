@@ -7,6 +7,8 @@ use backend\models\ArtigoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
+use Yii;
 
 /**
  * ArtigoController implements the CRUD actions for Artigo model.
@@ -71,7 +73,16 @@ class ArtigoController extends Controller
         $model = new Artigo();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
+            if ($model->load($this->request->post())) {
+                $model->data=Yii::$app->formatter->asDatetime('now', 'php:Y-m-d H:i:s');
+                $model->save();
+                $artigoId=$model->id;
+                $image=UploadedFile::getInstance($model,'imagem');
+                $imgName='art_'. $artigoId . '.' . $image->getExtension();
+                $image->saveAs(Yii::getAlias('@artigoImgPath').'/'.$imgName);
+                $model->imagem=$imgName;
+                $model->save();
+
                 return $this->redirect(['view', 'id' => $model->id, 'categoria_id' => $model->categoria_id]);
             }
         } else {
