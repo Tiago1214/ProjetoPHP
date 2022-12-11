@@ -18,9 +18,6 @@
 --
 -- Table structure for table `artigo`
 --
-Drop schema if exists gersoft;
-create schema gersoft;
-use gersoft;
 
 DROP TABLE IF EXISTS `artigo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -40,7 +37,7 @@ CREATE TABLE `artigo` (
   PRIMARY KEY (`id`,`categoria_id`),
   KEY `fk_artigo_iva1_idx` (`iva_id`),
   KEY `fk_artigo_categoria1_idx` (`categoria_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -49,6 +46,7 @@ CREATE TABLE `artigo` (
 
 LOCK TABLES `artigo` WRITE;
 /*!40000 ALTER TABLE `artigo` DISABLE KEYS */;
+INSERT INTO `artigo` VALUES (9,'Teste','Teste','A1234B5',1,111.5,'2021-12-14 00:00:00','art_9.jpg',1,1,1),(10,'teste','teste12','22',1,222,'2022-12-09 12:35:59','art_10.png',1,1,1);
 /*!40000 ALTER TABLE `artigo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -174,8 +172,9 @@ CREATE TABLE `categoria` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(200) NOT NULL,
   `descricao` varchar(255) NOT NULL,
+  `estado` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -184,6 +183,7 @@ CREATE TABLE `categoria` (
 
 LOCK TABLES `categoria` WRITE;
 /*!40000 ALTER TABLE `categoria` DISABLE KEYS */;
+INSERT INTO `categoria` VALUES (1,'Carne','Carne',0),(2,'Peixe','Peixe',1);
 /*!40000 ALTER TABLE `categoria` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -230,7 +230,7 @@ CREATE TABLE `empresa` (
   `morada` varchar(200) NOT NULL,
   `codpostal` varchar(20) NOT NULL,
   `localidade` varchar(255) DEFAULT NULL,
-  `capitalsocial` int(11) NOT NULL,
+  `capitalsocial` float NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -257,7 +257,7 @@ CREATE TABLE `iva` (
   `taxaiva` int(11) NOT NULL,
   `estado` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -266,6 +266,7 @@ CREATE TABLE `iva` (
 
 LOCK TABLES `iva` WRITE;
 /*!40000 ALTER TABLE `iva` DISABLE KEYS */;
+INSERT INTO `iva` VALUES (1,'Iva Teste 1%',1,1);
 /*!40000 ALTER TABLE `iva` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -509,4 +510,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-06 13:03:11
+-- Dump completed on 2022-12-11 14:17:22
