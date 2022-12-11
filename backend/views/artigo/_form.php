@@ -24,9 +24,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'imagem')->fileInput() ?>
 
-    <?= $form->field($model, 'iva_id')->textInput() ?>
+    <?= $form->field($model, 'iva_id')->dropDownList() ?>
 
-    <?= $form->field($model, 'categoria_id')->textInput() ?>
+    <?= $form->field($model, 'categoria_id')->dropDownList() ?>
 
     <?= $form->field($model, 'estado')->textInput() ?>
 
