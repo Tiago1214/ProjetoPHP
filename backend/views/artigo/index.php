@@ -32,7 +32,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'descricao',
             'referencia',
             'quantidade',
-            'preco',
+            [
+                'attribute' => 'preco',
+                'value' => function($model){
+                    return $model->preco.'€';
+                }
+            ],
             //'data',
             //'imagem',
             [
@@ -47,11 +52,35 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $model->categoria->nome;
                 }
             ],
-            'estado',
             [
-                'class' => ActionColumn::className(),
+                'attribute' => 'estado',
+                'value' => function($model){
+                    if($model->estado == 0){
+                        return 'Desativado';
+                    }
+                    else if($model->estado==1){
+                        return 'Ativado';
+                    }
+                    else{
+                        return 'Erro';
+                    }
+                }
+            ],
+            [
+                'buttons' => [
+                    'Ativar' => function($url,$model, $id) {     // render your custom button
+                        if($model->estado==0){
+
+                            return Html::a('Ativar', ['/artigo/estado', 'id' => $model->id], ['class'=>'btn btn-success']) ;
+                        }
+                        else if($model->estado==1){
+                            return Html::a('Desativar', ['/artigo/estado', 'id' => $model->id], ['class'=>'btn btn-danger']) ;
+                        }
+                    }
+                ],
+                'class' => 'yii\grid\ActionColumn', 'template' => '{view}{update}{Ativar}',
                 'urlCreator' => function ($action, Artigo $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'id' => $model->id, 'categoria_id' => $model->categoria_id]);
+                    return Url::toRoute([$action, 'id' => $model->id, 'categoria_id' => $model->categoria_id,'iva_id'=>$model->iva_id]);
                  }
             ],
         ],

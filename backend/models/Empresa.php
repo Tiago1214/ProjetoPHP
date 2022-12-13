@@ -37,9 +37,9 @@ class Empresa extends \yii\db\ActiveRecord
             [['capitalsocial'], 'number'],
             [['nomeempresa'], 'string', 'max' => 150],
             [['email', 'morada'], 'string', 'max' => 200],
-            [['telefone'], 'string', 'max' => 9],
+            [['telefone'], 'string', 'max' => 10],
             [['codpostal'],'string','max'=>8],
-            [['nif'], 'number', 'max' => 9],
+            [['nif'], 'number', 'max' => 999999999,'min'=>100000001],
             [['localidade'], 'string', 'max' => 255],
         ];
     }

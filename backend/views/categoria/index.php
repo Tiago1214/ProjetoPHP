@@ -49,10 +49,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 'buttons' => [
                     'Ativar' => function($url,$model, $id) {     // render your custom button
                         if($model->estado==0){
-                            return Html::a('Ativar', ['/categoria/estado', 'id' => $id], ['class'=>'btn btn-success']) ;
+                            return Html::a('Ativar', ['/categoria/estado', 'id' => $model->id], ['class'=>'btn btn-success']) ;
                         }
                         else if($model->estado==1){
-                            return Html::a('Desativar', ['/categoria/estado', 'id' => $id], ['class'=>'btn btn-danger']) ;
+                            return Html::a('Desativar', ['/categoria/estado', 'id' => $model->id], ['class'=>'btn btn-danger']) ;
                         }
                     }
                 ],
