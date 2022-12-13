@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
 
 /** @var yii\web\View $this */
 /** @var backend\models\Artigo $model */
@@ -24,11 +25,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'imagem')->fileInput() ?>
 
-    <?= $form->field($model, 'iva_id')->dropDownList() ?>
+    <?= $form->field($model, 'iva_id')->dropDownList(
+            \yii\helpers\ArrayHelper::map($iva,'id','taxaiva'), ['separator' => '<br>']
+       )?>
 
-    <?= $form->field($model, 'categoria_id')->dropDownList() ?>
+    <?= $form->field($model, 'categoria_id')->dropDownList(
+        \yii\helpers\ArrayHelper::map($categoria,'id','nome'), ['separator' => '<br>']
+    )?>
 
-    <?= $form->field($model, 'estado')->textInput() ?>
+    <?= $form->field($model, 'estado')->dropDownList([0=>'Desativo',1=>'Ativo']) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

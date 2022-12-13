@@ -42,6 +42,7 @@ class ArtigoController extends Controller
     {
         $searchModel = new ArtigoSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
+        
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -71,7 +72,8 @@ class ArtigoController extends Controller
     public function actionCreate()
     {
         $model = new Artigo();
-
+        $iva=\backend\models\Iva::find()->all();
+        $categoria=\backend\models\Categoria::find()->all();
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {
                 $model->data=Yii::$app->formatter->asDatetime('now', 'php:Y-m-d H:i:s');
@@ -91,6 +93,8 @@ class ArtigoController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'iva'=>$iva,
+            'categoria'=>$categoria,
         ]);
     }
 

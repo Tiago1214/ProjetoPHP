@@ -28,18 +28,26 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
             'nome',
             'descricao',
             'referencia',
             'quantidade',
-            //'preco',
+            'preco',
             //'data',
             //'imagem',
-            //'estado',
-            //'iva_id',
-            //'categoria_id',
+            [
+                'attribute' => 'iva_id',
+                'value' => function($model){
+                    return $model->iva->taxaiva.'%';
+                }
+            ],
+            [
+                'attribute' => 'categoria_id',
+                'value' => function($model){
+                    return $model->categoria->nome;
+                }
+            ],
+            'estado',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Artigo $model, $key, $index, $column) {

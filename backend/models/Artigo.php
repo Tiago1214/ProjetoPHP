@@ -77,4 +77,14 @@ class Artigo extends \yii\db\ActiveRecord
     {
         return $this->hasMany(LinhaPedido::class, ['artigo_id' => 'id']);
     }
+
+    public function getIva()
+    {
+        return $this->hasOne(Iva::class, ['id' => 'iva_id']);
+    }
+
+    public function getCategoria()
+    {
+        return $this->hasOne(Categoria::class, ['id' => 'categoria_id']);
+    }
 }

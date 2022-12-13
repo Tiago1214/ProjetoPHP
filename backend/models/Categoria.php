@@ -47,4 +47,9 @@ class Categoria extends \yii\db\ActiveRecord
             'estado' => 'Estado',
         ];
     }
+
+    public function getArtigo()
+    {
+        return $this->hasMany(Artigo::class, ['id' => 'artigo_id']);
+    }
 }
