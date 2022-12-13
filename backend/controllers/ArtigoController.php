@@ -135,7 +135,7 @@ class ArtigoController extends Controller
     {
         $this->findModel($id, $categoria_id)->delete();
 
-        return $this->redirect(['indexs']);
+        return $this->redirect(['index']);
     }
 
     /**
