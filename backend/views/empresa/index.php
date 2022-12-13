@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'localidade',
             //'capitalsocial',
             [
-                'class' => ActionColumn::className(),
+                'class' => 'yii\grid\ActionColumn', 'template' => '{view}{update}',
                 'urlCreator' => function ($action, Empresa $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }

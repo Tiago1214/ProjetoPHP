@@ -13,17 +13,17 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="empresa-view">
 
-    <h1><?php echo Html::encode($model->nomeempresa) ?></h1>
+    <h1><?php // echo Html::encode($model->nomeempresa) ?></h1>
 
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?php /*echo Html::a('Delete', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
             ],
-        ]) ?>
+        ]) */?>
     </p>
 
     <?= DetailView::widget([
