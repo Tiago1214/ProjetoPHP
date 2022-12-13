@@ -85,7 +85,7 @@ class ArtigoController extends Controller
                 $model->imagem=$imgName;
                 $model->save();
 
-                return $this->redirect(['view', 'id' => $model->id, 'categoria_id' => $model->categoria_id]);
+                return $this->redirect(['view', 'id' => $model->id,]);
             }
         } else {
             $model->loadDefaultValues();
@@ -112,8 +112,27 @@ class ArtigoController extends Controller
         $model = $this->findModel($id);
         $iva=\backend\models\Iva::find()->all();
         $categoria=\backend\models\Categoria::find()->all();
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id,]);
+        if ($this->request->isPost) {
+            if($model->load($this->request->post())) {
+                $artigoId=$model->id;
+                $image=UploadedFile::getInstance($model,'imagem');
+                $imgName='art_'. $artigoId . '.' . $image->getExtension();
+                $image->saveAs(Yii::getAlias('@artigoImgPath').'/'.$imgName);
+                if($imgName==null){
+                    $model->imagem=$model->imagem;
+                    $model->save();
+                }
+                else if($imgName==$model->imagem){
+                    $model->save();
+                }
+                else if($imgName!=$model->imagem){
+                    $model->imagem=$imgName;
+                    $model->save();
+                }
+                $model->save();
+                return $this->redirect(['view', 'id' => $model->id,]);
+            }
+
         }
 
         return $this->render('update', [
