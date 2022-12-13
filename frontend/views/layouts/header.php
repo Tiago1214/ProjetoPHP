@@ -26,9 +26,9 @@ use yii\bootstrap5\Html; ?>
                         </div>
                     </li>
 
-                    <li class="nav-item"><a class="nav-link" href="about.php">Sobre Nós</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.php">Contactos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?= Url::to('../site/about'); ?>">Sobre Nós</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?= Url::to('../site/contact'); ?>">Contactos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?= Url::to('../site/login'); ?>">Login</a></li>
                 </ul>
             </div>
         </div>

@@ -10,16 +10,12 @@ use yii\grid\GridView;
 /** @var backend\models\EmpresaSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Empresas';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="empresa-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Create Empresa', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
@@ -28,8 +24,6 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
             'nomeempresa',
             'email:email',
             'telefone',
@@ -39,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'localidade',
             //'capitalsocial',
             [
-                'class' => ActionColumn::className(),
+                'class' => 'yii\grid\ActionColumn', 'template' => '{view}{update}',
                 'urlCreator' => function ($action, Empresa $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }
