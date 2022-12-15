@@ -83,6 +83,7 @@ class ArtigoController extends Controller
                 $imgName='art_'. $artigoId . '.' . $image->getExtension();
                 $image->saveAs(Yii::getAlias('@artigoImgPath').'/'.$imgName);
                 $model->imagem=$imgName;
+                $model->imagemurl='http://localhost/gersoft/images'.'/'.$model->imagem;
                 $model->save();
 
                 return $this->redirect(['view', 'id' => $model->id, 'categoria_id' => $model->categoria_id]);
@@ -112,8 +113,22 @@ class ArtigoController extends Controller
         $model = $this->findModel($id);
         $iva=\backend\models\Iva::find()->all();
         $categoria=\backend\models\Categoria::find()->all();
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id,]);
+        if ($this->request->isPost){
+            if($model->load($this->request->post())) {
+                $artigoId=$model->id;
+                $image=UploadedFile::getInstance($model,'imagem');
+                if($image!=null){
+                    $imgName='art_'. $artigoId . '.' . $image->getExtension();
+                    $image->saveAs(Yii::getAlias('@artigoImgPath').'/'.$imgName);
+                    $model->imagem=$imgName;
+                    $model->imagemurl='http://localhost/gersoft/images'.'/'.$model->imagem;
+                    $model->save();
+                }
+                else{
+
+                }
+                return $this->redirect(['view', 'id' => $model->id,]);
+            }
         }
 
         return $this->render('update', [
