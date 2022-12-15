@@ -86,7 +86,7 @@ class ArtigoController extends Controller
                 $model->imagemurl='http://localhost/gersoft/images'.'/'.$model->imagem;
                 $model->save();
 
-                return $this->redirect(['view', 'id' => $model->id, 'categoria_id' => $model->categoria_id]);
+                return $this->redirect(['view', 'id' => $model->id,]);
             }
         } else {
             $model->loadDefaultValues();
@@ -113,6 +113,7 @@ class ArtigoController extends Controller
         $model = $this->findModel($id);
         $iva=\backend\models\Iva::find()->all();
         $categoria=\backend\models\Categoria::find()->all();
+<<<<<<< HEAD
         if ($this->request->isPost){
             if($model->load($this->request->post())) {
                 $artigoId=$model->id;
@@ -125,10 +126,32 @@ class ArtigoController extends Controller
                     $model->save();
                 }
                 else{
+=======
+        if ($this->request->isPost) {
+            if($model->load($this->request->post())) {
+                $artigoId=$model->id;
+                $image=UploadedFile::getInstance($model,'imagem');
+                $imgName='art_'. $artigoId . '.' . $image->getExtension();
+                $image->saveAs(Yii::getAlias('@artigoImgPath').'/'.$imgName);
+                if($imgName==null){
+                    $model->imagem=$model->imagem;
+                    $model->save();
+                }
+                else if($imgName==$model->imagem){
+                    $model->save();
+                }
+                else if($imgName!=$model->imagem){
+                    $model->imagem=$imgName;
+                    $model->save();
+>>>>>>> dev
                 }
                 $model->save();
                 return $this->redirect(['view', 'id' => $model->id,]);
             }
+<<<<<<< HEAD
+=======
+
+>>>>>>> dev
         }
 
         return $this->render('update', [
