@@ -125,8 +125,8 @@ class ArtigoController extends Controller
                     $model->save();
                 }
                 else{
-
                 }
+                $model->save();
                 return $this->redirect(['view', 'id' => $model->id,]);
             }
         }
