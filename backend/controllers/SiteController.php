@@ -99,6 +99,6 @@ class SiteController extends Controller
     public function actionLogout()
     {
         Yii::$app->user->logout();
-        return $this->redirect('../../../frontend/web/site/index');
+        return $this->redirect('http://front.test/site/index');
     }
 }
