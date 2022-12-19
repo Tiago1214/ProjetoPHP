@@ -463,7 +463,7 @@ use yii\bootstrap5\Html; ?>
                 <div class="overflow-hidden">
                     <h4>Localização</h4>
                     <p class="lead">
-                        Rua Pricnipal, nº3, Leiria
+                        Rua Principal, nº3, Leiria
                     </p>
                 </div>
             </div>
