@@ -132,7 +132,7 @@ class SiteController extends Controller
     {
         Yii::$app->user->logout();
 
-        return $this->redirect('http://front.test/site/index');
+        return $this->goHome();
     }
 
     /**

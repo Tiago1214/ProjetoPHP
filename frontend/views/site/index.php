@@ -436,39 +436,5 @@ use yii\bootstrap5\Html; ?>
 </div>
 <!-- End Customer Reviews -->
 
-<!-- Start Contact info -->
-<div class="contact-imfo-box">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 arrow-right">
-                <i class="fa fa-volume-control-phone"></i>
-                <div class="overflow-hidden">
-                    <h4>Telefone</h4>
-                    <p class="lead">
-                        +351 249 551 125
-                    </p>
-                </div>
-            </div>
-            <div class="col-md-4 arrow-right">
-                <i class="fa fa-envelope"></i>
-                <div class="overflow-hidden">
-                    <h4>Email</h4>
-                    <p class="lead">
-                        info@100portugues.com
-                    </p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <i class="fa fa-map-marker"></i>
-                <div class="overflow-hidden">
-                    <h4>Localização</h4>
-                    <p class="lead">
-                        Rua Principal, nº3, Leiria
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- End Contact info -->
+
 

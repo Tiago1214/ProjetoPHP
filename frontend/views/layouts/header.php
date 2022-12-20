@@ -1,6 +1,7 @@
 <?php
 use yii\helpers\Url;
-use yii\bootstrap5\Html; ?>
+use yii\bootstrap5\Html;
+?>
 <!-- Start header -->
 <header class="top-navbar">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -26,9 +27,18 @@ use yii\bootstrap5\Html; ?>
                         </div>
                     </li>
 
-                    <li class="nav-item"><a class="nav-link" href="<?= Url::to('../site/about'); ?>">Sobre Nós</a></li>
-                    <li class="nav-item"><a class="nav-link" href="<?= Url::to('../site/contact'); ?>">Contactos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="<?= Url::to('../site/login'); ?>">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?= Url::to('/site/about'); ?>">Sobre Nós</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?= Url::to('/site/contact'); ?>">Contactos</a></li>
+                    <?php if(Yii::$app->user->isGuest){
+                        ?>
+                        <li class="nav-item"><a class="nav-link" href="<?= Url::to('/site/login'); ?>">Login</a></li>
+                    <?php
+                    }else{
+                        ?>
+                        <li class="nav-item"><a class="nav-link" href="<?= Url::to('/site/logout'); ?>">Logout <? Yii::$app->user->identity ?> </a></li>
+                    <?php
+                    } ?>
+
                 </ul>
             </div>
         </div>
