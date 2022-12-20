@@ -35,7 +35,9 @@ use yii\bootstrap5\Html;
                     <?php
                     }else{
                         ?>
-                        <li class="nav-item"><a class="nav-link" href="<?= Url::to('/site/logout'); ?>">Logout <? Yii::$app->user->identity ?> </a></li>
+                        <li class="nav-item">
+                            <?= Html::a('<i class="fas fa-sign-out-alt">Logout  </i>'. ' ('.Yii::$app->user->identity->username.')', ['/site/logout'], ['data-method' => 'post', 'class' => 'nav-link']) ?>
+                        </li>
                     <?php
                     } ?>
 
