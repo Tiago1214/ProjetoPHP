@@ -1,6 +1,6 @@
 <?php
 
-use backend\models\Reserva;
+use common\models\Reserva;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;

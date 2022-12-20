@@ -1,6 +1,6 @@
 <?php
 
-use backend\models\Comentario;
+use common\models\Comentario;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;

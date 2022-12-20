@@ -4,7 +4,7 @@ namespace common\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\models\Categoria;
+use common\models\Categoria;
 
 /**
  * CategoriaSearch represents the model behind the search form of `backend\models\Categoria`.

@@ -1,6 +1,6 @@
 <?php
 
-use backend\models\Artigo;
+use common\models\Artigo;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;

@@ -11,7 +11,7 @@ use yii\bootstrap5\Html;
                 <img src="<?=$assetDir?>/img/AdminLTELogo.png" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="<?= Url::to('../site/index'); ?>" class="d-block"><?= Yii::$app->user->identity->username; ?></a>
+                <a href="<?= Url::to('../site/index'); ?>" class="d-block"></a>
             </div>
         </div>
 

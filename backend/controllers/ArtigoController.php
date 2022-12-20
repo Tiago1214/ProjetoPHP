@@ -73,7 +73,7 @@ class ArtigoController extends Controller
     {
         $model = new Artigo();
         $iva=\backend\models\Iva::find()->all();
-        $categoria=\backend\models\Categoria::find()->all();
+        $categoria=\common\models\Categoria::find()->all();
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {
                 $model->data=Yii::$app->formatter->asDatetime('now', 'php:Y-m-d H:i:s');
@@ -112,7 +112,7 @@ class ArtigoController extends Controller
     {
         $model = $this->findModel($id);
         $iva=\backend\models\Iva::find()->all();
-        $categoria=\backend\models\Categoria::find()->all();
+        $categoria=\common\models\Categoria::find()->all();
         if ($this->request->isPost){
             if($model->load($this->request->post())) {
                 $artigoId=$model->id;
