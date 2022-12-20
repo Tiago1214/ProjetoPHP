@@ -1,15 +1,15 @@
 <?php
 
-namespace backend\models;
+namespace common\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\models\Artigo;
+use backend\models\Reserva;
 
 /**
- * ArtigoSearch represents the model behind the search form of `backend\models\Artigo`.
+ * ReservaSearch represents the model behind the search form of `backend\models\Reserva`.
  */
-class ArtigoSearch extends Artigo
+class ReservaSearch extends Reserva
 {
     /**
      * {@inheritdoc}
@@ -17,9 +17,8 @@ class ArtigoSearch extends Artigo
     public function rules()
     {
         return [
-            [['id', 'quantidade', 'estado', 'iva_id', 'categoria_id'], 'integer'],
-            [['nome', 'descricao', 'referencia', 'data', 'imagem'], 'safe'],
-            [['preco'], 'number'],
+            [['id', 'nrpessoas', 'estado', 'profile_id'], 'integer'],
+            [['data', 'hora'], 'safe'],
         ];
     }
 
@@ -41,7 +40,7 @@ class ArtigoSearch extends Artigo
      */
     public function search($params)
     {
-        $query = Artigo::find();
+        $query = Reserva::find();
 
         // add conditions that should always apply here
 
@@ -60,18 +59,13 @@ class ArtigoSearch extends Artigo
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'quantidade' => $this->quantidade,
-            'preco' => $this->preco,
-            'data' => $this->data,
+            'nrpessoas' => $this->nrpessoas,
             'estado' => $this->estado,
-            'iva_id' => $this->iva_id,
-            'categoria_id' => $this->categoria_id,
+            'profile_id' => $this->profile_id,
         ]);
 
-        $query->andFilterWhere(['like', 'nome', $this->nome])
-            ->andFilterWhere(['like', 'descricao', $this->descricao])
-            ->andFilterWhere(['like', 'referencia', $this->referencia])
-            ->andFilterWhere(['like', 'imagem', $this->imagem]);
+        $query->andFilterWhere(['like', 'data', $this->data])
+            ->andFilterWhere(['like', 'hora', $this->hora]);
 
         return $dataProvider;
     }

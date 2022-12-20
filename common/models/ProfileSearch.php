@@ -1,15 +1,15 @@
 <?php
 
-namespace backend\models;
+namespace common\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\models\Pedido;
+use backend\models\Profile;
 
 /**
- * PedidoSearch represents the model behind the search form of `backend\models\Pedido`.
+ * ProfileSearch represents the model behind the search form of `backend\models\Profile`.
  */
-class PedidoSearch extends Pedido
+class ProfileSearch extends Profile
 {
     /**
      * {@inheritdoc}
@@ -17,9 +17,8 @@ class PedidoSearch extends Pedido
     public function rules()
     {
         return [
-            [['id', 'tipo_pedido', 'profile_id', 'metodo_pagamento_id', 'mesa_id'], 'integer'],
-            [['data'], 'safe'],
-            [['total'], 'number'],
+            [['id', 'user_id'], 'integer'],
+            [['numcontribuinte', 'email', 'telemovel', 'estado'], 'safe'],
         ];
     }
 
@@ -41,7 +40,7 @@ class PedidoSearch extends Pedido
      */
     public function search($params)
     {
-        $query = Pedido::find();
+        $query = Profile::find();
 
         // add conditions that should always apply here
 
@@ -60,13 +59,13 @@ class PedidoSearch extends Pedido
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'data' => $this->data,
-            'total' => $this->total,
-            'tipo_pedido' => $this->tipo_pedido,
-            'profile_id' => $this->profile_id,
-            'metodo_pagamento_id' => $this->metodo_pagamento_id,
-            'mesa_id' => $this->mesa_id,
+            'user_id' => $this->user_id,
         ]);
+
+        $query->andFilterWhere(['like', 'numcontribuinte', $this->numcontribuinte])
+            ->andFilterWhere(['like', 'email', $this->email])
+            ->andFilterWhere(['like', 'telemovel', $this->telemovel])
+            ->andFilterWhere(['like', 'estado', $this->estado]);
 
         return $dataProvider;
     }

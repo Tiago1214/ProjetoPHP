@@ -1,27 +1,29 @@
 <?php
 
-namespace backend\models;
+namespace common\models;
 
 use Yii;
 
 /**
- * This is the model class for table "comentario".
+ * This is the model class for table "reserva".
  *
  * @property int $id
- * @property string $titulo
- * @property string $descricao
+ * @property string $data
+ * @property string $hora
+ * @property int $nrpessoas
+ * @property int $estado
  * @property int $profile_id
  *
  * @property Profile $profile
  */
-class Comentario extends \yii\db\ActiveRecord
+class Reserva extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'comentario';
+        return 'reserva';
     }
 
     /**
@@ -30,10 +32,9 @@ class Comentario extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['titulo', 'descricao', 'profile_id'], 'required'],
-            [['profile_id'], 'integer'],
-            [['titulo'], 'string', 'max' => 100],
-            [['descricao'], 'string', 'max' => 255],
+            [['data', 'hora', 'nrpessoas', 'estado', 'profile_id'], 'required'],
+            [['nrpessoas', 'estado', 'profile_id'], 'integer'],
+            [['data', 'hora'], 'string', 'max' => 45],
             [['profile_id'], 'exist', 'skipOnError' => true, 'targetClass' => Profile::class, 'targetAttribute' => ['profile_id' => 'id']],
         ];
     }
@@ -45,8 +46,10 @@ class Comentario extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'titulo' => 'Titulo',
-            'descricao' => 'Descricao',
+            'data' => 'Data',
+            'hora' => 'Hora',
+            'nrpessoas' => 'Nrpessoas',
+            'estado' => 'Estado',
             'profile_id' => 'Profile ID',
         ];
     }

@@ -2,8 +2,8 @@
 
 namespace backend\controllers;
 
-use backend\models\Artigo;
-use backend\models\ArtigoSearch;
+use common\models\Artigo;
+use common\models\ArtigoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

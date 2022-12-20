@@ -1,15 +1,15 @@
 <?php
 
-namespace backend\models;
+namespace common\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\models\Comentario;
+use backend\models\LinhaPedido;
 
 /**
- * ComentarioSearch represents the model behind the search form of `backend\models\Comentario`.
+ * LinhaPedidoSearch represents the model behind the search form of `backend\models\LinhaPedido`.
  */
-class ComentarioSearch extends Comentario
+class LinhaPedidoSearch extends LinhaPedido
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class ComentarioSearch extends Comentario
     public function rules()
     {
         return [
-            [['id', 'profile_id'], 'integer'],
-            [['titulo', 'descricao'], 'safe'],
+            [['id', 'pedido_id', 'artigo_id'], 'integer'],
+            [['data', 'preco', 'iva'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class ComentarioSearch extends Comentario
      */
     public function search($params)
     {
-        $query = Comentario::find();
+        $query = LinhaPedido::find();
 
         // add conditions that should always apply here
 
@@ -59,11 +59,13 @@ class ComentarioSearch extends Comentario
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'profile_id' => $this->profile_id,
+            'data' => $this->data,
+            'pedido_id' => $this->pedido_id,
+            'artigo_id' => $this->artigo_id,
         ]);
 
-        $query->andFilterWhere(['like', 'titulo', $this->titulo])
-            ->andFilterWhere(['like', 'descricao', $this->descricao]);
+        $query->andFilterWhere(['like', 'preco', $this->preco])
+            ->andFilterWhere(['like', 'iva', $this->iva]);
 
         return $dataProvider;
     }

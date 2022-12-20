@@ -3,12 +3,10 @@
 namespace backend\modules\api\controllers;
 
 use yii\rest\ActiveController;
-use backend\models\Profile;
 
-
-class ComentarioController extends ActiveController
+class CategoriaController extends ActiveController
 {
-    public $modelClass = 'common\models\Comentario';
+    public $modelClass = 'common\models\Categoria';
 
     public function actionIndex()
     {

@@ -1,15 +1,15 @@
 <?php
 
-namespace backend\models;
+namespace common\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\models\Reserva;
+use backend\models\Comentario;
 
 /**
- * ReservaSearch represents the model behind the search form of `backend\models\Reserva`.
+ * ComentarioSearch represents the model behind the search form of `backend\models\Comentario`.
  */
-class ReservaSearch extends Reserva
+class ComentarioSearch extends Comentario
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class ReservaSearch extends Reserva
     public function rules()
     {
         return [
-            [['id', 'nrpessoas', 'estado', 'profile_id'], 'integer'],
-            [['data', 'hora'], 'safe'],
+            [['id', 'profile_id'], 'integer'],
+            [['titulo', 'descricao'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class ReservaSearch extends Reserva
      */
     public function search($params)
     {
-        $query = Reserva::find();
+        $query = Comentario::find();
 
         // add conditions that should always apply here
 
@@ -59,13 +59,11 @@ class ReservaSearch extends Reserva
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'nrpessoas' => $this->nrpessoas,
-            'estado' => $this->estado,
             'profile_id' => $this->profile_id,
         ]);
 
-        $query->andFilterWhere(['like', 'data', $this->data])
-            ->andFilterWhere(['like', 'hora', $this->hora]);
+        $query->andFilterWhere(['like', 'titulo', $this->titulo])
+            ->andFilterWhere(['like', 'descricao', $this->descricao]);
 
         return $dataProvider;
     }

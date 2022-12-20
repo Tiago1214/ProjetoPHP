@@ -2,8 +2,8 @@
 
 namespace backend\controllers;
 
-use backend\models\Pedido;
-use backend\models\PedidoSearch;
+use common\models\Pedido;
+use common\models\PedidoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

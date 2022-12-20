@@ -1,15 +1,15 @@
 <?php
 
-namespace backend\models;
+namespace common\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\models\LinhaPedido;
+use backend\models\Artigo;
 
 /**
- * LinhaPedidoSearch represents the model behind the search form of `backend\models\LinhaPedido`.
+ * ArtigoSearch represents the model behind the search form of `backend\models\Artigo`.
  */
-class LinhaPedidoSearch extends LinhaPedido
+class ArtigoSearch extends Artigo
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,9 @@ class LinhaPedidoSearch extends LinhaPedido
     public function rules()
     {
         return [
-            [['id', 'pedido_id', 'artigo_id'], 'integer'],
-            [['data', 'preco', 'iva'], 'safe'],
+            [['id', 'quantidade', 'estado', 'iva_id', 'categoria_id'], 'integer'],
+            [['nome', 'descricao', 'referencia', 'data', 'imagem'], 'safe'],
+            [['preco'], 'number'],
         ];
     }
 
@@ -40,7 +41,7 @@ class LinhaPedidoSearch extends LinhaPedido
      */
     public function search($params)
     {
-        $query = LinhaPedido::find();
+        $query = Artigo::find();
 
         // add conditions that should always apply here
 
@@ -59,13 +60,18 @@ class LinhaPedidoSearch extends LinhaPedido
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'quantidade' => $this->quantidade,
+            'preco' => $this->preco,
             'data' => $this->data,
-            'pedido_id' => $this->pedido_id,
-            'artigo_id' => $this->artigo_id,
+            'estado' => $this->estado,
+            'iva_id' => $this->iva_id,
+            'categoria_id' => $this->categoria_id,
         ]);
 
-        $query->andFilterWhere(['like', 'preco', $this->preco])
-            ->andFilterWhere(['like', 'iva', $this->iva]);
+        $query->andFilterWhere(['like', 'nome', $this->nome])
+            ->andFilterWhere(['like', 'descricao', $this->descricao])
+            ->andFilterWhere(['like', 'referencia', $this->referencia])
+            ->andFilterWhere(['like', 'imagem', $this->imagem]);
 
         return $dataProvider;
     }
