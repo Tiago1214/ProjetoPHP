@@ -28,7 +28,7 @@ return [
         ],
         'session' => [
             // this is the name of the session cookie used for login on the backend
-            'name' => 'advanced-backend',
+            'name' => 'AuthSession',
         ],
         'view' => [
             'theme' => [

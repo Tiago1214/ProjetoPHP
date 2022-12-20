@@ -113,7 +113,13 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+            if(Yii::$app->authManager->getRolesByUser(Yii::$app->user->getId())=='cliente'){
+                return $this->redirect('http://front.test/site/index');
+            }
+            //else if(Yii::$app->authManager->getRolesByUser(Yii::$app->user->getId())=='funcionario'||
+             //   Yii::$app->authManager->getRolesByUser(Yii::$app->user->getId())=='admin'){
+                return $this->redirect('http://back.test/site/index');
+            //}
         }
 
         $model->password = '';
