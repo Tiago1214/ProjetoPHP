@@ -11,18 +11,40 @@ $this->title = 'Criar novo utilizador';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-signup">
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="row">
+        <p></p>
+    </div>
+    <div class="row">
+        <p></p>
+    </div>
+    <div class="row">
+        <p></p>
+    </div>
+    <div class="row">
+        <p></p>
+    </div>
+    <div class="row">
+        <p></p>
+    </div>
 
-    <p>Please fill out the following fields to signup:</p>
 
     <div class="row">
-        <div class="col-lg-4"></div>
+        <p></p>
+        <div class="col-lg-4"><p></p></div>
         <div class="col-lg-4">
+            <h1><?= Html::encode($this->title) ?></h1>
+
+            <p>Por favor preencha os campos para criar uma conta de cliente!</p>
+
             <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
                 <?php ?>
                 <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
 
                 <?= $form->field($model, 'email') ?>
+
+                <?= $form->field($model, 'numcontribuinte') ?>
+
+                <?= $form->field($model, 'telemovel') ?>
 
                 <?= $form->field($model, 'password')->passwordInput() ?>
 

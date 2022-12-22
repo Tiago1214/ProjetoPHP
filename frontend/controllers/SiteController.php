@@ -15,6 +15,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use yiiunit\extensions\bootstrap5\data\User;
 
 /**
  * Site controller
@@ -116,10 +117,10 @@ class SiteController extends Controller
             if(Yii::$app->authManager->getRolesByUser(Yii::$app->user->getId())=='cliente'){
                 return $this->redirect('http://front.test/site/index');
             }
-            //else if(Yii::$app->authManager->getRolesByUser(Yii::$app->user->getId())=='funcionario'||
-             //   Yii::$app->authManager->getRolesByUser(Yii::$app->user->getId())=='admin'){
+            else if(Yii::$app->authManager->getRolesByUser(Yii::$app->user->getId())=='funcionario'||
+               Yii::$app->authManager->getRolesByUser(Yii::$app->user->getId())=='admin'){
                 return $this->redirect('http://back.test/site/index');
-            //}
+            }
         }
 
         $model->password = '';
@@ -176,6 +177,8 @@ class SiteController extends Controller
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post()) && $model->signup()) {
             Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
+
+
             return $this->goHome();
         }
 

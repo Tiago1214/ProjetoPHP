@@ -9,7 +9,6 @@ use Yii;
  *
  * @property int $id
  * @property string $numcontribuinte
- * @property string $email
  * @property string $telemovel
  * @property string $estado
  * @property int $user_id
@@ -35,11 +34,14 @@ class Profile extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['numcontribuinte', 'email', 'telemovel', 'estado', 'user_id'], 'required'],
+            [['numcontribuinte', 'telemovel', 'estado', 'user_id'], 'required'],
             [['user_id'], 'integer'],
-            [['numcontribuinte', 'telemovel'], 'string', 'max' => 45],
-            [['email'], 'string', 'max' => 200],
-            [['estado'], 'string', 'max' => 100],
+            [['telemovel','numcontribuinte'],'unique','targetClass'=>'\common\models\Profile'],
+            [['telemovel','numcontribuinte'],'required'],
+            ['telemovel','string','min'=>9,'max'=>9],
+            ['numcontribuinte','string','min'=>9,'max'=>9],
+            [['telemovel','numcontribuinte'],'integer'],
+            [['estado'], 'integer'],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
@@ -52,7 +54,6 @@ class Profile extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'numcontribuinte' => 'Numcontribuinte',
-            'email' => 'Email',
             'telemovel' => 'Telemovel',
             'estado' => 'Estado',
             'user_id' => 'User ID',

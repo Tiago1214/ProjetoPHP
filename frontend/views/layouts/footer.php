@@ -34,7 +34,7 @@
 </div>
 <!-- End Contact info -->
 <!-- Start Footer -->
-<footer class="footer-area bg-f">
+<footer class="footer-area bg-f fixed-bottom">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-6">
