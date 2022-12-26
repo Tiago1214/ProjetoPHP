@@ -6,9 +6,8 @@ use yii\bootstrap5\Html;
 <header class="top-navbar">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="
-            Url::to('site/index') ?>">
-                <img src="images/logo.png" alt=""/>
+            <a class="navbar-brand" href="../site/index">
+            <?= Html::img('@web/images/100_portugues_logo.png') ?>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food"
                     aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">

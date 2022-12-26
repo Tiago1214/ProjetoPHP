@@ -31,7 +31,7 @@ class SiteController extends Controller
                     [
                         'actions' => ['logout', 'index'], // add all actions to take guest to login page
                         'allow' => true,
-                        'roles' => ['@'],
+                        'roles' => ['admin','funcionario'],
                     ],
                 ],
             ],
