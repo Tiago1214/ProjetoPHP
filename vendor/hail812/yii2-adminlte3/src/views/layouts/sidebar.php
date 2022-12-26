@@ -65,13 +65,12 @@ use yii\bootstrap5\Html;
                         'badge' => '<span class="right badge badge-info">2</span>',
                         'items' => [
                             ['label' => 'Visualizar Artigos', 'url' => ['artigo/index'], 'iconStyle' => 'far'],
-                            ['label' => 'Editar Artigos', 'iconStyle' => 'far'],
-                            ['label' => 'Desativar Artigos', 'iconStyle' => 'far'],
+                            ['label' => 'Criar Artigo', 'iconStyle' => 'far'],
                         ]
                     ],
                     ['label' => 'Categorias', 'iconStyle' => 'far','url' => ['categoria/index']],
-                    ['label' => 'Iva', 'iconStyle' => 'far','url' => ['iva/index']],
-                    ['label' => 'Comentário', 'iconStyle' => 'far','url' => ['comentario/index']],
+                    ['label' => 'Ivas', 'iconStyle' => 'far','url' => ['iva/index']],
+                    ['label' => 'Comentários', 'iconStyle' => 'far','url' => ['comentario/index']],
                     ['label' => 'Empresa', 'iconStyle' => 'far','url' => ['empresa/index']],
                 ],
             ]);

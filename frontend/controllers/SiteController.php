@@ -108,17 +108,18 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
+        $model = new LoginForm();
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
 
-        $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            if(Yii::$app->authManager->getRolesByUser(Yii::$app->user->getId())=='cliente'){
+            $user_id=Yii::$app->user->getId();
+
+            if(Yii::$app->user->can("accessfrontend")==true){
                 return $this->redirect('http://front.test/site/index');
             }
-            else if(Yii::$app->authManager->getRolesByUser(Yii::$app->user->getId())=='funcionario'||
-               Yii::$app->authManager->getRolesByUser(Yii::$app->user->getId())=='admin'){
+            else if(Yii::$app->user->can("accessbackend")==true){
                 return $this->redirect('http://back.test/site/index');
             }
         }
