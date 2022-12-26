@@ -30,9 +30,9 @@ class Mesa extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nrmesa', 'nrlugares', 'tipomesa'], 'required'],
+            [['nrmesa', 'nrlugares', 'tipomesa'], 'required','message'=>'Os campos selecionados são de preenchimento obrigatório'],
             [['nrmesa', 'nrlugares'], 'integer'],
-            [['tipomesa'], 'string', 'max' => 100],
+            [['tipomesa'], 'string', 'max' => 100,'message'=>'O campo tipo de mesa tem um máximo de 100 caracteres'],
         ];
     }
 

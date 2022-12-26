@@ -36,10 +36,11 @@ class Pedido extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['data', 'total', 'tipo_pedido', 'estado', 'profile_id', 'metodo_pagamento_id', 'mesa_id'], 'required'],
+            [['data', 'total', 'tipo_pedido', 'estado', 'profile_id', 'metodo_pagamento_id', 'mesa_id'],
+                'required','message'=>'Os campos selecionados são de preenchimento obrigatório'],
             [['data'], 'safe'],
             [['total'], 'number'],
-            [['estado'],'string','max'=>45],
+            [['estado'],'string','max'=>45,'message'=>'O campo nome tem um máximo de 45 carateres'],
             [['tipo_pedido', 'profile_id', 'metodo_pagamento_id', 'mesa_id'], 'integer'],
             [['mesa_id'], 'exist', 'skipOnError' => true, 'targetClass' => Mesa::class, 'targetAttribute' => ['mesa_id' => 'id']],
             [['metodo_pagamento_id'], 'exist', 'skipOnError' => true, 'targetClass' => MetodoPagamento::class, 'targetAttribute' => ['metodo_pagamento_id' => 'id']],

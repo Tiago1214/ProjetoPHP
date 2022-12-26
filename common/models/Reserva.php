@@ -32,9 +32,9 @@ class Reserva extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['data', 'hora', 'nrpessoas', 'estado', 'profile_id'], 'required'],
+            [['data', 'hora', 'nrpessoas', 'estado', 'profile_id'], 'required','message'=>'Os campos selecionados são de preenchimento obrigatório'],
             [['nrpessoas', 'estado', 'profile_id'], 'integer'],
-            [['data', 'hora'], 'string', 'max' => 45],
+            [['data', 'hora'], 'string', 'max' => 45,'message'=>'O campo nome tem um máximo de 45 carateres'],
             [['profile_id'], 'exist', 'skipOnError' => true, 'targetClass' => Profile::class, 'targetAttribute' => ['profile_id' => 'id']],
         ];
     }

@@ -28,10 +28,10 @@ class Categoria extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nome', 'descricao', 'estado'], 'required'],
+            [['nome', 'descricao', 'estado'], 'required','message'=>'Os campos selecionados são de preenchimento obrigatório'],
             [['estado'], 'integer'],
-            [['nome'], 'string', 'max' => 200],
-            [['descricao'], 'string', 'max' => 255],
+            [['nome'], 'string', 'max' => 200,'message'=>'O campo nome tem um máximo de 200 carateres'],
+            [['descricao'], 'string', 'max' => 255,'message'=>'O campo descricao tem um máximo de 255 carateres'],
         ];
     }
 

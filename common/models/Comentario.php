@@ -30,10 +30,10 @@ class Comentario extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['titulo', 'descricao', 'profile_id'], 'required'],
+            [['titulo', 'descricao', 'profile_id'], 'required','Os campos selecionados são de preenchimento obrigatório'],
             [['profile_id'], 'integer'],
-            [['titulo'], 'string', 'max' => 100],
-            [['descricao'], 'string', 'max' => 255],
+            [['titulo'], 'string', 'max' => 100,'message'=>'O campo nome tem um máximo de 100 carateres'],
+            [['descricao'], 'string', 'max' => 255,'message'=>'O campo nome tem um máximo de 255 carateres'],
             [['profile_id'], 'exist', 'skipOnError' => true, 'targetClass' => Profile::class, 'targetAttribute' => ['profile_id' => 'id']],
         ];
     }
