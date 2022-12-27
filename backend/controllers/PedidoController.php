@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use common\models\Pedido;
 use common\models\PedidoSearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -25,6 +26,23 @@ class PedidoController extends Controller
                     'class' => VerbFilter::className(),
                     'actions' => [
                         'delete' => ['POST'],
+                    ],
+                ],
+                'access' => [
+                    /**
+                     * Nos pedidos os funcionários e os admins podem fazer o mesmo
+                     */
+                    'class' => AccessControl::class,
+                    'rules' => [
+                        [
+                            'actions' => ['login','error'],
+                            'allow' => true,
+                        ],
+                        [
+                            'actions' => ['logout', 'index','create','view','update','estado','delete'], // add all actions to take guest to login page
+                            'allow' => true,
+                            'roles' => ['admin','funcionario'],
+                        ],
                     ],
                 ],
             ]

@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use common\models\Artigo;
 use common\models\ArtigoSearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -27,6 +28,29 @@ class ArtigoController extends Controller
                     'class' => VerbFilter::className(),
                     'actions' => [
                         'delete' => ['POST'],
+                    ],
+                ],
+                'access' => [
+                    'class' => AccessControl::class,
+                    'rules' => [
+                        /**
+                         *Nos artigos os funcionários só podem criar novos artigos, alterá-los e visualizá-los
+                         *Nos artigos os admins podem realizar todas as ações necessárias para o funcionamento dos mesmos
+                         */
+                        [
+                            'actions' => ['login','error'],
+                            'allow' => true,
+                        ],
+                        [
+                            'actions' => ['logout', 'index','create','update'], // add all actions to take guest to login page
+                            'allow' => true,
+                            'roles' => ['admin','funcionario'],
+                        ],
+                        [
+                            'actions'=>['estado','delete'],
+                            'allow'=>true,
+                            'roles'=>['admin'],
+                        ],
                     ],
                 ],
             ]

@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use backend\models\Mesa;
 use backend\models\MesaSearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -25,6 +26,29 @@ class MesaController extends Controller
                     'class' => VerbFilter::className(),
                     'actions' => [
                         'delete' => ['POST'],
+                    ],
+                ],
+                'access' => [
+                    /**
+                     * Os funcionários podem criar,ver ou editar as mesas
+                     * Os admins podem realizar qualquer função
+                     */
+                    'class' => AccessControl::class,
+                    'rules' => [
+                        [
+                            'actions' => ['login','error'],
+                            'allow' => true,
+                        ],
+                        [
+                            'actions' => ['logout', 'index','view','create','update'], // add all actions to take guest to login page
+                            'allow' => true,
+                            'roles' => ['admin','funcionario'],
+                        ],
+                        [
+                            'actions'=>['delete','estado'],
+                            'allow'=>true,
+                            'roles'=>['admin']
+                        ]
                     ],
                 ],
             ]

@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use common\models\Reserva;
 use common\models\ReservaSearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -25,6 +26,23 @@ class ReservaController extends Controller
                     'class' => VerbFilter::className(),
                     'actions' => [
                         'delete' => ['POST'],
+                    ],
+                ],
+                'access' => [
+                    /**
+                     * Nas reservas os admins e os funcionários tem os mesmos acessos
+                     */
+                    'class' => AccessControl::class,
+                    'rules' => [
+                        [
+                            'actions' => ['login','error'],
+                            'allow' => true,
+                        ],
+                        [
+                            'actions'=>['logout', 'index','create','view','update','estado','delete'],
+                            'allow'=>true,
+                            'roles'=>['admin','funcionario'],
+                        ],
                     ],
                 ],
             ]

@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use backend\models\Iva;
 use backend\models\IvaSearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -21,10 +22,33 @@ class IvaController extends Controller
         return array_merge(
             parent::behaviors(),
             [
+                /**
+                 *Só o administrador pode criar, editar, ou desativar ivas porque
+                 * não faz sentido um funcionário poder tocar neste parameteros
+                 */
                 'verbs' => [
                     'class' => VerbFilter::className(),
                     'actions' => [
                         'delete' => ['POST'],
+                    ],
+                ],
+                'access' => [
+                    'class' => AccessControl::class,
+                    'rules' => [
+                        [
+                            'actions' => ['login','error'],
+                            'allow' => true,
+                        ],
+                        [
+                            'actions' => ['logout', 'index','view'], // add all actions to take guest to login page
+                            'allow' => true,
+                            'roles' => ['admin','funcionario'],
+                        ],
+                        [
+                            'actions'=>['create','update','estado','delete'],
+                            'allow'=>true,
+                            'roles'=>['admin'],
+                        ],
                     ],
                 ],
             ]

@@ -10,6 +10,17 @@ use yii\bootstrap5\Html;
 $this->title = 'Login';
 ?>
 <div class="site-login">
+    <?php if($erroacesso=1){
+        ?>
+        <script>
+            window.onerror = function() {
+                var message = "Este utilizador não pode aceder a esta página por não ter as permissões necessárias";
+                alert(message);
+                return true;
+            };
+        </script>
+    <?php
+    } ?>
     <div class="mt-5 offset-lg-3 col-lg-6">
         <h1><?= Html::encode($this->title) ?></h1>
 
