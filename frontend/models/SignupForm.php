@@ -33,12 +33,13 @@ class SignupForm extends Model
             ['email', 'required'],
             ['email', 'email'],
             ['email', 'string', 'max' => 255],
-            ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This email address has already been taken.'],
+            ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'Este email já foi introduzido por outro utilizador .'],
 
             ['password', 'required'],
             ['password', 'string', 'min' => Yii::$app->params['user.passwordMinLength']],
 
-            [['telemovel','numcontribuinte'],'unique','targetClass'=>'\common\models\Profile'],
+            [['telemovel','numcontribuinte'],'unique','targetClass'=>'\common\models\Profile','message'=>'O campo telemóvel ou numcontribuinte 
+            já foram usados por outros utilizadores'],
             [['telemovel','numcontribuinte'],'required'],
             ['telemovel','string','min'=>9,'max'=>9],
             ['numcontribuinte','string','min'=>9,'max'=>9],
@@ -75,7 +76,7 @@ class SignupForm extends Model
         $authorRole = $auth->getRole('cliente');
 
         //Verificar se o utilizador e o perfil estão válidos para serem introduzidos na base de dados
-        if(!$user->validate()&&!$profile->validate()){
+        if(!$user->validate()||!$profile->validate()){
             return false;
         }
 
