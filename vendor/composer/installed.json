@@ -200,24 +200,6 @@
             "install-path": "../bower-asset/jquery-ui"
         },
         {
-            "name": "bower-asset/jqueryui-timepicker-addon",
-            "version": "v1.6.3",
-            "version_normalized": "1.6.3.0",
-            "source": {
-                "type": "git",
-                "url": "git@github.com:trentrichardson/jQuery-Timepicker-Addon.git",
-                "reference": "397d6ed930649ea7224123d140d341e9f3ffaba6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/trentrichardson/jQuery-Timepicker-Addon/zipball/397d6ed930649ea7224123d140d341e9f3ffaba6",
-                "reference": "397d6ed930649ea7224123d140d341e9f3ffaba6"
-            },
-            "type": "bower-asset",
-            "installation-source": "dist",
-            "install-path": "../bower-asset/jqueryui-timepicker-addon"
-        },
-        {
             "name": "bower-asset/punycode",
             "version": "v1.3.2",
             "version_normalized": "1.3.2.0",
@@ -1471,71 +1453,6 @@
             "install-path": "../hail812/yii2-adminlte3"
         },
         {
-            "name": "janisto/yii2-timepicker",
-            "version": "1.1.0",
-            "version_normalized": "1.1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/janisto/yii2-timepicker.git",
-                "reference": "91b3e8483404f0667eaa9fd73acf121a99494999"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/janisto/yii2-timepicker/zipball/91b3e8483404f0667eaa9fd73acf121a99494999",
-                "reference": "91b3e8483404f0667eaa9fd73acf121a99494999",
-                "shasum": ""
-            },
-            "require": {
-                "bower-asset/jqueryui-timepicker-addon": ">=1.5.2",
-                "php": ">=5.4.0",
-                "yiisoft/yii2": "*",
-                "yiisoft/yii2-jui": ">=2.0.4"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.5",
-                "scrutinizer/ocular": "~1.1"
-            },
-            "time": "2015-11-12T10:16:09+00:00",
-            "type": "yii2-extension",
-            "extra": {
-                "asset-installer-paths": {
-                    "bower-asset-library": "vendor/bower"
-                }
-            },
-            "installation-source": "dist",
-            "autoload": {
-                "psr-4": {
-                    "janisto\\timepicker\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "public domain"
-            ],
-            "authors": [
-                {
-                    "name": "Jani Mikkonen",
-                    "email": "janisto@php.net"
-                }
-            ],
-            "description": "Yii 2 widget for jQuery Timepicker Addon.",
-            "homepage": "https://github.com/janisto/yii2-timepicker",
-            "keywords": [
-                "date",
-                "datetime",
-                "extension",
-                "time",
-                "timepicker",
-                "widget",
-                "yii2"
-            ],
-            "support": {
-                "issues": "https://github.com/janisto/yii2-timepicker/issues?state=open",
-                "source": "https://github.com/janisto/yii2-timepicker"
-            },
-            "install-path": "../janisto/yii2-timepicker"
-        },
-        {
             "name": "kartik-v/yii2-krajee-base",
             "version": "v3.0.5",
             "version_normalized": "3.0.5.0",
@@ -1656,6 +1573,68 @@
                 "source": "https://github.com/kartik-v/yii2-widget-datepicker/tree/master"
             },
             "install-path": "../kartik-v/yii2-widget-datepicker"
+        },
+        {
+            "name": "kartik-v/yii2-widget-timepicker",
+            "version": "dev-master",
+            "version_normalized": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kartik-v/yii2-widget-timepicker.git",
+                "reference": "680aec2d79846e926c072da455cf6f33e1c3bb12"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kartik-v/yii2-widget-timepicker/zipball/680aec2d79846e926c072da455cf6f33e1c3bb12",
+                "reference": "680aec2d79846e926c072da455cf6f33e1c3bb12",
+                "shasum": ""
+            },
+            "require": {
+                "kartik-v/yii2-krajee-base": ">=2.0.0"
+            },
+            "time": "2021-10-28T03:49:56+00:00",
+            "default-branch": true,
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "kartik\\time\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Kartik Visweswaran",
+                    "email": "kartikv2@gmail.com",
+                    "homepage": "http://www.krajee.com/"
+                }
+            ],
+            "description": "Enhanced Yii2 wrapper for the bootstrap timepicker plugin (sub repo split from yii2-widgets)",
+            "homepage": "https://github.com/kartik-v/yii2-widget-timepicker",
+            "keywords": [
+                "bootstrap",
+                "extension",
+                "form",
+                "jquery",
+                "picker",
+                "plugin",
+                "time",
+                "widget",
+                "yii2"
+            ],
+            "support": {
+                "issues": "https://github.com/kartik-v/yii2-widget-timepicker/issues",
+                "source": "https://github.com/kartik-v/yii2-widget-timepicker/tree/v1.0.5"
+            },
+            "install-path": "../kartik-v/yii2-widget-timepicker"
         },
         {
             "name": "masterminds/html5",

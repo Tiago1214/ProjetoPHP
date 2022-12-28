@@ -102,9 +102,8 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/yiisoft/yii2-jui" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bower-asset/jquery-ui" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/kartik-v/yii2-krajee-base" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/kartik-v/yii2-widget-timepicker" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/kartik-v/yii2-widget-datepicker" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/bower-asset/jqueryui-timepicker-addon" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/janisto/yii2-timepicker" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

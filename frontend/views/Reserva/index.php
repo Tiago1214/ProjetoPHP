@@ -13,10 +13,10 @@ use yii\data\ActiveDataProvider;
 /** @var common\models\ReservaSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Reservas';
+$this->title = 'Minhas Reservas';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="reserva-index">
+<div class="reserva-index container-fluid">
     <div class="row"><p></p></div>
     <div class="row"><p></p></div>
     <div class="row"><p></p></div>
@@ -45,27 +45,39 @@ $this->params['breadcrumbs'][] = $this->title;
             'nrpessoas',
             [
                 'attribute' => 'estado',
-                'value' => function($model){
-                    if($model->estado == 0){
+                'value' => function ($model) {
+                    if ($model->estado == 0) {
                         return 'Á espera de confirmação';
-                    }
-                    else if($model->estado==1){
+                    } else if ($model->estado == 1) {
                         return 'Confirmado';
-                    }
-                    else if($model->estado==2){
+                    } else if ($model->estado == 2) {
                         return 'Cancelado';
-                    }
-                    else{
+                    } else {
                         return 'Erro';
                     }
                 }
             ],
             [
-                'class' => ActionColumn::className(),
+                'buttons' => [
+                    'cancelar' => function($url,$model, $id) {     // render your custom button
+                        if($model->estado==0){
+                            return Html::a('Cancelar', ['cancelar', 'id' => $model->id], [
+                                'class' => 'btn btn-danger',
+                                'data' => [
+                                    'confirm' => 'Are you sure you want to delete this item?',
+                                    'method' => 'post',
+                                ],]);
+                            }
+                        }
+                    ],
+                'class' => 'yii\grid\ActionColumn', 'template' => '{view}{update}{cancelar}',
                 'urlCreator' => function ($action, Reserva $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                 }
             ],
         ],
     ]); ?>
+    <?php if ($dataProvider == null) {
+        echo "<h1>Não existem registos de reservas</h1>";
+    } ?>
 </div>

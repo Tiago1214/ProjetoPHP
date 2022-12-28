@@ -7,6 +7,7 @@ use common\models\Profile;
 use common\models\Reserva;
 use common\models\User;
 use common\models\ReservaSearch;
+use yii\jui\Dialog;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -44,15 +45,33 @@ class ReservaController extends Controller
     public function actionIndex()
     {
         $searchModel = new ReservaSearch();
-        $profile=Profile::find()->where(['user_id'=>Yii::$app->user->id])->select('profile_id');
+        $userprofile=Profile::find()->all();
+        $profile_id=0;
+        foreach($userprofile as $user){
+            if($user->user_id==Yii::$app->user->id){
+                $profile_id=$user->id;
+            }
+        }
         $dataProvider = new ActiveDataProvider([
-            'query' => Reserva::find()->where(['profile_id' => $profile]),
+            'query' => Reserva::find()->where(['profile_id' => $profile_id,'estado'=>[0, 1]])
         ]);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+    }
+
+    /**
+     *Método para cancelar a reserva
+     */
+    public function actionCancelar($id){
+        $reserva=$this->findModel($id);
+        if($reserva->estado==0){
+            $reserva->estado=2;
+            $reserva->save();
+        }
+        return $this->redirect('../reserva/index');
     }
 
     /**
@@ -76,9 +95,19 @@ class ReservaController extends Controller
     public function actionCreate()
     {
         $model = new Reserva();
+        $userprofile=Profile::find()->all();
+        $profile_id=0;
+        foreach($userprofile as $user){
+            if($user->user_id==Yii::$app->user->id){
+                $profile_id=$user->id;
+            }
+        }
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
+            if ($model->load($this->request->post())) {
+                $model->estado=0;
+                $model->profile_id=$profile_id;
+                $model->save();
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
