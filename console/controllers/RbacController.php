@@ -11,7 +11,14 @@ class RbacController extends Controller
         $auth = Yii::$app->authManager;
         $auth->removeAll();
 
-
+        //Aceder backend
+        $accessbackend=$auth->createPermission('accessbackend');
+        $accessbackend=$auth->description='Aceder ao backend';
+        $auth->add($accessbackend);
+        //Aceder frontend
+        $accessfrontend=$auth->createPermission('accessfrontend');
+        $accessfrontend=$auth->description='Aceder ao frontend';
+        $auth->add($accessfrontend);
         //Criar qualquer registo
         $create=$auth->createPermission('create');
         $create->description='Criar registo de qualquer tabela';
@@ -150,6 +157,7 @@ class RbacController extends Controller
         $admin = $auth->createRole('admin');
         $auth->add($admin);
         $auth->addChild($admin,$create);
+        $auth->addChild($admin,$accessbackend);
         $auth->addChild($admin,$update);
         $auth->addChild($admin,$delete);
         $auth->addChild($admin,$createComentario);
@@ -188,6 +196,7 @@ class RbacController extends Controller
         $auth->add($funcionario);
         $auth->addChild($funcionario, $updateUtilizador);
         $auth->addChild($funcionario, $createUtilizador);
+        $auth->addChild($funcionario,$accessbackend);
         $auth->addChild($funcionario,$createReserva);
         $auth->addChild($funcionario,$updateReserva);
         $auth->addChild($funcionario,$deleteReserva);
@@ -214,6 +223,7 @@ class RbacController extends Controller
         $cliente=$auth->createRole('cliente');
         $auth->add($cliente);
         $auth->addChild($cliente,$createReserva);
+        $auth->addChild($admin,$accessfrontend);
         $auth->addChild($cliente,$updateReserva);
         $auth->addChild($cliente,$deleteReserva);
         $auth->addChild($cliente,$createComentario);
@@ -227,8 +237,6 @@ class RbacController extends Controller
         $auth->addChild($cliente,$deleteLinhaPedido);
         // Assign roles to users. 1 and 2 are IDs returned by IdentityInterface::getId()
         // usually implemented in your User model.
-        $auth->assign($cliente,3);
-        $auth->assign($funcionario, 2);
-        $auth->assign($admin, 1);
+
     }
 }

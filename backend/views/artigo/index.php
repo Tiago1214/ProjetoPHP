@@ -1,6 +1,6 @@
 <?php
 
-use backend\models\Artigo;
+use common\models\Artigo;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
@@ -80,7 +80,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 ],
                 'class' => 'yii\grid\ActionColumn', 'template' => '{view}{update}{Ativar}',
                 'urlCreator' => function ($action, Artigo $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'id' => $model->id, 'categoria_id' => $model->categoria_id,'iva_id'=>$model->iva_id]);
+                    return Url::toRoute([$action, 'id' => $model->id,]);
                  }
             ],
         ],

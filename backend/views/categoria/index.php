@@ -1,6 +1,6 @@
 <?php
 
-use backend\models\Categoria;
+use common\models\Categoria;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
@@ -15,7 +15,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="categoria-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
         <?= Html::a('Create Categoria', ['create'], ['class' => 'btn btn-success']) ?>

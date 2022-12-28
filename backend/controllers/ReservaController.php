@@ -2,8 +2,8 @@
 
 namespace backend\controllers;
 
-use backend\models\Reserva;
-use backend\models\ReservaSearch;
+use common\models\Reserva;
+use common\models\ReservaSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

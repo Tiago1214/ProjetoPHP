@@ -1,15 +1,15 @@
 <?php
 
-namespace backend\models;
+namespace common\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\models\Artigo;
+use common\models\User;
 
 /**
- * ArtigoSearch represents the model behind the search form of `backend\models\Artigo`.
+ * UserSearch represents the model behind the search form of `backend\models\User`.
  */
-class ArtigoSearch extends Artigo
+class UserSearch extends User
 {
     /**
      * {@inheritdoc}
@@ -17,9 +17,8 @@ class ArtigoSearch extends Artigo
     public function rules()
     {
         return [
-            [['id', 'quantidade', 'estado', 'iva_id', 'categoria_id'], 'integer'],
-            [['nome', 'descricao', 'referencia', 'data', 'imagem'], 'safe'],
-            [['preco'], 'number'],
+            [['id', 'status', 'created_at', 'updated_at'], 'integer'],
+            [['username', 'auth_key', 'password_hash', 'password_reset_token', 'email', 'verification_token'], 'safe'],
         ];
     }
 
@@ -41,7 +40,7 @@ class ArtigoSearch extends Artigo
      */
     public function search($params)
     {
-        $query = Artigo::find();
+        $query = User::find();
 
         // add conditions that should always apply here
 
@@ -60,18 +59,17 @@ class ArtigoSearch extends Artigo
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'quantidade' => $this->quantidade,
-            'preco' => $this->preco,
-            'data' => $this->data,
-            'estado' => $this->estado,
-            'iva_id' => $this->iva_id,
-            'categoria_id' => $this->categoria_id,
+            'status' => $this->status,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ]);
 
-        $query->andFilterWhere(['like', 'nome', $this->nome])
-            ->andFilterWhere(['like', 'descricao', $this->descricao])
-            ->andFilterWhere(['like', 'referencia', $this->referencia])
-            ->andFilterWhere(['like', 'imagem', $this->imagem]);
+        $query->andFilterWhere(['like', 'username', $this->username])
+            ->andFilterWhere(['like', 'auth_key', $this->auth_key])
+            ->andFilterWhere(['like', 'password_hash', $this->password_hash])
+            ->andFilterWhere(['like', 'password_reset_token', $this->password_reset_token])
+            ->andFilterWhere(['like', 'email', $this->email])
+            ->andFilterWhere(['like', 'verification_token', $this->verification_token]);
 
         return $dataProvider;
     }

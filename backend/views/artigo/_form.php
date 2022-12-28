@@ -24,6 +24,7 @@ use yii\helpers\ArrayHelper;
     <?= $form->field($model, 'preco')->textInput() ?>
 
     <?= $form->field($model, 'imagem')->fileInput() ?>
+    <?php echo $form->field($model, 'imagem')->hiddenInput(['value'=> $model->imagem])->label(false); ?>
 
     <?= $form->field($model, 'iva_id')->dropDownList(
             \yii\helpers\ArrayHelper::map($iva,'id','taxaiva'), ['separator' => '<br>']

@@ -2,8 +2,8 @@
 
 namespace backend\controllers;
 
-use backend\models\Artigo;
-use backend\models\ArtigoSearch;
+use common\models\Artigo;
+use common\models\ArtigoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -73,7 +73,7 @@ class ArtigoController extends Controller
     {
         $model = new Artigo();
         $iva=\backend\models\Iva::find()->all();
-        $categoria=\backend\models\Categoria::find()->all();
+        $categoria=\common\models\Categoria::find()->all();
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {
                 $model->data=Yii::$app->formatter->asDatetime('now', 'php:Y-m-d H:i:s');
@@ -83,6 +83,7 @@ class ArtigoController extends Controller
                 $imgName='art_'. $artigoId . '.' . $image->getExtension();
                 $image->saveAs(Yii::getAlias('@artigoImgPath').'/'.$imgName);
                 $model->imagem=$imgName;
+                $model->imagemurl='http://localhost/gersoft/images'.'/'.$model->imagem;
                 $model->save();
 
                 return $this->redirect(['view', 'id' => $model->id,]);
@@ -111,28 +112,24 @@ class ArtigoController extends Controller
     {
         $model = $this->findModel($id);
         $iva=\backend\models\Iva::find()->all();
-        $categoria=\backend\models\Categoria::find()->all();
-        if ($this->request->isPost) {
+        $categoria=\common\models\Categoria::find()->all();
+        if ($this->request->isPost){
             if($model->load($this->request->post())) {
                 $artigoId=$model->id;
                 $image=UploadedFile::getInstance($model,'imagem');
-                $imgName='art_'. $artigoId . '.' . $image->getExtension();
-                $image->saveAs(Yii::getAlias('@artigoImgPath').'/'.$imgName);
-                if($imgName==null){
-                    $model->imagem=$model->imagem;
-                    $model->save();
-                }
-                else if($imgName==$model->imagem){
-                    $model->save();
-                }
-                else if($imgName!=$model->imagem){
+                if($image!=null){
+                    $imgName='art_'. $artigoId . '.' . $image->getExtension();
+                    $image->saveAs(Yii::getAlias('@artigoImgPath').'/'.$imgName);
                     $model->imagem=$imgName;
+                    $model->imagemurl='http://localhost/gersoft/images'.'/'.$model->imagem;
                     $model->save();
+                }
+                else{
+
                 }
                 $model->save();
                 return $this->redirect(['view', 'id' => $model->id,]);
             }
-
         }
 
         return $this->render('update', [

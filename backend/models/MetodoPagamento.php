@@ -29,9 +29,9 @@ class MetodoPagamento extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nomepagamento', 'estado'], 'required'],
+            [['nomepagamento', 'estado'], 'required','message'=>'Os campos selecionados são de preenchimento obrigatório'],
             [['estado'], 'integer'],
-            [['nomepagamento'], 'string', 'max' => 255],
+            [['nomepagamento'], 'string', 'max' => 255,'O campo nome de pagamento tem um máximo de 255 carateres'],
         ];
     }
 

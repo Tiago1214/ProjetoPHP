@@ -12,7 +12,6 @@ $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="empresa-update">
 
-    <h1><?php // echo Html::encode($this->title) ?></h1>
 
     <?= $this->render('_form', [
         'model' => $model,

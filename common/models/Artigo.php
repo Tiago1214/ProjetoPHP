@@ -2,6 +2,8 @@
 
 namespace common\models;
 
+
+use backend\models\Iva;
 use Yii;
 
 /**
@@ -37,14 +39,19 @@ class Artigo extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nome', 'descricao', 'referencia', 'quantidade', 'preco', 'data', 'estado', 'iva_id', 'categoria_id'], 'required'],
+
+
+            [['nome', 'descricao', 'referencia', 'quantidade', 'preco', 'data', 'estado', 'iva_id', 'categoria_id'],
+                'required','message'=>'Os campos selecionados são de preenchimento obrigatório'],
             [['quantidade', 'estado', 'iva_id', 'categoria_id'], 'integer'],
             [['preco'], 'number'],
             [['data'], 'safe'],
-            [['nome'], 'string', 'max' => 200],
-            [['descricao', 'imagem'], 'string', 'max' => 255],
+            [['nome'], 'string', 'max' => 200,'message'=>'O campo nome tem um máximo de 200 carateres'],
+            [['descricao',], 'string', 'max' => 255,'message'=>'O campo nome tem um máximo de 200 carateres'],
+            [['imagem','imagemurl',],'string'],
             [['imagem'],'file','extensions'=>'jpg, jpeg, png','skipOnEmpty' => true],
-            [['referencia'], 'string', 'max' => 45],
+            [['referencia'], 'string', 'max' => 45,'message'=>'O campo nome tem um máximo de 45 carateres'],
+
         ];
     }
 
@@ -61,7 +68,8 @@ class Artigo extends \yii\db\ActiveRecord
             'quantidade' => 'Quantidade',
             'preco' => 'Preco',
             'data' => 'Data',
-            'imagem' => 'Imagem',
+
+            'imagemurl'=>'Imagem Url',
             'estado' => 'Estado',
             'iva_id' => 'Taxa de Iva',
             'categoria_id' => 'Categoria ',

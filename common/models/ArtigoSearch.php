@@ -4,7 +4,9 @@ namespace common\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\models\Artigo;
+
+use common\models\Artigo;
+
 
 /**
  * ArtigoSearch represents the model behind the search form of `backend\models\Artigo`.

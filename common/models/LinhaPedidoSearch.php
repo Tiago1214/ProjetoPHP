@@ -1,10 +1,10 @@
 <?php
 
-namespace backend\models;
+namespace common\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\models\LinhaPedido;
+use common\models\LinhaPedido;
 
 /**
  * LinhaPedidoSearch represents the model behind the search form of `backend\models\LinhaPedido`.

@@ -1,6 +1,6 @@
 <?php
 
-use backend\models\Mesa;
+use common\models\Mesa;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;

@@ -15,6 +15,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use yiiunit\extensions\bootstrap5\data\User;
 
 /**
  * Site controller
@@ -29,7 +30,7 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['logout', 'signup'],
+                'only' => ['logout', 'signup',],
                 'rules' => [
                     [
                         'actions' => ['signup'],
@@ -107,13 +108,20 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
+        $model = new LoginForm();
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
 
-        $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+            $user_id=Yii::$app->user->getId();
+
+            if(Yii::$app->user->can("accessfrontend")==true){
+                return $this->redirect('http://front.test/site/index');
+            }
+            else if(Yii::$app->user->can("accessbackend")==true){
+                return $this->redirect('http://back.test/site/index');
+            }
         }
 
         $model->password = '';
@@ -132,7 +140,7 @@ class SiteController extends Controller
     {
         Yii::$app->user->logout();
 
-        return $this->redirect('../site/index');
+        return $this->goHome();
     }
 
     /**
@@ -170,6 +178,8 @@ class SiteController extends Controller
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post()) && $model->signup()) {
             Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
+
+
             return $this->goHome();
         }
 

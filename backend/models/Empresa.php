@@ -33,11 +33,12 @@ class Empresa extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nomeempresa', 'email', 'telefone', 'nif', 'morada', 'codpostal', 'capitalsocial'], 'required'],
-            [['capitalsocial'], 'number'],
-            [['nomeempresa'], 'string', 'max' => 150],
-            [['email', 'morada'], 'string', 'max' => 200],
-            [['telefone'], 'string', 'max' => 10],
+            [['nomeempresa', 'email', 'telefone', 'nif', 'morada', 'codpostal', 'capitalsocial'], 'required','message'=>'Os campos selecionados são
+            de preenchimento obrigatório'],
+            [['capitalsocial'], 'number','message'=>'O campo capital social é do tipo número'],
+            [['nomeempresa'], 'string', 'max' => 150,'message'=>'O campo nome empresa é do tipo texto e tem um máximo de 150 caracteres'],
+            [['email', 'morada'], 'string', 'max' => 200,'message'=>'O campo nome empresa é do tipo texto e tem um máximo de 200 caracteres'],
+            [['telefone'], 'integer','min'=>910000001, 'max' => 999999999,'message'=>'O campo telefone é do tipo inteiro e tem um máximo de 9 números'],
             [['codpostal'],'string','max'=>8],
             [['nif'], 'number', 'max' => 999999999,'min'=>100000001],
             [['localidade'], 'string', 'max' => 255],

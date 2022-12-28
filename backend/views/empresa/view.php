@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="empresa-view">
 
-    <h1><?php // echo Html::encode($model->nomeempresa) ?></h1>
+    <h1><?= Html::encode($model->nomeempresa) ?></h1>
 
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>

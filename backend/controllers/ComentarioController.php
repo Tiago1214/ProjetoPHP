@@ -2,8 +2,8 @@
 
 namespace backend\controllers;
 
-use backend\models\Comentario;
-use backend\models\ComentarioSearch;
+use common\models\Comentario;
+use common\models\ComentarioSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
