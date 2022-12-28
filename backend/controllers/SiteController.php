@@ -84,13 +84,11 @@ class SiteController extends Controller
         }
 
         $this->layout = 'blank';
-        $erroacesso=0;
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             if(!Yii::$app->user->can('accessbackend')==true){
-                $erroacesso=1;
                 Yii::$app->user->logout();
-                Url::to(['/site/login','erroacesso'=>$erroacesso]);
+                return $this->redirect('http://front.test/site/index');
             }
             return $this->goBack();
         }

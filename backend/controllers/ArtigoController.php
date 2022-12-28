@@ -42,7 +42,7 @@ class ArtigoController extends Controller
                             'allow' => true,
                         ],
                         [
-                            'actions' => ['logout', 'index','create','update'], // add all actions to take guest to login page
+                            'actions' => ['logout', 'index','create','update','view'], // add all actions to take guest to login page
                             'allow' => true,
                             'roles' => ['admin','funcionario'],
                         ],

@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use common\models\User;
 use common\models\UserSearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -25,6 +26,28 @@ class UserController extends Controller
                     'class' => VerbFilter::className(),
                     'actions' => [
                         'delete' => ['POST'],
+                    ],
+                ],
+                'access' => [
+                    /**
+                     * Nos utilizadores os funcionários só podem visualizar os utilizadores existentes
+                     */
+                    'class' => AccessControl::class,
+                    'rules' => [
+                        [
+                            'actions' => ['login','error'],
+                            'allow' => true,
+                        ],
+                        [
+                            'actions'=>['logout', 'index',],
+                            'allow'=>true,
+                            'roles'=>['admin','funcionario'],
+                        ],
+                        [
+                            'actions'=>['create','view','update','estado','delete'],
+                            'allow'=>true,
+                            'roles'=>['admin'],
+                        ],
                     ],
                 ],
             ]
@@ -64,12 +87,20 @@ class UserController extends Controller
      * Creates a new User model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
+     * Nesta função os admins só podem criar funcionários
      */
     public function actionCreate()
     {
         $model = new User();
 
         if ($this->request->isPost) {
+            $user = new User();
+            $user->username = $this->username;
+            $user->email = $this->email;
+            $user->setPassword($this->password);
+            $user->status=10;
+            $user->generateAuthKey();
+            $user->generateEmailVerificationToken();
             if ($model->load($this->request->post()) && $model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
