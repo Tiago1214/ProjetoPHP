@@ -15,16 +15,20 @@ use yii\bootstrap5\Html;
             </button>
             <div class="collapse navbar-collapse" id="navbars-rs-food">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><a class="nav-link" href="<?= Url::to('../site/index'); ?>">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="<?= Url::to('../site/menu'); ?>">Menu</a></li>
-                    <li class="nav-item"><a class="nav-link" href="">Takeaway</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Reservas</a>
-                        <div class="dropdown-menu" aria-labelledby="dropdown-a">
-                            <a class="dropdown-item" href="reservation.php">Marcar Reserva</a>
-                            <a class="dropdown-item" href="stuff.php">Visualizar Reservas</a>
-                        </div>
-                    </li>
+                    <li class="nav-item active"><a class="nav-link" href="<?= Url::to('/site/index'); ?>">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?= Url::to('/site/menu'); ?>">Menu</a></li>
+                    <?php if(Yii::$app->user->identity!=null){
+                        ?>
+                        <li class="nav-item"><a class="nav-link" href="">Takeaway</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Reservas</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown-a">
+                                <a class="dropdown-item" href="<?= Url::to('/reserva/index'); ?>">Visualizar Reservas</a>
+                                <a class="dropdown-item" href="<?= Url::to('/reserva/create'); ?>">Marcar Reserva</a>
+                            </div>
+                        </li>
+                    <?php
+                    } ?>
 
                     <li class="nav-item"><a class="nav-link" href="<?= Url::to('/site/about'); ?>">Sobre Nós</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?= Url::to('/site/contact'); ?>">Contactos</a></li>

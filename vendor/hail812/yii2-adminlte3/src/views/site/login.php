@@ -5,7 +5,7 @@ use yii\helpers\Html;
     <div class="card-body login-card-body">
         <h3>Preencha os seguintes campos para fazer login.</h3>
         <p style="color: red">Só funcionários e administradores é que podem iniciar sessão neste ecrã,
-            caso tente iniciar sessão será redirecionado para a página principal</p>
+            caso tente iniciar e não seja administrador ou funcionário sessão será redirecionado para a página principal.</p>
 
         <?php $form = \yii\bootstrap4\ActiveForm::begin(['id' => 'login-form']) ?>
 
