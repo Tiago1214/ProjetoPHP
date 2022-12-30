@@ -62,9 +62,9 @@ $this->params['breadcrumbs'][] = $this->title;
                     'cancelar' => function($url,$model, $id) {     // render your custom button
                         if($model->estado==0){
                             return Html::a('Cancelar', ['cancelar', 'id' => $model->id], [
-                                'class' => 'btn btn-danger',
+                                'class' => 'btn btn-danger btn-sm',
                                 'data' => [
-                                    'confirm' => 'Are you sure you want to delete this item?',
+                                    'confirm' => 'Tem a certeza que pretende cancelar a reserva?',
                                     'method' => 'post',
                                 ],]);
                             }

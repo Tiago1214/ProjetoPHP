@@ -17,9 +17,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Create Reserva', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
@@ -28,21 +25,52 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
             'data',
             'hora',
             'nrpessoas',
-            'estado',
+            [
+                'attribute' => 'estado',
+                'value' => function ($model) {
+                    if ($model->estado == 0) {
+                        return 'Á espera de confirmação';
+                    } else if ($model->estado == 1) {
+                        return 'Confirmado';
+                    } else if ($model->estado == 2) {
+                        return 'Recusado';
+                    } else {
+                        return 'Erro';
+                    }
+                }
+            ],
             //'profile_id',
             [
-                'class' => ActionColumn::className(),
+                'buttons' => [
+                    'Aceitar' => function($url,$model, $id) {     // render your custom button
+                        if($model->estado==0){
+                            return Html::a('Aceitar', ['/reserva/aceitar', 'id' => $id], [
+                                'class' => 'btn btn-success btn-sm',
+                                'data' => [
+                                    'confirm' => 'Tem a certeza que pretende aceitar esta reserva?',
+                                    'method' => 'post',
+                                ],]);
+                        }
+                    },
+                    'Recusar'=>function($url,$model,$id){
+                        if($model->estado==0){
+                            return Html::a('Recusar', ['/reserva/recusar', 'id' => $id], [
+                                'class' => 'btn btn-danger btn-sm',
+                                'data' => [
+                                    'confirm' => 'Tem a certeza que pretende recusar esta reserva?',
+                                    'method' => 'post',
+                                ],]);
+                        }
+                    }
+                ],
+                'class' => 'yii\grid\ActionColumn', 'template' => '{view}{Aceitar}{Recusar}',
                 'urlCreator' => function ($action, Reserva $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }
             ],
         ],
     ]); ?>
-
-
 </div>

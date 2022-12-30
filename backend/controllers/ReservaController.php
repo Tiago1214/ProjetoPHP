@@ -39,7 +39,7 @@ class ReservaController extends Controller
                             'allow' => true,
                         ],
                         [
-                            'actions'=>['logout', 'index','create','view','update','estado','delete'],
+                            'actions'=>['logout', 'index','aceitar','recusar','view'],
                             'allow'=>true,
                             'roles'=>['admin','funcionario'],
                         ],
@@ -148,5 +148,30 @@ class ReservaController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+
+    /**
+     *Se o funcionario ou admin aceitar a página de index irá ser atualizada e o método aceitar irá mudar o estado aceite
+     */
+    public function actionAceitar($id){
+        $reserva=$this->findModel($id);
+        if($id!=null){
+            $reserva->estado=1;
+            $reserva->save();
+            return $this->redirect('../reserva/index');
+        }
+    }
+
+    /**
+     *Se o funcionario ou admin aceitar a página de index irá ser atualizada e o método recusar irá mudar o estado cancelado
+     */
+    public function actionRecusar($id){
+        $reserva=$this->findModel($id);
+        if($id!=null){
+            $reserva->estado=2;
+            $reserva->save();
+            return $this->redirect('../reserva/index');
+        }
     }
 }

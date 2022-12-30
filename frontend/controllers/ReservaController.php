@@ -7,6 +7,7 @@ use common\models\Profile;
 use common\models\Reserva;
 use common\models\User;
 use common\models\ReservaSearch;
+use yii\filters\AccessControl;
 use yii\jui\Dialog;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -31,6 +32,23 @@ class ReservaController extends Controller
                     'class' => VerbFilter::className(),
                     'actions' => [
                         'delete' => ['POST'],
+                    ],
+                ],
+                'access' => [
+                    'class' => AccessControl::class,
+                    'rules' => [
+                        /**
+                         *Nas reservas os clientes só podem visualizar,editar, criar ou cancelar reservas
+                         */
+                        [
+                            'actions' => ['login','error'],
+                            'allow' => true,
+                        ],
+                        [
+                            'actions' => ['logout', 'index','create','update','view','cancelar'], // add all actions to take guest to login page
+                            'allow' => true,
+                            'roles' => ['cliente'],
+                        ],
                     ],
                 ],
             ]
