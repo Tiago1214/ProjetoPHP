@@ -50,7 +50,7 @@ class Reserva extends \yii\db\ActiveRecord
             'hora' => 'Hora',
             'nrpessoas' => 'Número de pessoas',
             'estado' => 'Estado',
-            'profile_id' => 'Profile ID',
+            'profile_id' => 'Utilizador',
         ];
     }
 

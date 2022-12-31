@@ -83,7 +83,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'class' => 'yii\grid\ActionColumn', 'template' => '{view}{Aceitar}{Recusar}',
                 'urlCreator' => function ($action, Reserva $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
-                 }
+                }
             ],
         ],
     ]); ?>

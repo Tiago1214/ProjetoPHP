@@ -69,6 +69,16 @@ class User extends ActiveRecord implements IdentityInterface
             ['password', 'string', 'min' => Yii::$app->params['user.passwordMinLength']],
         ];
     }
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'username' => 'Utilizador',
+            'email' => 'Email',
+            'password' => 'Palavra-passe',
+            'status' => 'Estado',
+        ];
+    }
 
     /**
      * {@inheritdoc}

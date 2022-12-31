@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use common\models\Reserva;
 use common\models\ReservaSearch;
+use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -39,7 +40,7 @@ class ReservaController extends Controller
                             'allow' => true,
                         ],
                         [
-                            'actions'=>['logout', 'index','aceitar','recusar','view'],
+                            'actions'=>['logout', 'index','aceitar','recusar','view','reservasaceites','reservascanceladas'],
                             'allow'=>true,
                             'roles'=>['admin','funcionario'],
                         ],
@@ -58,7 +59,6 @@ class ReservaController extends Controller
     {
         $searchModel = new ReservaSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
-
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -173,5 +173,27 @@ class ReservaController extends Controller
             $reserva->save();
             return $this->redirect('../reserva/index');
         }
+    }
+
+    public function actionReservasaceites(){
+        $searchModel = new ReservaSearch();
+        $dataProvider = new ActiveDataProvider([
+            'query' => Reserva::find()->where(['estado'=>[1]])
+        ]);
+        return $this->render('reservasaceites', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    public function actionReservascanceladas(){
+        $searchModel = new ReservaSearch();
+        $dataProvider = new ActiveDataProvider([
+            'query' => Reserva::find()->where(['estado'=>[2]])
+        ]);
+        return $this->render('reservascanceladas', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
     }
 }

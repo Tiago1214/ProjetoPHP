@@ -34,8 +34,20 @@ $this->params['breadcrumbs'][] = $this->title;
             'data',
             'hora',
             'nrpessoas',
-            'estado',
-            'profile_id',
+            [
+                'attribute' => 'estado',
+                'value' => function ($model) {
+                    if ($model->estado == 0) {
+                        return 'Á espera de confirmação';
+                    } else if ($model->estado == 1) {
+                        return 'Confirmado';
+                    } else if ($model->estado == 2) {
+                        return 'Cancelado';
+                    } else {
+                        return 'Erro';
+                    }
+                }
+            ],
         ],
     ]) ?>
 
