@@ -26,6 +26,15 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row">
         <p></p>
     </div>
+    <div class="row">
+        <p></p>
+    </div>
+    <div class="row">
+        <p></p>
+    </div>
+    <div class="row">
+        <p></p>
+    </div>
 
 
     <div class="row">

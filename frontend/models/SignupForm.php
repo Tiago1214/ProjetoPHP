@@ -54,11 +54,9 @@ class SignupForm extends Model
      */
     public function signup()
     {
-        if (!$this->validate()) {
-            return null;
-        }
-
         $user = new User();
+
+        if (!$this->validate()) {return false;}
         $user->username = $this->username;
         $user->email = $this->email;
         $user->setPassword($this->password);
@@ -70,18 +68,19 @@ class SignupForm extends Model
         $profile->numcontribuinte=$this->numcontribuinte;
         $profile->telemovel=$this->telemovel;
         $profile->estado=1;
-
+        //dd($profile,$user);
         // the following three lines were added:
         $auth = \Yii::$app->authManager;
         $authorRole = $auth->getRole('cliente');
 
         //Verificar se o utilizador e o perfil estão válidos para serem introduzidos na base de dados
         if(!$user->validate()||!$profile->validate()){
-            return false;
-        }
+            return true;
 
+        }
         //Salvar utilizador e perfil
-        if($user->save() && $this->sendEmail($user)){
+        if($user->save()){
+
             //Atribuir o id de utilizador ao role a ao perfil depois do utilizador ser salvo
             $auth->assign($authorRole,$user->getId());
 

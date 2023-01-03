@@ -47,7 +47,7 @@ class ReservaController extends Controller
                         [
                             'actions' => ['logout', 'index','create','update','view','cancelar'], // add all actions to take guest to login page
                             'allow' => true,
-                            'roles' => ['cliente,admin,funcionario'],
+                            'roles' => ['cliente','funcionario','admin'],
                         ],
                     ],
                 ],
