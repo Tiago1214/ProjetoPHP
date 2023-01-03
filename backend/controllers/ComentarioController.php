@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use common\models\Comentario;
 use common\models\ComentarioSearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -27,7 +28,27 @@ class ComentarioController extends Controller
                         'delete' => ['POST'],
                     ],
                 ],
+                'access' => [
+                    /**
+                     * Os funcionários e os admins podem realizar as mesmas funções nos comentários
+                     * Neste controlador caso haja comentários com linguagem agressiva os trabalhadores tem a obrigação
+                     * de eliminar o comentário.
+                     */
+                    'class' => AccessControl::class,
+                    'rules' => [
+                        [
+                            'actions' => ['login','error'],
+                            'allow' => true,
+                        ],
+                        [
+                            'actions' => ['logout', 'index'], // add all actions to take guest to login page
+                            'allow' => true,
+                            'roles' => ['admin','funcionario'],
+                        ],
+                    ],
+                ],
             ]
+
         );
     }
 

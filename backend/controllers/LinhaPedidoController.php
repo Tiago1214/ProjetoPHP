@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use common\models\LinhaPedido;
 use common\models\LinhaPedidoSearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -27,7 +28,26 @@ class LinhaPedidoController extends Controller
                         'delete' => ['POST'],
                     ],
                 ],
+                'access' => [
+                    /**
+                     * As linhas de pedido fazem parte do pedido em si portanto tanto os funcionários como os admins
+                     * tem as mesmas funções
+                     */
+                    'class' => AccessControl::class,
+                    'rules' => [
+                        [
+                            'actions' => ['login','error'],
+                            'allow' => true,
+                        ],
+                        [
+                            'actions' => ['logout', 'index','view','create','update','estado','delete'], // add all actions to take guest to login page
+                            'allow' => true,
+                            'roles' => ['admin','funcionario'],
+                        ],
+                    ],
+                ],
             ]
+
         );
     }
 

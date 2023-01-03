@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use backend\models\MetodoPagamento;
 use backend\models\MetodoPagamentoSearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -25,6 +26,29 @@ class MetodoPagamentoController extends Controller
                     'class' => VerbFilter::className(),
                     'actions' => [
                         'delete' => ['POST'],
+                    ],
+                ],
+                'access' => [
+                    /**
+                     * Nos métodos de pagamento os funcionários só podem visualizar os métodos existentes
+                     * Os admins podem realizar todas as funções
+                     */
+                    'class' => AccessControl::class,
+                    'rules' => [
+                        [
+                            'actions' => ['login','error'],
+                            'allow' => true,
+                        ],
+                        [
+                            'actions' => ['logout', 'index','view'], // add all actions to take guest to login page
+                            'allow' => true,
+                            'roles' => ['admin','funcionario'],
+                        ],
+                        [
+                            'actions'=>['create','update','estado','delete'],
+                            'allow'=>true,
+                            'roles'=>['admin'],
+                        ],
                     ],
                 ],
             ]

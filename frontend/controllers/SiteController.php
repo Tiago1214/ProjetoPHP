@@ -2,6 +2,8 @@
 
 namespace frontend\controllers;
 
+use common\models\Artigo;
+use common\models\Categoria;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -86,7 +88,12 @@ class SiteController extends Controller
      */
     public function actionMenu()
     {
-        return $this->render('menu');
+        $artigos=Artigo::find()->all();
+        $categorias=Categoria::find()->all();
+        return $this->render('menu',[
+            'artigos'=>$artigos,
+            'categorias'=>$categorias,
+        ]);
     }
 
     /**
@@ -176,10 +183,10 @@ class SiteController extends Controller
     public function actionSignup()
     {
         $model = new SignupForm();
+
         if ($model->load(Yii::$app->request->post()) && $model->signup()) {
+
             Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
-
-
             return $this->goHome();
         }
 

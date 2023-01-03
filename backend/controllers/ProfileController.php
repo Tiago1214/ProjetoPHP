@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use common\models\Profile;
 use common\models\ProfileSearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -25,6 +26,29 @@ class ProfileController extends Controller
                     'class' => VerbFilter::className(),
                     'actions' => [
                         'delete' => ['POST'],
+                    ],
+                ],
+                'access' => [
+                    /**
+                     * Nos perfis os admins podem realizar qualquer ação enquanto
+                     * os funcionários só podem visualizar os perfis.
+                     */
+                    'class' => AccessControl::class,
+                    'rules' => [
+                        [
+                            'actions' => ['login','error'],
+                            'allow' => true,
+                        ],
+                        [
+                            'actions'=>['logout', 'index'],
+                            'allow'=>true,
+                            'roles'=>['admin','funcionario'],
+                        ],
+                        [
+                            'actions' => ['create','view','update','estado','delete'], // add all actions to take guest to login page
+                            'allow' => true,
+                            'roles' => ['admin'],
+                        ],
                     ],
                 ],
             ]

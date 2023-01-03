@@ -25,12 +25,12 @@ class SignupForm extends Model
     {
         return [
             ['username', 'trim'],
-            ['username', 'required'],
-            ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This username has already been taken.'],
+            ['username', 'required','message'=>'Campo Obrigatório'],
+            ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'Este nome de utilizador já existe.'],
             ['username', 'string', 'min' => 2, 'max' => 255],
 
             ['email', 'trim'],
-            ['email', 'required'],
+            ['email', 'required','message'=>'Campo Obrigatório'],
             ['email', 'email'],
             ['email', 'string', 'max' => 255],
             ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'Este email já foi introduzido por outro utilizador .'],
@@ -40,7 +40,7 @@ class SignupForm extends Model
 
             [['telemovel','numcontribuinte'],'unique','targetClass'=>'\common\models\Profile','message'=>'O campo telemóvel ou numcontribuinte 
             já foram usados por outros utilizadores'],
-            [['telemovel','numcontribuinte'],'required'],
+            [['telemovel','numcontribuinte'],'required','message'=>'Campo Obrigatório'],
             ['telemovel','string','min'=>9,'max'=>9],
             ['numcontribuinte','string','min'=>9,'max'=>9],
             [['telemovel','numcontribuinte'],'integer'],
@@ -54,11 +54,9 @@ class SignupForm extends Model
      */
     public function signup()
     {
-        if (!$this->validate()) {
-            return null;
-        }
-
         $user = new User();
+
+        if (!$this->validate()) {return false;}
         $user->username = $this->username;
         $user->email = $this->email;
         $user->setPassword($this->password);
@@ -70,18 +68,14 @@ class SignupForm extends Model
         $profile->numcontribuinte=$this->numcontribuinte;
         $profile->telemovel=$this->telemovel;
         $profile->estado=1;
-
+        //dd($profile,$user);
         // the following three lines were added:
         $auth = \Yii::$app->authManager;
         $authorRole = $auth->getRole('cliente');
 
-        //Verificar se o utilizador e o perfil estão válidos para serem introduzidos na base de dados
-        if(!$user->validate()||!$profile->validate()){
-            return false;
-        }
-
         //Salvar utilizador e perfil
-        if($user->save() && $this->sendEmail($user)){
+        if($user->save(false)){
+
             //Atribuir o id de utilizador ao role a ao perfil depois do utilizador ser salvo
             $auth->assign($authorRole,$user->getId());
 

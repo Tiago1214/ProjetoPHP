@@ -9,6 +9,7 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
+use yii\helpers\Url;
 
 /**
  * Site controller
@@ -32,6 +33,11 @@ class SiteController extends Controller
                         'actions' => ['logout', 'index'], // add all actions to take guest to login page
                         'allow' => true,
                         'roles' => ['admin','funcionario'],
+                    ],
+                    [
+                        'actions'=>['logout'],
+                        'allow'=>true,
+                        'roles'=>['cliente'],
                     ],
                 ],
             ],
@@ -73,14 +79,17 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
-        if (!Yii::$app->user->isGuest) {
+        if (!Yii::$app->user->isGuest&&Yii::$app->user->can('accessbackend')) {
             return $this->goHome();
         }
 
         $this->layout = 'blank';
-
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            if(!Yii::$app->user->can('accessbackend')==true){
+                Yii::$app->user->logout();
+                return $this->redirect('http://front.test/site/index');
+            }
             return $this->goBack();
         }
 

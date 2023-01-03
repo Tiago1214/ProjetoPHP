@@ -33,10 +33,9 @@ class Reserva extends \yii\db\ActiveRecord
     {
         return [
 
-            [['data', 'hora', 'nrpessoas', 'estado', 'profile_id'], 'required','message'=>'Os campos selecionados são de preenchimento obrigatório'],
-            [['nrpessoas', 'estado', 'profile_id'], 'integer'],
-            [['data', 'hora'], 'string', 'max' => 45,'message'=>'O campo nome tem um máximo de 45 carateres'],
-            [['profile_id'], 'exist', 'skipOnError' => true, 'targetClass' => Profile::class, 'targetAttribute' => ['profile_id' => 'id']],
+            [['data', 'hora', 'nrpessoas'], 'required','message'=>'Os campos selecionados são de preenchimento obrigatório'],
+            [['nrpessoas','estado','profile_id'], 'integer','message'=>'O campo número de pessoas é do tipo inteiro'],
+
         ];
     }
 
@@ -49,9 +48,9 @@ class Reserva extends \yii\db\ActiveRecord
             'id' => 'ID',
             'data' => 'Data',
             'hora' => 'Hora',
-            'nrpessoas' => 'Nrpessoas',
+            'nrpessoas' => 'Número de pessoas',
             'estado' => 'Estado',
-            'profile_id' => 'Profile ID',
+            'profile_id' => 'Utilizador',
         ];
     }
 

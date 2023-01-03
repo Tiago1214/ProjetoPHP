@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use common\models\Categoria;
 use common\models\CategoriaSearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -25,6 +26,29 @@ class CategoriaController extends Controller
                     'class' => VerbFilter::className(),
                     'actions' => [
                         'delete' => ['POST'],
+                    ],
+                ],
+                'access' => [
+                    'class' => AccessControl::class,
+                    'rules' => [
+                        /**
+                         *Nas categorias os funcionários podem fazer tudo menos desativar categorias
+                         *Nas categorias os admins podem realizar todas as ações necessárias para o funcionamento dos mesmos
+                         */
+                        [
+                            'actions' => ['login','error'],
+                            'allow' => true,
+                        ],
+                        [
+                            'actions' => ['logout', 'index','create','update'], // add all actions to take guest to login page
+                            'allow' => true,
+                            'roles' => ['admin','funcionario'],
+                        ],
+                        [
+                            'actions'=>['estado'],
+                            'allow'=>true,
+                            'roles'=>['admin'],
+                        ],
                     ],
                 ],
             ]

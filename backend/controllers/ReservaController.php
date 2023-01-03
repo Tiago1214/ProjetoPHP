@@ -4,6 +4,8 @@ namespace backend\controllers;
 
 use common\models\Reserva;
 use common\models\ReservaSearch;
+use yii\data\ActiveDataProvider;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -27,6 +29,23 @@ class ReservaController extends Controller
                         'delete' => ['POST'],
                     ],
                 ],
+                'access' => [
+                    /**
+                     * Nas reservas os admins e os funcionários tem os mesmos acessos
+                     */
+                    'class' => AccessControl::class,
+                    'rules' => [
+                        [
+                            'actions' => ['login','error'],
+                            'allow' => true,
+                        ],
+                        [
+                            'actions'=>['logout', 'index','aceitar','recusar','view','reservasaceites','reservascanceladas'],
+                            'allow'=>true,
+                            'roles'=>['admin','funcionario'],
+                        ],
+                    ],
+                ],
             ]
         );
     }
@@ -40,7 +59,6 @@ class ReservaController extends Controller
     {
         $searchModel = new ReservaSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
-
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -130,5 +148,52 @@ class ReservaController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+
+    /**
+     *Se o funcionario ou admin aceitar a página de index irá ser atualizada e o método aceitar irá mudar o estado aceite
+     */
+    public function actionAceitar($id){
+        $reserva=$this->findModel($id);
+        if($id!=null){
+            $reserva->estado=1;
+            $reserva->save();
+            return $this->redirect('../reserva/index');
+        }
+    }
+
+    /**
+     *Se o funcionario ou admin aceitar a página de index irá ser atualizada e o método recusar irá mudar o estado cancelado
+     */
+    public function actionRecusar($id){
+        $reserva=$this->findModel($id);
+        if($id!=null){
+            $reserva->estado=2;
+            $reserva->save();
+            return $this->redirect('../reserva/index');
+        }
+    }
+
+    public function actionReservasaceites(){
+        $searchModel = new ReservaSearch();
+        $dataProvider = new ActiveDataProvider([
+            'query' => Reserva::find()->where(['estado'=>[1]])
+        ]);
+        return $this->render('reservasaceites', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    public function actionReservascanceladas(){
+        $searchModel = new ReservaSearch();
+        $dataProvider = new ActiveDataProvider([
+            'query' => Reserva::find()->where(['estado'=>[2]])
+        ]);
+        return $this->render('reservascanceladas', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
     }
 }
