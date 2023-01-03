@@ -69,10 +69,15 @@ class CriarUsers extends Model
         $profile->numcontribuinte=$this->numcontribuinte;
         $profile->telemovel=$this->telemovel;
         $profile->estado=1;
-        //dd($profile,$user);
-        // the following three lines were added:
+        $userrole='';
+        if($this->role==0){
+            $userrole='funcionario';
+        }
+        else{
+            $userrole='admin';
+        }
         $auth = \Yii::$app->authManager;
-        $authorRole = $auth->getRole($this->role);
+        $authorRole = $auth->getRole($userrole);
 
         //Salvar utilizador e perfil
         if($user->save(false)){

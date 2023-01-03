@@ -1,27 +1,38 @@
 <?php
 
-use yii\helpers\Html;
-use yii\widgets\ActiveForm;
-
 /** @var yii\web\View $this */
-/** @var common\models\User $model */
-/** @var yii\widgets\ActiveForm $form */
+/** @var yii\bootstrap5\ActiveForm $form */
+/** @var \frontend\models\SignupForm $model */
+
+use yii\bootstrap5\Html;
+use yii\bootstrap5\ActiveForm;
+
+$this->title = 'Criar novo utilizador';
+$this->params['breadcrumbs'][] = $this->title;
 ?>
+<div class="user-create">
+    <div class="row">
+        <div class="col-lg-12">
 
-<div class="user-form">
+            <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
+            <?php ?>
+            <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
 
-    <?php $form = ActiveForm::begin(); ?>
+            <?= $form->field($model, 'email') ?>
 
-    <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'numcontribuinte') ?>
 
-    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'telemovel') ?>
 
-    <?= $form->field($model,'password')->passwordInput()?>
+            <?=$form->field($model,'role')->dropDownList([0=>'funcionario',1=>'admin'])?>
 
-    <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+            <?= $form->field($model, 'password')->passwordInput() ?>
+
+            <div class="form-group">
+                <?= Html::submitButton('Criar Conta', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
+            </div>
+
+            <?php ActiveForm::end(); ?>
+        </div>
     </div>
-
-    <?php ActiveForm::end(); ?>
-
 </div>
