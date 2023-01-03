@@ -30,14 +30,15 @@ CREATE TABLE `artigo` (
   `quantidade` int(11) NOT NULL,
   `preco` float NOT NULL,
   `data` datetime NOT NULL,
-  `imagem` varchar(255) DEFAULT NULL,
+  `imagem` longtext,
+  `imagemurl` longtext,
   `estado` int(11) NOT NULL,
   `iva_id` int(11) NOT NULL,
   `categoria_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`,`categoria_id`),
-  KEY `fk_artigo_iva1_idx` (`iva_id`),
+  PRIMARY KEY (`id`,`iva_id`,`categoria_id`),
+  KEY `fk_artigo_iva_idx` (`iva_id`),
   KEY `fk_artigo_categoria1_idx` (`categoria_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,7 +47,7 @@ CREATE TABLE `artigo` (
 
 LOCK TABLES `artigo` WRITE;
 /*!40000 ALTER TABLE `artigo` DISABLE KEYS */;
-INSERT INTO `artigo` VALUES (9,'Teste','Teste','A1234B5',1,111.5,'2021-12-14 00:00:00','art_9.jpg',1,1,1),(10,'teste','teste12','22',1,222,'2022-12-09 12:35:59','art_10.png',1,1,1);
+INSERT INTO `artigo` VALUES (19,'teste','teste1','12234235',235,222,'2022-12-26 16:56:00','art_19.jpg','http://localhost/gersoft/backend/web/images/art_19.jpg',1,1,1),(16,'teste','teste1222','asfsdgs21',235,11111,'2022-12-15 09:50:35','art_16.jpg','http://localhost/gersoft/backend/web/images/art_16.jpg',1,1,1),(17,'teste','teste1','12234235',1,222,'2022-12-26 16:27:32','art_17.jpg','http://localhost/gersoft/backend/web/images/art_17.jpg',1,1,1),(21,'sdfgsdg','teste1','222',2,22,'2023-01-02 17:44:42','art_21.jpg','http://localhost/gersoft/backend/web/images/art_21.jpg',0,1,1);
 /*!40000 ALTER TABLE `artigo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -73,7 +74,7 @@ CREATE TABLE `auth_assignment` (
 
 LOCK TABLES `auth_assignment` WRITE;
 /*!40000 ALTER TABLE `auth_assignment` DISABLE KEYS */;
-INSERT INTO `auth_assignment` VALUES ('admin','1',1670331511),('cliente','3',1670331511),('funcionario','2',1670331511);
+INSERT INTO `auth_assignment` VALUES ('admin','5',1672148145),('cliente','25',1672148145),('cliente','28',1672148129),('cliente','29',1672148145);
 /*!40000 ALTER TABLE `auth_assignment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -105,7 +106,7 @@ CREATE TABLE `auth_item` (
 
 LOCK TABLES `auth_item` WRITE;
 /*!40000 ALTER TABLE `auth_item` DISABLE KEYS */;
-INSERT INTO `auth_item` VALUES ('admin',1,NULL,NULL,NULL,1670331511,1670331511),('cliente',1,NULL,NULL,NULL,1670331511,1670331511),('create',2,'Criar registo de qualquer tabela',NULL,NULL,1670331511,1670331511),('createartigo',2,'Criar Artigo',NULL,NULL,1670331511,1670331511),('createcategoria',2,'Criar Categoria',NULL,NULL,1670331511,1670331511),('createcomentario',2,'Criar comentário',NULL,NULL,1670331511,1670331511),('createiva',2,'Criar Iva',NULL,NULL,1670331511,1670331511),('createlinhapedido',2,'Criar Linha de pedido',NULL,NULL,1670331511,1670331511),('createmesa',2,'Criar Mesa',NULL,NULL,1670331511,1670331511),('createmetodopagamento',2,'Criar Método Pagamento',NULL,NULL,1670331511,1670331511),('createpedido',2,'Criar Pedido',NULL,NULL,1670331511,1670331511),('createreserva',2,'Criar reserva',NULL,NULL,1670331511,1670331511),('createutilizador',2,'Criar Cliente',NULL,NULL,1670331511,1670331511),('delete',2,'Apagar',NULL,NULL,1670331511,1670331511),('deleteartigo',2,'Apagar Artigo',NULL,NULL,1670331511,1670331511),('deletecategoria',2,'Apagar Categoria',NULL,NULL,1670331511,1670331511),('deletecomentario',2,'Apagar comentário',NULL,NULL,1670331511,1670331511),('deleteiva',2,'Apagar taxa de iva',NULL,NULL,1670331511,1670331511),('deletelinhapedido',2,'Apagar linha pedido',NULL,NULL,1670331511,1670331511),('deletemesa',2,'Apagar Mesa',NULL,NULL,1670331511,1670331511),('deletemetodopagamento',2,'Apagar método pagamento',NULL,NULL,1670331511,1670331511),('deletepedido',2,'Apagar pedido',NULL,NULL,1670331511,1670331511),('deletereserva',2,'Apagar Reserva',NULL,NULL,1670331511,1670331511),('funcionario',1,NULL,NULL,NULL,1670331511,1670331511),('update',2,'Editar qualquer registo',NULL,NULL,1670331511,1670331511),('updateartigo',2,'Editar Artigo',NULL,NULL,1670331511,1670331511),('updatecategoria',2,'Editar Categoria',NULL,NULL,1670331511,1670331511),('updatecomentario',2,'Editar Comentário',NULL,NULL,1670331511,1670331511),('updateiva',2,'Editar taxa de iva',NULL,NULL,1670331511,1670331511),('updatelinhapedido',2,'Editar linha de pedido',NULL,NULL,1670331511,1670331511),('updatemesa',2,'Editar Mesa',NULL,NULL,1670331511,1670331511),('updatemetodopagamento',2,'Editar Método Pagamento',NULL,NULL,1670331511,1670331511),('updatepedido',2,'Editar pedido',NULL,NULL,1670331511,1670331511),('updatereserva',2,'Editar Reserva',NULL,NULL,1670331511,1670331511),('updateutilizador',2,'Editar Utilizador',NULL,NULL,1670331511,1670331511);
+INSERT INTO `auth_item` VALUES ('accessbackend',2,'Aceder ao backend',NULL,NULL,1672077684,1672077684),('accessfrontend',2,'Aceder ao frontend',NULL,NULL,1672077684,1672077684),('admin',1,NULL,NULL,NULL,1672077684,1672077684),('cliente',1,NULL,NULL,NULL,1672077684,1672077684),('create',2,'Criar registo de qualquer tabela',NULL,NULL,1672077684,1672077684),('createartigo',2,'Criar Artigo',NULL,NULL,1672077684,1672077684),('createcategoria',2,'Criar Categoria',NULL,NULL,1672077684,1672077684),('createcomentario',2,'Criar comentário',NULL,NULL,1672077684,1672077684),('createiva',2,'Criar Iva',NULL,NULL,1672077684,1672077684),('createlinhapedido',2,'Criar Linha de pedido',NULL,NULL,1672077684,1672077684),('createmesa',2,'Criar Mesa',NULL,NULL,1672077684,1672077684),('createmetodopagamento',2,'Criar Método Pagamento',NULL,NULL,1672077684,1672077684),('createpedido',2,'Criar Pedido',NULL,NULL,1672077684,1672077684),('createreserva',2,'Criar reserva',NULL,NULL,1672077684,1672077684),('createutilizador',2,'Criar Cliente',NULL,NULL,1672077684,1672077684),('delete',2,'Apagar',NULL,NULL,1672077684,1672077684),('deleteartigo',2,'Apagar Artigo',NULL,NULL,1672077684,1672077684),('deletecategoria',2,'Apagar Categoria',NULL,NULL,1672077684,1672077684),('deletecomentario',2,'Apagar comentário',NULL,NULL,1672077684,1672077684),('deleteiva',2,'Apagar taxa de iva',NULL,NULL,1672077684,1672077684),('deletelinhapedido',2,'Apagar linha pedido',NULL,NULL,1672077684,1672077684),('deletemesa',2,'Apagar Mesa',NULL,NULL,1672077684,1672077684),('deletemetodopagamento',2,'Apagar método pagamento',NULL,NULL,1672077684,1672077684),('deletepedido',2,'Apagar pedido',NULL,NULL,1672077684,1672077684),('deletereserva',2,'Apagar Reserva',NULL,NULL,1672077684,1672077684),('funcionario',1,NULL,NULL,NULL,1672077684,1672077684),('update',2,'Editar qualquer registo',NULL,NULL,1672077684,1672077684),('updateartigo',2,'Editar Artigo',NULL,NULL,1672077684,1672077684),('updatecategoria',2,'Editar Categoria',NULL,NULL,1672077684,1672077684),('updatecomentario',2,'Editar Comentário',NULL,NULL,1672077684,1672077684),('updateiva',2,'Editar taxa de iva',NULL,NULL,1672077684,1672077684),('updatelinhapedido',2,'Editar linha de pedido',NULL,NULL,1672077684,1672077684),('updatemesa',2,'Editar Mesa',NULL,NULL,1672077684,1672077684),('updatemetodopagamento',2,'Editar Método Pagamento',NULL,NULL,1672077684,1672077684),('updatepedido',2,'Editar pedido',NULL,NULL,1672077684,1672077684),('updatereserva',2,'Editar Reserva',NULL,NULL,1672077684,1672077684),('updateutilizador',2,'Editar Utilizador',NULL,NULL,1672077684,1672077684);
 /*!40000 ALTER TABLE `auth_item` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -132,7 +133,7 @@ CREATE TABLE `auth_item_child` (
 
 LOCK TABLES `auth_item_child` WRITE;
 /*!40000 ALTER TABLE `auth_item_child` DISABLE KEYS */;
-INSERT INTO `auth_item_child` VALUES ('admin','create'),('admin','createartigo'),('funcionario','createartigo'),('admin','createcategoria'),('funcionario','createcategoria'),('admin','createcomentario'),('cliente','createcomentario'),('funcionario','createcomentario'),('admin','createiva'),('funcionario','createiva'),('admin','createlinhapedido'),('cliente','createlinhapedido'),('funcionario','createlinhapedido'),('admin','createmesa'),('funcionario','createmesa'),('admin','createmetodopagamento'),('admin','createpedido'),('cliente','createpedido'),('funcionario','createpedido'),('admin','createreserva'),('cliente','createreserva'),('funcionario','createreserva'),('admin','createutilizador'),('funcionario','createutilizador'),('admin','delete'),('admin','deleteartigo'),('funcionario','deleteartigo'),('admin','deletecategoria'),('admin','deletecomentario'),('cliente','deletecomentario'),('funcionario','deletecomentario'),('admin','deleteiva'),('admin','deletelinhapedido'),('cliente','deletelinhapedido'),('funcionario','deletelinhapedido'),('admin','deletemesa'),('admin','deletemetodopagamento'),('admin','deletepedido'),('cliente','deletepedido'),('funcionario','deletepedido'),('admin','deletereserva'),('cliente','deletereserva'),('funcionario','deletereserva'),('admin','update'),('admin','updateartigo'),('funcionario','updateartigo'),('admin','updatecategoria'),('funcionario','updatecategoria'),('admin','updatecomentario'),('cliente','updatecomentario'),('funcionario','updatecomentario'),('admin','updateiva'),('funcionario','updateiva'),('admin','updatelinhapedido'),('cliente','updatelinhapedido'),('funcionario','updatelinhapedido'),('admin','updatemesa'),('funcionario','updatemesa'),('admin','updatemetodopagamento'),('admin','updatepedido'),('cliente','updatepedido'),('funcionario','updatepedido'),('admin','updatereserva'),('cliente','updatereserva'),('funcionario','updatereserva'),('admin','updateutilizador'),('funcionario','updateutilizador');
+INSERT INTO `auth_item_child` VALUES ('admin','accessbackend'),('funcionario','accessbackend'),('cliente','accessfrontend'),('admin','create'),('admin','createartigo'),('funcionario','createartigo'),('admin','createcategoria'),('funcionario','createcategoria'),('admin','createcomentario'),('cliente','createcomentario'),('funcionario','createcomentario'),('admin','createiva'),('funcionario','createiva'),('admin','createlinhapedido'),('cliente','createlinhapedido'),('funcionario','createlinhapedido'),('admin','createmesa'),('funcionario','createmesa'),('admin','createmetodopagamento'),('admin','createpedido'),('cliente','createpedido'),('funcionario','createpedido'),('admin','createreserva'),('cliente','createreserva'),('funcionario','createreserva'),('admin','createutilizador'),('funcionario','createutilizador'),('admin','delete'),('admin','deleteartigo'),('funcionario','deleteartigo'),('admin','deletecategoria'),('admin','deletecomentario'),('cliente','deletecomentario'),('funcionario','deletecomentario'),('admin','deleteiva'),('admin','deletelinhapedido'),('cliente','deletelinhapedido'),('funcionario','deletelinhapedido'),('admin','deletemesa'),('admin','deletemetodopagamento'),('admin','deletepedido'),('cliente','deletepedido'),('funcionario','deletepedido'),('admin','deletereserva'),('cliente','deletereserva'),('funcionario','deletereserva'),('admin','update'),('admin','updateartigo'),('funcionario','updateartigo'),('admin','updatecategoria'),('funcionario','updatecategoria'),('admin','updatecomentario'),('cliente','updatecomentario'),('funcionario','updatecomentario'),('admin','updateiva'),('funcionario','updateiva'),('admin','updatelinhapedido'),('cliente','updatelinhapedido'),('funcionario','updatelinhapedido'),('admin','updatemesa'),('funcionario','updatemesa'),('admin','updatemetodopagamento'),('admin','updatepedido'),('cliente','updatepedido'),('funcionario','updatepedido'),('admin','updatereserva'),('cliente','updatereserva'),('funcionario','updatereserva'),('admin','updateutilizador'),('funcionario','updateutilizador');
 /*!40000 ALTER TABLE `auth_item_child` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -183,7 +184,7 @@ CREATE TABLE `categoria` (
 
 LOCK TABLES `categoria` WRITE;
 /*!40000 ALTER TABLE `categoria` DISABLE KEYS */;
-INSERT INTO `categoria` VALUES (1,'Carne','Carne',0),(2,'Peixe','Peixe',1);
+INSERT INTO `categoria` VALUES (1,'Carne','Pratos de carne',1),(2,'Peixe','Pratos de Peixe',0);
 /*!40000 ALTER TABLE `categoria` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -232,7 +233,7 @@ CREATE TABLE `empresa` (
   `localidade` varchar(255) DEFAULT NULL,
   `capitalsocial` float NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -241,6 +242,7 @@ CREATE TABLE `empresa` (
 
 LOCK TABLES `empresa` WRITE;
 /*!40000 ALTER TABLE `empresa` DISABLE KEYS */;
+INSERT INTO `empresa` VALUES (1,'gersoft','tiagoamaro021@gmail.com','916589378','111111111','Rua Cidade de Amesterdão','2120-134','Salvaterra de Magos',2222.22);
 /*!40000 ALTER TABLE `empresa` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -386,6 +388,7 @@ CREATE TABLE `pedido` (
   `data` datetime NOT NULL,
   `total` float NOT NULL,
   `tipo_pedido` int(11) NOT NULL,
+  `estado` varchar(45) NOT NULL,
   `profile_id` int(11) NOT NULL,
   `metodo_pagamento_id` int(11) NOT NULL,
   `mesa_id` int(11) NOT NULL,
@@ -418,14 +421,13 @@ DROP TABLE IF EXISTS `profile`;
 CREATE TABLE `profile` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `numcontribuinte` varchar(45) NOT NULL,
-  `email` varchar(200) NOT NULL,
   `telemovel` varchar(45) NOT NULL,
-  `estado` varchar(100) NOT NULL,
+  `estado` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_profile_user1_idx` (`user_id`),
   CONSTRAINT `fk_profile_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -434,6 +436,7 @@ CREATE TABLE `profile` (
 
 LOCK TABLES `profile` WRITE;
 /*!40000 ALTER TABLE `profile` DISABLE KEYS */;
+INSERT INTO `profile` VALUES (2,'222222222','911111111',1,25),(5,'212222332','923567662',1,29);
 /*!40000 ALTER TABLE `profile` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -449,12 +452,12 @@ CREATE TABLE `reserva` (
   `data` varchar(45) NOT NULL,
   `hora` varchar(45) NOT NULL,
   `nrpessoas` int(11) NOT NULL,
-  `estado` int(11) NOT NULL,
-  `profile_id` int(11) NOT NULL,
+  `estado` int(11) DEFAULT NULL,
+  `profile_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_reserva_profile1_idx` (`profile_id`),
   CONSTRAINT `fk_reserva_profile1` FOREIGN KEY (`profile_id`) REFERENCES `profile` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -463,6 +466,7 @@ CREATE TABLE `reserva` (
 
 LOCK TABLES `reserva` WRITE;
 /*!40000 ALTER TABLE `reserva` DISABLE KEYS */;
+INSERT INTO `reserva` VALUES (1,'22/05/2022','18:34',5,2,2),(2,'22/05/2022','18:34',5,2,5),(3,'23/05/2022','18:34',5,2,2),(5,'23/05/2022','18:34',5,1,2),(6,'27/05/2022','18:34',2,2,5),(7,'27/05/2023','18:34',2,2,2),(8,'27/05/2022','18:34',5,2,2),(9,'23/05/2022','18:34',1,2,2),(10,'23/05/2023','18:34',2,0,2);
 /*!40000 ALTER TABLE `reserva` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -488,7 +492,7 @@ CREATE TABLE `user` (
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `password_reset_token` (`password_reset_token`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -497,7 +501,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (5,'tiago','9R_Qb1NaNudneG5MeIp18aKV5NMTMhId','$2y$13$cPPThD1BGn0DlAfVfl.9juGbZ2egsTNYlXxDTpgCEta.lUzdWDNd.',NULL,'tiagoamaro021@gmail.com',10,1669980396,1669980396,'uY9N-9PY38DKifKo3EOAVpO-2x9PSNp9_1669980396');
+INSERT INTO `user` VALUES (5,'tiago','9R_Qb1NaNudneG5MeIp18aKV5NMTMhId','$2y$13$cPPThD1BGn0DlAfVfl.9juGbZ2egsTNYlXxDTpgCEta.lUzdWDNd.',NULL,'tiagoamaro021@gmail.com',10,1669980396,1669980396,'uY9N-9PY38DKifKo3EOAVpO-2x9PSNp9_1669980396'),(25,'bernardo','SwqsYsSzen1wSXRZYb_-P1pPEbbFXcey','$2y$13$bQ6jSevGoFmHNUyniy67DOqcWdJRZZOR7b8C3Llq3QEfkn8PvTZg2',NULL,'bernardo@gmail.com',10,1671721707,1671721707,'7L5Q4ZqfHFjfML3rcYzCJaEA9Cu2PQsA_1671721707'),(29,'teste3','O45T70WzP2o1Mdn-pOV_Gd-HimtX9wG5','$2y$13$SrXmOSpUfF9IMVIXOgNI/uRDfSGW5rfwrZYtH71q/I6VdVMcczK9i',NULL,'teste@gmail.xd',10,1672148145,1672148145,'7-3Egl6UIZrrKsnBFq2M2bmjkuxJ8B9P_1672148145');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -510,4 +514,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-11 14:17:22
+-- Dump completed on 2023-01-03 12:56:16
