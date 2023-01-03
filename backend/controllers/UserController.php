@@ -91,21 +91,11 @@ class UserController extends Controller
      */
     public function actionCreate()
     {
-        $model = new User();
+        $model= new CriarUsers();
+        if ($model->load(Yii::$app->request->post()) && $model->signup()) {
 
-        if ($this->request->isPost) {
-            $user = new User();
-            $user->username = $this->username;
-            $user->email = $this->email;
-            $user->setPassword($this->password);
-            $user->status=10;
-            $user->generateAuthKey();
-            $user->generateEmailVerificationToken();
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
-            }
-        } else {
-            $model->loadDefaultValues();
+            Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
+            return $this->goHome();
         }
 
         return $this->render('create', [
