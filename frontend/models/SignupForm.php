@@ -76,6 +76,7 @@ class SignupForm extends Model
         //Verificar se o utilizador e o perfil estão válidos para serem introduzidos na base de dados
         if(!$user->validate()||!$profile->validate()){
             return false;
+            return '';
 
         }
         //Salvar utilizador e perfil
