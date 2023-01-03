@@ -32,7 +32,7 @@ use yii\bootstrap5\Html;
                     } ?>
 
                     <li class="nav-item"><a class="nav-link" href="<?= Url::to('/site/about'); ?>">Sobre Nós</a></li>
-                    <li class="nav-item"><a class="nav-link" href="<?= Url::to('/site/contact'); ?>">Contactos</a></li>
+              
 
                     <?php if(Yii::$app->user->isGuest){
                         ?>
