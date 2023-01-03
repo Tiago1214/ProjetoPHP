@@ -80,7 +80,7 @@ class SignupForm extends Model
 
         }
         //Salvar utilizador e perfil
-        if($user->save()){
+        if(!$user->save()){
 
             //Atribuir o id de utilizador ao role a ao perfil depois do utilizador ser salvo
             $auth->assign($authorRole,$user->getId());
