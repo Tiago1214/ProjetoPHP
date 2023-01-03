@@ -21,8 +21,8 @@ use yii\bootstrap5\Html;
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Reservas</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown-a">
-                            <a class="dropdown-item" href="reservation.php">Marcar Reserva</a>
-                            <a class="dropdown-item" href="stuff.php">Visualizar Reservas</a>
+                            <a class="dropdown-item" href="<?= Url::to('/reserva/create'); ?>">Marcar Reserva</a>
+                            <a class="dropdown-item" href="<?= Url::to('/reserva/index'); ?>">Visualizar Reservas</a>
                         </div>
                     </li>
 
