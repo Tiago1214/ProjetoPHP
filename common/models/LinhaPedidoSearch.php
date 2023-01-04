@@ -7,7 +7,7 @@ use yii\data\ActiveDataProvider;
 use common\models\LinhaPedido;
 
 /**
- * LinhaPedidoSearch represents the model behind the search form of `backend\models\LinhaPedido`.
+ * LinhaPedidoSearch represents the model behind the search form of `common\models\LinhaPedido`.
  */
 class LinhaPedidoSearch extends LinhaPedido
 {

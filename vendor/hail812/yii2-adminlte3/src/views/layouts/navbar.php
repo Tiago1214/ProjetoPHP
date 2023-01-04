@@ -16,9 +16,21 @@ use yii\bootstrap5\Html;
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-            <?= Html::a('<i class="fas fa-sign-out-alt"></i>', ['/site/logout'], ['data-method' => 'post', 'class' => 'nav-link']) ?>
-        </li>
+        <div class="card">
+                <div class="margin">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default"><?= Yii::$app->user->identity->username; ?></button>
+                        <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <div class="dropdown-menu" role="menu">
+                            <?= Html::a('Mudar dados', ['/user/update','id'=>Yii::$app->user->getId()], ['data-method' => 'post', 'class' => 'dropdown-item nav-link']) ?>
+                            <div class="dropdown-divider"></div>
+                            <?= Html::a('<i class="fas fa-sign-out-alt">Terminar Sessão</i>', ['/site/logout'], ['data-method' => 'post', 'class' => 'nav-link']) ?>
+                        </div>
+                    </div>
+                </div>
+        </div>
         <li class="nav-item">
             <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                 <i class="fas fa-expand-arrows-alt"></i>
