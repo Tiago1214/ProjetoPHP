@@ -2,12 +2,15 @@
 
 namespace backend\controllers;
 
+use backend\models\CriarUsers;
 use common\models\Profile;
 use common\models\ProfileSearch;
+use common\models\User;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use Yii;
 
 /**
  * ProfileController implements the CRUD actions for Profile model.
@@ -45,7 +48,7 @@ class ProfileController extends Controller
                             'roles'=>['admin','funcionario'],
                         ],
                         [
-                            'actions' => ['create','view','update','estado','delete'], // add all actions to take guest to login page
+                            'actions' => ['view','update','estado','delete','create'], // add all actions to take guest to login page
                             'allow' => true,
                             'roles' => ['admin'],
                         ],
@@ -91,14 +94,11 @@ class ProfileController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Profile();
+        $model= new CriarUsers();
+        if ($model->load(Yii::$app->request->post()) && $model->signup()) {
 
-        if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
-            }
-        } else {
-            $model->loadDefaultValues();
+            Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
+            return $this->redirect('../user/index');
         }
 
         return $this->render('create', [
@@ -116,8 +116,9 @@ class ProfileController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        if ($this->request->isPost && $model->load($this->request->post())) {
+            $model->save();
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -150,6 +151,14 @@ class ProfileController extends Controller
     protected function findModel($id)
     {
         if (($model = Profile::findOne(['id' => $id])) !== null) {
+            return $model;
+        }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
+    }
+    protected function findModel1($id)
+    {
+        if (($model = User::findOne(['id' => $id])) !== null) {
             return $model;
         }
 

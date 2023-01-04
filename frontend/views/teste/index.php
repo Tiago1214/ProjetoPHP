@@ -6,11 +6,12 @@
 <br>
 <br>
 <br>
+
 <?php
 // usage without model
 echo '<label>Check Issue Date</label>';
 echo DatePicker::widget([
-'name' => 'check_issue_date',
+'name' => 'data',
 'value' => date('d-M-Y', strtotime('+2 days')),
 'options' => ['placeholder' => 'Select issue date ...'],
 'pluginOptions' => [

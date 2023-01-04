@@ -47,8 +47,8 @@ use yii\bootstrap5\Html;
                         'icon' => 'th',
                         'badge' => '<span class="right badge badge-info">3</span>',
                         'items' => [
-                            ['label' => 'Visualizar todos os Utilizadores', 'url' => ['user/index'], 'iconStyle' => 'far'],
-                            ['label' => 'Criar Utilizador', 'iconStyle' => 'far','url' => ['user/create']],
+                            ['label' => 'Visualizar todos os Utilizadores', 'url' => ['profile/index'], 'iconStyle' => 'far'],
+                            ['label' => 'Criar Utilizador', 'iconStyle' => 'far','url' => ['profile/create']],
                         ]
                     ],
                     [
