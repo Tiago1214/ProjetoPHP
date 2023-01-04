@@ -66,7 +66,7 @@ use yii\bootstrap5\Html;
                         'items' => [
                             ['label' => 'Visualizar Artigos', 'url' => ['artigo/index'], 'iconStyle' => 'far'],
 
-                            ['label' => 'Criar Artigo', 'iconStyle' => 'far'],
+                            ['label' => 'Criar Artigo', 'url' => ['artigo/create'], 'iconStyle' => 'far'],
 
                         ]
                     ],

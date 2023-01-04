@@ -2,7 +2,7 @@
 
 namespace backend\controllers;
 
-
+use backend\models\Mesa;
 use backend\models\MetodoPagamento;
 use common\models\Pedido;
 use common\models\PedidoSearch;
@@ -93,8 +93,10 @@ class PedidoController extends Controller
     public function actionCreate()
     {
         $model = new Pedido();
+        //$username=User::find()->All();
         $metodo_pagamento=MetodoPagamento::find()->where(['estado'=> 1])->All();
         $mesa=Mesa::find()->all();
+
 
 
         if ($this->request->isPost) {

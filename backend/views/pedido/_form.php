@@ -17,18 +17,15 @@ use yii\helpers\ArrayHelper;
 
     <?= $form->field($model, 'total')->textInput() ?>
 
-    <?= $form->field($model, 'tipo_pedido')->textInput() ?>
+    <?= $form->field($model, 'tipo_pedido')->dropDownList([0=>'Restaurante',1=>'Takeaway']) ?>
 
     <?= $form->field($model, 'profile_id')->textInput() ?>
 
-    <?php // $form->field($model, 'metodo_pagamento_id')->textInput() ?>
-
+    <?= $form->field($model, 'profile_id')->dropDownList([items],[options]) ?>
 
     <?= $form->field($model, 'metodo_pagamento_id')->dropDownList(
         \yii\helpers\ArrayHelper::map($metodo_pagamento,'id','nomepagamento'), ['separator' => '<br>']
     )?>
-
-    <?php // $form->field($model, 'mesa_id')->textInput() ?>
 
     <?= $form->field($model, 'mesa_id')->dropDownList(
         \yii\helpers\ArrayHelper::map($mesa,'id','nrmesa'), ['separator' => '<br>']
