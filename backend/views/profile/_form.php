@@ -14,8 +14,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'numcontribuinte')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
-
     <?= $form->field($model, 'telemovel')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'estado')->textInput(['maxlength' => true]) ?>

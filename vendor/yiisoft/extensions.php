@@ -3,16 +3,6 @@
 $vendorDir = dirname(__DIR__);
 
 return array (
-  'yiisoft/yii2-bootstrap5' => 
-  array (
-    'name' => 'yiisoft/yii2-bootstrap5',
-    'version' => '2.0.3.0',
-    'alias' => 
-    array (
-      '@yii/bootstrap5' => $vendorDir . '/yiisoft/yii2-bootstrap5/src',
-    ),
-    'bootstrap' => 'yii\\bootstrap5\\i18n\\TranslationBootstrap',
-  ),
   'yiisoft/yii2-debug' => 
   array (
     'name' => 'yiisoft/yii2-debug',
@@ -76,14 +66,15 @@ return array (
       '@hail812/adminlte3' => $vendorDir . '/hail812/yii2-adminlte3/src',
     ),
   ),
-  'yiisoft/yii2-jui' => 
+  'yiisoft/yii2-bootstrap5' => 
   array (
-    'name' => 'yiisoft/yii2-jui',
-    'version' => '2.0.7.0',
+    'name' => 'yiisoft/yii2-bootstrap5',
+    'version' => '2.0.4.0',
     'alias' => 
     array (
-      '@yii/jui' => $vendorDir . '/yiisoft/yii2-jui',
+      '@yii/bootstrap5' => $vendorDir . '/yiisoft/yii2-bootstrap5/src',
     ),
+    'bootstrap' => 'yii\\bootstrap5\\i18n\\TranslationBootstrap',
   ),
   'kartik-v/yii2-krajee-base' => 
   array (
@@ -92,15 +83,6 @@ return array (
     'alias' => 
     array (
       '@kartik/base' => $vendorDir . '/kartik-v/yii2-krajee-base/src',
-    ),
-  ),
-  'kartik-v/yii2-widget-timepicker' => 
-  array (
-    'name' => 'kartik-v/yii2-widget-timepicker',
-    'version' => 'dev-master',
-    'alias' => 
-    array (
-      '@kartik/time' => $vendorDir . '/kartik-v/yii2-widget-timepicker/src',
     ),
   ),
   'kartik-v/yii2-widget-datepicker' => 

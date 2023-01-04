@@ -2,12 +2,16 @@
 
 namespace backend\controllers;
 
+use backend\models\MetodoPagamento;
 use common\models\Pedido;
 use common\models\PedidoSearch;
+use common\models\Profile;
+use common\models\User;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use Yii;
 
 /**
  * PedidoController implements the CRUD actions for Pedido model.

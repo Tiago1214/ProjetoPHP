@@ -24,9 +24,21 @@ use kartik\time\TimePicker;
         <h1 style="text-align: center">Criar Reserva</h1>
         <?php $form = ActiveForm::begin(); ?>
 
-        <?= $form->field($model, 'data')->textInput() ?>
+        <?php
+        echo  '<label class="form-label">Birth Date</label>';
+            echo DatePicker::widget([
+                    'name' => 'data',
+                    'attribute'=>'data',
+                    'type' => DatePicker::TYPE_COMPONENT_APPEND,
 
-        <?= $form->field($model, 'hora')->textInput() ?>
+                'pluginOptions' => [
+                    'autoclose' => true,
+                    'format' => 'dd-M-yyyy'
+                ]
+]);
+        ?>
+
+        <?php echo TimePicker::widget(['model' => $model, 'attribute' => 'hora']); ?>
 
         <?= $form->field($model, 'nrpessoas')->textInput() ?>
 

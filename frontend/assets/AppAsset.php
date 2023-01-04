@@ -24,6 +24,8 @@ class AppAsset extends AssetBundle
         'css/classic.time.css',
         'css/font-awesome.min.css',
         'css/superslides.css',
+        'css/bootstrap.min.css.map',
+        'css/bootstrap.css.map',
     ];
     public $js = [
         'js/jquery.superslides.min.js',
@@ -41,6 +43,8 @@ class AppAsset extends AssetBundle
         'js/picker.js',
         'js/picker.time.js',
         'js/popper.min.js',
+        'js/bootstrap.min.js.map',
+        'js/popper.min.js.map'
     ];
     public $depends = [
         'yii\web\YiiAsset',

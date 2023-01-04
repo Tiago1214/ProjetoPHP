@@ -96,8 +96,8 @@ class ArtigoController extends Controller
     public function actionCreate()
     {
         $model = new Artigo();
-        $iva=\backend\models\Iva::find()->all();
-        $categoria=\common\models\Categoria::find()->all();
+        $iva=\backend\models\Iva::find()->where(['estado'=>1])->all();
+        $categoria=\common\models\Categoria::find()->where(['estado'=>1])->all();
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {
                 $model->data=Yii::$app->formatter->asDatetime('now', 'php:Y-m-d H:i:s');
