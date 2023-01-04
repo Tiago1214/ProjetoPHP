@@ -11,7 +11,7 @@ use yii\bootstrap5\Html;
                 <img src="<?=$assetDir?>/img/AdminLTELogo.png" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="<?= Url::to('../site/index'); ?>" class="d-block">Barra Lateral</a>
+                <a href="<?= Url::to('../site/index'); ?>" class="d-block">GERSOFT</a>
             </div>
         </div>
 
@@ -65,7 +65,9 @@ use yii\bootstrap5\Html;
                         'badge' => '<span class="right badge badge-info">2</span>',
                         'items' => [
                             ['label' => 'Visualizar Artigos', 'url' => ['artigo/index'], 'iconStyle' => 'far'],
-                            ['label' => 'Criar Artigo', 'iconStyle' => 'far'],
+
+                            ['label' => 'Criar Artigo', 'url' => ['artigo/create'], 'iconStyle' => 'far'],
+
                         ]
                     ],
                     ['label' => 'Categorias', 'iconStyle' => 'far','url' => ['categoria/index']],
