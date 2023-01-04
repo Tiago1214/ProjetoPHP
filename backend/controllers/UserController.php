@@ -4,6 +4,8 @@ namespace backend\controllers;
 
 use common\models\User;
 use common\models\UserSearch;
+use backend\models\CriarUsers;
+use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -95,7 +97,7 @@ class UserController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->signup()) {
 
             Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
-            return $this->goHome();
+            return $this->redirect('../user/index');
         }
 
         return $this->render('create', [
