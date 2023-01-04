@@ -10,12 +10,10 @@ use yii\grid\GridView;
 /** @var backend\models\ProfileSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Profiles';
+$this->title = 'Utilizadores';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="profile-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
         <?= Html::a('Create Profile', ['create'], ['class' => 'btn btn-success']) ?>
@@ -29,9 +27,19 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            [
+                'attribute' => 'Nome de Utilizador',
+                'value' => function($model){
+                    return $model->user->username;
+                }
+            ],
+            [
+                'attribute' => 'Email',
+                'value' => function($model){
+                    return $model->user->email;
+                }
+            ],
             'numcontribuinte',
-            'email:email',
             'telemovel',
             'estado',
             //'user_id',

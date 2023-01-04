@@ -46,11 +46,6 @@ class UserController extends Controller
                             'allow'=>true,
                             'roles'=>['admin','funcionario'],
                         ],
-                        [
-                            'actions'=>['create','view','update','estado','delete'],
-                            'allow'=>true,
-                            'roles'=>['admin'],
-                        ],
                     ],
                 ],
             ]
