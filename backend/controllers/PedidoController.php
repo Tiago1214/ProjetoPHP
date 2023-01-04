@@ -2,8 +2,12 @@
 
 namespace backend\controllers;
 
+
 use backend\models\Pedido;
 use backend\models\PedidoSearch;
+use backend\models\MetodoPagamento;
+use yii\filters\AccessControl;
+
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -68,6 +72,9 @@ class PedidoController extends Controller
     public function actionCreate()
     {
         $model = new Pedido();
+        $metodo_pagamento=MetodoPagamento::find()->where(['estado'=> 1])->All();
+        $mesa=Mesa::find()->all();
+
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
@@ -79,6 +86,8 @@ class PedidoController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'metodo_pagamento' => $metodo_pagamento,
+            'mesa' => $mesa,
         ]);
     }
 
@@ -86,12 +95,16 @@ class PedidoController extends Controller
      * Updates an existing Pedido model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
+     * @param int $metodo_pagamento_id ID
+     * @param int $mesa_id ID
      * @return string|\yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $metodo_pagamento=MetodoPagamento::find()->where(['estado'=>1]);
+        $mesa=Mesa::find()->all();
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -99,6 +112,8 @@ class PedidoController extends Controller
 
         return $this->render('update', [
             'model' => $model,
+            'metodo_pagamento' => $metodo_pagamento,
+            'mesa' => $mesa,
         ]);
     }
 

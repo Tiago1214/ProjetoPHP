@@ -65,8 +65,12 @@ use yii\bootstrap5\Html;
                         'badge' => '<span class="right badge badge-info">2</span>',
                         'items' => [
                             ['label' => 'Visualizar Artigos', 'url' => ['artigo/index'], 'iconStyle' => 'far'],
+<<<<<<< Updated upstream
                             ['label' => 'Editar Artigos', 'iconStyle' => 'far'],
                             ['label' => 'Desativar Artigos', 'iconStyle' => 'far'],
+=======
+                            ['label' => 'Criar Artigo', 'url' => ['artigo/create'],'iconStyle' => 'far'],
+>>>>>>> Stashed changes
                         ]
                     ],
                     ['label' => 'Categorias', 'iconStyle' => 'far','url' => ['categoria/index']],
