@@ -71,6 +71,7 @@ use yii\bootstrap5\Html;
                     ['label' => 'Categorias', 'iconStyle' => 'far','url' => ['categoria/index']],
                     ['label' => 'Ivas', 'iconStyle' => 'far','url' => ['iva/index']],
                     ['label' => 'Comentários', 'iconStyle' => 'far','url' => ['comentario/index']],
+                    ['label' => 'Mesas', 'iconStyle' => 'far','url' => ['mesa/index']],
                     ['label' => 'Empresa', 'iconStyle' => 'far','url' => ['empresa/index']],
                 ],
             ]);

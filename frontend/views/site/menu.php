@@ -29,12 +29,17 @@
 					<div class="tab-content" id="v-pills-tabContent">
 						<div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                             <?php foreach($categorias as $categoria){
-                             ?>
-                            <h3 style="text-align: left;font-weight: bold"><?=$categoria->nome ?></h3>
-                            <h4><?=$categoria->descricao?></h4>
+                                if($categoria->estado==1){
+                                    ?>
+                                    <h3 style="text-align: left;font-weight: bold"><?=$categoria->nome ?></h3>
+                                    <h4><?=$categoria->descricao?></h4>
+                            <?php
+                                }?>
+
+
 							<div class="row">
                                 <?php foreach($artigos as $artigo){
-                                    if($artigo->categoria_id==$categoria->id){
+                                    if($artigo->categoria_id==$categoria->id&&$artigo->categoria->estado==1&&$artigo->estado==1){
                                         ?>
                                         <div class="col-lg-4 col-md-6 special-grid drinks">
                                             <div class="gallery-single fix">
