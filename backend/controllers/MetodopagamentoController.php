@@ -2,17 +2,17 @@
 
 namespace backend\controllers;
 
-use common\models\LinhaPedido;
-use common\models\LinhaPedidoSearch;
+use backend\models\MetodoPagamento;
+use backend\models\MetodoPagamentoSearch;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * LinhaPedidoController implements the CRUD actions for LinhaPedido model.
+ * MetodoPagamentoController implements the CRUD actions for MetodoPagamento model.
  */
-class LinhaPedidoController extends Controller
+class MetodopagamentoController extends Controller
 {
     /**
      * @inheritDoc
@@ -30,8 +30,8 @@ class LinhaPedidoController extends Controller
                 ],
                 'access' => [
                     /**
-                     * As linhas de pedido fazem parte do pedido em si portanto tanto os funcionários como os admins
-                     * tem as mesmas funções
+                     * Nos métodos de pagamento os funcionários só podem visualizar os métodos existentes
+                     * Os admins podem realizar todas as funções
                      */
                     'class' => AccessControl::class,
                     'rules' => [
@@ -40,25 +40,29 @@ class LinhaPedidoController extends Controller
                             'allow' => true,
                         ],
                         [
-                            'actions' => ['logout', 'index','view','create','update','estado','delete'], // add all actions to take guest to login page
+                            'actions' => ['logout', 'index','view'], // add all actions to take guest to login page
                             'allow' => true,
                             'roles' => ['admin','funcionario'],
+                        ],
+                        [
+                            'actions'=>['create','update','estado','delete'],
+                            'allow'=>true,
+                            'roles'=>['admin'],
                         ],
                     ],
                 ],
             ]
-
         );
     }
 
     /**
-     * Lists all LinhaPedido models.
+     * Lists all MetodoPagamento models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new LinhaPedidoSearch();
+        $searchModel = new MetodoPagamentoSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -68,31 +72,30 @@ class LinhaPedidoController extends Controller
     }
 
     /**
-     * Displays a single LinhaPedido model.
+     * Displays a single MetodoPagamento model.
      * @param int $id ID
-     * @param int $pedido_id Pedido ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id, $pedido_id)
+    public function actionView($id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($id, $pedido_id),
+            'model' => $this->findModel($id),
         ]);
     }
 
     /**
-     * Creates a new LinhaPedido model.
+     * Creates a new MetodoPagamento model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new LinhaPedido();
+        $model = new MetodoPagamento();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id, 'pedido_id' => $model->pedido_id]);
+                return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
             $model->loadDefaultValues();
@@ -104,19 +107,18 @@ class LinhaPedidoController extends Controller
     }
 
     /**
-     * Updates an existing LinhaPedido model.
+     * Updates an existing MetodoPagamento model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
-     * @param int $pedido_id Pedido ID
      * @return string|\yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id, $pedido_id)
+    public function actionUpdate($id)
     {
-        $model = $this->findModel($id, $pedido_id);
+        $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id, 'pedido_id' => $model->pedido_id]);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
@@ -125,31 +127,29 @@ class LinhaPedidoController extends Controller
     }
 
     /**
-     * Deletes an existing LinhaPedido model.
+     * Deletes an existing MetodoPagamento model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
-     * @param int $pedido_id Pedido ID
      * @return \yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id, $pedido_id)
+    public function actionDelete($id)
     {
-        $this->findModel($id, $pedido_id)->delete();
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the LinhaPedido model based on its primary key value.
+     * Finds the MetodoPagamento model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @param int $pedido_id Pedido ID
-     * @return LinhaPedido the loaded model
+     * @return MetodoPagamento the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id, $pedido_id)
+    protected function findModel($id)
     {
-        if (($model = LinhaPedido::findOne(['id' => $id, 'pedido_id' => $pedido_id])) !== null) {
+        if (($model = MetodoPagamento::findOne(['id' => $id])) !== null) {
             return $model;
         }
 

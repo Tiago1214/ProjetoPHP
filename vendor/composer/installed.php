@@ -3,8 +3,7 @@
         'name' => 'yiisoft/yii2-app-advanced',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-
-        'reference' => '70003d1b7daab98595a20e3a607bad4b4a11bd33',
+        'reference' => '3a45d1cc63259c1c7cca386ea35fb6532223ea84',
 
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
@@ -152,6 +151,15 @@
             'replaced' => array(
                 0 => '*',
             ),
+        ),
+        'codeception/specify' => array(
+            'pretty_version' => '2.0.0',
+            'version' => '2.0.0.0',
+            'reference' => 'b718b4b9bb722be4756aa7c9aa7e89b6babc2cf6',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../codeception/specify',
+            'aliases' => array(),
+            'dev_requirement' => true,
         ),
         'codeception/stub' => array(
             'pretty_version' => '4.1.0',
@@ -837,8 +845,7 @@
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
 
-            'reference' => '70003d1b7daab98595a20e3a607bad4b4a11bd33',
-
+            'reference' => '3a45d1cc63259c1c7cca386ea35fb6532223ea84',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

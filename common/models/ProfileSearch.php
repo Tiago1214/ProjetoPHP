@@ -18,7 +18,7 @@ class ProfileSearch extends Profile
     {
         return [
             [['id', 'user_id'], 'integer'],
-            [['numcontribuinte', 'email', 'telemovel', 'estado'], 'safe'],
+            [['numcontribuinte', 'telemovel', 'estado'], 'safe'],
         ];
     }
 
@@ -63,7 +63,6 @@ class ProfileSearch extends Profile
         ]);
 
         $query->andFilterWhere(['like', 'numcontribuinte', $this->numcontribuinte])
-            ->andFilterWhere(['like', 'email', $this->email])
             ->andFilterWhere(['like', 'telemovel', $this->telemovel])
             ->andFilterWhere(['like', 'estado', $this->estado]);
 

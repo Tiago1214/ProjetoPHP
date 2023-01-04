@@ -5,7 +5,7 @@ namespace common\models;
 use Yii;
 
 /**
- * This is the model class for table "linha_pedido".
+ * This is the model class for table "linhapedido".
  *
  * @property int $id
  * @property string $data
@@ -17,14 +17,14 @@ use Yii;
  * @property Artigo $artigo
  * @property Pedido $pedido
  */
-class LinhaPedido extends \yii\db\ActiveRecord
+class Linhapedido extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'linha_pedido';
+        return 'linhapedido';
     }
 
     /**

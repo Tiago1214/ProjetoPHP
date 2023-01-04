@@ -5,7 +5,7 @@ namespace backend\models;
 use Yii;
 
 /**
- * This is the model class for table "metodo_pagamento".
+ * This is the model class for table "metodopagamento".
  *
  * @property int $id
  * @property string $nomepagamento
@@ -13,14 +13,14 @@ use Yii;
  *
  * @property Pedido[] $pedidos
  */
-class MetodoPagamento extends \yii\db\ActiveRecord
+class Metodopagamento extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'metodo_pagamento';
+        return 'metodopagamento';
     }
 
     /**
@@ -29,9 +29,9 @@ class MetodoPagamento extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nomepagamento', 'estado'], 'required','message'=>'Os campos selecionados são de preenchimento obrigatório'],
+            [['nomepagamento', 'estado'], 'required'],
             [['estado'], 'integer'],
-            [['nomepagamento'], 'string', 'max' => 255,'O campo nome de pagamento tem um máximo de 255 carateres'],
+            [['nomepagamento'], 'string', 'max' => 255],
         ];
     }
 

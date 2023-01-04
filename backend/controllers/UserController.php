@@ -42,14 +42,9 @@ class UserController extends Controller
                             'allow' => true,
                         ],
                         [
-                            'actions'=>['logout', 'index',],
+                            'actions'=>['logout', 'index','update'],
                             'allow'=>true,
                             'roles'=>['admin','funcionario'],
-                        ],
-                        [
-                            'actions'=>['create','view','update','estado','delete'],
-                            'allow'=>true,
-                            'roles'=>['admin'],
                         ],
                     ],
                 ],
@@ -117,8 +112,10 @@ class UserController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        //dd($model);
+        if ($this->request->isPost && $model->load($this->request->post())) {
+            $model->save(false);
+            return $this->redirect(['site/index']);
         }
 
         return $this->render('update', [
