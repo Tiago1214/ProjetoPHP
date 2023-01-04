@@ -11,7 +11,7 @@ use yii\bootstrap5\Html;
                 <img src="<?=$assetDir?>/img/AdminLTELogo.png" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="<?= Url::to('../site/index'); ?>" class="d-block">Barra Lateral</a>
+                <a href="<?= Url::to('../site/index'); ?>" class="d-block">GERSOFT</a>
             </div>
         </div>
 
