@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use backend\models\MetodoPagamento;
 use common\models\Pedido;
 use common\models\PedidoSearch;
 use common\models\Profile;

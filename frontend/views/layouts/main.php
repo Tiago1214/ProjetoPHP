@@ -13,6 +13,7 @@ use yii\bootstrap5\NavBar;
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
+
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>" class="h-100">
 <head>
@@ -41,5 +42,7 @@ AppAsset::register($this);
 
 <?php $this->endBody() ?>
 </body>
+<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js" crossorigin="anonymous"></script>
+
 </html>
 <?php $this->endPage();

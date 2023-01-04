@@ -14,8 +14,8 @@ class ComposerStaticInit734d01053424e27e2149237ba3b6bf3c
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
         '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
-        '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
+        '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
@@ -29,7 +29,6 @@ class ComposerStaticInit734d01053424e27e2149237ba3b6bf3c
         'y' => 
         array (
             'yii\\symfonymailer\\' => 18,
-            'yii\\jui\\' => 8,
             'yii\\gii\\' => 8,
             'yii\\faker\\' => 10,
             'yii\\debug\\' => 10,
@@ -40,7 +39,6 @@ class ComposerStaticInit734d01053424e27e2149237ba3b6bf3c
         ),
         'k' => 
         array (
-            'kartik\\time\\' => 12,
             'kartik\\date\\' => 12,
             'kartik\\base\\' => 12,
         ),
@@ -118,10 +116,6 @@ class ComposerStaticInit734d01053424e27e2149237ba3b6bf3c
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2-symfonymailer/src',
         ),
-        'yii\\jui\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/yiisoft/yii2-jui',
-        ),
         'yii\\gii\\' => 
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2-gii/src',
@@ -149,10 +143,6 @@ class ComposerStaticInit734d01053424e27e2149237ba3b6bf3c
         'yii\\' => 
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2',
-        ),
-        'kartik\\time\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-timepicker/src',
         ),
         'kartik\\date\\' => 
         array (
