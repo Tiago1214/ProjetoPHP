@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use common\models\Profile;
 use common\models\User;
 use common\models\UserSearch;
 use backend\models\CriarUsers;

@@ -48,7 +48,12 @@ $this->params['breadcrumbs'][] = $this->title;
             //'updated_at',
             //'verification_token',
             [
-                'class' => ActionColumn::className(),
+                'buttons' => [
+                    'updateprof' => function($url,$model, $id) {     // render your custom button
+                        return Html::a('Update', ['/profile/update', 'id' => $model->profile->id], ['class'=>'btn btn-success btn-sm']) ;
+                    }
+                ],
+                'class' => 'yii\grid\ActionColumn', 'template' => '{view}{updateprof}{Ativar}',
                 'urlCreator' => function ($action, User $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }
