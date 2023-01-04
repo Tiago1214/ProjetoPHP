@@ -65,7 +65,9 @@ use yii\bootstrap5\Html;
                         'badge' => '<span class="right badge badge-info">2</span>',
                         'items' => [
                             ['label' => 'Visualizar Artigos', 'url' => ['artigo/index'], 'iconStyle' => 'far'],
+
                             ['label' => 'Criar Artigo', 'iconStyle' => 'far'],
+
                         ]
                     ],
                     ['label' => 'Categorias', 'iconStyle' => 'far','url' => ['categoria/index']],
