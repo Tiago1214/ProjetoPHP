@@ -37,7 +37,7 @@ class Pedido extends \yii\db\ActiveRecord
     {
         return [
 
-            [['data', 'total', 'tipo_pedido', 'estado', 'profile_id', 'metodo_pagamento_id', 'mesa_id'],
+            [['data', 'total', 'tipo_pedido', 'estado', 'profile_id'],
                 'required','message'=>'Os campos selecionados são de preenchimento obrigatório'],
             [['data'], 'safe'],
             [['total'], 'number'],
