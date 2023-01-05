@@ -1,6 +1,6 @@
 <?php
 
-use common\models\Mesa;
+use backend\models\Mesa;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Mesa', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Criar Mesa', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

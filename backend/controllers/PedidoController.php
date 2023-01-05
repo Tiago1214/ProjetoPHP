@@ -95,16 +95,23 @@ class PedidoController extends Controller
     {
         $model = new Pedido();
 
-        $roleModel = Yii::$app->db ->createCommand("Select * from auth_assignment where item_name='cliente'")->queryAll();
+        //$roleModel = Yii::$app->db ->createCommand("Select * from auth_assignment where item_name='cliente'")->queryAll();
 
-        $profile=User::find()->all();
-        $metodo_pagamento=MetodoPagamento::find()->where(['estado'=> 1])->All();
-        $mesa=Mesa::find()->all();
-
-
+        $profile=Profile::find()->all();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
+
+            if ($model->load($this->request->post())) {
+                $model->total=0.0;
+
+                $model->data=Yii::$app->formatter->asDatetime('now', 'php:Y-m-d H:i:s');
+
+                $model->mesa_id=null;
+                $model->metodo_pagamento_id=null;
+                $model->estado=1;
+
+                $model->save(false);
+
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
@@ -113,8 +120,6 @@ class PedidoController extends Controller
 
         return $this->render('create', [
             'model' => $model,
-            'metodo_pagamento' => $metodo_pagamento,
-            'mesa' => $mesa,
             'profile'=>$profile,
         ]);
     }

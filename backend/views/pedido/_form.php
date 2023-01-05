@@ -14,31 +14,18 @@ use kartik\select2\Select2;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'data')->textInput() ?>
-
-    <?= $form->field($model, 'total')->textInput() ?>
 
     <?= $form->field($model, 'tipo_pedido')->dropDownList([0=>'Restaurante',1=>'Takeaway']) ?>
 
-    <?php $profileData = ArrayHelper::map($profile, 'id', 'username',); ?>
-    <?php echo  Select2::widget([
-        'name' => 'profile_id',
-        'data' => $profileData,
-        'attribute'=>'profile_id',
+    <?php
+    echo  $form->field($model,'profile_id')->widget(Select2::className(),[
+        'data' => ArrayHelper::map($profile, 'id','numcontribuinte'),
         'size' => Select2::MEDIUM,
         'options' => ['placeholder' => 'Selecione um cliente...'],
         'pluginOptions' => [
             'allowClear' => true
         ],
     ]) ?>
-
-    <?= $form->field($model, 'metodo_pagamento_id')->dropDownList(
-        \yii\helpers\ArrayHelper::map($metodo_pagamento,'id','nomepagamento'), ['separator' => '<br>']
-    )?>
-
-    <?= $form->field($model, 'mesa_id')->dropDownList(
-        \yii\helpers\ArrayHelper::map($mesa,'id','nrmesa'), ['separator' => '<br>']
-    )?>
 
 
     <div class="form-group">

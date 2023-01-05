@@ -17,15 +17,12 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
             <?php ?>
 
-            <?= $form->field($model, 'email') ?>
-
-            <p>Se pretender Mudar a palavra-passe carregue no botão mudar palavra passe:</p>
+            <?= $form->field($model, 'password')->passwordInput() ?>
 
 
 
             <div class="form-group">
                 <?= Html::submitButton('Atualizar', ['class' => 'btn btn-primary']) ?>
-                <?= Html::a('Atualizar Palavra Passe',['user/updatepassword','id'=>Yii::$app->user->getId()],['class'=>'btn btn-danger'])?>
             </div>
 
             <?php ActiveForm::end(); ?>

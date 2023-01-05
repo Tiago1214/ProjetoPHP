@@ -27,8 +27,7 @@ use yii\bootstrap5\Modal;
 
         <?php
         echo  '<label class="form-label">Birth Date</label>';
-        echo  DatePicker::widget([
-            'name' => 'check_date',
+        echo  $form->field($model,'data')->widget(DatePicker::className(),[
             'value' => '01/29/2014',
             'removeButton' => false,
             'pluginOptions' => [
