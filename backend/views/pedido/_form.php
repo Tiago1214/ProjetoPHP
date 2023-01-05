@@ -20,13 +20,15 @@ use kartik\select2\Select2;
     <?php
     echo  $form->field($model,'profile_id')->widget(Select2::className(),[
         'data' => ArrayHelper::map($profile, 'id','numcontribuinte'),
+        'name' => 'profile_id',
+        'attribute'=>'profile_id',
         'size' => Select2::MEDIUM,
         'options' => ['placeholder' => 'Selecione um cliente...'],
         'pluginOptions' => [
             'allowClear' => true
         ],
     ]) ?>
-
+    
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
