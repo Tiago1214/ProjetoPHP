@@ -39,7 +39,9 @@ class ComposerStaticInit734d01053424e27e2149237ba3b6bf3c
         ),
         'k' => 
         array (
+            'kartik\\select2\\' => 15,
             'kartik\\date\\' => 12,
+            'kartik\\bs5dropdown\\' => 19,
             'kartik\\base\\' => 12,
         ),
         'h' => 
@@ -145,9 +147,17 @@ class ComposerStaticInit734d01053424e27e2149237ba3b6bf3c
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2',
         ),
+        'kartik\\select2\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-select2/src',
+        ),
         'kartik\\date\\' => 
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-datepicker/src',
+        ),
+        'kartik\\bs5dropdown\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-bootstrap5-dropdown/src',
         ),
         'kartik\\base\\' => 
         array (
@@ -304,11 +314,9 @@ class ComposerStaticInit734d01053424e27e2149237ba3b6bf3c
         ),
         'Codeception\\' => 
         array (
-
             0 => __DIR__ . '/..' . '/codeception/codeception/src/Codeception',
             1 => __DIR__ . '/..' . '/codeception/stub/src',
             2 => __DIR__ . '/..' . '/codeception/verify/src/Codeception',
-
         ),
     );
 
