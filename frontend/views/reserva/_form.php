@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kartik\date\DatePicker;
 use kartik\time\TimePicker;
+use yii\bootstrap5\Modal;
 
 /** @var yii\web\View $this */
 /** @var common\models\Reserva $model */
@@ -26,19 +27,18 @@ use kartik\time\TimePicker;
 
         <?php
         echo  '<label class="form-label">Birth Date</label>';
-            echo DatePicker::widget([
-                    'name' => 'data',
-                    'attribute'=>'data',
-                    'type' => DatePicker::TYPE_COMPONENT_APPEND,
-
-                'pluginOptions' => [
-                    'autoclose' => true,
-                    'format' => 'dd-M-yyyy'
-                ]
-]);
+        echo  DatePicker::widget([
+            'name' => 'check_date',
+            'value' => '01/29/2014',
+            'removeButton' => false,
+            'pluginOptions' => [
+                'autoclose' => true,
+                'format' => 'mm/dd/yyyy'
+            ]
+        ]);
         ?>
 
-        <?php echo TimePicker::widget(['model' => $model, 'attribute' => 'hora']); ?>
+        <?php //echo TimePicker::widget(['model' => $model, 'attribute' => 'hora']); ?>
 
         <?= $form->field($model, 'nrpessoas')->textInput() ?>
 

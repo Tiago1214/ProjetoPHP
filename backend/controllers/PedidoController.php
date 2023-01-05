@@ -11,6 +11,7 @@ use common\models\User;
 use yii\filters\AccessControl;
 
 
+use yii\rbac\Role;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -93,7 +94,10 @@ class PedidoController extends Controller
     public function actionCreate()
     {
         $model = new Pedido();
-        //$username=User::find()->All();
+
+        $roleModel = Yii::$app->db ->createCommand("Select * from auth_assignment where item_name='cliente'")->queryAll();
+
+        $profile=User::find()->all();
         $metodo_pagamento=MetodoPagamento::find()->where(['estado'=> 1])->All();
         $mesa=Mesa::find()->all();
 
@@ -111,6 +115,7 @@ class PedidoController extends Controller
             'model' => $model,
             'metodo_pagamento' => $metodo_pagamento,
             'mesa' => $mesa,
+            'profile'=>$profile,
         ]);
     }
 

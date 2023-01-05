@@ -19,9 +19,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <?= $form->field($model, 'email') ?>
 
+            <p>Se pretender Mudar a palavra-passe carregue no botão mudar palavra passe:</p>
+
+
 
             <div class="form-group">
                 <?= Html::submitButton('Atualizar', ['class' => 'btn btn-primary']) ?>
+                <?= Html::a('Atualizar Palavra Passe',['user/updatepassword'],['class'=>'btn btn-danger'])?>
             </div>
 
             <?php ActiveForm::end(); ?>

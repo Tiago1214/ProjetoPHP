@@ -3,8 +3,7 @@
         'name' => 'yiisoft/yii2-app-advanced',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '3a45d1cc63259c1c7cca386ea35fb6532223ea84',
-
+        'reference' => 'f2f0435c60efe59aed6c329f0653fa30d65ea934',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -260,6 +259,17 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'kartik-v/yii2-bootstrap5-dropdown' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '459e4c06c64e49f89ac372ce7c2cabb961f56ec9',
+            'type' => 'yii2-extension',
+            'install_path' => __DIR__ . '/../kartik-v/yii2-bootstrap5-dropdown',
+            'aliases' => array(
+                0 => '1.0.x-dev',
+            ),
+            'dev_requirement' => false,
+        ),
         'kartik-v/yii2-krajee-base' => array(
             'pretty_version' => 'v3.0.5',
             'version' => '3.0.5.0',
@@ -277,6 +287,17 @@
             'install_path' => __DIR__ . '/../kartik-v/yii2-widget-datepicker',
             'aliases' => array(
                 0 => '1.4.x-dev',
+            ),
+            'dev_requirement' => false,
+        ),
+        'kartik-v/yii2-widget-select2' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => 'f74f2cfbd5b4628ea578735890c39f9a8e4ed062',
+            'type' => 'yii2-extension',
+            'install_path' => __DIR__ . '/../kartik-v/yii2-widget-select2',
+            'aliases' => array(
+                0 => '2.2.x-dev',
             ),
             'dev_requirement' => false,
         ),
@@ -637,6 +658,15 @@
             'aliases' => array(),
             'dev_requirement' => true,
         ),
+        'select2/select2' => array(
+            'pretty_version' => '4.0.13',
+            'version' => '4.0.13.0',
+            'reference' => '45f2b83ceed5231afa7b3d5b12b58ad335edd82e',
+            'type' => 'component',
+            'install_path' => __DIR__ . '/../select2/select2',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'symfony/browser-kit' => array(
             'pretty_version' => 'v6.2.0',
             'version' => '6.2.0.0',
@@ -844,8 +874,7 @@
         'yiisoft/yii2-app-advanced' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-
-            'reference' => '3a45d1cc63259c1c7cca386ea35fb6532223ea84',
+            'reference' => 'f2f0435c60efe59aed6c329f0653fa30d65ea934',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

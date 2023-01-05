@@ -3,17 +3,15 @@
 $vendorDir = dirname(__DIR__);
 
 return array (
-
   'yiisoft/yii2-debug' => 
   array (
     'name' => 'yiisoft/yii2-debug',
-    'version' => '2.1.21.0',
+    'version' => '2.1.22.0',
     'alias' => 
     array (
       '@yii/debug' => $vendorDir . '/yiisoft/yii2-debug/src',
     ),
   ),
-
   'yiisoft/yii2-faker' => 
   array (
     'name' => 'yiisoft/yii2-faker',
@@ -68,7 +66,6 @@ return array (
       '@hail812/adminlte3' => $vendorDir . '/hail812/yii2-adminlte3/src',
     ),
   ),
-
   'yiisoft/yii2-bootstrap5' => 
   array (
     'name' => 'yiisoft/yii2-bootstrap5',
@@ -78,7 +75,6 @@ return array (
       '@yii/bootstrap5' => $vendorDir . '/yiisoft/yii2-bootstrap5/src',
     ),
     'bootstrap' => 'yii\\bootstrap5\\i18n\\TranslationBootstrap',
-
   ),
   'kartik-v/yii2-krajee-base' => 
   array (
@@ -89,7 +85,6 @@ return array (
       '@kartik/base' => $vendorDir . '/kartik-v/yii2-krajee-base/src',
     ),
   ),
-
   'kartik-v/yii2-widget-datepicker' => 
   array (
     'name' => 'kartik-v/yii2-widget-datepicker',
@@ -99,23 +94,22 @@ return array (
       '@kartik/date' => $vendorDir . '/kartik-v/yii2-widget-datepicker/src',
     ),
   ),
-  'yiisoft/yii2-bootstrap5' => 
+  'kartik-v/yii2-bootstrap5-dropdown' => 
   array (
-    'name' => 'yiisoft/yii2-bootstrap5',
-    'version' => '2.0.4.0',
+    'name' => 'kartik-v/yii2-bootstrap5-dropdown',
+    'version' => 'dev-master',
     'alias' => 
     array (
-      '@yii/bootstrap5' => $vendorDir . '/yiisoft/yii2-bootstrap5/src',
+      '@kartik/bs5dropdown' => $vendorDir . '/kartik-v/yii2-bootstrap5-dropdown/src',
     ),
-    'bootstrap' => 'yii\\bootstrap5\\i18n\\TranslationBootstrap',
   ),
-  'yiisoft/yii2-debug' => 
+  'kartik-v/yii2-widget-select2' => 
   array (
-    'name' => 'yiisoft/yii2-debug',
-    'version' => '2.1.22.0',
+    'name' => 'kartik-v/yii2-widget-select2',
+    'version' => 'dev-master',
     'alias' => 
     array (
-      '@yii/debug' => $vendorDir . '/yiisoft/yii2-debug/src',
+      '@kartik/select2' => $vendorDir . '/kartik-v/yii2-widget-select2/src',
     ),
   ),
 );
