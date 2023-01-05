@@ -21,7 +21,7 @@ use yii\helpers\ArrayHelper;
 
     <?= $form->field($model, 'profile_id')->textInput() ?>
 
-    <?= $form->field($model, 'profile_id')->dropDownList([items],[options]) ?>
+
 
     <?= $form->field($model, 'metodo_pagamento_id')->dropDownList(
         \yii\helpers\ArrayHelper::map($metodo_pagamento,'id','nomepagamento'), ['separator' => '<br>']
