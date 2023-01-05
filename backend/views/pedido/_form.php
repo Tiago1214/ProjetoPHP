@@ -28,7 +28,7 @@ use kartik\select2\Select2;
             'allowClear' => true
         ],
     ]) ?>
-    
+
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

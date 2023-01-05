@@ -19,8 +19,6 @@ use yii\helpers\ArrayHelper;
 
     <?= $form->field($model, 'referencia')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'quantidade')->textInput() ?>
-
     <?= $form->field($model, 'preco')->textInput() ?>
 
     <?= $form->field($model, 'imagem')->fileInput() ?>

@@ -13,7 +13,6 @@ use Yii;
  * @property string $nome
  * @property string $descricao
  * @property string $referencia
- * @property int $quantidade
  * @property float $preco
  * @property string $data
  * @property string|null $imagem
@@ -41,9 +40,9 @@ class Artigo extends \yii\db\ActiveRecord
         return [
 
 
-            [['nome', 'descricao', 'referencia', 'quantidade', 'preco', 'data', 'estado', 'iva_id', 'categoria_id'],
+            [['nome', 'descricao', 'referencia', 'preco', 'data', 'estado', 'iva_id', 'categoria_id'],
                 'required','message'=>'Os campos selecionados são de preenchimento obrigatório'],
-            [['quantidade', 'estado', 'iva_id', 'categoria_id'], 'integer'],
+            [['estado', 'iva_id', 'categoria_id'], 'integer'],
             [['preco'], 'number'],
             [['data'], 'safe'],
             [['nome'], 'string', 'max' => 200,'message'=>'O campo nome tem um máximo de 200 carateres'],
@@ -65,7 +64,6 @@ class Artigo extends \yii\db\ActiveRecord
             'nome' => 'Nome',
             'descricao' => 'Descricao',
             'referencia' => 'Referencia',
-            'quantidade' => 'Quantidade',
             'preco' => 'Preco',
             'data' => 'Data',
 

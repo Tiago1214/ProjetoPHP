@@ -2,8 +2,10 @@
 
 namespace backend\controllers;
 
+use common\models\Artigo;
 use common\models\LinhaPedido;
 use common\models\LinhaPedidoSearch;
+use common\models\Pedido;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -66,13 +68,25 @@ class LinhapedidoController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
-    public function actionCreate()
+    public function actionCreate($idp)
     {
         $model = new LinhaPedido();
-
+        $pedido=Pedido::find()->where(['id'=>$idp])->all();
+        $linhaspedido=LinhaPedido::find()->where(['pedido_id'=>$idp])->all();
+        $artigo=Artigo::find()->where(['estado'=>[1]])->all();
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id, 'pedido_id' => $model->pedido_id]);
+            if ($model->load($this->request->post())) {
+                $findartigo=Artigo::find()->where(['id'=>$model->artigo_id])->all();
+                foreach($findartigo as $art){
+                    $model->valorunitario=$art->preco;
+                    $model->valoriva =$art->preco*($art->iva->taxaiva/100);
+                    $model->taxaiva=$art->iva->taxaiva;
+                }
+
+                $model->pedido_id=$idp;
+
+                $model->save(false);
+                return $this->redirect(['create', 'idp' => $idp]);
             }
         } else {
             $model->loadDefaultValues();
@@ -80,6 +94,9 @@ class LinhapedidoController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'pedido'=>$pedido,
+            'linhaspedido'=>$linhaspedido,
+            'artigo'=>$artigo,
         ]);
     }
 
