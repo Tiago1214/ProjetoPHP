@@ -34,7 +34,7 @@ class ArtigoController extends Controller
                     'class' => AccessControl::class,
                     'rules' => [
                         /**
-                         *Nos artigos os funcionários só podem criar novos artigos, alterá-los e visualizá-los
+                         *Nos artigos os funcionários só podem criar artigos, alterá-los e visualizá-los
                          *Nos artigos os admins podem realizar todas as ações necessárias para o funcionamento dos mesmos
                          */
                         [

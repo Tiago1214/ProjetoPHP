@@ -5,14 +5,12 @@ use yii\helpers\Html;
 /** @var yii\web\View $this */
 /** @var backend\models\MetodoPagamento $model */
 
-$this->title = 'Update Metodo Pagamento: ' . $model->id;
+$this->title = 'Atualizar Método Pagamento: ' . $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Metodo Pagamentos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="metodo-pagamento-update">
-
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_form', [
         'model' => $model,

@@ -74,7 +74,7 @@ use yii\helpers\ArrayHelper;
                         <td><?= $form->field($model,'quantidade')->textInput() ?></td>
                         <td>
                             <div class="form-group">
-                                <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+                                <?= Html::submitButton('Adicionar Artigo', ['class' => 'btn btn-success']) ?>
                             </div>
                         </td>
                     </tr>
@@ -128,7 +128,11 @@ use yii\helpers\ArrayHelper;
                 <div class="col-lg-2"></div>
                 <div class="col-lg-2"></div>
                 <div class="col-lg-2">
-                    <button type="submit" class="btn btn-success">Gerar</button>
+                    <?php  foreach($pedido as $ped){
+                        ?>
+                        <?php echo Html::a('Ativar', ['/pedido/finalizarpedido', 'idp' =>$ped->id ], ['class'=>'btn btn-success']) ; ?>
+                    <?php
+                    }?>
 
                 </div>
             </div>

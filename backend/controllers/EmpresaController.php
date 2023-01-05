@@ -32,6 +32,7 @@ class EmpresaController extends Controller
                     /**
                      *Neste controlador só os admins tem acesso.
                      *Os funcionários não podem realizar nenhuma operação na empresa.
+                     * Neste controlador não se pode criar nem apagar empresas.
                      */
                     'class' => AccessControl::class,
                     'rules' => [
@@ -40,7 +41,7 @@ class EmpresaController extends Controller
                             'allow' => true,
                         ],
                         [
-                            'actions' => ['logout', 'index','update','view','create','delete'],
+                            'actions' => ['logout', 'index','update','view'],
                             'allow' => true,
                             'roles' => ['admin'],
                         ],

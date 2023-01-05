@@ -19,7 +19,7 @@ class ArtigoSearch extends Artigo
     public function rules()
     {
         return [
-            [['id', 'quantidade', 'estado', 'iva_id', 'categoria_id'], 'integer'],
+            [['id', 'estado', 'iva_id', 'categoria_id'], 'integer'],
             [['nome', 'descricao', 'referencia', 'data', 'imagem'], 'safe'],
             [['preco'], 'number'],
         ];
@@ -62,7 +62,6 @@ class ArtigoSearch extends Artigo
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'quantidade' => $this->quantidade,
             'preco' => $this->preco,
             'data' => $this->data,
             'estado' => $this->estado,
