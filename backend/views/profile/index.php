@@ -41,10 +41,34 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'numcontribuinte',
             'telemovel',
-            'estado',
+            [
+                'attribute' => 'estado',
+                'value' => function($model){
+                    if($model->estado == 0){
+                        return 'Desativo';
+                    }
+                    else if($model->estado==1){
+                        return 'Ativo';
+                    }
+                    else{
+                        return 'Erro';
+                    }
+                }
+            ],
             //'user_id',
             [
-                'class' => ActionColumn::className(),
+                'buttons' => [
+                    'Ativar' => function($url,$model, $id) {     // render your custom button
+                        if($model->estado==0){
+
+                            return Html::a('Ativar', ['/profile/estado', 'id' => $model->id], ['class'=>'btn btn-success btn-sm']) ;
+                        }
+                        else if($model->estado==1){
+                            return Html::a('Desativar', ['/profile/estado', 'id' => $model->id], ['class'=>'btn btn-danger btn-sm']) ;
+                        }
+                    }
+                ],
+                'class' => 'yii\grid\ActionColumn', 'template' => '{view}{update}{Ativar}',
                 'urlCreator' => function ($action, Profile $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }
