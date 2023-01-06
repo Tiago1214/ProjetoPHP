@@ -1,17 +1,12 @@
 <?php
 
-namespace backend\controllers;
+namespace frontend\controllers;
 
-use backend\models\Mesa;
-use backend\models\MetodoPagamento;
 use common\models\Pedido;
 use common\models\PedidoSearch;
 use common\models\Profile;
-use common\models\User;
-use yii\filters\AccessControl;
-
-
-use yii\rbac\Role;
+use common\models\Reserva;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -36,23 +31,6 @@ class PedidoController extends Controller
                         'delete' => ['POST'],
                     ],
                 ],
-                'access' => [
-                    /**
-                     * Nos pedidos os funcionários e os admins podem fazer o mesmo
-                     */
-                    'class' => AccessControl::class,
-                    'rules' => [
-                        [
-                            'actions' => ['login','error'],
-                            'allow' => true,
-                        ],
-                        [
-                            'actions' => ['logout', 'index','create','view','update','estado','delete'], // add all actions to take guest to login page
-                            'allow' => true,
-                            'roles' => ['admin','funcionario'],
-                        ],
-                    ],
-                ],
             ]
         );
     }
@@ -65,7 +43,17 @@ class PedidoController extends Controller
     public function actionIndex()
     {
         $searchModel = new PedidoSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
+        $userprofile=Profile::find()->all();
+        $profile_id=0;
+        foreach($userprofile as $user){
+            if($user->user_id==Yii::$app->user->id){
+                $profile_id=$user->id;
+            }
+        }
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => Pedido::find()->where(['profile_id' => $profile_id])
+        ]);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -95,24 +83,9 @@ class PedidoController extends Controller
     {
         $model = new Pedido();
 
-        //$roleModel = Yii::$app->db ->createCommand("Select * from auth_assignment where item_name='cliente'")->queryAll();
-
-        $profile=Profile::find()->all();
-
         if ($this->request->isPost) {
-
-            if ($model->load($this->request->post())) {
-                $model->total=0.0;
-
-                $model->data=Yii::$app->formatter->asDatetime('now', 'php:Y-m-d H:i:s');
-
-                $model->mesa_id=null;
-                $model->metodo_pagamento_id=null;
-                $model->estado=1;
-
-                $model->save(false);
-
-                return $this->redirect(['linhapedido/create', 'idp' => $model->id]);
+            if ($model->load($this->request->post()) && $model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
             $model->loadDefaultValues();
@@ -120,7 +93,6 @@ class PedidoController extends Controller
 
         return $this->render('create', [
             'model' => $model,
-            'profile'=>$profile,
         ]);
     }
 
@@ -128,16 +100,12 @@ class PedidoController extends Controller
      * Updates an existing Pedido model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
-     * @param int $metodo_pagamento_id ID
-     * @param int $mesa_id ID
      * @return string|\yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $metodo_pagamento=MetodoPagamento::find()->where(['estado'=>1]);
-        $mesa=Mesa::find()->all();
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -145,8 +113,6 @@ class PedidoController extends Controller
 
         return $this->render('update', [
             'model' => $model,
-            'metodo_pagamento' => $metodo_pagamento,
-            'mesa' => $mesa,
         ]);
     }
 

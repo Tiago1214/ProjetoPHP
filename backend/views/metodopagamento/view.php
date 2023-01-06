@@ -6,24 +6,16 @@ use yii\widgets\DetailView;
 /** @var yii\web\View $this */
 /** @var backend\models\MetodoPagamento $model */
 
-$this->title = $model->id;
+$this->title = 'Método Pagamento: '.$model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Metodo Pagamentos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="metodo-pagamento-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
+        <?= Html::a('Editar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
     </p>
 
     <?= DetailView::widget([
@@ -31,7 +23,20 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'nomepagamento',
-            'estado',
+            [
+                'attribute' => 'estado',
+                'value' => function($model){
+                    if($model->estado == '0'){
+                        return 'Desativado';
+                    }
+                    else if($model->estado=='1'){
+                        return 'Ativado';
+                    }
+                    else{
+                        return 'Erro';
+                    }
+                }
+            ],
         ],
     ]) ?>
 

@@ -5,7 +5,9 @@ namespace backend\controllers;
 use backend\models\CriarUsers;
 use common\models\Profile;
 use common\models\ProfileSearch;
+use common\models\Reserva;
 use common\models\User;
+use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -34,7 +36,7 @@ class ProfileController extends Controller
                 'access' => [
                     /**
                      * Nos perfis os admins podem realizar qualquer ação enquanto
-                     * os funcionários só podem visualizar os perfis.
+                     * os funcionários só podem visualizar os perfis e editar o próprio.
                      */
                     'class' => AccessControl::class,
                     'rules' => [
@@ -43,12 +45,12 @@ class ProfileController extends Controller
                             'allow' => true,
                         ],
                         [
-                            'actions'=>['logout', 'index'],
+                            'actions'=>['logout', 'index','update'],
                             'allow'=>true,
                             'roles'=>['admin','funcionario'],
                         ],
                         [
-                            'actions' => ['view','update','estado','delete','create'], // add all actions to take guest to login page
+                            'actions' => ['view','estado','delete','create'], // add all actions to take guest to login page
                             'allow' => true,
                             'roles' => ['admin'],
                         ],
@@ -66,7 +68,9 @@ class ProfileController extends Controller
     public function actionIndex()
     {
         $searchModel = new ProfileSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
+        $dataProvider = new ActiveDataProvider([
+            'query' => Profile::find()->where(['!=','user_id',Yii::$app->user->getId()])
+        ]);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -141,6 +145,48 @@ class ProfileController extends Controller
         return $this->redirect(['index']);
     }
 
+
+    /**
+     * Ativar ou Desativar uma categoria.
+     * Dependendo se o item está ativado ou não esta função vai fazer com que se mude o estado da categoria
+     * @param int $id ID
+     * @return \yii\web\Response
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionEstado($id){
+        //Encontrar o perfil pelo id que veio da url
+        $profilemodel=$this->findModel($id);
+        //Na linha abaixo verificamos se o id do utilizador é igual ao user que está no perfil que veio no url
+        $users=User::find()->where(['id'=>$profilemodel->user_id])->all();
+        if($profilemodel->estado==0){
+            //Correr o user
+            foreach($users as $user){
+                //Caso o user seja igual ao que tem sessão iniciada é impossivel desativar o mesmo, pois o mesmo ia deixar de ter a conta ativa
+                if($user->id==Yii::$app->user->getId()){
+                    return null;
+                }
+                $user->status=10;
+                $user->update(false);
+            }
+            $profilemodel->estado=1;
+            $profilemodel->save();
+        }
+        else if($profilemodel->estado==1){
+            //Correr o user
+            foreach($users as $user){
+                //Validação
+                if($user->id==Yii::$app->user->getId()){
+                    return null;
+                }
+                $user->status=9;
+                $user->update(false);
+            }
+            $profilemodel->estado=0;
+            $profilemodel->save();
+        }
+
+        return $this->redirect('../profile/index');
+    }
     /**
      * Finds the Profile model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
@@ -163,5 +209,20 @@ class ProfileController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actionEstado($id){
+        $profile=$this->findModel($id);
+
+        if($profile->estado==0){
+            $profile->estado=1;
+            $profile->save();
+        }
+        else if($profile->estado==1){
+            $profile->estado=0;
+            $profile->save();
+        }
+
+        return $this->redirect('../profile/index');
     }
 }

@@ -30,8 +30,9 @@ class MesaController extends Controller
                 ],
                 'access' => [
                     /**
-                     * Os funcionários podem criar,ver ou editar as mesas
-                     * Os admins podem realizar qualquer função
+                     * Os admins podem fazer tudo possível neste controlador
+                     * Os funcionários só não podem apagar mesas
+                     * Neste controlador deixamos os admins fazerem delete da mesa devido á mesma poder-se estragar
                      */
                     'class' => AccessControl::class,
                     'rules' => [
@@ -40,12 +41,12 @@ class MesaController extends Controller
                             'allow' => true,
                         ],
                         [
-                            'actions' => ['logout', 'index','view','create','update'], // add all actions to take guest to login page
+                            'actions' => ['logout', 'index','view','create','update'], // add all actions to take guest or client to login page
                             'allow' => true,
                             'roles' => ['admin','funcionario'],
                         ],
                         [
-                            'actions'=>['delete','estado'],
+                            'actions'=>['delete'],
                             'allow'=>true,
                             'roles'=>['admin']
                         ]

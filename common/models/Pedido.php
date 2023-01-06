@@ -11,6 +11,7 @@ use Yii;
  * @property string $data
  * @property float $total
  * @property int $tipo_pedido
+ * @property int $estado
  * @property int $profile_id
  * @property int $metodo_pagamento_id
  * @property int $mesa_id
@@ -37,7 +38,7 @@ class Pedido extends \yii\db\ActiveRecord
     {
         return [
 
-            [['data', 'total', 'tipo_pedido', 'estado', 'profile_id', 'metodo_pagamento_id', 'mesa_id'],
+            [['data', 'total', 'tipo_pedido', 'estado', 'profile_id'],
                 'required','message'=>'Os campos selecionados são de preenchimento obrigatório'],
             [['data'], 'safe'],
             [['total'], 'number'],

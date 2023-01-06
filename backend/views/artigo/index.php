@@ -15,10 +15,9 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="artigo-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Artigo', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Criar Artigo', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -31,7 +30,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'nome',
             'descricao',
             'referencia',
-            'quantidade',
             [
                 'attribute' => 'preco',
                 'value' => function($model){

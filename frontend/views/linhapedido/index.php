@@ -1,24 +1,24 @@
 <?php
 
-use backend\models\Mesa;
+use common\models\LinhaPedido;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 
 /** @var yii\web\View $this */
-/** @var backend\models\MesaSearch $searchModel */
+/** @var common\models\LinhaPedidoSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Mesas';
+$this->title = 'Linha Pedidos';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="mesa-index">
+<div class="linha-pedido-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Criar Mesa', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Linha Pedido', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -29,13 +29,16 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'nrmesa',
-            'nrlugares',
-            'tipomesa',
+            'id',
+            'data',
+            'preco',
+            'iva',
+            'pedido_id',
+            //'artigo_id',
             [
                 'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Mesa $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'id' => $model->id]);
+                'urlCreator' => function ($action, LinhaPedido $model, $key, $index, $column) {
+                    return Url::toRoute([$action, 'id' => $model->id, 'pedido_id' => $model->pedido_id]);
                  }
             ],
         ],

@@ -42,7 +42,7 @@ class UserController extends Controller
                             'allow' => true,
                         ],
                         [
-                            'actions'=>['logout', 'index','update'],
+                            'actions'=>['logout', 'index','update','updatepassword'],
                             'allow'=>true,
                             'roles'=>['admin','funcionario'],
                         ],
@@ -119,6 +119,28 @@ class UserController extends Controller
         }
 
         return $this->render('update', [
+            'model' => $model,
+        ]);
+    }
+
+    /**
+     * Updates password
+     * If update is successful, the browser will be redirected to the 'index' page.
+     * @param int $id ID
+     * @return string|\yii\web\Response
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionUpdatepassword($id)
+    {
+        $model = $this->findModel($id);
+
+        //dd($model);
+        if ($this->request->isPost && $model->load($this->request->post())) {
+            $model->save(false);
+            return $this->redirect(['profile/index']);
+        }
+
+        return $this->render('updatepassword', [
             'model' => $model,
         ]);
     }

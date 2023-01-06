@@ -32,7 +32,7 @@ class CategoriaController extends Controller
                     'class' => AccessControl::class,
                     'rules' => [
                         /**
-                         *Nas categorias os funcionários podem fazer tudo menos desativar categorias
+                         *Nas categorias os funcionários não podem mudar o estado da mesma.
                          *Nas categorias os admins podem realizar todas as ações necessárias para o funcionamento dos mesmos
                          */
                         [

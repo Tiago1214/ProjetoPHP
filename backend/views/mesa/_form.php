@@ -16,10 +16,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'nrlugares')->textInput() ?>
 
-    <?= $form->field($model, 'tipomesa')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'tipomesa')->dropDownList(['quadrada','circular','retangular']) ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
