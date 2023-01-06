@@ -85,7 +85,7 @@ class LinhapedidoController extends Controller
 
                 $model->pedido_id=$idp;
 
-                $model->save(false);
+                $model->save(true);
                 return $this->redirect(['create', 'idp' => $idp]);
             }
         } else {
