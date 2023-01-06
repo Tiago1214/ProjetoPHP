@@ -24,7 +24,8 @@ use yii\bootstrap5\Html;
                             <span class="sr-only">Toggle Dropdown</span>
                         </button>
                         <div class="dropdown-menu" role="menu">
-                            <?= Html::a('Mudar dados', ['/user/update','id'=>Yii::$app->user->getId()], ['data-method' => 'post', 'class' => 'dropdown-item nav-link']) ?>
+                            <?= Html::a('Atualizar email', ['/user/update','id'=>Yii::$app->user->getId()], ['data-method' => 'post', 'class' => 'dropdown-item nav-link']) ?>
+                            <?= Html::a('Atualizar password', ['/user/updatepassword','id'=>Yii::$app->user->getId()], ['data-method' => 'post', 'class' => 'dropdown-item nav-link']) ?>
                             <div class="dropdown-divider"></div>
                             <?= Html::a('<i class="fas fa-sign-out-alt">Terminar Sessão</i>', ['/site/logout'], ['data-method' => 'post', 'class' => 'nav-link']) ?>
                         </div>

@@ -34,9 +34,9 @@ class Linhapedido extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['quantidade','valorunitario','valoriva','taxaiva', 'pedido_id', 'artigo_id'], 'required','message'=>'Campo Obrigatório'],
-            [['pedido_id', 'artigo_id','quantidade','taxaiva'], 'integer','message'=>'O valor inserido deve ser um número inteiro'],
-            [['valorunitario','valoriva'],'number','message'=>'O valor inserido deve ser um número'],
+            [['quantidade', 'valorunitario', 'valoriva', 'taxaiva', 'pedido_id', 'artigo_id'], 'required'],
+            [['quantidade', 'taxaiva', 'pedido_id', 'artigo_id'], 'integer'],
+            [['valorunitario', 'valoriva'], 'number'],
             [['artigo_id'], 'exist', 'skipOnError' => true, 'targetClass' => Artigo::class, 'targetAttribute' => ['artigo_id' => 'id']],
             [['pedido_id'], 'exist', 'skipOnError' => true, 'targetClass' => Pedido::class, 'targetAttribute' => ['pedido_id' => 'id']],
         ];
@@ -49,10 +49,10 @@ class Linhapedido extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'quantidade'=>'Quantidade',
-            'valorunitario'=>'Preço por unidade',
-            'valoriva'=>'Preço de Iva a ser pago',
-            'taxaiva' => 'Taxa de Iva',
+            'quantidade' => 'Quantidade',
+            'valorunitario' => 'Valorunitario',
+            'valoriva' => 'Valoriva',
+            'taxaiva' => 'Taxaiva',
             'pedido_id' => 'Pedido ID',
             'artigo_id' => 'Artigo ID',
         ];

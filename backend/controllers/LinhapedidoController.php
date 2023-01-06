@@ -56,10 +56,10 @@ class LinhapedidoController extends Controller
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id, $pedido_id)
+    public function actionView($id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($id, $pedido_id),
+            'model' => $this->findModel($id),
         ]);
     }
 
@@ -81,11 +81,13 @@ class LinhapedidoController extends Controller
                     $model->valorunitario=$art->preco;
                     $model->valoriva =$art->preco*($art->iva->taxaiva/100);
                     $model->taxaiva=$art->iva->taxaiva;
+
                 }
-
                 $model->pedido_id=$idp;
+                $model->id=1;
 
-                $model->save(true);
+
+                $model->save(false);
                 return $this->redirect(['create', 'idp' => $idp]);
             }
         } else {
@@ -108,12 +110,12 @@ class LinhapedidoController extends Controller
      * @return string|\yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id, $pedido_id)
+    public function actionUpdate($id)
     {
-        $model = $this->findModel($id, $pedido_id);
+        $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id, 'pedido_id' => $model->pedido_id]);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
@@ -129,11 +131,17 @@ class LinhapedidoController extends Controller
      * @return \yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id, $pedido_id)
+    public function actionDelete($id,$idp)
     {
-        $this->findModel($id, $pedido_id)->delete();
+        $linha=$this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(['create','idp'=>$idp]);
+    }
+
+    public function actionEditquantidade($idlp){
+        $linha=$this->findModel($idlp);
+        $linha->save(false);
+        return $this->redirect(['create', 'idp' => $linha->pedido_id]);
     }
 
     /**
@@ -144,9 +152,9 @@ class LinhapedidoController extends Controller
      * @return LinhaPedido the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id, $pedido_id)
+    protected function findModel($id)
     {
-        if (($model = LinhaPedido::findOne(['id' => $id, 'pedido_id' => $pedido_id])) !== null) {
+        if (($model = LinhaPedido::findOne(['id' => $id])) !== null) {
             return $model;
         }
 

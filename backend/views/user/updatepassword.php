@@ -7,7 +7,7 @@
 use yii\bootstrap5\Html;
 use yii\bootstrap5\ActiveForm;
 
-$this->title = 'Criar novo utilizador';
+$this->title = 'Atualizar password';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-create">
