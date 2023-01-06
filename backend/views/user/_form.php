@@ -7,7 +7,7 @@
 use yii\bootstrap5\Html;
 use yii\bootstrap5\ActiveForm;
 
-$this->title = 'Criar novo utilizador';
+$this->title = 'Atualizar Email';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-create">
@@ -19,13 +19,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <?= $form->field($model, 'email') ?>
 
-            <p>Se pretender Mudar a palavra-passe carregue no botão mudar palavra passe:</p>
-
-
-
             <div class="form-group">
                 <?= Html::submitButton('Atualizar', ['class' => 'btn btn-primary']) ?>
-                <?= Html::a('Atualizar Palavra Passe',['user/updatepassword','id'=>Yii::$app->user->getId()],['class'=>'btn btn-danger'])?>
             </div>
 
             <?php ActiveForm::end(); ?>

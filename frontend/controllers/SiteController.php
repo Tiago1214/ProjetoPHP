@@ -4,6 +4,9 @@ namespace frontend\controllers;
 
 use common\models\Artigo;
 use common\models\Categoria;
+use common\models\Comentario;
+use common\models\Profile;
+use common\models\User;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -17,7 +20,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
-use yiiunit\extensions\bootstrap5\data\User;
+//use yiiunit\extensions\bootstrap5\data\User;
 
 /**
  * Site controller
@@ -78,7 +81,10 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $comentarios=Comentario::find()->all();
+        return $this->render('index',[
+            'comentarios'=>$comentarios,
+        ]);
     }
 
     /**
@@ -88,12 +94,20 @@ class SiteController extends Controller
      */
     public function actionMenu()
     {
+
+        $comentarios=Comentario::find()->all();
+        $profiles=Profile::find()->all();
+
         $artigos=Artigo::find()->all();
         $categorias=Categoria::find()->all();
         return $this->render('menu',[
             'artigos'=>$artigos,
             'categorias'=>$categorias,
+
+            'comentarios'=>$comentarios,
+            'profiles'=>$profiles,
         ]);
+
     }
 
     /**
