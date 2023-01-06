@@ -7,17 +7,16 @@ use Yii;
 /** @var yii\web\View $this */
 /** @var backend\models\Artigo $model */
 
-$this->title = $model->nome;
+$this->title = 'Artigo :'.$model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Artigos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="artigo-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id,], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Atualizar', ['update', 'id' => $model->id,], ['class' => 'btn btn-primary']) ?>
     </p>
 
     <?= DetailView::widget([
@@ -27,12 +26,34 @@ $this->params['breadcrumbs'][] = $this->title;
             'nome',
             'descricao',
             'referencia',
-            'quantidade',
             'preco',
             'data',
-            'estado',
-            'iva_id',
-            'categoria_id',
+            [
+                'attribute' => 'iva_id',
+                'value' => function($model){
+                    return $model->iva->taxaiva.'%';
+                }
+            ],
+            [
+                'attribute' => 'categoria_id',
+                'value' => function($model){
+                    return $model->categoria->nome;
+                }
+            ],
+            [
+                'attribute' => 'estado',
+                'value' => function($model){
+                    if($model->estado == 0){
+                        return 'Desativado';
+                    }
+                    else if($model->estado==1){
+                        return 'Ativado';
+                    }
+                    else{
+                        return 'Erro';
+                    }
+                }
+            ],
             [
                 'attribute'=>'imagem',
                 'value'=>$model->imagemurl,

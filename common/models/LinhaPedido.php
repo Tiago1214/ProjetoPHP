@@ -8,9 +8,10 @@ use Yii;
  * This is the model class for table "linhapedido".
  *
  * @property int $id
- * @property string $data
- * @property string $preco
- * @property string $iva
+ * @property int $quantidade
+ * @property float $valorunitario
+ * @property float $valoriva
+ * @property int $taxaiva
  * @property int $pedido_id
  * @property int $artigo_id
  *
@@ -33,10 +34,9 @@ class Linhapedido extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['data', 'preco', 'iva', 'pedido_id', 'artigo_id'], 'required'],
-            [['data'], 'safe'],
-            [['pedido_id', 'artigo_id'], 'integer'],
-            [['preco', 'iva'], 'string', 'max' => 45],
+            [['quantidade','valorunitario','valoriva','taxaiva', 'pedido_id', 'artigo_id'], 'required','message'=>'Campo Obrigatório'],
+            [['pedido_id', 'artigo_id','quantidade','taxaiva'], 'integer','message'=>'O valor inserido deve ser um número inteiro'],
+            [['valorunitario','valoriva'],'number','message'=>'O valor inserido deve ser um número'],
             [['artigo_id'], 'exist', 'skipOnError' => true, 'targetClass' => Artigo::class, 'targetAttribute' => ['artigo_id' => 'id']],
             [['pedido_id'], 'exist', 'skipOnError' => true, 'targetClass' => Pedido::class, 'targetAttribute' => ['pedido_id' => 'id']],
         ];
@@ -49,9 +49,10 @@ class Linhapedido extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'data' => 'Data',
-            'preco' => 'Preco',
-            'iva' => 'Iva',
+            'quantidade'=>'Quantidade',
+            'valorunitario'=>'Preço por unidade',
+            'valoriva'=>'Preço de Iva a ser pago',
+            'taxaiva' => 'Taxa de Iva',
             'pedido_id' => 'Pedido ID',
             'artigo_id' => 'Artigo ID',
         ];

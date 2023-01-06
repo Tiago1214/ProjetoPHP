@@ -35,6 +35,10 @@ class IvaController extends Controller
                 'access' => [
                     'class' => AccessControl::class,
                     'rules' => [
+                        /**
+                         *Neste controlador os funcionários só podem visualizar os registos de ivas.
+                         * Nos ivas os admins podem realizar todas as ações necessárias para o funcionamento dos mesmos
+                         */
                         [
                             'actions' => ['login','error'],
                             'allow' => true,

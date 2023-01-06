@@ -140,6 +140,29 @@ class MetodopagamentoController extends Controller
         return $this->redirect(['index']);
     }
 
+
+    /**
+     * Ativar ou Desativar um método de Pagamento.
+     * Dependendo se o item está ativado ou não esta função vai fazer com que o estado se mude de forma dinamica
+     * @param int $id ID
+     * @return \yii\web\Response
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionEstado($id){
+        $iva=$this->findModel($id);
+        if($iva->estado==0){
+            $iva->estado=1;
+            $iva->save();
+        }
+        else if($iva->estado==1){
+            $iva->estado=0;
+            $iva->save();
+        }
+
+        return $this->redirect('../metodopagamento/index');
+    }
+
+
     /**
      * Finds the MetodoPagamento model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

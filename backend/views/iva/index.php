@@ -34,10 +34,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'estado',
                 'value' => function($model){
                     if($model->estado == '0'){
-                        return 'Inativo';
+                        return 'Desativado';
                     }
                     else if($model->estado=='1'){
-                        return 'Ativo';
+                        return 'Ativado';
                     }
                     else{
                         return 'Erro';
@@ -48,10 +48,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 'buttons' => [
                     'Ativar' => function($url,$model, $id) {     // render your custom button
                         if($model->estado==0){
-                            return Html::a('Ativar', ['/iva/estado', 'id' => $id], ['class'=>'btn btn-success']) ;
+                            return Html::a('Ativar', ['/iva/estado', 'id' => $id], ['class'=>'btn btn-success btn-sm']) ;
                         }
                         else if($model->estado==1){
-                            return Html::a('Desativar', ['/iva/estado', 'id' => $id], ['class'=>'btn btn-danger']) ;
+                            return Html::a('Desativar', ['/iva/estado', 'id' => $id], ['class'=>'btn btn-danger btn-sm']) ;
                         }
                     }
                 ],

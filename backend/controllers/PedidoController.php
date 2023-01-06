@@ -112,7 +112,7 @@ class PedidoController extends Controller
 
                 $model->save(false);
 
-                return $this->redirect(['view', 'id' => $model->id]);
+                return $this->redirect(['linhapedido/create', 'idp' => $model->id]);
             }
         } else {
             $model->loadDefaultValues();
