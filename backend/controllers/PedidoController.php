@@ -98,6 +98,8 @@ class PedidoController extends Controller
         //$roleModel = Yii::$app->db ->createCommand("Select * from auth_assignment where item_name='cliente'")->queryAll();
 
         $profile=Profile::find()->all();
+        $mesa=Mesa::find()->all();
+
 
         if ($this->request->isPost) {
 
@@ -121,6 +123,7 @@ class PedidoController extends Controller
         return $this->render('create', [
             'model' => $model,
             'profile'=>$profile,
+            'mesa'=>$mesa,
         ]);
     }
 

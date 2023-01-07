@@ -45,6 +45,11 @@ class ComentarioController extends Controller
                             'allow' => true,
                             'roles' => ['admin','funcionario'],
                         ],
+                        [
+                            'actions' => ['create'], // add all actions to take guest to login page
+                            'allow' => true,
+                            'roles' => ['admin'],
+                        ],
                     ],
                 ],
             ]
