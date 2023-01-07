@@ -58,7 +58,7 @@ use kartik\select2\Select2;
 
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Save', ['class' => 'btn btn-success','name'=>'pedido-button']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
