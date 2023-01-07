@@ -1,0 +1,9 @@
+suite_namespace: backend\tests\acceptance
+actor: AcceptanceTester
+modules:
+  enabled:
+    - WebDriver:
+        url: http://back.test
+        browser: chrome
+    - Yii2:
+        part: init

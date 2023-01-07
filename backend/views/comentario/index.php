@@ -14,15 +14,6 @@ $this->title = 'Comentários';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="comentario-index">
-    <?php
-    if(Yii::$app->user->can('createcomentario')){
-        ?>
-        <p>
-            <?= Html::a('Criar Comentário', ['create'], ['class' => 'btn btn-success']) ?>
-        </p>
-    <?php
-    }
-    ?>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 

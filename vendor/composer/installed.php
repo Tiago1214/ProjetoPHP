@@ -3,7 +3,7 @@
         'name' => 'yiisoft/yii2-app-advanced',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'eee138d34e6b6030c8c49a6a1ab54490bba64bbf',
+        'reference' => '04f61a1cd632d34d983cd3e1324056ec2eda5903',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -136,6 +136,15 @@
             'aliases' => array(),
             'dev_requirement' => true,
         ),
+        'codeception/module-webdriver' => array(
+            'pretty_version' => '3.2.0',
+            'version' => '3.2.0.0',
+            'reference' => '8d65b02f50f90bf3f4da2174693a1cb5cd5fe7b2',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../codeception/module-webdriver',
+            'aliases' => array(),
+            'dev_requirement' => true,
+        ),
         'codeception/module-yii2' => array(
             'pretty_version' => '1.1.7',
             'version' => '1.1.7.0',
@@ -222,6 +231,12 @@
             'install_path' => __DIR__ . '/../ezyang/htmlpurifier',
             'aliases' => array(),
             'dev_requirement' => false,
+        ),
+        'facebook/webdriver' => array(
+            'dev_requirement' => true,
+            'replaced' => array(
+                0 => '*',
+            ),
         ),
         'fakerphp/faker' => array(
             'pretty_version' => 'v1.21.0',
@@ -361,6 +376,15 @@
             'reference' => '4f7fd7836c6f332bb2933569e566a0d6c4cbed74',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phar-io/version',
+            'aliases' => array(),
+            'dev_requirement' => true,
+        ),
+        'php-webdriver/webdriver' => array(
+            'pretty_version' => '1.13.1',
+            'version' => '1.13.1.0',
+            'reference' => '6dfe5f814b796c1b5748850aa19f781b9274c36c',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../php-webdriver/webdriver',
             'aliases' => array(),
             'dev_requirement' => true,
         ),
@@ -817,6 +841,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'symfony/process' => array(
+            'pretty_version' => 'v6.2.0',
+            'version' => '6.2.0.0',
+            'reference' => 'ba6e55359f8f755fe996c58a81e00eaa67a35877',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/process',
+            'aliases' => array(),
+            'dev_requirement' => true,
+        ),
         'symfony/service-contracts' => array(
             'pretty_version' => 'v3.2.0',
             'version' => '3.2.0.0',
@@ -874,7 +907,7 @@
         'yiisoft/yii2-app-advanced' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'eee138d34e6b6030c8c49a6a1ab54490bba64bbf',
+            'reference' => '04f61a1cd632d34d983cd3e1324056ec2eda5903',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

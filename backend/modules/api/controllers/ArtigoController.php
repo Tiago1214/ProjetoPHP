@@ -21,7 +21,6 @@ class ArtigoController extends ActiveRecord
 
     public function actionIndex()
     {
-
         return $this->render('index');
     }
 

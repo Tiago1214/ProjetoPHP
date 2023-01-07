@@ -210,19 +210,4 @@ class ProfileController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
-
-    public function actionEstado($id){
-        $profile=$this->findModel($id);
-
-        if($profile->estado==0){
-            $profile->estado=1;
-            $profile->save();
-        }
-        else if($profile->estado==1){
-            $profile->estado=0;
-            $profile->save();
-        }
-
-        return $this->redirect('../profile/index');
-    }
 }
