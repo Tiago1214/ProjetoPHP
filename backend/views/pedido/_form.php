@@ -15,7 +15,9 @@ use kartik\select2\Select2;
     <?php $form = ActiveForm::begin(); ?>
 
 
-    <?= $form->field($model, 'tipo_pedido')->dropDownList([0=>'Restaurante',1=>'Takeaway']) ?>
+    <?= $form->field($model, 'tipo_pedido', '')->dropDownList([0=>'Restaurante',1=>'Takeaway']) ?>
+
+
 
     <?php
     echo  $form->field($model,'profile_id')->widget(Select2::className(),[
@@ -37,3 +39,5 @@ use kartik\select2\Select2;
     <?php ActiveForm::end(); ?>
 
 </div>
+
+<!--
