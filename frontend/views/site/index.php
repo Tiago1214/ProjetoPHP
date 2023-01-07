@@ -133,7 +133,7 @@ use yii\bootstrap5\Html; ?>
 <!-- End Gallery -->
 
 <!-- Start Customer Reviews -->
-<div class="customer-reviews-box">
+<!-- <div class="customer-reviews-box">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -149,7 +149,7 @@ use yii\bootstrap5\Html; ?>
                     <div class="carousel-inner mt-4">
                         <div class="carousel-item text-center active">
                             <?php foreach($comentarios as $comentario){
-                                if($comentario==1){
+                                if($comentario->id==1){
                                     ?>
                                     <div class="img-box p-1 border rounded-circle m-auto">
                                         <?= Html::img('@web/images/quotations-button.png',['class'=>'d-block w-100 rounded-circle']) ?>
@@ -167,7 +167,7 @@ use yii\bootstrap5\Html; ?>
                     <div class="carousel-inner mt-4">
                         <div class="carousel-item text-center active">
                             <?php foreach($comentarios as $comentario){
-                                if($comentario==1){
+                                if($comentario->id==1){
                                     ?>
                                     <div class="img-box p-1 border rounded-circle m-auto">
                                         <?= Html::img('@web/images/quotations-button.png',['class'=>'d-block w-100 rounded-circle']) ?>
@@ -185,7 +185,7 @@ use yii\bootstrap5\Html; ?>
                     <div class="carousel-inner mt-4">
                         <div class="carousel-item text-center active">
                             <?php foreach($comentarios as $comentario){
-                                if($comentario==1){
+                                if($comentario->id==1){
                                     ?>
                                     <div class="img-box p-1 border rounded-circle m-auto">
                                         <?= Html::img('@web/images/quotations-button.png',['class'=>'d-block w-100 rounded-circle']) ?>
@@ -212,7 +212,7 @@ use yii\bootstrap5\Html; ?>
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- End Customer Reviews -->
 
 

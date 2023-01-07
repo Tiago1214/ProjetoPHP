@@ -15,7 +15,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="comentario-index">
 
-
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([

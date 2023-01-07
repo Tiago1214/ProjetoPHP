@@ -101,6 +101,9 @@
       <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-bootstrap5-dropdown" />
       <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-select2" />
       <path value="$PROJECT_DIR$/vendor/select2/select2" />
+      <path value="$PROJECT_DIR$/vendor/symfony/process" />
+      <path value="$PROJECT_DIR$/vendor/codeception/module-webdriver" />
+      <path value="$PROJECT_DIR$/vendor/php-webdriver/webdriver" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.4" />

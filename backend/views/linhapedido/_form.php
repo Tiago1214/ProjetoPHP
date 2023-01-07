@@ -106,6 +106,35 @@ use yii\helpers\ArrayHelper;
                         </td>
                         <td><?= $form->field($model,'quantidade')->textInput() ?></td>
                         <td>
+                            <div class="hidden" id="pDetails">
+                                <?php echo  $form->field($model,'mesa_id')->widget(Select2::className(),[
+                                    'data' => ArrayHelper::map($mesa, 'id','nrmesa'),
+                                    'name' => 'mesa_id',
+                                    'attribute'=>'mesa_id',
+                                    'size' => Select2::MEDIUM,
+                                    'options' => ['placeholder' => 'Selecione uma mesa...'],
+                                    'pluginOptions' => [
+                                        'allowClear' => true
+                                    ],
+                                ]) ?>
+
+                            </div>
+                            ..
+                            <script>
+                                $('.tipo_pedido').change(function(){
+                                    var responseID = $(this).val();
+                                    if(responseID ==1){
+                                        $('#pDetails').removeClass("hidden");
+                                        $('#pDetails').addClass("show");
+                                    } else{
+                                        $('#pDetails').removeClass("show");
+                                        $('#pDetails').addClass("hidden");
+                                    }
+                                    console.log(responseID);
+                                });
+                            </script>
+                        </td>
+                        <td>
                             <div class="form-group">
                                 <?= Html::submitButton('Adicionar Artigo', ['class' => 'btn btn-success']) ?>
                             </div>

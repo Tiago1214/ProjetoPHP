@@ -122,7 +122,7 @@ class PedidoController extends Controller
         return $this->render('create', [
             'model' => $model,
             'profile'=>$profile,
-            'mesa'=>$mesa
+            'mesa'=>$mesa,
         ]);
     }
 
