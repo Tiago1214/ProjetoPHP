@@ -2,9 +2,10 @@ suite_namespace: backend\tests\functional
 actor: FunctionalTester
 modules:
     enabled:
+
+        - WebDriver:
+              url: http://back.test
+              browser: chrome
         - Yii2:
-              part: [orm, fixtures]
-    config:
-        Yii2:
-            part: [orm, fixtures]
+              part: init
 
