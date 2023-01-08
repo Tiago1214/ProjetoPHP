@@ -86,9 +86,11 @@ class SiteController extends Controller
         $this->layout = 'blank';
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            //Verificar se o user tem permissão para aceder ao backend
+            //Se aconfição for verdadeira ele reencaminha o user para o frontend
             if(!Yii::$app->user->can('accessbackend')==true){
                 Yii::$app->user->logout();
-                return $this->redirect('http://front.test/site/index');
+                return $this->render('http://front.test/site/index');
             }
             return $this->goBack();
         }
