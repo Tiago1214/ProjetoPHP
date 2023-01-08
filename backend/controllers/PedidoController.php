@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use backend\models\Empresa;
 use backend\models\Mesa;
 use backend\models\MetodoPagamento;
 use common\models\Linhapedido;
@@ -10,6 +11,7 @@ use common\models\PedidoSearch;
 use common\models\Profile;
 use common\models\User;
 use yii\filters\AccessControl;
+use kartik\mpdf\Pdf;
 
 
 use yii\rbac\Role;
@@ -50,7 +52,7 @@ class PedidoController extends Controller
                         [
                             'actions' => ['logout', 'index','create','view',
                                 'update','estado','delete',
-                                'selectmesa','finalizarpedido','cancelar'], // add all actions to take guest to login page
+                                'selectmesa','finalizarpedido','cancelar','fatura'], // add all actions to take guest to login page
                             'allow' => true,
                             'roles' => ['admin','funcionario'],
                         ],
@@ -239,5 +241,18 @@ class PedidoController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actionFatura($idp){
+
+        $pedido = $this->findModel($idp);
+        $empresa=Empresa::findOne(['id'=>1]);
+        $linhapedido=Linhapedido::find()->where(['pedido_id'=>$idp])->all();
+        $html = $this->renderPartial('_faturapdf',['pedido'=>$pedido,'linhapedido'=>$linhapedido,'empresa'=>$empresa]);
+
+        $pdf=Yii::$app->pdf;
+        $pdf->content=$html;
+        return $pdf->render();
+
     }
 }
