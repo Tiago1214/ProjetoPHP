@@ -51,6 +51,7 @@ class Artigo extends \yii\db\ActiveRecord
             [['imagem'],'file','extensions'=>'jpg, jpeg, png','skipOnEmpty' => true],
             [['referencia'], 'string', 'max' => 45,'message'=>'O campo nome tem um máximo de 45 carateres'],
 
+
         ];
     }
 

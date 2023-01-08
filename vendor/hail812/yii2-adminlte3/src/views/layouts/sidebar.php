@@ -36,9 +36,10 @@ use yii\bootstrap5\Html;
                     [
                         'label' => 'Pedido',
                         'icon' => 'th',
+                        'id'=>'buttonpedido',
                         'badge' => '<span class="right badge badge-info">3</span>',
                         'items' => [
-                            ['label' => 'Visualizar todos os pedidos', 'url' => ['pedido/index'], 'iconStyle' => 'far'],
+                            ['label' => 'Visualizar todos os pedidos', 'url' => ['pedido/index'], 'iconStyle' => 'far','id'=>'pedido'],
                             ['label' => 'Criar Pedido', 'iconStyle' => 'far','url' => ['pedido/create']],
                         ]
                     ],
