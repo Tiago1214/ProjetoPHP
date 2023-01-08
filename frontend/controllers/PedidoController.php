@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use backend\models\Mesa;
 use common\models\Pedido;
 use common\models\PedidoSearch;
 use common\models\Profile;
@@ -82,18 +83,25 @@ class PedidoController extends Controller
     public function actionCreate()
     {
         $model = new Pedido();
-
-        if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+        $userprofile=Profile::find()->all();
+        $profile_id=0;
+        foreach($userprofile as $user){
+            if($user->user_id==Yii::$app->user->id){
+                $profile_id=$user->id;
             }
-        } else {
-            $model->loadDefaultValues();
         }
 
-        return $this->render('create', [
-            'model' => $model,
-        ]);
+        $model->total=0.0;
+        $model->profile_id=$profile_id;
+        $model->data=Yii::$app->formatter->asDatetime('now', 'php:Y-m-d H:i:s');
+        $model->mesa_id=null;
+        $model->metodo_pagamento_id=null;
+        $model->estado='Em Processamento';
+        $model->save(false);
+
+        return $this->redirect(['linhapedido/create', 'idp' => $model->id]);
+
+
     }
 
     /**

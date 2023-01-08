@@ -2,8 +2,10 @@
 
 namespace frontend\controllers;
 
+use common\models\Artigo;
 use common\models\LinhaPedido;
 use common\models\LinhaPedidoSearch;
+use common\models\Pedido;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -66,19 +68,59 @@ class LinhapedidoController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
-    public function actionCreate()
+    public function actionCreate($idp)
     {
         $model = new LinhaPedido();
+        $pedido=Pedido::find()->where(['id'=>$idp])->all();
+        $linhaspedido=LinhaPedido::find()->where(['pedido_id'=>$idp])->all();
+        $artigo=Artigo::find()->where(['estado'=>[1]])->all();
 
+        //teste alterar quantidade pela grid view
+        $searchModel = new LinhaPedidoSearch();
+        $dataProvider = $searchModel->search($this->request->queryParams);
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id, 'pedido_id' => $model->pedido_id]);
+            if ($model->load($this->request->post())) {
+                foreach($linhaspedido as $quant){
+                    if($quant->artigo_id==$model->artigo_id){
+                        $quant->quantidade=$quant->quantidade+$model->quantidade;
+                        $quant->save(false);
+                        return $this->redirect(['create', 'idp' => $idp]);
+                    }
+                }
+                $findartigo=Artigo::find()->where(['id'=>$model->artigo_id])->all();
+                foreach($findartigo as $art){
+                    $model->valorunitario=$art->preco;
+                    $model->valoriva =$art->preco*($art->iva->taxaiva/100);
+                    $model->taxaiva=$art->iva->taxaiva;
+                }
+                $model->pedido_id=$idp;
+
+
+                $model->save(false);
+                return $this->redirect(['create', 'idp' => $idp]);
             }
         } else {
             $model->loadDefaultValues();
         }
 
         return $this->render('create', [
+            'model' => $model,
+            'pedido'=>$pedido,
+            'linhaspedido'=>$linhaspedido,
+            'artigo'=>$artigo,
+            'searchModel'=>$searchModel,
+            'dataProvider'=>$dataProvider,
+        ]);
+    }
+
+    public function actionEditquant($id){
+        $model=$this->findModel($id);
+
+        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+            return $this->redirect(['create', 'idp' => $model->pedido_id]);
+        }
+
+        return $this->render('editquant', [
             'model' => $model,
         ]);
     }
@@ -112,9 +154,9 @@ class LinhapedidoController extends Controller
      * @return \yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id, $pedido_id)
+    public function actionDelete($id)
     {
-        $this->findModel($id, $pedido_id)->delete();
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
@@ -127,9 +169,9 @@ class LinhapedidoController extends Controller
      * @return LinhaPedido the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id, $pedido_id)
+    protected function findModel($id)
     {
-        if (($model = LinhaPedido::findOne(['id' => $id, 'pedido_id' => $pedido_id])) !== null) {
+        if (($model = LinhaPedido::findOne(['id' => $id])) !== null) {
             return $model;
         }
 
