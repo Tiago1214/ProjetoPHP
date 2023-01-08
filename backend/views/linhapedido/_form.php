@@ -144,8 +144,15 @@ use yii\grid\ActionColumn;
                 <div class="col-lg-1"></div>
                 <div class="col-lg-1" style="text-align: right">
                     <?php  foreach($pedido as $ped){
+                        //Verificar se existem linhas de pedido para mostrar o botão de finalizar pedido
+                        if($ped->linhaPedidos==true){
+                            ?>
+                            <?php echo Html::a('Finalizar Pedido', ['/pedido/finalizarpedido', 'idp' =>$ped->id ]
+                                , ['class'=>'btn btn-success ','name'=>'finalizar-pedido']) ; ?>
+                                <?php
+                        }
                         ?>
-                        <?php echo Html::a('Finalizar Pedido', ['/pedido/finalizarpedido', 'idp' =>$ped->id ], ['class'=>'btn btn-success ']) ; ?>
+
                     <?php
                     }?>
                 </div>

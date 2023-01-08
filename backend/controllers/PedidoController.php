@@ -145,7 +145,6 @@ class PedidoController extends Controller
      */
     public function actionSelectmesa($idp){
         $model=$this->findModel($idp);
-
         $mesa=Mesa::find()->all();
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save(false)) {

@@ -22,30 +22,43 @@ class SigninCest
         $I->wait(2);
         $I->fillField('input[name="LoginForm[password]"]', '12345678');
         $I->wait(2);
-        $I->click('submitbutton[id=login-button]');
+        //Não sei o porque de o botão de login não funcionar com este link sendo que o id do button submit é este
+        $I->click('login-button');
 
         $I->wait(3);
 
-        $I->click('li[id=button-pedido]');
+        $I->click('li[id=menu-lateral]');
         $I->wait(3);
-        $I->click('a[id=pedido]');
+        $I->click('li[id=pedido]');
         $I->wait(3);
 
-        $I->see('Criar Pedido');
+        $I->click('a[id=criar-pedido]');
 
-        $I->fillField('input[name="w0[profile_id]"]','234555111');
-        $I->fillField('input[name="w0[mesa_id]"]','1');
+        $I->fillField('input[name="Pedido[tipo_pedido]"]','0');
+        $I->wait(2);
+        $I->fillField('input[name="Pedido[profile_id]"]','1');
+        $I->wait(2);
         $I->click('pedido-button');
+        $I->wait(2);
 
         $I->wait(5);
 
-        $I->fillField('input[name="w1[artigo_id]"]','teste');
-        $I->fillField('input[name="w1[quantidade]"]','1');
-        $I->click('artigo-button');
+        $I->fillField('input[name="Pedido[mesa_id]"]','1');
+        $I->wait(2);
+        $I->click('pedido-mesa-button');
+        $I->wait(2);
+        $I->fillField('input[name="Linhapedido[artigo_id]"','1');
+        $I->wait(2);
+        $I->fillField('input[name="Linhapedido[quantidade]"]','10');
+        $I->wait(2);
+        $I->click('finalizar-pedido');
+        $I->wait(2);
 
-        $I->wait(5);
-        $I->amOnPage('site/index');
+        $I->fillField('input[name="Pedido[metodo_pagamento_id]"]','1');
+        $I->wait(2);
+        $I->click('pedido-mesa-button');
 
-
+        $I->wait(2);
+        //Teste de aceitação concluído
     }
 }
