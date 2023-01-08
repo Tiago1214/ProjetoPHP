@@ -154,11 +154,11 @@ class LinhapedidoController extends Controller
      * @return \yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
+    public function actionDelete($id,$idp)
     {
-        $this->findModel($id)->delete();
+        $linha=$this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(['create','idp'=>$idp]);
     }
 
     /**

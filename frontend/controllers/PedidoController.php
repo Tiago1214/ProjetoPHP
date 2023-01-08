@@ -2,7 +2,10 @@
 
 namespace frontend\controllers;
 
+use backend\models\Empresa;
 use backend\models\Mesa;
+use backend\models\Metodopagamento;
+use common\models\Linhapedido;
 use common\models\Pedido;
 use common\models\PedidoSearch;
 use common\models\Profile;
@@ -53,7 +56,8 @@ class PedidoController extends Controller
         }
 
         $dataProvider = new ActiveDataProvider([
-            'query' => Pedido::find()->where(['profile_id' => $profile_id])
+            'query' => Pedido::find()->where(['profile_id' => $profile_id])->orderBy(['data'=>'desc'])
+
         ]);
 
         return $this->render('index', [
@@ -70,9 +74,21 @@ class PedidoController extends Controller
      */
     public function actionView($id)
     {
+        $linhapedido=Linhapedido::find()->where(['pedido_id'=>$id])->all();
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'linhapedido'=>$linhapedido,
         ]);
+    }
+
+    public function actionCancelar($idp){
+        if($idp==null){
+            return null;
+        }
+        $model=$this->findModel($idp);
+        $model->estado='Cancelado';
+        $model->save();
+        return $this->redirect(['index']);
     }
 
     /**
@@ -92,6 +108,7 @@ class PedidoController extends Controller
         }
 
         $model->total=0.0;
+        $model->tipo_pedido=1;
         $model->profile_id=$profile_id;
         $model->data=Yii::$app->formatter->asDatetime('now', 'php:Y-m-d H:i:s');
         $model->mesa_id=null;
@@ -102,6 +119,22 @@ class PedidoController extends Controller
         return $this->redirect(['linhapedido/create', 'idp' => $model->id]);
 
 
+    }
+
+    public function actionFinalizarpedido($idp){
+        $model=$this->findModel($idp);
+        $linhaspedido=Linhapedido::find()->where(['pedido_id'=>$idp])->all();
+        $metodospagamento=MetodoPagamento::find()->where(['estado'=>1])->all();
+        $model->estado='Concluído';
+        if ($this->request->isPost && $model->load($this->request->post()) && $model->save(false)) {
+            return $this->redirect(['pedido/index']);
+        }
+
+        return $this->render('finalizarpedido', [
+            'model' => $model,
+            'linhaspedido'=>$linhaspedido,
+            'metodospagamento'=>$metodospagamento,
+        ]);
     }
 
     /**
@@ -152,5 +185,18 @@ class PedidoController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actionFatura($idp){
+
+        $pedido = $this->findModel($idp);
+        $empresa=Empresa::findOne(['id'=>1]);
+        $linhapedido=Linhapedido::find()->where(['pedido_id'=>$idp])->all();
+        $html = $this->renderPartial('_faturapdf',['pedido'=>$pedido,'linhapedido'=>$linhapedido,'empresa'=>$empresa]);
+
+        $pdf=Yii::$app->pdf;
+        $pdf->content=$html;
+        return $pdf->render();
+
     }
 }
