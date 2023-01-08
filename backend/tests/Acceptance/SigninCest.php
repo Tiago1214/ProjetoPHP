@@ -9,7 +9,7 @@ class SigninCest
 {
     public function _before(AcceptanceTester $I)
     {
-
+        $I->amOnPage('/site/login');
     }
 
     // tests
@@ -18,30 +18,34 @@ class SigninCest
     }
 
     public function testes(AcceptanceTester $I){
-        $I->amOnPage('http://back.test/site/login');
-        $I->fillField('username','tiago');
-        $I->fillField('password','12345678');
-        $I->click('login-button');
+        $I->fillField('input[name="LoginForm[username]"]', 'tiago');
+        $I->wait(2);
+        $I->fillField('input[name="LoginForm[password]"]', '12345678');
+        $I->wait(2);
+        $I->click('submitbutton[id=login-button]');
 
-        $I->wait(5);
+        $I->wait(3);
 
-        $I->amOnPage('pedido/index');
-        $I->wait(5);
+        $I->click('li[id=button-pedido]');
+        $I->wait(3);
+        $I->click('a[id=pedido]');
+        $I->wait(3);
 
-        $I->amOnPage('pedido/create');
         $I->see('Criar Pedido');
 
-        $I->fillField('pedido[profile_id]','234555111');
-        $I->fillField('pedido[mesa_id]','1');
+        $I->fillField('input[name="w0[profile_id]"]','234555111');
+        $I->fillField('input[name="w0[mesa_id]"]','1');
         $I->click('pedido-button');
 
         $I->wait(5);
 
-        $I->fillField('linhapedido[artigo_id]','teste');
-        $I->fillField('linhapedido[quantidade]','1');
+        $I->fillField('input[name="w1[artigo_id]"]','teste');
+        $I->fillField('input[name="w1[quantidade]"]','1');
         $I->click('artigo-button');
 
         $I->wait(5);
         $I->amOnPage('site/index');
+
+
     }
 }

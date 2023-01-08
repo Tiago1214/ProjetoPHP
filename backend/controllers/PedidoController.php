@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use backend\models\Mesa;
 use backend\models\MetodoPagamento;
+use common\models\Linhapedido;
 use common\models\Pedido;
 use common\models\PedidoSearch;
 use common\models\Profile;
@@ -47,7 +48,9 @@ class PedidoController extends Controller
                             'allow' => true,
                         ],
                         [
-                            'actions' => ['logout', 'index','create','view','update','estado','delete'], // add all actions to take guest to login page
+                            'actions' => ['logout', 'index','create','view',
+                                'update','estado','delete',
+                                'selectmesa','finalizarpedido','cancelar'], // add all actions to take guest to login page
                             'allow' => true,
                             'roles' => ['admin','funcionario'],
                         ],
@@ -81,8 +84,10 @@ class PedidoController extends Controller
      */
     public function actionView($id)
     {
+        $linhapedido=Linhapedido::find()->where(['pedido_id'=>$id])->all();
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'linhapedido'=>$linhapedido,
         ]);
     }
 
@@ -110,11 +115,16 @@ class PedidoController extends Controller
 
                 $model->mesa_id=null;
                 $model->metodo_pagamento_id=null;
-                $model->estado=1;
+                $model->estado='Em Processamento';
 
                 $model->save(false);
+                if($model->tipo_pedido==0){
+                    return $this->redirect(['pedido/selectmesa', 'idp' => $model->id]);
+                }
+                else{
+                    return $this->redirect(['linhapedido/create', 'idp' => $model->id]);
+                }
 
-                return $this->redirect(['linhapedido/create', 'idp' => $model->id]);
             }
         } else {
             $model->loadDefaultValues();
@@ -124,6 +134,45 @@ class PedidoController extends Controller
             'model' => $model,
             'profile'=>$profile,
             'mesa'=>$mesa,
+        ]);
+    }
+
+
+    /**
+     * Atribui mesa ao pedido seleiconado
+     * Se o registo for atualizado com sucesso o pedido fica com uma mesa associada
+     */
+    public function actionSelectmesa($idp){
+        $model=$this->findModel($idp);
+
+        $mesa=Mesa::find()->all();
+
+        if ($this->request->isPost && $model->load($this->request->post()) && $model->save(false)) {
+            return $this->redirect(['linhapedido/create', 'idp' => $model->id]);
+        }
+
+        return $this->render('formmesa', [
+            'model' => $model,
+            'mesa' => $mesa,
+        ]);
+    }
+
+    /**
+     * Finalizar pedido, atribuir método de pagamento e total
+     */
+    public function actionFinalizarpedido($idp){
+        $model=$this->findModel($idp);
+        $linhaspedido=Linhapedido::find()->where(['pedido_id'=>$idp])->all();
+        $metodospagamento=MetodoPagamento::find()->where(['estado'=>1])->all();
+
+        if ($this->request->isPost && $model->load($this->request->post()) && $model->save(false)) {
+            return $this->redirect(['pedido/index']);
+        }
+
+        return $this->render('finalizarpedido', [
+            'model' => $model,
+            'linhaspedido'=>$linhaspedido,
+            'metodospagamento'=>$metodospagamento,
         ]);
     }
 
@@ -151,6 +200,16 @@ class PedidoController extends Controller
             'metodo_pagamento' => $metodo_pagamento,
             'mesa' => $mesa,
         ]);
+    }
+
+    public function actionCancelar($idp){
+        if($idp==null){
+            return null;
+        }
+        $model=$this->findModel($idp);
+        $model->estado='Cancelado';
+        $model->save();
+        return $this->redirect(['index']);
     }
 
     /**

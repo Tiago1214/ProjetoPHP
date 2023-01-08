@@ -74,17 +74,26 @@ class LinhapedidoController extends Controller
         $pedido=Pedido::find()->where(['id'=>$idp])->all();
         $linhaspedido=LinhaPedido::find()->where(['pedido_id'=>$idp])->all();
         $artigo=Artigo::find()->where(['estado'=>[1]])->all();
+
+        //teste alterar quantidade pela grid view
+        $searchModel = new LinhaPedidoSearch();
+        $dataProvider = $searchModel->search($this->request->queryParams);
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {
+                foreach($linhaspedido as $quant){
+                    if($quant->artigo_id==$model->artigo_id){
+                        $quant->quantidade=$quant->quantidade+$model->quantidade;
+                        $quant->save(false);
+                        return $this->redirect(['create', 'idp' => $idp]);
+                    }
+                }
                 $findartigo=Artigo::find()->where(['id'=>$model->artigo_id])->all();
                 foreach($findartigo as $art){
                     $model->valorunitario=$art->preco;
                     $model->valoriva =$art->preco*($art->iva->taxaiva/100);
                     $model->taxaiva=$art->iva->taxaiva;
-
                 }
                 $model->pedido_id=$idp;
-                $model->id=1;
 
 
                 $model->save(false);
@@ -99,6 +108,8 @@ class LinhapedidoController extends Controller
             'pedido'=>$pedido,
             'linhaspedido'=>$linhaspedido,
             'artigo'=>$artigo,
+            'searchModel'=>$searchModel,
+            'dataProvider'=>$dataProvider,
         ]);
     }
 
@@ -119,6 +130,18 @@ class LinhapedidoController extends Controller
         }
 
         return $this->render('update', [
+            'model' => $model,
+        ]);
+    }
+
+    public function actionEditquant($id){
+        $model=$this->findModel($id);
+
+        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+            return $this->redirect(['create', 'idp' => $model->pedido_id]);
+        }
+
+        return $this->render('editquant', [
             'model' => $model,
         ]);
     }
