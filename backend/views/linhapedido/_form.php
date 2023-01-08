@@ -4,6 +4,8 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kartik\select2\Select2;
 use yii\helpers\ArrayHelper;
+use yii\grid\GridView;
+use yii\grid\ActionColumn;
 
 /** @var yii\web\View $this */
 /** @var common\models\LinhaPedido $model */
@@ -21,7 +23,7 @@ use yii\helpers\ArrayHelper;
                 <thead>
                 <tr>
                     <th>REF</th>
-                    <th>Descrição</th>
+                    <th>Produto</th>
                     <th>QTD #</th>
                     <th>Valor Un.</th>
                     <th>Taxa IVA</th>
@@ -35,23 +37,22 @@ use yii\helpers\ArrayHelper;
                 $ivatotal=0;
                 $total=0;
                 ?>
-                <?php   foreach($linhaspedido as $linha){
+                <?php  foreach($linhaspedido as $linha){
 
                     $subtotal=$subtotal+$linha->artigo->preco*$linha->quantidade;
                     $ivatotal=$ivatotal+($linha->valoriva * $linha->quantidade);
                     ?>
                     <tr>
-                        <td> <?=  $linha->artigo->id  ; ?> </td>
+                        <td> <?=  $linha->artigo->referencia  ; ?> </td>
                         <td> <?=  $linha->artigo->nome  ; ?></td>
-                        <td><?=  $linha->quantidade  ; ?></td>
+                        <td> <?=$linha->quantidade ;?> </td>
                         <td> <?= $linha->valorunitario."€" ; ?></td>
                         <td> <?= $linha->artigo->iva->taxaiva."%" ; ?></td>
                         <td><?=$linha->valoriva ."€"?></td>
                         <td> <?=$linha->artigo->preco*$linha->quantidade+$linha->valoriva * $linha->quantidade. "€"?></td>
                         <td>
-                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
-                                Editar
-                            </button>
+                            <?= Html::a('Editar Qtd',['linhapedido/editquant',
+                                'id'=>$linha->id],['class'=>'btn btn-warning btn-sm'])?>
                             <?=Html::a('Apagar', ['linhapedido/delete','id'=>$linha->id,'idp'=>$linha->pedido_id],
                             [
                             'data' => [
@@ -62,32 +63,12 @@ use yii\helpers\ArrayHelper;
                             'class' => 'btn btn-danger btn-sm'
                             ]
                             );?>
-                            <!-- Modal -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <input type="number" id="quantidade" name="quantidade" value="<?= $linha->quantidade?>">
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
-                                            <?=Html::a('Guardar',['linhapedido/editquantidade','idlp'=>$linha->id],['class'=>'btn btn-success btn-sm']) ?>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </td>
 
                     </tr>
                 <?php }?>
 
-                <?php if(true) {
+                <?php if(!is_null($pedido)) {
                     $form = ActiveForm::begin();
                     ?>
 
@@ -107,7 +88,8 @@ use yii\helpers\ArrayHelper;
                         <td><?= $form->field($model,'quantidade')->textInput() ?></td>
                         <td>
                             <div class="form-group">
-                                <?= Html::submitButton('Adicionar Artigo', ['class' => 'btn btn-success','name'=>'artigo-button']) ?>
+                                <br>
+                                <?= Html::submitButton('Adicionar Artigo', ['class' => 'btn btn-success ','name'=>'artigo-button']) ?>
                             </div>
                         </td>
                     </tr>
@@ -116,7 +98,6 @@ use yii\helpers\ArrayHelper;
                     <?php ActiveForm::end(); ?>
                 <?php }else
                 { ?>
-
                 <?php }?>
 
 
@@ -160,13 +141,13 @@ use yii\helpers\ArrayHelper;
                 <div class="col-lg-2"></div>
                 <div class="col-lg-2"></div>
                 <div class="col-lg-2"></div>
-                <div class="col-lg-2">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-1" style="text-align: right">
                     <?php  foreach($pedido as $ped){
                         ?>
-                        <?php echo Html::a('Ativar', ['/pedido/finalizarpedido', 'idp' =>$ped->id ], ['class'=>'btn btn-success']) ; ?>
+                        <?php echo Html::a('Finalizar Pedido', ['/pedido/finalizarpedido', 'idp' =>$ped->id ], ['class'=>'btn btn-success ']) ; ?>
                     <?php
                     }?>
-
                 </div>
             </div>
 

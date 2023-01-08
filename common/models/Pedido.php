@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use backend\models\Metodopagamento;
 use Yii;
 
 /**
@@ -56,14 +57,14 @@ class Pedido extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
+            'id' => 'Número de Pedido',
             'data' => 'Data',
             'total' => 'Total',
             'tipo_pedido' => 'Tipo Pedido',
             'estado'=>'Estado',
-            'profile_id' => 'Profile ID',
-            'metodo_pagamento_id' => 'Metodo Pagamento ID',
-            'mesa_id' => 'Mesa ID',
+            'profile_id' => 'Utilizador',
+            'metodo_pagamento_id' => 'Método Pagamento ',
+            'mesa_id' => 'Mesa ',
         ];
     }
 
@@ -94,7 +95,7 @@ class Pedido extends \yii\db\ActiveRecord
      */
     public function getMetodoPagamento()
     {
-        return $this->hasOne(MetodoPagamento::class, ['id' => 'metodo_pagamento_id']);
+        return $this->hasOne(Metodopagamento::class, ['id' => 'metodo_pagamento_id']);
     }
 
     /**

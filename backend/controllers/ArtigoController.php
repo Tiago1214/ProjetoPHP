@@ -145,7 +145,7 @@ class ArtigoController extends Controller
                     $imgName='art_'. $artigoId . '.' . $image->getExtension();
                     $image->saveAs(Yii::getAlias('@artigoImgPath').'/'.$imgName);
                     $model->imagem=$imgName;
-                    $model->imagemurl=Yii::getAlias('@imageurl').'/'.$model->imagem;
+                    $model->imagemurl=Yii::getAlias('@imageurl') . '/images/' .$model->imagem;
                     $model->save();
                 }
                 else{
