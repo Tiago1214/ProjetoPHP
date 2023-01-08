@@ -23,7 +23,7 @@ class SigninCest
         $I->fillField('input[name="LoginForm[password]"]', '12345678');
         $I->wait(2);
         //Não sei o porque de o botão de login não funcionar com este link sendo que o id do button submit é este
-        $I->click('login-button');
+        $I->click('Login');
 
         $I->wait(3);
 

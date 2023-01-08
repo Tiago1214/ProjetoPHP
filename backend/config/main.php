@@ -16,11 +16,12 @@ return [
         'class' => 'backend\modules\api\ModuleAPI'],
     ],
     'components' => [
+        // setup Krajee Pdf component
+
         'request' => [
             'csrfParam' => '_csrf-backend',
             'parsers' => [ 'application/json' => 'yii\web\JsonParser',]
         ],
-
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,

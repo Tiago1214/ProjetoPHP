@@ -70,32 +70,42 @@ class LinhapedidoController extends Controller
      */
     public function actionCreate($idp)
     {
+        //Criar nova linha de pedido
         $model = new LinhaPedido();
+        //encontrar o pedido selecionado
         $pedido=Pedido::find()->where(['id'=>$idp])->all();
+        //correr as linhas de pedido correspondente ao pedido selecionado
         $linhaspedido=LinhaPedido::find()->where(['pedido_id'=>$idp])->all();
+        //selecionar os artigos que estão ativos
         $artigo=Artigo::find()->where(['estado'=>[1]])->all();
 
-        //teste alterar quantidade pela grid view
-        $searchModel = new LinhaPedidoSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {
+
+                //verificar se já existe uma linha de pedido igual, caso exista não se cria uma nova mas sim
+                //adiciona-se a quantidade desejada e muda-se o valor de iva
                 foreach($linhaspedido as $quant){
+                    //verificar se a linha de pedido já existe
                     if($quant->artigo_id==$model->artigo_id){
+                        //adicionar mais quantidade há linha de pedido já existente
                         $quant->quantidade=$quant->quantidade+$model->quantidade;
+                        $quant->valoriva=($quant->valorunitario*$quant->quantidade)*($quant->artigo->iva->taxaiva/100);
+                        //salvar a quantidade
                         $quant->save(false);
                         return $this->redirect(['create', 'idp' => $idp]);
                     }
                 }
+                //selecionar os dados do artigo selecionado
                 $findartigo=Artigo::find()->where(['id'=>$model->artigo_id])->all();
+                //correr os dados do artigo selecionado e atribuir valores á linha de pedido
                 foreach($findartigo as $art){
                     $model->valorunitario=$art->preco;
-                    $model->valoriva =$art->preco*($art->iva->taxaiva/100);
+                    $model->valoriva =($art->preco*$model->quantidade)*($art->iva->taxaiva/100);
                     $model->taxaiva=$art->iva->taxaiva;
                 }
                 $model->pedido_id=$idp;
 
-
+                //salvar nova linha de pedido
                 $model->save(false);
                 return $this->redirect(['create', 'idp' => $idp]);
             }
@@ -108,8 +118,6 @@ class LinhapedidoController extends Controller
             'pedido'=>$pedido,
             'linhaspedido'=>$linhaspedido,
             'artigo'=>$artigo,
-            'searchModel'=>$searchModel,
-            'dataProvider'=>$dataProvider,
         ]);
     }
 

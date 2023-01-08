@@ -17,8 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'pedido'=>$pedido,
         'linhaspedido'=>$linhaspedido,
         'artigo'=>$artigo,
-        'searchModel'=>$searchModel,
-        'dataProvider'=>$dataProvider,
+
     ]) ?>
 
 </div>

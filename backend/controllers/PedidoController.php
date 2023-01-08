@@ -5,21 +5,18 @@ namespace backend\controllers;
 use backend\models\Empresa;
 use backend\models\Mesa;
 use backend\models\MetodoPagamento;
+use backend\models\Faturapdf;
 use common\models\Linhapedido;
 use common\models\Pedido;
 use common\models\PedidoSearch;
 use common\models\Profile;
 use common\models\User;
 use yii\filters\AccessControl;
-use kartik\mpdf\Pdf;
-
-
 use yii\rbac\Role;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use Yii;
-
 /**
  * PedidoController implements the CRUD actions for Pedido model.
  */
@@ -58,6 +55,7 @@ class PedidoController extends Controller
                         ],
                     ],
                 ],
+
             ]
         );
     }
@@ -164,7 +162,7 @@ class PedidoController extends Controller
         $model=$this->findModel($idp);
         $linhaspedido=Linhapedido::find()->where(['pedido_id'=>$idp])->all();
         $metodospagamento=MetodoPagamento::find()->where(['estado'=>1])->all();
-
+        $model->estado='Concluído';
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save(false)) {
             return $this->redirect(['pedido/index']);
         }
@@ -247,11 +245,10 @@ class PedidoController extends Controller
         $pedido = $this->findModel($idp);
         $empresa=Empresa::findOne(['id'=>1]);
         $linhapedido=Linhapedido::find()->where(['pedido_id'=>$idp])->all();
-        $html = $this->renderPartial('_faturapdf',['pedido'=>$pedido,'linhapedido'=>$linhapedido,'empresa'=>$empresa]);
-
-        $pdf=Yii::$app->pdf;
-        $pdf->content=$html;
-        return $pdf->render();
+        $html = $this->render('_faturapdf',['pedido'=>$pedido,'linhapedido'=>$linhapedido,'empresa'=>$empresa]);
+        $pdf = new Faturapdf();
+        $pdf->generatePDF($pedido, $empresa,$linhapedido);
+        return $html;
 
     }
 }

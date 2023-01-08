@@ -38,6 +38,10 @@ class ComposerStaticInit734d01053424e27e2149237ba3b6bf3c
             'yii\\bootstrap4\\' => 15,
             'yii\\' => 4,
         ),
+        's' => 
+        array (
+            'setasign\\Fpdi\\' => 14,
+        ),
         'k' => 
         array (
             'kartik\\select2\\' => 15,
@@ -88,7 +92,12 @@ class ComposerStaticInit734d01053424e27e2149237ba3b6bf3c
         ),
         'M' => 
         array (
+            'Mpdf\\' => 5,
             'Masterminds\\' => 12,
+        ),
+        'H' => 
+        array (
+            'Http\\Message\\' => 13,
         ),
         'G' => 
         array (
@@ -149,6 +158,10 @@ class ComposerStaticInit734d01053424e27e2149237ba3b6bf3c
         'yii\\' => 
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2',
+        ),
+        'setasign\\Fpdi\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/setasign/fpdi/src',
         ),
         'kartik\\select2\\' => 
         array (
@@ -283,9 +296,17 @@ class ComposerStaticInit734d01053424e27e2149237ba3b6bf3c
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
         ),
+        'Mpdf\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mpdf/mpdf/src',
+        ),
         'Masterminds\\' => 
         array (
             0 => __DIR__ . '/..' . '/masterminds/html5/src',
+        ),
+        'Http\\Message\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/php-http/message-factory/src',
         ),
         'GuzzleHttp\\Psr7\\' => 
         array (
