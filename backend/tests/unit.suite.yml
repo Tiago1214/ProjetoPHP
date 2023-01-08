@@ -1,5 +1,7 @@
-suite_namespace: backend\tests\unit
+suite_namespace: common\tests\unit
 actor: UnitTester
+
+bootstrap: false
 modules:
   enabled:
     - Yii2:
