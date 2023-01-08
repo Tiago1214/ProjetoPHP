@@ -1,2 +1,12 @@
-suite_namespace: backend\tests\unit
+suite_namespace: common\tests\unit
 actor: UnitTester
+bootstrap: false
+modules:
+  enabled:
+    - Db:
+        dsn: 'mysql:host=localhost;dbname=gersoft_test'
+        user: 'root'
+        password: 'root'
+        cleanup: false
+    - Yii2:
+        part: [fixtures, orm]
