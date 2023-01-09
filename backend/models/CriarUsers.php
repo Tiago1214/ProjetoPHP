@@ -32,19 +32,19 @@ class CriarUsers extends Model
 
             ['email', 'trim'],
             ['email', 'required','message'=>'Campo Obrigatório'],
-            ['email', 'email'],
+            ['email', 'email','message'=>'Email inválido'],
             ['email', 'string', 'max' => 255],
             ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'Este email já foi introduzido por outro utilizador .'],
 
             ['password', 'required'],
             ['password', 'string', 'min' => Yii::$app->params['user.passwordMinLength']],
 
-            [['telemovel','numcontribuinte'],'unique','targetClass'=>'\common\models\Profile','message'=>'O campo telemóvel ou numcontribuinte 
+            [['numcontribuinte'],'unique','targetClass'=>'\common\models\Profile','message'=>'O campo telemóvel ou numcontribuinte 
             já foram usados por outros utilizadores'],
             [['telemovel','numcontribuinte'],'required','message'=>'Campo Obrigatório'],
-            ['telemovel','string','min'=>9,'max'=>9],
-            ['numcontribuinte','string','min'=>9,'max'=>9],
-            [['telemovel','numcontribuinte'],'integer'],
+            [['telemovel'],'string','min'=>9,'max'=>9,'message'=>'O telemóovel deve ter no mínimo 9 carateres'],
+            [['numcontribuinte'],'string','min'=>9,'max'=>9,'message'=>'O telemóovel deve ter no mínimo 9 carateres'],
+            [['telemovel','numcontribuinte'],'integer','message'=>'número inteiro'],
         ];
     }
 

@@ -103,15 +103,16 @@ class ArtigoController extends Controller
                 $model->data=Yii::$app->formatter->asDatetime('now', 'php:Y-m-d H:i:s');
                 $model->save();
                 $artigoId=$model->id;
-                if($model->imagem!=null){
-                    $image=UploadedFile::getInstance($model,'imagem');
+                $image=UploadedFile::getInstance($model,'imagem');
+                if($image!=null){
                     $imgName='art_'. $artigoId . '.' . $image->getExtension();
                     $image->saveAs(Yii::getAlias('@artigoImgPath').'/'.$imgName);
                     $model->imagem=$imgName;
                     $model->imagemurl=Yii::getAlias('@imageurl').'/images/'.$model->imagem;
-                    $model->save();
                 }
-                return $this->redirect(['view', 'id' => $model->id,]);
+                $model->save();
+
+                return $this->redirect(['index']);
             }
         } else {
             $model->loadDefaultValues();

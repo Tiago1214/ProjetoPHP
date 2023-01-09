@@ -37,7 +37,7 @@ use yii\bootstrap5\Modal;
         ]);
         ?>
 
-        <?php //echo TimePicker::widget(['model' => $model, 'attribute' => 'hora']); ?>
+        <?=$form->field($model,'hora')->textInput()?>
 
         <?= $form->field($model, 'nrpessoas')->textInput() ?>
 

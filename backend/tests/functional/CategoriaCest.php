@@ -24,35 +24,23 @@ class CategoriaCest
 
     public function createCategoria(FunctionalTester $I)
     {
-        $I->fillField('input[name="LoginForm[username]"]', 'tiago');
-        $I->wait(2);
-        $I->fillField('input[name="LoginForm[password]"]', '12345678');
-        $I->wait(2);
+        $I->fillField('LoginForm[username]', 'tiago');
 
-        $I->submitForm('#login-form',[
-            'input[name="LoginForm[username]"]'=>'tiago',
-            'input[name="LoginForm[password]"]'=>'12345678'
-        ]);
+        $I->fillField('LoginForm[password]', '12345678');
+
+        $I->click('Iniciar Sessão');
         //Mandar para a página de categorias
-        $I->wait(2);
 
         $I->click('Categorias');
-        $I->wait(2);
 
         $I->click('Criar Categoria');
-        $I->wait(2);
 
-        $I->fillField('input[name="Categoria[nome]"]','teste');
-        $I->wait(2);
+        $I->fillField('Categoria[nome]','teste');
 
-        $I->fillField('input[name="Categoria[descricao]"]','teste');
-        $I->wait(2);
+        $I->fillField('Categoria[descricao]','teste');
 
-        $I->fillField('select[name="Categoria[estado]"]','1');
-        $I->wait(2);
+        $I->selectOption('Categoria[estado]','1');
 
         $I->click('Guardar');
-
-        $I->wait('2');
     }
 }

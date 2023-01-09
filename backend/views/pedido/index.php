@@ -67,10 +67,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     },
                     'cancelar'=>function($url,$model,$id) {
                         if($model->estado!='Concluído'&&$model->estado!='Cancelado'){
-                            return Html::a('Cancelar',['pedido/cancelar','idp'=>$id],['class'=>'btn btn-danger btn-sm']);
+                            return Html::a('Cancelar',['pedido/cancelar','idp'=>$id],['class'=>'btn btn-danger btn-sm',
+                                'data' => [
+                                'confirm' => 'Tem a certeza que pretende recusar esta reserva?',
+                                'method' => 'post',
+                            ]]);
                         }
                     }
-
                 ],
                 'class' => 'yii\grid\ActionColumn', 'template' => '{view}{update}{cancelar}',
                 'urlCreator' => function ($action, Pedido $model, $key, $index, $column) {
@@ -79,6 +82,4 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ],
     ]); ?>
-
-
 </div>

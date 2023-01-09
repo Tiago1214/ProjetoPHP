@@ -41,6 +41,7 @@ class Profile extends \yii\db\ActiveRecord
             ['telemovel','string','min'=>9,'max'=>9],
             ['numcontribuinte','string','min'=>9,'max'=>9],
             [['telemovel','numcontribuinte'],'integer'],
+            [['numcontribuinte'],'unique','message'=>'Número de contribuinte já existente'],
             [['estado'], 'integer'],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['user_id' => 'id']],
         ];

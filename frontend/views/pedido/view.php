@@ -67,17 +67,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             ],
             [
-                'attribute'=>'mesa_id',
-                'value'=>function($model){
-                    if($model->tipo_pedido==1){
-
-                    }
-                    else{
-                        return $model->mesa->nrmesa;
-                    }
-                }
-            ],
-            [
                 'attribute'=>'total',
                 'value'=>function($model){
                     return $model->total.'€';

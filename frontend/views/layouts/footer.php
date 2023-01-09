@@ -7,7 +7,7 @@
                 <div class="overflow-hidden">
                     <h4>Telefone</h4>
                     <p class="lead">
-                        +351 249 551 125
+                        +351 962 348 456
                     </p>
                 </div>
             </div>
@@ -16,7 +16,7 @@
                 <div class="overflow-hidden">
                     <h4>Email</h4>
                     <p class="lead">
-                        info@100portugues.com
+                        gersoft-geral@gersoft.com
                     </p>
                 </div>
             </div>
@@ -25,7 +25,7 @@
                 <div class="overflow-hidden">
                     <h4>Localização</h4>
                     <p class="lead">
-                        Rua Principal, nº3, Leiria
+                        R. Gen. Norton de Matos Apartado 4133, 2411-901 Leiria
                     </p>
                 </div>
             </div>
@@ -49,9 +49,9 @@
 
             <div class="col-lg-3 col-md-6">
                 <h3>Contactos</h3>
-                <p class="lead">Rua Principal, nº3, Leiria</p>
-                <p class="lead"><a href="#">+351 249 551 125</a></p>
-                <p><a href="#"> info@100portugues.com</a></p>
+                <p class="lead"> R. Gen. Norton de Matos Apartado 4133,2411-901 Leiria</p>
+                <p class="lead"><a href="#">+351 962348456</a></p>
+                <p><a href="#"> gersoft-geral@gersoft.com</a></p>
             </div>
             <div class="col-lg-3 col-md-6">
                 <h3>Horário de Funcionamento</h3>

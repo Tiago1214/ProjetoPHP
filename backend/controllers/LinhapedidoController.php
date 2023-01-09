@@ -6,6 +6,7 @@ use common\models\Artigo;
 use common\models\LinhaPedido;
 use common\models\LinhaPedidoSearch;
 use common\models\Pedido;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -27,6 +28,24 @@ class LinhapedidoController extends Controller
                     'class' => VerbFilter::className(),
                     'actions' => [
                         'delete' => ['POST'],
+                    ],
+                ],
+                'access' => [
+                    'class' => AccessControl::class,
+                    'rules' => [
+                        /**
+                         *Neste controlador os funcionários só podem visualizar os registos de ivas.
+                         * Nos ivas os admins podem realizar todas as ações necessárias para o funcionamento dos mesmos
+                         */
+                        [
+                            'actions' => ['login','error'],
+                            'allow' => true,
+                        ],
+                        [
+                            'actions' => ['logout', 'index','view','create','editquant','delete'], // add all actions to take guest to login page
+                            'allow' => true,
+                            'roles' => ['admin','funcionario'],
+                        ],
                     ],
                 ],
             ]

@@ -6,7 +6,9 @@
         <div class="row invoice-info">
             <div class="col-sm-4 invoice-col">
 
-                <h4>Fatura nº <?=$pedido->id ?></h4>
+
+                <h2>Fatura nº <?=$pedido->id ?></h2>
+
                 <h5>Data: <?=$pedido->data ?></h5>
                 <address>
 
@@ -26,7 +28,9 @@
             <div class="col-sm-4 invoice-col">
                 <address>
                     <br>
-                    <h1>Cliente</h1>
+
+                    <h2>Cliente</h2>
+
                     Nome: <?=$pedido->profile->user->username ?><br>
                     NIF: <?= $pedido->profile->numcontribuinte ?><br>
                 </address>

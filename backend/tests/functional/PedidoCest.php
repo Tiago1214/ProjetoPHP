@@ -23,53 +23,35 @@ class PedidoCest
 
     public function createPedido(FunctionalTester $I)
     {
-        $I->fillField('input[name="LoginForm[username]"]', 'tiago');
-        $I->wait(2);
-        $I->fillField('input[name="LoginForm[password]"]', '12345678');
-        $I->wait(2);
-
-        $I->submitForm('#login-form',[
-            'input[name="LoginForm[username]"]'=>'tiago',
-            'input[name="LoginForm[password]"]'=>'12345678'
-        ]);
-        //Mandar para a página de pedidos
-        $I->wait(2);
+        $I->fillField('LoginForm[username]', 'tiago');
+        $I->fillField('LoginForm[password]', '12345678');
+        $I->click('Iniciar Sessão');
 
         $I->click('Pedido');
-        $I->wait(3);
+
         $I->click('Visualizar todos os pedidos');
-        $I->wait(3);
+
 
         $I->click('Criar Pedido');
 
-        $I->selectOption('select[name="Pedido[tipo_pedido]"]','Restaurante');
-        $I->wait(2);
-        //$I->fillField('#pedido-profile_id','1');
-        $I->executeJS('document.getElementById("pedido-profile_id").value=1');
-        $I->wait(2);
-        $I->click('Guardar');
-        $I->wait(2);
+        $I->selectOption('Pedido[tipo_pedido]','Restaurante');
 
-        $I->wait(5);
+        //$I->fillField('#pedido-profile_id','1');
+        $I->selectOption('Pedido[profile_id]','1');
+
+        $I->click('Guardar');
 
         //$I->fillField('select[name="Pedido[mesa_id]"]','1');
-        $I->executeJS('document.getElementById("pedido-mesa_id").value=1');
-        $I->wait(2);
+        $I->selectOption('Pedido[mesa_id]','1');
         $I->click('Guardar');
-        $I->wait(2);
-        $I->executeJS('document.getElementById("linhapedido-artigo_id").value=22');
-        $I->wait(2);
-        $I->fillField('input[name="Linhapedido[quantidade]"]','10');
-        $I->wait(2);
+
+        $I->selectOption('Linhapedido[artigo_id]','36');
+        $I->fillField('Linhapedido[quantidade]','10');
         $I->click('Adicionar Artigo');
-        $I->wait(2);
 
         $I->click('Finalizar Pedido');
-        $I->wait(2);
-        $I->executeJS('document.getElementById("pedido-metodo_pagamento_id").value=1');
-        $I->wait(2);
+        $I->selectOption('Pedido[metodo_pagamento_id]','1');
         $I->click('Guardar');
 
-        $I->wait(2);
     }
 }

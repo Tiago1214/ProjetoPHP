@@ -11,12 +11,14 @@ use common\models\Pedido;
 use common\models\PedidoSearch;
 use common\models\Profile;
 use common\models\User;
+use Dompdf\Dompdf;
 use yii\filters\AccessControl;
 use yii\rbac\Role;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use Yii;
+
 /**
  * PedidoController implements the CRUD actions for Pedido model.
  */
@@ -245,10 +247,21 @@ class PedidoController extends Controller
         $pedido = $this->findModel($idp);
         $empresa=Empresa::findOne(['id'=>1]);
         $linhapedido=Linhapedido::find()->where(['pedido_id'=>$idp])->all();
-        $html = $this->render('_faturapdf',['pedido'=>$pedido,'linhapedido'=>$linhapedido,'empresa'=>$empresa]);
-        $pdf = new Faturapdf();
-        $pdf->generatePDF($pedido, $empresa,$linhapedido);
-        return $html;
+        $html=  $this->renderPartial('_faturapdf',['pedido'=>$pedido,'linhapedido'=>$linhapedido,'empresa'=>$empresa]);
+        // instantiate and use the dompdf class
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml($html);
+        // (Optional) Setup the paper size and orientation
+        $dompdf->setPaper('A4', 'portrait');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+        ob_end_clean();
+        // Output the generated PDF to Browser
+        $dompdf->stream('teste',array('Attachment'=>false));
+        //$pdf = new Faturapdf();
+        //$pdf->generatePDF($pedido, $empresa,$linhapedido);
+        //return $html;
 
     }
 }

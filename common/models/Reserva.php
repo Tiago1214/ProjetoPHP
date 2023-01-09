@@ -33,8 +33,9 @@ class Reserva extends \yii\db\ActiveRecord
     {
         return [
 
-            [['data', 'hora', 'nrpessoas'], 'required','message'=>'Os campos selecionados são de preenchimento obrigatório'],
+            [['data', 'hora', 'nrpessoas','estado','profile_id'], 'required','message'=>'Campo Obrigatório'],
             [['nrpessoas','estado','profile_id'], 'integer','message'=>'O campo número de pessoas é do tipo inteiro'],
+            //[['data'],'date'],
 
         ];
     }

@@ -39,8 +39,8 @@ use yii\grid\ActionColumn;
                 ?>
                 <?php  foreach($linhaspedido as $linha){
 
-                    $subtotal=$subtotal+$linha->artigo->preco*$linha->quantidade;
-                    $ivatotal=$ivatotal+($linha->valoriva * $linha->quantidade);
+                    $subtotal=$subtotal+$linha->valorunitario*$linha->quantidade;
+                    $ivatotal=$ivatotal+($linha->valoriva*$linha->quantidade);
                     ?>
                     <tr>
                         <td> <?=  $linha->artigo->referencia  ; ?> </td>
@@ -48,7 +48,7 @@ use yii\grid\ActionColumn;
                         <td> <?=$linha->quantidade ;?> </td>
                         <td> <?= $linha->valorunitario."€" ; ?></td>
                         <td> <?= $linha->artigo->iva->taxaiva."%" ; ?></td>
-                        <td><?=$linha->valoriva ."€"?></td>
+                        <td><?=$linha->valoriva*$linha->quantidade ."€"?></td>
                         <td> <?=$linha->artigo->preco*$linha->quantidade+$linha->valoriva * $linha->quantidade. "€"?></td>
                         <td>
                             <?= Html::a('Editar Qtd',['linhapedido/editquant',

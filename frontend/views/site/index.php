@@ -61,7 +61,7 @@ use yii\bootstrap5\Html; ?>
                         foi feito com a experiência de apenas pessoas portuguesas que fazem com que todos os pratos sejam únicos. Sabemos que muitas pessoas
                         adoram comida portuguêsa, e que nem todos tem a essencia que tornam a comida portuguêsa comum tão saborosa, assim, o 100% Português
                         tem como principal objetivo dar a conhecer os tipicos pratos portugueses.</p>
-                    <a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Sobre Nós</a>
+                    <a class="btn btn-lg btn-circle btn-outline-new-white" href="/site/about">Sobre Nós</a>
                 </div>
             </div>
         </div>

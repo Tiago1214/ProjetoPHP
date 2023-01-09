@@ -53,8 +53,8 @@ class Linhapedido extends \yii\db\ActiveRecord
             'valorunitario' => 'Valorunitario',
             'valoriva' => 'Valoriva',
             'taxaiva' => 'Taxaiva',
-            'pedido_id' => 'Pedido ID',
-            'artigo_id' => 'Artigo ID',
+            'pedido_id' => 'Pedido ',
+            'artigo_id' => 'Artigo',
         ];
     }
 
