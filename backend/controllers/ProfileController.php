@@ -68,6 +68,7 @@ class ProfileController extends Controller
     public function actionIndex()
     {
         $searchModel = new ProfileSearch();
+        //mostrar todos os utilizadores menos o utilizador que tem sessão iniciada
         $dataProvider = new ActiveDataProvider([
             'query' => Profile::find()->where(['!=','user_id',Yii::$app->user->getId()])
         ]);
@@ -150,8 +151,6 @@ class ProfileController extends Controller
      * Ativar ou Desativar uma categoria.
      * Dependendo se o item está ativado ou não esta função vai fazer com que se mude o estado da categoria
      * @param int $id ID
-     * @return \yii\web\Response
-     * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionEstado($id){
         //Encontrar o perfil pelo id que veio da url

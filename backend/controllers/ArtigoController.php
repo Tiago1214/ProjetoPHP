@@ -47,7 +47,7 @@ class ArtigoController extends Controller
                             'roles' => ['admin','funcionario'],
                         ],
                         [
-                            'actions'=>['estado','delete'],
+                            'actions'=>['estado'],
                             'allow'=>true,
                             'roles'=>['admin'],
                         ],
@@ -95,8 +95,11 @@ class ArtigoController extends Controller
      */
     public function actionCreate()
     {
+        //criar novo artigo
         $model = new Artigo();
+        //selecionar todos os registos de iva com o estado ativo
         $iva=\backend\models\Iva::find()->where(['estado'=>1])->all();
+        //selecionar todos os registos da categoria com o estado ativo
         $categoria=\common\models\Categoria::find()->where(['estado'=>1])->all();
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {
