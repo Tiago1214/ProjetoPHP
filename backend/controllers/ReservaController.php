@@ -175,23 +175,25 @@ class ReservaController extends Controller
         }
     }
 
+    /** Ver reservas aceites */
     public function actionReservasaceites(){
         $searchModel = new ReservaSearch();
         $dataProvider = new ActiveDataProvider([
             'query' => Reserva::find()->where(['estado'=>[1]])
         ]);
-        return $this->render('reservasaceites', [
+        return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
 
+    /** Ver reservas canceladas */
     public function actionReservascanceladas(){
         $searchModel = new ReservaSearch();
         $dataProvider = new ActiveDataProvider([
             'query' => Reserva::find()->where(['estado'=>[2]])
         ]);
-        return $this->render('reservascanceladas', [
+        return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);

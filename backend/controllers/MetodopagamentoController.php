@@ -35,6 +35,10 @@ class MetodopagamentoController extends Controller
                      */
                     'class' => AccessControl::class,
                     'rules' => [
+                        /**
+                         *Os admins podemd realizar todas as ações nos métodos de pagamento
+                         * Os funcionários só podem visualizar os registos
+                         */
                         [
                             'actions' => ['login','error'],
                             'allow' => true,

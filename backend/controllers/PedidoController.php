@@ -103,13 +103,13 @@ class PedidoController extends Controller
         $model = new Pedido();
 
         //$roleModel = Yii::$app->db ->createCommand("Select * from auth_assignment where item_name='cliente'")->queryAll();
-
+        //Selecionar todos os perfis
         $profile=Profile::find()->all();
-        $mesa=Mesa::find()->all();
 
         if ($this->request->isPost) {
 
             if ($model->load($this->request->post())) {
+                //Atribuir valores ao novo pedido
                 $model->total=0.0;
 
                 $model->data=Yii::$app->formatter->asDatetime('now', 'php:Y-m-d H:i:s');
@@ -119,6 +119,9 @@ class PedidoController extends Controller
                 $model->estado='Em Processamento';
 
                 $model->save(false);
+                //se o tipo de pedido for restaurante manda o admin ou funcionário seleciona a messa,
+                // senão vai diretamente para o criar linhas de pedido
+
                 if($model->tipo_pedido==0){
                     return $this->redirect(['pedido/selectmesa', 'idp' => $model->id]);
                 }
@@ -134,13 +137,12 @@ class PedidoController extends Controller
         return $this->render('create', [
             'model' => $model,
             'profile'=>$profile,
-            'mesa'=>$mesa,
         ]);
     }
 
 
     /**
-     * Atribui mesa ao pedido seleiconado
+     * Atribui mesa ao pedido selecionado
      * Se o registo for atualizado com sucesso o pedido fica com uma mesa associada
      */
     public function actionSelectmesa($idp){
@@ -242,10 +244,17 @@ class PedidoController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
-    public function actionFatura($idp){
 
+    /**
+     *Gerar fatura do pedido selecionado
+     *
+     */
+    public function actionFatura($idp){
+        //Selecionar o pedido
         $pedido = $this->findModel($idp);
+        //selecionar a empresa
         $empresa=Empresa::findOne(['id'=>1]);
+        //selecionar as linhas de pedido
         $linhapedido=Linhapedido::find()->where(['pedido_id'=>$idp])->all();
         $html=  $this->renderPartial('_faturapdf',['pedido'=>$pedido,'linhapedido'=>$linhapedido,'empresa'=>$empresa]);
         // instantiate and use the dompdf class
