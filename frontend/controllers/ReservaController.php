@@ -126,7 +126,7 @@ class ReservaController extends Controller
                 $model->estado=0;
                 $model->profile_id=$profile_id;
                 $model->save();
-                return $this->redirect(['view', 'id' => $model->id]);
+                return $this->redirect(['index']);
             }
         } else {
             $model->loadDefaultValues();

@@ -30,6 +30,7 @@ class Categoria extends \yii\db\ActiveRecord
         return [
             [['nome', 'descricao', 'estado'], 'required','message'=>'Os campos selecionados são de preenchimento obrigatório'],
             [['estado'], 'integer'],
+            [['nome'],'unique','message'=>'Categoria já existente'],
             [['nome'], 'string', 'max' => 200,'message'=>'O campo nome tem um máximo de 200 carateres'],
             [['descricao'], 'string', 'max' => 255,'message'=>'O campo descricao tem um máximo de 255 carateres'],
         ];

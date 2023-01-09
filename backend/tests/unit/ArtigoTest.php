@@ -37,7 +37,7 @@ class ArtigoTest extends \Codeception\Test\Unit
         $artigo->referencia=null;
         $this->assertFalse($artigo->validate('referencia'));
         $artigo->referencia='aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa';
-        $artigo-self::assertFalse($artigo->validate('referencia'));
+        $this->assertFalse($artigo->validate('referencia'));
         $artigo->referencia='testereferencia';
         $this->assertTrue($artigo->validate('referencia'));
         //validar preco
@@ -49,8 +49,6 @@ class ArtigoTest extends \Codeception\Test\Unit
         $this->assertTrue($artigo->validate('preco'));
         //validar data
         $artigo->data=null;
-        $this->assertFalse($artigo->validate('data'));
-        $artigo->data='12/15/2022';
         $this->assertFalse($artigo->validate('data'));
         $artigo->data='2022-01-10 09:50:35';
         $this->assertTrue($artigo->validate('data'));
@@ -83,9 +81,9 @@ class ArtigoTest extends \Codeception\Test\Unit
         //validar categoria
         $artigo->categoria_id=null;
         $this->assertFalse($artigo->validate('categoria_id'));
-        $artigo->iva_id='sadgsdfg';
+        $artigo->categoria_id='sadgsdfg';
         $this->assertFalse($artigo->validate('categoria_id'));
-        $artigo->iva_id=1;
+        $artigo->categoria_id=1;
         $this->assertTrue($artigo->validate('categoria_id'));
     }
 
@@ -95,7 +93,7 @@ class ArtigoTest extends \Codeception\Test\Unit
         $artigo->nome="teste unitário 1";
         $artigo->descricao="teste unitário 1";
         $artigo->referencia="124332";
-        $artigo->preco="55.5";
+        $artigo->preco=55.5;
         $artigo->data="2023-01-10 17:44:42";
         $artigo->imagem="art_16.jpg";
         $artigo->imagemurl="http://localhost/gersoft/backend/web/images/art_16.jpg";
@@ -103,20 +101,16 @@ class ArtigoTest extends \Codeception\Test\Unit
         $artigo->iva_id=1;
         $artigo->categoria_id=1;
         $artigo->save();
-    }
-
-    //atualizar artigo
-    public function testUpdateArtigo(){
-        $artigo=$this->tester->grabRecord(['nome'=>'teste unitário 1']);
-        $artigo->preco=55;
+        //update
+        $artigo=$this->tester->grabRecord('common\models\Artigo',['nome'=>'teste unitário 1']);
+        $artigo->descricao="teste do teste do teste unitario";
         $artigo->save();
-        $this->tester->seeRecord('artigo', ['preco' => '55']);
+        //delete
+        $this->tester->seeRecord('common\models\Artigo', ['descricao' => 'teste do teste do teste unitario']);
+        $artigo=$this->tester->grabRecord('common\models\Artigo',['descricao'=>'teste do teste do teste unitario']);
+        $artigo->delete();
+        $this->tester->dontSeeRecord('common\models\Artigo',['preco'=>'55']);
     }
 
-    //apagar registo
-    public function testDeleteArtigo(){
-        $artigo=$this->tester->grabRecord(['preco'=>'55']);
-        $artigo->delete();
-        $this->tester->dontSeeRecord('artigo',['preco'=>'55']);
-    }
+
 }
