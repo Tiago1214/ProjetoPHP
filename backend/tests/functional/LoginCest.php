@@ -37,7 +37,10 @@ class LoginCest
         $I->wait(2);
         $I->fillField('input[name="LoginForm[password]"]', '12345678');
         $I->wait(2);
+        $I->submitForm('#login-form',[
+            'input[name="LoginForm[username]"]'=>'tiago',
+            'input[name="LoginForm[password]"]'=>'12345678'
+        ]);
         //Não sei o porque de o botão de login não funcionar com este link sendo que o id do button submit é este
-        $I->click('Login');
     }
 }

@@ -46,7 +46,7 @@ class Artigo extends \yii\db\ActiveRecord
             [['preco'], 'number'],
             [['data'], 'safe'],
             [['nome'], 'string', 'max' => 200,'message'=>'O campo nome tem um máximo de 200 carateres'],
-            [['descricao',], 'string', 'max' => 255,'message'=>'O campo nome tem um máximo de 200 carateres'],
+            [['descricao',], 'string', 'max' => 255,'message'=>'O campo nome tem um máximo de 255 carateres'],
             [['imagem','imagemurl',],'string'],
             [['imagem'],'file','extensions'=>'jpg, jpeg, png','skipOnEmpty' => true],
             [['referencia'], 'string', 'max' => 45,'message'=>'O campo nome tem um máximo de 45 carateres'],

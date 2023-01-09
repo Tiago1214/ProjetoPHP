@@ -56,6 +56,6 @@ class ProfileCest
         $I->fillField('input[name="CriarUsers[password]"]','12345678');
         $I->wait(2);
         $I->click('Criar Conta');
-        $I->wait(2);
+        $I->wait(5);
     }
 }

@@ -89,7 +89,7 @@ class SigninCest
         $I->selectOption('select[name="Artigo[estado]"]','1');
         $I->wait(2);
         $I->click('Guardar');
-        $I->wait(3);
+        $I->wait(5);
         //Teste de aceitação concluído
     }
 }

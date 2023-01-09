@@ -70,6 +70,6 @@ class PedidoCest
         $I->wait(2);
         $I->click('Guardar');
 
-        $I->wait(2);
+        $I->wait(5);
     }
 }
