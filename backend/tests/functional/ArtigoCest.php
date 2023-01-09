@@ -23,39 +23,22 @@ class ArtigoCest
 
     public function createArtigo(FunctionalTester $I)
     {
-        $I->fillField('input[name="LoginForm[username]"]', 'tiago');
-        $I->wait(2);
-        $I->fillField('input[name="LoginForm[password]"]', '12345678');
-        $I->wait(2);
+        $I->fillField('LoginForm[username]', 'tiago');
+        $I->fillField('LoginForm[password]', '12345678');
+        $I->click('Iniciar Sessão');
 
-        $I->submitForm('#login-form',[
-            'input[name="LoginForm[username]"]'=>'tiago',
-            'input[name="LoginForm[password]"]'=>'12345678'
-        ]);
-        //Mandar para a página de artigos
-        $I->wait(2);
         $I->click('Artigos');
-        $I->wait(2);
         $I->click('Visualizar Artigos');
-        $I->wait(2);
         $I->click('Criar Artigo');
-        $I->wait(2);
 
-        $I->fillField('input[name="Artigo[nome]"]', 'teste');
-        $I->wait(2);
-        $I->fillField('input[name="Artigo[descricao]"]','teste de aceitacao');
-        $I->wait(2);
-        $I->fillField('input[name="Artigo[referencia]"]','234253462');
-        $I->wait(2);
-        $I->fillField('input[name="Artigo[preco]"]','435');
-        $I->wait(2);
-        $I->selectOption('select[name="Artigo[iva_id]"]','1');
-        $I->wait(2);
-        $I->selectOption('select[name="Artigo[categoria_id]"]','Carne');
-        $I->wait(2);
-        $I->selectOption('select[name="Artigo[estado]"]','1');
-        $I->wait(2);
+
+        $I->fillField('Artigo[nome]', 'teste');
+        $I->fillField('Artigo[descricao]','teste de aceitacao');
+        $I->fillField('Artigo[referencia]','234253462');
+        $I->fillField('Artigo[preco]','435');
+        $I->selectOption('Artigo[iva_id]','2');
+        $I->selectOption('Artigo[categoria_id]','Carne');
+        $I->selectOption('Artigo[estado]','1');
         $I->click('Guardar');
-        $I->wait(5);
     }
 }

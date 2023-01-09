@@ -29,7 +29,7 @@ class Iva extends \yii\db\ActiveRecord
     {
         return [
             [['descricao', 'taxaiva', 'estado'], 'required','message'=>'Todos os campos são de preenchimento obrigatório'],
-            [['taxaiva', 'estado'], 'integer'],
+            [['taxaiva', 'estado'], 'integer','message'=>'Número inteiro'],
             [['descricao'], 'string', 'max' => 255,'message'=>'O campo descrição tem um máximo de 255 caracteres'],
         ];
     }

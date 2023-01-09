@@ -47,7 +47,7 @@ class Comentario extends \yii\db\ActiveRecord
             'id' => 'ID',
             'titulo' => 'Titulo',
             'descricao' => 'Descricao',
-            'profile_id' => 'Profile ID',
+            'profile_id' => 'Utilizador',
         ];
     }
 

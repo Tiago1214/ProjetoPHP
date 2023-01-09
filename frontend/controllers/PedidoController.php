@@ -10,7 +10,9 @@ use common\models\Pedido;
 use common\models\PedidoSearch;
 use common\models\Profile;
 use common\models\Reserva;
+use Dompdf\Dompdf;
 use yii\data\ActiveDataProvider;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -33,6 +35,23 @@ class PedidoController extends Controller
                     'class' => VerbFilter::className(),
                     'actions' => [
                         'delete' => ['POST'],
+                    ],
+                ],
+                'access' => [
+                    'class' => AccessControl::class,
+                    'rules' => [
+                        /**
+                         *Nas reservas os clientes só podem visualizar,editar, criar ou cancelar reservas
+                         */
+                        [
+                            'actions' => ['login','error'],
+                            'allow' => true,
+                        ],
+                        [
+                            'actions' => ['logout', 'index','create','update','view','finalizarpedido','fatura'], // add all actions to take guest to login page
+                            'allow' => true,
+                            'roles' => ['cliente','funcionario','admin'],
+                        ],
                     ],
                 ],
             ]
@@ -192,11 +211,21 @@ class PedidoController extends Controller
         $pedido = $this->findModel($idp);
         $empresa=Empresa::findOne(['id'=>1]);
         $linhapedido=Linhapedido::find()->where(['pedido_id'=>$idp])->all();
-        $html = $this->renderPartial('_faturapdf',['pedido'=>$pedido,'linhapedido'=>$linhapedido,'empresa'=>$empresa]);
+        $html=  $this->renderPartial('_faturapdf',['pedido'=>$pedido,'linhapedido'=>$linhapedido,'empresa'=>$empresa]);
+        // instantiate and use the dompdf class
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml($html);
+        // (Optional) Setup the paper size and orientation
+        $dompdf->setPaper('A4', 'portrait');
 
-        $pdf=Yii::$app->pdf;
-        $pdf->content=$html;
-        return $pdf->render();
+        // Render the HTML as PDF
+        $dompdf->render();
+        ob_end_clean();
+        // Output the generated PDF to Browser
+        $dompdf->stream('teste',array('Attachment'=>false));
+        //$pdf = new Faturapdf();
+        //$pdf->generatePDF($pedido, $empresa,$linhapedido);
+        //return $html;
 
     }
 }

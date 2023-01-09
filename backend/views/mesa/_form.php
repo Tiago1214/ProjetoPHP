@@ -16,7 +16,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'nrlugares')->textInput() ?>
 
-    <?= $form->field($model, 'tipomesa')->dropDownList(['quadrada','circular','retangular']) ?>
+    <?= $form->field($model, 'tipomesa')->dropDownList(['quadrada'=>'quadrada','circular'=>'circular','retangular'=>'retangular']) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>

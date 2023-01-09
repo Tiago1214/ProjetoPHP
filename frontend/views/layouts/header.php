@@ -30,7 +30,17 @@ use yii\bootstrap5\Html;
                         </li>
                     <?php
                     } ?>
-
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Comentários</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown-a">
+                            <a class="dropdown-item" href="<?= Url::to('/comentario/index'); ?>">Visualizar Todos os comentários</a>
+                            <?php if(Yii::$app->user->identity!=null){
+                                ?>
+                                <a class="dropdown-item" href="<?= Url::to('/comentario/meuscomentarios'); ?>">Meus Comentários</a>
+                            <?php
+                            }?>
+                        </div>
+                    </li>
                     <li class="nav-item"><a class="nav-link" href="<?= Url::to('/site/about'); ?>">Sobre Nós</a></li>
               
 

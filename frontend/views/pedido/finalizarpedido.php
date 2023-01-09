@@ -36,11 +36,13 @@ use kartik\select2\Select2;
         ],
     ])*/ ?>
 
-    <?php $total=0 ;
+    <?php $subtotal=0 ;
+            $ivatotal=0;
     foreach($linhaspedido as $linha){
-        $total=$total+($linha->valorunitario*$linha->quantidade);
+        $subtotal=$subtotal+$linha->artigo->preco*$linha->quantidade;
+        $ivatotal=$ivatotal+($linha->valoriva*$linha->quantidade);
     }
-
+    $total=$subtotal+$ivatotal;
     echo $form->field($model,'total')->textInput(['value'=>$total,'readonly'=>true]);
     ?>
 
