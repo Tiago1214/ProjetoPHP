@@ -1,9 +1,13 @@
+<?php
+use yii\helpers\Url;
+use yii\bootstrap5\Html;
+?>
 	<!-- Start header -->
 	<div class="all-page-title page-breadcrumb">
 		<div class="container text-center">
 			<div class="row">
 				<div class="col-lg-12">
-					<h1>About Us</h1>
+					<h1>Sobre nós</h1>
 				</div>
 			</div>
 		</div>
@@ -16,11 +20,14 @@
 			<div class="row">
 				<div class="col-lg-6 col-md-6 text-center">
 					<div class="inner-column">
-						<h1>Welcome To <span>Live Dinner Restaurant</span></h1>
-						<h4>Little Story</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque auctor suscipit feugiat. Ut at pellentesque ante, sed convallis arcu. Nullam facilisis, eros in eleifend luctus, odio ante sodales augue, eget lacinia lectus erat et sem. </p>
-						<p>Sed semper orci sit amet porta placerat. Etiam quis finibus eros. Sed aliquam metus lorem, a pellentesque tellus pretium a. Nulla placerat elit in justo vestibulum, et maximus sem pulvinar.</p>
-						<a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Reservation</a>
+						<h1>Bem vindo ao <span>100%Português</span></h1>
+						<h4>Pequena história</h4>
+						<p>Desde o nosso modesto começo, em 2005, com um pequeno espaço na elegante cidade de Leiria, o desenvolvimento da 100% Português foi animado com a energia para cozinhar e servir comida apenas portuguêsa.
+                            Em contraste com outros restaurantes, o 100% Português foi feito com a experiência de apenas pessoas portuguesas que fazem com que todos os pratos sejam únicos.
+                            Sabemos que muitas pessoas adoram comida portuguêsa, e que nem todos tem a essencia que tornam a comida portuguêsa comum tão saborosa, assim,
+                            o 100% Português tem como principal objetivo dar a conhecer os tipicos pratos portugueses.</p>
+                       <!-- <h3><strong>Venha conhecer-nos, Reserve já:</strong></h3>
+                        <a class="btn btn-success btn-sm" href="<?= Url::to('/reserva/create'); ?>">Reserva</a> -->
 					</div>
 				</div>
 				<div class="col-lg-6 col-md-6">
@@ -28,8 +35,7 @@
 				</div>
 				<div class="col-md-12">
 					<div class="inner-pt">
-						<p>Sed tincidunt, neque at egestas imperdiet, nulla sapien blandit nunc, sit amet pulvinar orci nibh ut massa. Proin nec lectus sed nunc placerat semper. Duis hendrerit elit nec sapien porttitor, ut pretium ipsum feugiat. Aenean volutpat porta nisi in gravida. Curabitur pulvinar ligula sed facilisis bibendum. Nullam vitae nulla elit. </p>
-						<p>Integer purus velit, eleifend eu magna volutpat, porttitor blandit lectus. Aenean risus odio, efficitur quis erat eget, mattis tristique arcu. Fusce in ante enim. Integer consectetur elit nec laoreet rutrum. Mauris porta turpis nec tellus accumsan pellentesque. Morbi non quam tempus, convallis urna in, cursus mauris. </p>
+					    <!-- Paragrafo para projeto-->
 					</div>
 				</div>
 			</div>
