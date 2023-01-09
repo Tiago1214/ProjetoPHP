@@ -41,7 +41,8 @@ class PedidoController extends Controller
                     'class' => AccessControl::class,
                     'rules' => [
                         /**
-                         *Nas reservas os clientes só podem visualizar,editar, criar ou cancelar reservas
+                         *Nos pedidos os clientes podem criar,atualizar e visualizar as suas reservas e ver a fatura dos
+                         * pedidos concluídos
                          */
                         [
                             'actions' => ['login','error'],
@@ -66,14 +67,16 @@ class PedidoController extends Controller
     public function actionIndex()
     {
         $searchModel = new PedidoSearch();
+        //Selecionar todos os registos da tabela profile
         $userprofile=Profile::find()->all();
         $profile_id=0;
+        //Correr os registos da tabela profile
         foreach($userprofile as $user){
             if($user->user_id==Yii::$app->user->id){
                 $profile_id=$user->id;
             }
         }
-
+        //Mostrar apenas os registos quando o profile_id for igual ao utilizador com sessão iniciada
         $dataProvider = new ActiveDataProvider([
             'query' => Pedido::find()->where(['profile_id' => $profile_id])->orderBy(['data'=>'desc'])
 
@@ -100,10 +103,14 @@ class PedidoController extends Controller
         ]);
     }
 
+    /**
+     * Mudar o estado do pedido para cancelado
+     */
     public function actionCancelar($idp){
         if($idp==null){
             return null;
         }
+        //selecionar o registo para editar o estado
         $model=$this->findModel($idp);
         $model->estado='Cancelado';
         $model->save();
@@ -118,14 +125,17 @@ class PedidoController extends Controller
     public function actionCreate()
     {
         $model = new Pedido();
+        //Correr os registos da tabela profile
         $userprofile=Profile::find()->all();
         $profile_id=0;
+        //Encontrar o utilizador com sessão iniciada
         foreach($userprofile as $user){
             if($user->user_id==Yii::$app->user->id){
                 $profile_id=$user->id;
             }
         }
 
+        //Atribuir valores
         $model->total=0.0;
         $model->tipo_pedido=1;
         $model->profile_id=$profile_id;
@@ -140,9 +150,17 @@ class PedidoController extends Controller
 
     }
 
+
+    /**
+     * Função para finalizar pedido
+     * Atribuir o total e o método de pagamento ao registo
+     */
     public function actionFinalizarpedido($idp){
+        //Encontrar o registo selecionado
         $model=$this->findModel($idp);
+        //Selecionar as linhas de pedido que pertencem ao pedido selecionado
         $linhaspedido=Linhapedido::find()->where(['pedido_id'=>$idp])->all();
+        //Selecionar todos os métodos de pagamento ativos
         $metodospagamento=MetodoPagamento::find()->where(['estado'=>1])->all();
         $model->estado='Concluído';
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save(false)) {
@@ -206,14 +224,19 @@ class PedidoController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
-    public function actionFatura($idp){
 
+    /**
+     *Gerar Fatura baseada no registo que foi selecionado
+     */
+    public function actionFatura($idp){
+        //registo selecionado
         $pedido = $this->findModel($idp);
         $empresa=Empresa::findOne(['id'=>1]);
         $linhapedido=Linhapedido::find()->where(['pedido_id'=>$idp])->all();
         $html=  $this->renderPartial('_faturapdf',['pedido'=>$pedido,'linhapedido'=>$linhapedido,'empresa'=>$empresa]);
         // instantiate and use the dompdf class
         $dompdf = new Dompdf();
+        //gerar pdf
         $dompdf->loadHtml($html);
         // (Optional) Setup the paper size and orientation
         $dompdf->setPaper('A4', 'portrait');
@@ -222,10 +245,8 @@ class PedidoController extends Controller
         $dompdf->render();
         ob_end_clean();
         // Output the generated PDF to Browser
-        $dompdf->stream('teste',array('Attachment'=>false));
-        //$pdf = new Faturapdf();
-        //$pdf->generatePDF($pedido, $empresa,$linhapedido);
-        //return $html;
+        $dompdf->stream('fatura nr:'.$pedido->id ,array('Attachment'=>false));
+
 
     }
 }

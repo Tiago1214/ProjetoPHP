@@ -20,7 +20,7 @@ use yii\bootstrap5\Html;
                     <li class="nav-item"><a class="nav-link" href="<?= Url::to('/site/menu'); ?>">Menu</a></li>
                     <?php if(Yii::$app->user->identity!=null){
                         ?>
-                        <li class="nav-item"><a class="nav-link" href="<?= Url::to('/pedido/index');?>">Takeaway</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?= Url::to('/pedido/index');?>">Pedidos</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Reservas</a>
                             <div class="dropdown-menu" aria-labelledby="dropdown-a">

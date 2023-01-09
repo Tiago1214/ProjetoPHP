@@ -71,19 +71,20 @@ class ComentarioController extends Controller
      *Mostrar os comentários do utilizador com sessão inciada
      *
      */
-
     public function actionMeuscomentarios()
     {
         $searchModel = new ComentarioSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
-
+        //selecionar todos os utilizadores
         $userprofile=Profile::find()->all();
         $profile_id=0;
+        //correr os registos todos e verificar aquele que tem o user_id igual ao utilizador com sessão iniciada
         foreach($userprofile as $user){
             if($user->user_id==Yii::$app->user->id){
                 $profile_id=$user->id;
             }
         }
+        //Mostrar os registos do utilizador com sessão iniciada
         $dataProvider = new ActiveDataProvider([
             'query' => Comentario::find()->where(['profile_id' => $profile_id])
         ]);
@@ -119,11 +120,14 @@ class ComentarioController extends Controller
         if ($this->request->isPost) {
             if ($model->load($this->request->post()))
             {
+                //Selecionar o perfil com sessão iniciada
                 $perfil=Profile::find()->where(['user_id'=>Yii::$app->user->id])->all();
                 $perfil_id=0;
+                //correr o registo do peril
                 foreach ($perfil as $per){
                     $perfil_id=$per->id;
                 }
+                //atribuir o valor do utilizador com sessão iniciada
                 $model->profile_id=$perfil_id;
                 $model->save();
                 return $this->redirect(['view', 'id' => $model->id]);

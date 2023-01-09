@@ -45,13 +45,7 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
     </div>
 
     <div class="row">
-        <div class="col-md-6 col-sm-4 col-12">
-            <?= \hail812\adminlte\widgets\InfoBox::widget([
-                'text' => 'Número de Comentários',
-                'number' => \common\models\Comentario::find()->count(),
-                'icon' => 'far fa-envelope',
-            ]) ?>
-        </div>
+
         <div class="col-md-6 col-sm-6 col-12">
             <?= \hail812\adminlte\widgets\InfoBox::widget([
                 'text' => 'Número de Reservas',
