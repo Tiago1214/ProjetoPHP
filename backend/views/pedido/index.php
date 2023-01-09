@@ -70,7 +70,6 @@ $this->params['breadcrumbs'][] = $this->title;
                             return Html::a('Cancelar',['pedido/cancelar','idp'=>$id],['class'=>'btn btn-danger btn-sm']);
                         }
                     }
-
                 ],
                 'class' => 'yii\grid\ActionColumn', 'template' => '{view}{update}{cancelar}',
                 'urlCreator' => function ($action, Pedido $model, $key, $index, $column) {
@@ -79,6 +78,4 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ],
     ]); ?>
-
-
 </div>
