@@ -55,14 +55,76 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                ['class' => 'yii\rest\UrlRule','controller' =>'api/artigo'],
-                ['class' => 'yii\rest\UrlRule','controller' =>'api/categoria'],
-                ['class' => 'yii\rest\UrlRule','controller' =>'api/comentario'],
-                ['class' => 'yii\rest\UrlRule','controller' =>'api/reserva'],
-                ['class' => 'yii\rest\UrlRule','controller' =>'api/linhapedido'],
-                ['class' => 'yii\rest\UrlRule','controller' =>'api/pedido'],
-                ['class' => 'yii\rest\UrlRule','controller' =>'api/profile'],
-                ['class' => 'yii\rest\UrlRule','controller' =>'api/user'],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'api/artigo',
+                    'tokens' => [
+
+                    ],
+                    'extraPatterns' => [
+
+                    ],
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'api/categoria',
+                    'tokens' => [
+
+                    ],
+                    'extraPatterns' => [
+
+                    ],
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'api/comentario',
+                    'tokens' => [
+
+                    ],
+                    'extraPatterns' => [
+
+                    ],
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'api/reserva',
+                    'tokens' => [
+
+                    ],
+                    'extraPatterns' => [
+
+                    ],
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'api/linhapedido',
+                    'tokens' => [
+
+                    ],
+                    'extraPatterns' => [
+
+                    ],
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'api/artigo',
+                    'tokens' => [
+
+                    ],
+                    'extraPatterns' => [
+
+                    ],
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'api/user',
+                    'tokens' => [
+
+                    ],
+                    'extraPatterns' => [
+
+                    ],
+                ],
             ],
         ],
     ],
