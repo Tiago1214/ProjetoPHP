@@ -2,8 +2,11 @@
 
 namespace backend\modules\api\controllers;
 
+use backend\modules\api\components\CustomAuth;
 use yii\db\ActiveRecord;
 use yii\filters\auth\QueryParamAuth;
+use common\models\Artigo;
+use yii\filters\auth\HttpBasicAuth;
 
 class ArtigoController extends ActiveRecord
 {
@@ -11,17 +14,19 @@ class ArtigoController extends ActiveRecord
 
     public function behaviors()
     {
+        Yii::$app->params['id'] = 0;
         $behaviors = parent::behaviors();
         $behaviors['authenticator'] = [
-            'class' => QueryParamAuth::className(),
-            //only=> ['index'], //Apenas para o GET
+            'class' => CustomAuth::className(),
         ];
         return $behaviors;
     }
+
 
     public function actionIndex()
     {
         return $this->render('index');
     }
 
+    
 }

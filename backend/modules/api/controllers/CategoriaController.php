@@ -2,6 +2,7 @@
 
 namespace backend\modules\api\controllers;
 
+use backend\modules\api\components\CustomAuth;
 use yii\rest\ActiveController;
 use yii\filters\auth\QueryParamAuth;
 
@@ -11,10 +12,10 @@ class CategoriaController extends ActiveController
 
     public function behaviors()
     {
+        Yii::$app->params['auth_user_id'] = 0;
         $behaviors = parent::behaviors();
         $behaviors['authenticator'] = [
-            'class' => QueryParamAuth::className(),
-            //only=> ['index'], //Apenas para o GET
+            'class' => CustomAuth::className(),
         ];
         return $behaviors;
     }
