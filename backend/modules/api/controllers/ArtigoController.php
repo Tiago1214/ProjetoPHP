@@ -28,5 +28,5 @@ class ArtigoController extends ActiveRecord
         return $this->render('index');
     }
 
-    
+
 }

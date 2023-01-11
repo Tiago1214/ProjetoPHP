@@ -26,4 +26,9 @@ class ComentarioController extends ActiveController
         return $this->render('index');
     }
 
+    public function actionTitulo($id){
+        
+    }
+
+
 }
