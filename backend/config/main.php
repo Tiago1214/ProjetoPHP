@@ -79,10 +79,12 @@ return [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => 'api/comentario',
                     'tokens' => [
-
+                        '{id}'    => '<id:\\d+>',
+                        '{titulo}' => '<titulo:[\w\s]+>'
                     ],
                     'extraPatterns' => [
-
+                        'GET {id}/meuscomentarios'=>'meuscomentarios',
+                        'GET {titulo}/titulo'=>'titulo',
                     ],
                 ],
                 [
@@ -108,16 +110,6 @@ return [
                 [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => 'api/artigo',
-                    'tokens' => [
-
-                    ],
-                    'extraPatterns' => [
-
-                    ],
-                ],
-                [
-                    'class' => 'yii\rest\UrlRule',
-                    'controller' => 'api/user',
                     'tokens' => [
 
                     ],
