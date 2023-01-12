@@ -20,6 +20,14 @@ class ReservaController extends ActiveController
         return $behaviors;
     }
 
+    public function checkAccess($action, $model = null, $params = [])
+    {
+        if($action==="delete")
+        {
+            throw new \yii\web\ForbiddenHttpException('Proibido');
+        }
+    }
+
     public function actionIndex()
     {
         return $this->render('index');

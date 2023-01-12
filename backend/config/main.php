@@ -80,11 +80,12 @@ return [
                     'controller' => 'api/comentario',
                     'tokens' => [
                         '{id}'    => '<id:\\d+>',
-                        '{titulo}' => '<titulo:[\w\s]+>'
+                        '{titulo}' => '<titulo:[\w\s+]+>'
                     ],
                     'extraPatterns' => [
                         'GET {id}/meuscomentarios'=>'meuscomentarios',
                         'GET {titulo}/titulo'=>'titulo',
+                        'DELETE {id}/apagarmeuscomentarios'=>'apagarmeuscomentarios',
                     ],
                 ],
                 [

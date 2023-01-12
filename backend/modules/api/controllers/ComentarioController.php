@@ -22,6 +22,15 @@ class ComentarioController extends ActiveController
         return $behaviors;
     }
 
+    //atribuir permissões
+    public function checkAccess($action, $model = null, $params = [])
+    {
+        if($action==="index"||$action=="view"||$action==="delete")
+        {
+            throw new \yii\web\ForbiddenHttpException('Proibido');
+        }
+    }
+
     public function actionIndex()
     {
         return $this->render('index');
@@ -38,14 +47,23 @@ class ComentarioController extends ActiveController
     }
 
     //Fazer pesquisa de comentario por titulo em vez de id, ou seja usar texto na url
-    //para preencher os espaços na url é usar o %20
+    //para preencher os espaços na url é usar o + no lugar dos espaços
     public function actionTitulo($titulo){
-        $text = str_replace(" ", "%20", $titulo);
         $comentario_search=Comentario::find()->where(['titulo'=>$titulo])->all();
         if($comentario_search!=null){
             return $comentario_search;
         }
         return 'Não existe nenhum comentário com este titulo';
+    }
+
+
+    //Apagar os comentários do utilizador com sessão iniciada
+    public function actionApagarmeuscomentarios($id){
+        $comentario_delete=Comentario::deleteAll(['profile_id'=>$id]);
+        if($comentario_delete!=null){
+            return 'Os comentário número '.$id.' foi apagado com sucesso!';
+        }
+        return 'Este utilizador não tem nenhum comentário para apagar';
     }
 
 }
