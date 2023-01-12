@@ -6,6 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="f392b587-6f44-44bb-9888-fc4e4ee43c46" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/config/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/config/main.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/modules/api/controllers/ArtigoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/api/controllers/ArtigoController.php" afterDir="false" />
+
+      <change beforePath="$PROJECT_DIR$/backend/modules/api/controllers/CategoriaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/api/controllers/CategoriaController.php" afterDir="false" />
+
+      <change beforePath="$PROJECT_DIR$/backend/modules/api/controllers/LinhapedidoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/api/controllers/LinhapedidoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/modules/api/controllers/ReservaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/api/controllers/ReservaController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,6 +147,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
@@ -154,9 +162,14 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+
   <component name="RunManager">
     <configuration name="codeception.yml" type="CodeceptionConfigurationType" factoryName="Codeception">
       <PhpTestRunnerSettings scope="ConfigurationFile" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="ComposerRunConfigurationType" factoryName="Composer Script">
+      <option name="pathToComposerJson" value="$PROJECT_DIR$/composer.json" />
       <method v="2" />
     </configuration>
   </component>

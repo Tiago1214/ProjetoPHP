@@ -3,6 +3,8 @@
 namespace backend\modules\api\controllers;
 
 use backend\modules\api\components\CustomAuth;
+use common\models\Artigo;
+use common\models\Categoria;
 use yii\rest\ActiveController;
 use yii\filters\auth\QueryParamAuth;
 
@@ -24,5 +26,7 @@ class CategoriaController extends ActiveController
     {
         return $this->render('index');
     }
+
+
 
 }
