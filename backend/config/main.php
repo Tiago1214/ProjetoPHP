@@ -59,9 +59,17 @@ return [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => 'api/artigo',
                     'tokens' => [
+                        '{id}'    => '<id:\\d+>',
+                        '{nome}' => '<nome:[\w\s]+>'
 
                     ],
                     'extraPatterns' => [
+                        'GET {nome}/artigosdacategoria'=>'artigosdacategoria',
+                        'GET {nome}/artigoponome'=>'artigoponome',
+
+
+
+
 
                     ],
                 ],
