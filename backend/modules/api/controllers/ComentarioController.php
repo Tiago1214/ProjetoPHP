@@ -7,7 +7,7 @@ use common\models\Comentario;
 use yii\rest\ActiveController;
 use yii\filters\auth\QueryParamAuth;
 use Yii;
-use common\models\Comentario;
+
 
 class ComentarioController extends ActiveController
 {

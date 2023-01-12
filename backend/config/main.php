@@ -78,10 +78,6 @@ return [
                 [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => 'api/comentario',
-                    'extraPatterns' => [
-                        'GET {id}/meuscomentarios' => 'meuscomentarios',
-                    ],
-
                     'tokens' => [
 
                         '{id}'    => '<id:\\d+>',
@@ -119,6 +115,18 @@ return [
 
                     ],
                     'extraPatterns' => [
+
+                    ],
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'api/pedido',
+                    'tokens' => [
+                        '{id}'    => '<id:\\d+>',
+
+                    ],
+                    'extraPatterns' => [
+                        'GET {id}/totalgasto'=>'totalgasto',
 
                     ],
                 ],
