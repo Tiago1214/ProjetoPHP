@@ -3,10 +3,11 @@
 namespace backend\modules\api\controllers;
 
 use backend\modules\api\components\CustomAuth;
+use common\models\Comentario;
 use yii\rest\ActiveController;
 use yii\filters\auth\QueryParamAuth;
 use Yii;
-use common\models\Comentario;
+
 
 class ComentarioController extends ActiveController
 {
@@ -37,6 +38,7 @@ class ComentarioController extends ActiveController
         return 'Este utilizador não tem nenhum comentário criado';
     }
 
+
     //Fazer pesquisa de comentario por titulo em vez de id, ou seja usar texto na url
     //para preencher os espaços na url é usar o %20
     public function actionTitulo($titulo){
@@ -47,5 +49,6 @@ class ComentarioController extends ActiveController
         }
         return 'Não existe nenhum comentário com este titulo';
     }
+
 
 }

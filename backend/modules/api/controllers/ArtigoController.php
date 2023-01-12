@@ -12,6 +12,8 @@ use yii\filters\auth\HttpBasicAuth;
 use yii\rest\ActiveController;
 use Yii;
 
+
+
 class ArtigoController extends ActiveController
 {
     public $modelClass = 'common\models\Artigo';

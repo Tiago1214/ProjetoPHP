@@ -87,6 +87,7 @@ return [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => 'api/comentario',
                     'tokens' => [
+
                         '{id}'    => '<id:\\d+>',
                         '{titulo}' => '<titulo:[\w\s]+>'
                     ],
@@ -99,9 +100,11 @@ return [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => 'api/reserva',
                     'tokens' => [
+                        '{id}'    => '<id:\\d+>',
 
                     ],
                     'extraPatterns' => [
+                        'GET {id}/minhasreservas'=>'minhasreservas',
 
                     ],
                 ],
@@ -109,10 +112,11 @@ return [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => 'api/linhapedido',
                     'tokens' => [
+                        '{id}'    => '<id:\\d+>',
 
                     ],
                     'extraPatterns' => [
-
+                        'GET {id}/linhasdopedido'=>'linhasdopedido',
                     ],
                 ],
                 [
@@ -122,6 +126,18 @@ return [
 
                     ],
                     'extraPatterns' => [
+
+                    ],
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'api/pedido',
+                    'tokens' => [
+                        '{id}'    => '<id:\\d+>',
+
+                    ],
+                    'extraPatterns' => [
+                        'GET {id}/totalgasto'=>'totalgasto',
 
                     ],
                 ],
