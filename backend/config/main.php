@@ -92,9 +92,11 @@ return [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => 'api/reserva',
                     'tokens' => [
+                        '{id}'    => '<id:\\d+>',
 
                     ],
                     'extraPatterns' => [
+                        'GET {id}/minhasreservas'=>'minhasreservas',
 
                     ],
                 ],
@@ -102,10 +104,11 @@ return [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => 'api/linhapedido',
                     'tokens' => [
+                        '{id}'    => '<id:\\d+>',
 
                     ],
                     'extraPatterns' => [
-
+                        'GET {id}/linhasdopedido'=>'linhasdopedido',
                     ],
                 ],
                 [

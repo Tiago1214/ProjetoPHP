@@ -7,8 +7,9 @@ use yii\db\ActiveRecord;
 use yii\filters\auth\QueryParamAuth;
 use common\models\Artigo;
 use yii\filters\auth\HttpBasicAuth;
+use yii\rest\ActiveController;
 
-class ArtigoController extends ActiveRecord
+class ArtigoController extends ActiveController
 {
     public $modelClass = 'common\models\Artigo';
 
