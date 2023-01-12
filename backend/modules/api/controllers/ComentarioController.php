@@ -6,6 +6,7 @@ use backend\modules\api\components\CustomAuth;
 use yii\rest\ActiveController;
 use yii\filters\auth\QueryParamAuth;
 use Yii;
+use common\models\Comentario;
 
 class ComentarioController extends ActiveController
 {
@@ -26,9 +27,25 @@ class ComentarioController extends ActiveController
         return $this->render('index');
     }
 
-    public function actionTitulo($id){
-        
+
+    //Fazer pesquisa dos comentarios do utilizador com sessão iniciada
+    public function actionMeuscomentarios($id){
+        $comentario_search=Comentario::find()->where(['profile_id'=>$id])->all();
+        if($comentario_search!=null){
+            return $comentario_search;
+        }
+        return 'Este utilizador não tem nenhum comentário criado';
     }
 
+    //Fazer pesquisa de comentario por titulo em vez de id, ou seja usar texto na url
+    //para preencher os espaços na url é usar o %20
+    public function actionTitulo($titulo){
+        $text = str_replace(" ", "%20", $titulo);
+        $comentario_search=Comentario::find()->where(['titulo'=>$titulo])->all();
+        if($comentario_search!=null){
+            return $comentario_search;
+        }
+        return 'Não existe nenhum comentário com este titulo';
+    }
 
 }
