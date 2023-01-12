@@ -3,6 +3,7 @@
 namespace backend\modules\api\controllers;
 
 use backend\modules\api\components\CustomAuth;
+use common\models\Comentario;
 use yii\rest\ActiveController;
 use yii\filters\auth\QueryParamAuth;
 use Yii;
@@ -28,6 +29,14 @@ class ComentarioController extends ActiveController
 
     public function actionTitulo($id){
         
+    }
+
+    public function actionMeuscomentarios($id){
+        $comentariomodel = new $this->modelClass;
+        $recs = $comentariomodel::find()->where(['profile_id'=>$id])->all();
+        return $recs;
+
+
     }
 
 
