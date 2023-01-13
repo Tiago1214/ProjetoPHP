@@ -27,7 +27,7 @@ class CustomAuth extends AuthMethod
         }
 
         //atribuir variável de id
-        Yii::$app->params['user_auth_id'] = $user->id;
+        Yii::$app->params['id'] = $user->id;
         return $user;
     }
 }

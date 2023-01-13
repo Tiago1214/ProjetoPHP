@@ -64,23 +64,19 @@ return [
 
                     ],
                     'extraPatterns' => [
-                        'GET {nome}/artigosdacategoria'=>'artigosdacategoria',
-                        'GET {nome}/artigoponome'=>'artigoponome',
-
-
-
-
-
+                        'GET artigosdacategoria/{nome}'=>'artigosdacategoria',
+                        'GET artigoponome/{nome}'=>'artigoponome',
                     ],
                 ],
                 [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => 'api/categoria',
                     'tokens' => [
-
+                        '{id}'    => '<id:\\d+>',
+                        '{nome}' => '<nome:[\w\s]+>'
                     ],
                     'extraPatterns' => [
-
+                        'GET categorianome/{nome}'=>'categorianome',
                     ],
                 ],
                 [
@@ -92,9 +88,9 @@ return [
                         '{titulo}' => '<titulo:[\w\s+]+>'
                     ],
                     'extraPatterns' => [
-                        'GET {id}/meuscomentarios'=>'meuscomentarios',
-                        'GET {titulo}/titulo'=>'titulo',
-                        'DELETE {id}/apagarmeuscomentarios'=>'apagarmeuscomentarios',
+                        'GET meuscomentarios'=>'meuscomentarios',
+                        'GET titulo/{titulo}'=>'titulo',
+                        'DELETE apagarmeuscomentarios'=>'apagarmeuscomentarios',
                     ],
                 ],
                 [
@@ -105,7 +101,7 @@ return [
 
                     ],
                     'extraPatterns' => [
-                        'GET {id}/minhasreservas'=>'minhasreservas',
+                        'GET minhasreservas/{id}'=>'minhasreservas',
 
                     ],
                 ],
@@ -117,14 +113,14 @@ return [
 
                     ],
                     'extraPatterns' => [
-                        'GET {id}/linhasdopedido'=>'linhasdopedido',
+                        'GET linhasdopedido/{id}'=>'linhasdopedido',
                     ],
                 ],
                 [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => 'api/artigo',
                     'tokens' => [
-
+                        '{id}'    => '<id:\\d+>',
                     ],
                     'extraPatterns' => [
 
@@ -135,10 +131,31 @@ return [
                     'controller' => 'api/pedido',
                     'tokens' => [
                         '{id}'    => '<id:\\d+>',
-
                     ],
                     'extraPatterns' => [
-                        'GET {id}/totalgasto'=>'totalgasto',
+                        'GET totalgasto'=>'totalgasto',
+                        'GET nrtotalpedidos'=>'nrtotalpedidos',
+                        'GET meuspedidos'=>'meuspedidos',
+                        'PUT cancelarpedido/{id}'=>'cancelarpedido',
+                    ],
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'api/mesa',
+                    'tokens' => [
+                        '{id}'    => '<id:\\d+>',
+                    ],
+                    'extraPatterns' => [
+
+                    ],
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'api/metodopagamento',
+                    'tokens' => [
+                        '{id}'    => '<id:\\d+>',
+                    ],
+                    'extraPatterns' => [
 
                     ],
                 ],

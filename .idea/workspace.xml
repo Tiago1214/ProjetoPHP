@@ -7,10 +7,16 @@
     <list default="true" id="f392b587-6f44-44bb-9888-fc4e4ee43c46" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/config/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/config/main.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/modules/api/ModuleAPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/api/ModuleAPI.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/modules/api/components/CustomAuth.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/api/components/CustomAuth.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/modules/api/controllers/ArtigoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/api/controllers/ArtigoController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/modules/api/controllers/CategoriaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/api/controllers/CategoriaController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/modules/api/controllers/ComentarioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/api/controllers/ComentarioController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/modules/api/controllers/LinhapedidoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/api/controllers/LinhapedidoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/modules/api/controllers/PedidoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/api/controllers/PedidoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/modules/api/controllers/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/api/controllers/ProfileController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/modules/api/controllers/ReservaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/api/controllers/ReservaController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/modules/api/views/default/index.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,17 +147,23 @@
     </include_path>
   </component>
   <component name="ProjectId" id="2KCNzBZlUPE83Z070Ujg0UY0aM6" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
   <component name="RunManager">
     <configuration name="codeception.yml" type="CodeceptionConfigurationType" factoryName="Codeception">
       <PhpTestRunnerSettings scope="ConfigurationFile" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="ComposerRunConfigurationType" factoryName="Composer Script">
-      <option name="pathToComposerJson" value="$PROJECT_DIR$/composer.json" />
       <method v="2" />
     </configuration>
   </component>
@@ -165,10 +177,22 @@
       <updated>1673474865148</updated>
       <workItem from="1673474866907" duration="5013000" />
       <workItem from="1673535166449" duration="5850000" />
+      <workItem from="1673561856956" duration="9593000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
