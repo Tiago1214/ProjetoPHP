@@ -12,7 +12,7 @@ class ProfileController extends ActiveController
 
     public function behaviors()
     {
-        Yii::$app->params['auth_user_id'] = 0;
+        Yii::$app->params['id'] = 0;
         $behaviors = parent::behaviors();
         $behaviors['authenticator'] = [
             'class' => CustomAuth::className(),
