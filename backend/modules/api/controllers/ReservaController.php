@@ -24,7 +24,7 @@ class ReservaController extends ActiveController
 
     public function checkAccess($action, $model = null, $params = [])
     {
-        if($action==="delete")
+        if($action==="delete"||$action==="update")
         {
             throw new \yii\web\ForbiddenHttpException('Proibido');
         }
@@ -41,5 +41,20 @@ class ReservaController extends ActiveController
             return $reserva_search;
         }
         return 'Este utilizador não tem nenhuma reserva criada';
+    }
+
+    //mudar o estado do pedido selecionado para cancelado
+    public function actionCancelarreserva($id){
+        if($id!=null){
+            $reserva=Reserva::find()->where(['id'=>$id])->all();
+            //tem de se fazer um foreach para poder alterar o estado devido ao pedido selecionado estar num array
+            foreach($reserva as $res){
+                //passar para o estado cancelado
+                $res->estado=2;
+                $res->save();
+            }
+            return $res;
+        }
+        return 'Não foi selecionado nenhum pedido';
     }
 }

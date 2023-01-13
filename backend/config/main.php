@@ -102,7 +102,7 @@ return [
                     ],
                     'extraPatterns' => [
                         'GET minhasreservas/{id}'=>'minhasreservas',
-
+                        'PUT cancelarreserva/{id}'=>'cancelarreserva',
                     ],
                 ],
                 [
@@ -150,6 +150,26 @@ return [
                     ],
                     'extraPatterns' => [
 
+                    ],
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'api/user',
+                    'tokens' => [
+                        '{id}'    => '<id:\\d+>',
+                    ],
+                    'extraPatterns' => [
+                        'GET auth'=>'auth',
+                    ],
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'api/dadosuser',
+                    'tokens' => [
+                        '{id}'    => '<id:\\d+>',
+                    ],
+                    'extraPatterns' => [
+                        'GET dadosutilizador'=>'dadosutilizador',
                     ],
                 ],
             ],

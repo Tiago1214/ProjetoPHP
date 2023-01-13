@@ -21,26 +21,15 @@ use yii\bootstrap5\Html;
                     <?php if(Yii::$app->user->identity!=null){
                         ?>
                         <li class="nav-item"><a class="nav-link" href="<?= Url::to('/pedido/index');?>">Pedidos</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Reservas</a>
-                            <div class="dropdown-menu" aria-labelledby="dropdown-a">
-                                <a class="dropdown-item" href="<?= Url::to('/reserva/index'); ?>">Visualizar Reservas</a>
-                                <a class="dropdown-item" href="<?= Url::to('/reserva/create'); ?>">Marcar Reserva</a>
-                            </div>
-                        </li>
+                        <li class="nav-item"><a class="nav-link" href="<?= Url::to('/reserva/index');?>">Reservas</a></li>
                     <?php
                     } ?>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Comentários</a>
-                        <div class="dropdown-menu" aria-labelledby="dropdown-a">
-                            <a class="dropdown-item" href="<?= Url::to('/comentario/index'); ?>">Visualizar Todos os comentários</a>
-                            <?php if(Yii::$app->user->identity!=null){
-                                ?>
-                                <a class="dropdown-item" href="<?= Url::to('/comentario/meuscomentarios'); ?>">Meus Comentários</a>
-                            <?php
-                            }?>
-                        </div>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="<?= Url::to('/comentario/index');?>">Comentários</a></li>
+                    <?php if(Yii::$app->user->identity!=null){
+                        ?>
+                        <li class="nav-item"><a class="nav-link" href="<?= Url::to('/comentario/meuscomentarios');?>">Meus Comentários</a></li>
+                    <?php
+                    }?>
                     <li class="nav-item"><a class="nav-link" href="<?= Url::to('/site/about'); ?>">Sobre Nós</a></li>
               
 
