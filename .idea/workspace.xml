@@ -5,14 +5,91 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f392b587-6f44-44bb-9888-fc4e4ee43c46" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/modules/api/controllers/DadosuserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/config/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/config/main.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/modules/api/components/CustomAuth.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/api/components/CustomAuth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/modules/api/controllers/ProfileController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/ArtigoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/ArtigoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/CategoriaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/CategoriaController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/LinhapedidoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/LinhapedidoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/MesaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/MesaController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/MetodopagamentoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/MetodopagamentoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/PedidoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/PedidoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/modules/api/controllers/CategoriaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/api/controllers/CategoriaController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/modules/api/controllers/PedidoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/api/controllers/PedidoController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/modules/api/controllers/ReservaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/api/controllers/ReservaController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/views/comentario/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/comentario/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/views/layouts/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/layouts/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/controllers/ComentarioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/controllers/ComentarioController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/controllers/ReservaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/controllers/ReservaController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/ClassLoader.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/ClassLoader.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_real.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_real.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/.ci/emqx.conf" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/.ci/emqx.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/.ci/hivemq.xml" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/.ci/hivemq.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/.ci/mosquitto.conf" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/.ci/mosquitto.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/.ci/mosquitto.passwd" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/.ci/mosquitto.passwd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/.ci/rabbitmq.conf" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/.ci/rabbitmq.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/.ci/tls/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/.ci/tls/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/.github/dependabot.yml" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/.github/dependabot.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/.github/workflows/tests.yml" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/.github/workflows/tests.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/.phpcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/.phpcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/LICENSE.md" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/LICENSE.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/create-certificates.sh" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/create-certificates.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/phpunit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/phpunit.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/sonar-project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/sonar-project.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/src/Concerns/GeneratesRandomClientIds.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/src/Concerns/GeneratesRandomClientIds.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/src/Concerns/OffersHooks.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/src/Concerns/OffersHooks.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/src/Concerns/TranscodesData.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/src/Concerns/TranscodesData.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/src/Concerns/ValidatesConfiguration.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/src/Concerns/ValidatesConfiguration.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/src/Concerns/WorksWithBuffers.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/src/Concerns/WorksWithBuffers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/src/ConnectionSettings.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/src/ConnectionSettings.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/src/Contracts/MessageProcessor.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/src/Contracts/MessageProcessor.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/src/Contracts/MqttClient.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/src/Contracts/MqttClient.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/src/Contracts/Repository.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/src/Contracts/Repository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/src/Exceptions/ClientNotConnectedToBrokerException.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/src/Exceptions/ClientNotConnectedToBrokerException.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/src/Exceptions/ConfigurationInvalidException.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/src/Exceptions/ConfigurationInvalidException.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/src/Exceptions/ConnectingToBrokerFailedException.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/src/Exceptions/ConnectingToBrokerFailedException.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/src/Exceptions/DataTransferException.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/src/Exceptions/DataTransferException.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/src/Exceptions/InvalidMessageException.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/src/Exceptions/InvalidMessageException.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/src/Exceptions/MqttClientException.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/src/Exceptions/MqttClientException.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/src/Exceptions/PendingMessageAlreadyExistsException.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/src/Exceptions/PendingMessageAlreadyExistsException.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/src/Exceptions/PendingMessageNotFoundException.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/src/Exceptions/PendingMessageNotFoundException.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/src/Exceptions/ProtocolNotSupportedException.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/src/Exceptions/ProtocolNotSupportedException.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/src/Exceptions/ProtocolViolationException.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/src/Exceptions/ProtocolViolationException.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/src/Exceptions/RepositoryException.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/src/Exceptions/RepositoryException.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/src/Logger.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/src/Logger.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/src/Message.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/src/Message.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/src/MessageProcessors/BaseMessageProcessor.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/src/MessageProcessors/BaseMessageProcessor.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/src/MessageProcessors/Mqtt311MessageProcessor.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/src/MessageProcessors/Mqtt311MessageProcessor.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/src/MessageProcessors/Mqtt31MessageProcessor.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/src/MessageProcessors/Mqtt31MessageProcessor.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/src/MessageType.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/src/MessageType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/src/MqttClient.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/src/MqttClient.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/src/PendingMessage.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/src/PendingMessage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/src/PublishedMessage.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/src/PublishedMessage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/src/Repositories/MemoryRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/src/Repositories/MemoryRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/src/SubscribeRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/src/SubscribeRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/src/Subscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/src/Subscription.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/src/UnsubscribeRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/src/UnsubscribeRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/tests/Feature/ActionsWithoutActiveConnectionTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/tests/Feature/ActionsWithoutActiveConnectionTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/tests/Feature/ClientUtilsTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/tests/Feature/ClientUtilsTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/tests/Feature/ConnectWithCustomConnectionSettingsTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/tests/Feature/ConnectWithCustomConnectionSettingsTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/tests/Feature/ConnectWithInvalidConfigurationTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/tests/Feature/ConnectWithInvalidConfigurationTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/tests/Feature/ConnectWithInvalidHostAndPortTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/tests/Feature/ConnectWithInvalidHostAndPortTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/tests/Feature/ConnectWithTlsSettingsTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/tests/Feature/ConnectWithTlsSettingsTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/tests/Feature/LoopEventHandlerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/tests/Feature/LoopEventHandlerTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/tests/Feature/MessageReceivedEventHandlerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/tests/Feature/MessageReceivedEventHandlerTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/tests/Feature/PublishEventHandlerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/tests/Feature/PublishEventHandlerTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/tests/Feature/PublishSubscribeTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/tests/Feature/PublishSubscribeTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/tests/Feature/SupportedProtocolsTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/tests/Feature/SupportedProtocolsTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/tests/TestCase.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/tests/TestCase.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/tests/Unit/MessageProcessors/Mqtt311MessageProcessorTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/tests/Unit/MessageProcessors/Mqtt311MessageProcessorTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/tests/Unit/MessageProcessors/Mqtt31MessageProcessorTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/tests/Unit/MessageProcessors/Mqtt31MessageProcessorTest.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,6 +232,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager">
@@ -174,7 +252,7 @@
       <workItem from="1673474866907" duration="5013000" />
       <workItem from="1673535166449" duration="5850000" />
       <workItem from="1673561856956" duration="11273000" />
-      <workItem from="1673618111601" duration="5152000" />
+      <workItem from="1673618111601" duration="12958000" />
     </task>
     <servers />
   </component>

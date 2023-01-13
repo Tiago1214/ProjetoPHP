@@ -49,7 +49,7 @@ class CategoriaController extends ActiveController
         return 'Não existem categorias';
     }
 
-    //mostrar só categorias ativas
+    //mostrar categoria
     public function actionView($id){
         $categorias=Categoria::find()->where(['id'=>$id,'estado'=>1])->all();
         if($categorias!=null){
@@ -58,6 +58,8 @@ class CategoriaController extends ActiveController
         return 'Esta categoria não existe ou não está ativa';
     }
 
+
+    //mostrar categoria por nome
     public function actionCategorianome($nome){
         $categorias=Categoria::find()->where(['nome'=>$nome,'estado'=>1])->all();
         if($categorias!=null){

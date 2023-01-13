@@ -3,6 +3,7 @@
 namespace backend\modules\api\controllers;
 
 use backend\modules\api\components\CustomAuth;
+use common\models\Profile;
 use common\models\Reserva;
 use yii\rest\ActiveController;
 use yii\filters\auth\QueryParamAuth;
@@ -24,7 +25,7 @@ class ReservaController extends ActiveController
 
     public function checkAccess($action, $model = null, $params = [])
     {
-        if($action==="delete"||$action==="update")
+        if($action==="delete")
         {
             throw new \yii\web\ForbiddenHttpException('Proibido');
         }
@@ -56,5 +57,15 @@ class ReservaController extends ActiveController
             return $res;
         }
         return 'Não foi selecionado nenhum pedido';
+    }
+
+    //mandar as reservas de hoje do cliente
+    public function actionReservashoje(){
+        $reserva=Reserva::find()->where(['profile_id'=>Profile::find()->where(['user_id'=>Yii::$app->params['id']])->select('id'),
+        'data'=>date('d/m/Y')])->all();
+        if($reserva!=null){
+            return $reserva;
+        }
+        return 'Não existe nenhuma reserva para hoje';
     }
 }

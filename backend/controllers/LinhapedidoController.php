@@ -10,6 +10,7 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use MQTT\Client;
 
 /**
  * LinhaPedidoController implements the CRUD actions for LinhaPedido model.
@@ -184,14 +185,7 @@ class LinhapedidoController extends Controller
     public function actionDelete($id,$idp)
     {
         $linha=$this->findModel($id)->delete();
-
         return $this->redirect(['create','idp'=>$idp]);
-    }
-
-    public function actionEditquantidade($idlp){
-        $linha=$this->findModel($idlp);
-        $linha->save(false);
-        return $this->redirect(['create', 'idp' => $linha->pedido_id]);
     }
 
     /**

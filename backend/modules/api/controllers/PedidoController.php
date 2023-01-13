@@ -108,5 +108,4 @@ class PedidoController extends ActiveController
         }
         return 'Não foi selecionado nenhum pedido';
     }
-
 }

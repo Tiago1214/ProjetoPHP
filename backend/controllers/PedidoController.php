@@ -18,6 +18,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use Yii;
+use MQTT\Client;
 
 /**
  * PedidoController implements the CRUD actions for Pedido model.
@@ -119,8 +120,6 @@ class PedidoController extends Controller
                 $model->estado='Em Processamento';
 
                 $model->save(false);
-                //se o tipo de pedido for restaurante manda o admin ou funcionário seleciona a messa,
-                // senão vai diretamente para o criar linhas de pedido
 
                 if($model->tipo_pedido==0){
                     return $this->redirect(['pedido/selectmesa', 'idp' => $model->id]);
@@ -194,6 +193,8 @@ class PedidoController extends Controller
         $mesa=Mesa::find()->all();
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+
+
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
