@@ -65,7 +65,7 @@ return [
                     ],
                     'extraPatterns' => [
                         'GET artigosdacategoria/{nome}'=>'artigosdacategoria',
-                        'GET artigoponome/{nome}'=>'artigoponome',
+                        'GET artigopornome/{nome}'=>'artigopornome',
                     ],
                 ],
                 [
