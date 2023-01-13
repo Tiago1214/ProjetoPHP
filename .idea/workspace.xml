@@ -7,16 +7,8 @@
     <list default="true" id="f392b587-6f44-44bb-9888-fc4e4ee43c46" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/config/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/config/main.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/modules/api/ModuleAPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/api/ModuleAPI.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/modules/api/components/CustomAuth.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/api/components/CustomAuth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/modules/api/controllers/ArtigoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/api/controllers/ArtigoController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/modules/api/controllers/CategoriaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/api/controllers/CategoriaController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/modules/api/controllers/ComentarioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/api/controllers/ComentarioController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/modules/api/controllers/LinhapedidoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/api/controllers/LinhapedidoController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/modules/api/controllers/PedidoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/api/controllers/PedidoController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/modules/api/controllers/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/api/controllers/ProfileController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/modules/api/controllers/ReservaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/api/controllers/ReservaController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/modules/api/views/default/index.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,7 +169,7 @@
       <updated>1673474865148</updated>
       <workItem from="1673474866907" duration="5013000" />
       <workItem from="1673535166449" duration="5850000" />
-      <workItem from="1673561856956" duration="9593000" />
+      <workItem from="1673561856956" duration="11161000" />
     </task>
     <servers />
   </component>

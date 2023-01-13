@@ -114,16 +114,7 @@ return [
                     ],
                     'extraPatterns' => [
                         'GET linhasdopedido/{id}'=>'linhasdopedido',
-                    ],
-                ],
-                [
-                    'class' => 'yii\rest\UrlRule',
-                    'controller' => 'api/artigo',
-                    'tokens' => [
-                        '{id}'    => '<id:\\d+>',
-                    ],
-                    'extraPatterns' => [
-
+                        'GET linhaspedidoestatisca/{id}'=>'linhaspedidoestatistica',
                     ],
                 ],
                 [
@@ -136,6 +127,8 @@ return [
                         'GET totalgasto'=>'totalgasto',
                         'GET nrtotalpedidos'=>'nrtotalpedidos',
                         'GET meuspedidos'=>'meuspedidos',
+                        'GET pedidosconcluidos'=>'pedidosconcluidos',
+                        'GET pedidoscancelados'=>'pedidoscancelados',
                         'PUT cancelarpedido/{id}'=>'cancelarpedido',
                     ],
                 ],

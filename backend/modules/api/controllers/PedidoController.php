@@ -75,6 +75,26 @@ class PedidoController extends ActiveController
         return 'Não existem pedidos no seu registo';
     }
 
+    //mostrar todos os pedidos concluidos
+    public function actionPedidosconcluidos(){
+        $pedidos=Pedido::find()->where(['estado'=>'Concluído',
+            'profile_id'=>Profile::find()->where(['user_id'=>Yii::$app->params['id']])->select('id')])->all();
+        if($pedidos!=null){
+            return $pedidos;
+        }
+        return 'Não existem pedidos concluídos';
+    }
+
+    //mostrar todos os pedidos concluidos
+    public function actionPedidoscancelados(){
+        $pedidos=Pedido::find()->where(['estado'=>'Cancelado',
+            'profile_id'=>Profile::find()->where(['user_id'=>Yii::$app->params['id']])->select('id')])->all();
+        if($pedidos!=null){
+            return $pedidos;
+        }
+        return 'Não existem pedidos cancelados';
+    }
+
     //mudar o estado do pedido selecionado para cancelado
     public function actionCancelarpedido($id){
         if($id!=null){
@@ -88,6 +108,5 @@ class PedidoController extends ActiveController
         }
         return 'Não foi selecionado nenhum pedido';
     }
-
 
 }
