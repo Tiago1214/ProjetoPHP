@@ -7,7 +7,7 @@ use yii\data\ActiveDataProvider;
 use common\models\LinhaPedido;
 
 /**
- * LinhaPedidoSearch represents the model behind the search form of `backend\models\LinhaPedido`.
+ * LinhaPedidoSearch represents the model behind the search form of `common\models\LinhaPedido`.
  */
 class LinhaPedidoSearch extends LinhaPedido
 {
@@ -17,8 +17,8 @@ class LinhaPedidoSearch extends LinhaPedido
     public function rules()
     {
         return [
-            [['id', 'pedido_id', 'artigo_id'], 'integer'],
-            [['data', 'preco', 'iva'], 'safe'],
+            [['id', 'quantidade', 'taxaiva', 'pedido_id', 'artigo_id'], 'integer'],
+            [['valorunitario', 'valoriva'], 'number'],
         ];
     }
 
@@ -59,13 +59,13 @@ class LinhaPedidoSearch extends LinhaPedido
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'data' => $this->data,
+            'quantidade' => $this->quantidade,
+            'valorunitario' => $this->valorunitario,
+            'valoriva' => $this->valoriva,
+            'taxaiva' => $this->taxaiva,
             'pedido_id' => $this->pedido_id,
             'artigo_id' => $this->artigo_id,
         ]);
-
-        $query->andFilterWhere(['like', 'preco', $this->preco])
-            ->andFilterWhere(['like', 'iva', $this->iva]);
 
         return $dataProvider;
     }

@@ -8,6 +8,7 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use MQTT\Client;
 
 /**
  * CategoriaController implements the CRUD actions for Categoria model.
@@ -32,7 +33,7 @@ class CategoriaController extends Controller
                     'class' => AccessControl::class,
                     'rules' => [
                         /**
-                         *Nas categorias os funcionários podem fazer tudo menos desativar categorias
+                         *Nas categorias os funcionários não podem mudar o estado da mesma.
                          *Nas categorias os admins podem realizar todas as ações necessárias para o funcionamento dos mesmos
                          */
                         [
@@ -40,7 +41,7 @@ class CategoriaController extends Controller
                             'allow' => true,
                         ],
                         [
-                            'actions' => ['logout', 'index','create','update'], // add all actions to take guest to login page
+                            'actions' => ['logout', 'index','create','update','view'], // add all actions to take guest to login page
                             'allow' => true,
                             'roles' => ['admin','funcionario'],
                         ],
@@ -95,6 +96,11 @@ class CategoriaController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
+                //mqtt
+                $mqtt = new \PhpMqtt\Client\MqttClient('127.0.0.1', '1883', 'backend');
+                $mqtt->connect();
+                $mqtt->publish('Categoria', 'Categoria criada', 1);
+                $mqtt->disconnect();
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
@@ -118,6 +124,11 @@ class CategoriaController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+            //mqtt
+            $mqtt = new \PhpMqtt\Client\MqttClient('127.0.0.1', '1883', 'backend');
+            $mqtt->connect();
+            $mqtt->publish('Categoria', 'Categoria atualizada', 1);
+            $mqtt->disconnect();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -153,10 +164,20 @@ class CategoriaController extends Controller
         if($categoria->estado==0){
             $categoria->estado=1;
             $categoria->save();
+            //mqtt
+            $mqtt = new \PhpMqtt\Client\MqttClient('127.0.0.1', '1883', 'backend');
+            $mqtt->connect();
+            $mqtt->publish('Categoria', 'Estado da categoria atualizado', 1);
+            $mqtt->disconnect();
         }
         else if($categoria->estado==1){
             $categoria->estado=0;
             $categoria->save();
+            //mqtt
+            $mqtt = new \PhpMqtt\Client\MqttClient('127.0.0.1', '1883', 'backend');
+            $mqtt->connect();
+            $mqtt->publish('Categoria', 'Estado da categoria atualizado', 1);
+            $mqtt->disconnect();
         }
 
         return $this->redirect('../categoria/index');

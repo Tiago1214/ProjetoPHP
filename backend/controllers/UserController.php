@@ -2,8 +2,11 @@
 
 namespace backend\controllers;
 
+use common\models\Profile;
 use common\models\User;
 use common\models\UserSearch;
+use backend\models\CriarUsers;
+use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -39,14 +42,9 @@ class UserController extends Controller
                             'allow' => true,
                         ],
                         [
-                            'actions'=>['logout', 'index',],
+                            'actions'=>['logout', 'index','update','updatepassword'],
                             'allow'=>true,
                             'roles'=>['admin','funcionario'],
-                        ],
-                        [
-                            'actions'=>['create','view','update','estado','delete'],
-                            'allow'=>true,
-                            'roles'=>['admin'],
                         ],
                     ],
                 ],
@@ -91,21 +89,11 @@ class UserController extends Controller
      */
     public function actionCreate()
     {
-        $model = new User();
+        $model= new CriarUsers();
+        if ($model->load(Yii::$app->request->post()) && $model->signup()) {
 
-        if ($this->request->isPost) {
-            $user = new User();
-            $user->username = $this->username;
-            $user->email = $this->email;
-            $user->setPassword($this->password);
-            $user->status=10;
-            $user->generateAuthKey();
-            $user->generateEmailVerificationToken();
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
-            }
-        } else {
-            $model->loadDefaultValues();
+            Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
+            return $this->redirect('../user/index');
         }
 
         return $this->render('create', [
@@ -124,11 +112,36 @@ class UserController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        //dd($model);
+        if ($this->request->isPost && $model->load($this->request->post())) {
+            $model->save(false);
+            return $this->redirect(['site/index']);
         }
 
         return $this->render('update', [
+            'model' => $model,
+        ]);
+
+    }
+
+    /**
+     * Updates password
+     * If update is successful, the browser will be redirected to the 'index' page.
+     * @param int $id ID
+     * @return string|\yii\web\Response
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionUpdatepassword($id)
+    {
+        $model = $this->findModel($id);
+
+        //dd($model);
+        if ($this->request->isPost && $model->load($this->request->post())) {
+            $model->save(false);
+            return $this->redirect(['profile/index']);
+        }
+
+        return $this->render('updatepassword', [
             'model' => $model,
         ]);
     }

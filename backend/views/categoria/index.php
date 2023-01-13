@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
     <p>
-        <?= Html::a('Create Categoria', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Criar Categoria', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -34,10 +34,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'estado',
                 'value' => function($model){
                     if($model->estado == 0){
-                        return 'Desativado';
+                        return 'Desativar';
                     }
                     else if($model->estado==1){
-                        return 'Ativado';
+                        return 'Ativar';
                     }
                     else{
                         return 'Erro';
@@ -48,10 +48,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 'buttons' => [
                     'Ativar' => function($url,$model, $id) {     // render your custom button
                         if($model->estado==0){
-                            return Html::a('Ativar', ['/categoria/estado', 'id' => $model->id], ['class'=>'btn btn-success']) ;
+                            return Html::a('Ativar', ['/categoria/estado', 'id' => $model->id], ['class'=>'btn btn-success btn-sm']) ;
                         }
                         else if($model->estado==1){
-                            return Html::a('Desativar', ['/categoria/estado', 'id' => $model->id], ['class'=>'btn btn-danger']) ;
+                            return Html::a('Desativar', ['/categoria/estado', 'id' => $model->id], ['class'=>'btn btn-danger btn-sm']) ;
                         }
                     }
                 ],

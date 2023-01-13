@@ -10,15 +10,13 @@ use yii\grid\GridView;
 /** @var backend\models\ProfileSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Profiles';
+$this->title = 'Utilizadores';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="profile-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <p>
-        <?= Html::a('Create Profile', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Criar Utilizador', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -29,14 +27,49 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            [
+                'attribute' => 'Nome de Utilizador',
+                'value' => function($model){
+                    return $model->user->username;
+                }
+            ],
+            [
+                'attribute' => 'Email',
+                'value' => function($model){
+                    return $model->user->email;
+                }
+            ],
             'numcontribuinte',
-            'email:email',
             'telemovel',
-            'estado',
+            [
+                'attribute' => 'estado',
+                'value' => function($model){
+
+                    if($model->estado == '0'){
+                        return 'Desativado';
+                    }
+                    else if($model->estado=='1'){
+                        return 'Ativado';
+                    }
+                    else{
+                        return 'Erro';
+                    }
+                }
+            ],
             //'user_id',
             [
-                'class' => ActionColumn::className(),
+                'buttons' => [
+                    'Ativar' => function($url,$model, $id) {     // render your custom button
+                        if($model->estado==0){
+
+                            return Html::a('Ativar', ['/profile/estado', 'id' => $id], ['class'=>'btn btn-success btn-sm']) ;
+                        }
+                        else if($model->estado==1){
+                            return Html::a('Desativar', ['/profile/estado', 'id' => $id], ['class'=>'btn btn-danger btn-sm']) ;
+                        }
+                    }
+                ],
+                'class' => 'yii\grid\ActionColumn', 'template' => '{view}{Ativar}',
                 'urlCreator' => function ($action, Profile $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }

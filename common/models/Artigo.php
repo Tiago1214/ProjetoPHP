@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+
 use backend\models\Iva;
 use Yii;
 
@@ -12,7 +13,6 @@ use Yii;
  * @property string $nome
  * @property string $descricao
  * @property string $referencia
- * @property int $quantidade
  * @property float $preco
  * @property string $data
  * @property string|null $imagem
@@ -38,16 +38,21 @@ class Artigo extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nome', 'descricao', 'referencia', 'quantidade', 'preco', 'data', 'estado', 'iva_id', 'categoria_id'],
+
+
+            [['nome', 'descricao', 'referencia', 'preco', 'data', 'estado', 'iva_id', 'categoria_id'],
                 'required','message'=>'Os campos selecionados são de preenchimento obrigatório'],
-            [['quantidade', 'estado', 'iva_id', 'categoria_id'], 'integer'],
-            [['preco'], 'number'],
+            [['estado', 'iva_id', 'categoria_id'], 'integer'],
+            [['preco'], 'number','message'=>'O preco deve ser um número válido'],
+            [['referencia'],'unique','message'=>'Campo único'],
             [['data'], 'safe'],
             [['nome'], 'string', 'max' => 200,'message'=>'O campo nome tem um máximo de 200 carateres'],
-            [['descricao',], 'string', 'max' => 255,'message'=>'O campo nome tem um máximo de 200 carateres'],
+            [['descricao',], 'string', 'max' => 255,'message'=>'O campo nome tem um máximo de 255 carateres'],
             [['imagem','imagemurl',],'string'],
             [['imagem'],'file','extensions'=>'jpg, jpeg, png','skipOnEmpty' => true],
             [['referencia'], 'string', 'max' => 45,'message'=>'O campo nome tem um máximo de 45 carateres'],
+
+
         ];
     }
 
@@ -61,10 +66,9 @@ class Artigo extends \yii\db\ActiveRecord
             'nome' => 'Nome',
             'descricao' => 'Descricao',
             'referencia' => 'Referencia',
-            'quantidade' => 'Quantidade',
             'preco' => 'Preco',
             'data' => 'Data',
-            'imagem' => 'Imagem',
+
             'imagemurl'=>'Imagem Url',
             'estado' => 'Estado',
             'iva_id' => 'Taxa de Iva',

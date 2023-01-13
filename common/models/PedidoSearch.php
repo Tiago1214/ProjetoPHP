@@ -7,7 +7,7 @@ use yii\data\ActiveDataProvider;
 use common\models\Pedido;
 
 /**
- * PedidoSearch represents the model behind the search form of `backend\models\Pedido`.
+ * PedidoSearch represents the model behind the search form of `common\models\Pedido`.
  */
 class PedidoSearch extends Pedido
 {
@@ -18,7 +18,7 @@ class PedidoSearch extends Pedido
     {
         return [
             [['id', 'tipo_pedido', 'profile_id', 'metodo_pagamento_id', 'mesa_id'], 'integer'],
-            [['data'], 'safe'],
+            [['data', 'estado'], 'safe'],
             [['total'], 'number'],
         ];
     }
@@ -67,6 +67,8 @@ class PedidoSearch extends Pedido
             'metodo_pagamento_id' => $this->metodo_pagamento_id,
             'mesa_id' => $this->mesa_id,
         ]);
+
+        $query->andFilterWhere(['like', 'estado', $this->estado]);
 
         return $dataProvider;
     }

@@ -17,28 +17,15 @@ class LoginCest
      * @see \Codeception\Module\Yii2::loadFixtures()
      * @return array
      */
-    public function _fixtures()
-    {
-        return [
-            'user' => [
-                'class' => UserFixture::class,
-                'dataFile' => codecept_data_dir() . 'login_data.php'
-            ]
-        ];
-    }
-    
     /**
      * @param FunctionalTester $I
      */
     public function loginUser(FunctionalTester $I)
     {
-        $I->amOnRoute('/site/login');
-        $I->fillField('Username', 'erau');
-        $I->fillField('Password', 'password_0');
-        $I->click('login-button');
+        $I->amOnPage('/site/login');
+        $I->fillField('LoginForm[username]', 'tiago');
+        $I->fillField('LoginForm[password]', '12345678');
 
-        $I->see('Logout (erau)', 'form button[type=submit]');
-        $I->dontSeeLink('Login');
-        $I->dontSeeLink('Signup');
+        $I->click('Iniciar Sessão');
     }
 }

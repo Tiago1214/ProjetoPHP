@@ -61,7 +61,7 @@ use yii\bootstrap5\Html; ?>
                         foi feito com a experiência de apenas pessoas portuguesas que fazem com que todos os pratos sejam únicos. Sabemos que muitas pessoas
                         adoram comida portuguêsa, e que nem todos tem a essencia que tornam a comida portuguêsa comum tão saborosa, assim, o 100% Português
                         tem como principal objetivo dar a conhecer os tipicos pratos portugueses.</p>
-                    <a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Sobre Nós</a>
+                    <a class="btn btn-lg btn-circle btn-outline-new-white" href="/site/about">Sobre Nós</a>
                 </div>
             </div>
         </div>
@@ -133,7 +133,7 @@ use yii\bootstrap5\Html; ?>
 <!-- End Gallery -->
 
 <!-- Start Customer Reviews -->
-<div class="customer-reviews-box">
+<!-- <div class="customer-reviews-box">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -148,32 +148,56 @@ use yii\bootstrap5\Html; ?>
                 <div id="reviews" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner mt-4">
                         <div class="carousel-item text-center active">
-                            <div class="img-box p-1 border rounded-circle m-auto">
-                                <?= Html::img('@web/images/quotations-button.png',['class'=>'d-block w-100 rounded-circle']) ?>
-                            </div>
-                            <h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase">Paulo Cardoso</strong></h5>
-                            <h6 class="text-dark m-0">Engenheiro Informático</h6>
-                            <p class="m-0 pt-3">De facto uma refeição surpreendente. Não é o melhor restaurante do mundo mas
-                                não está tão atrás dos melhores com certeza. Não bebo vinho mas possui uma ementa completa.</p>
+                            <?php foreach($comentarios as $comentario){
+                                if($comentario->id==1){
+                                    ?>
+                                    <div class="img-box p-1 border rounded-circle m-auto">
+                                        <?= Html::img('@web/images/quotations-button.png',['class'=>'d-block w-100 rounded-circle']) ?>
+                                    </div>
+                                    <h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase"><?= $comentario->profile->user->username ?></strong></h5>
+                                    <h6 class="text-dark m-0"><?= $comentario->titulo ?></h6>
+                                    <p class="m-0 pt-3"><?php $comentario->descricao ?></p>
+                                    <?php
+                                }
+                                ?>
+                                <?php
+                            } ?>
                         </div>
-                        <div class="carousel-item text-center">
-                            <div class="img-box p-1 border rounded-circle m-auto">
-                                <?= Html::img('@web/images/quotations-button.png',['class'=>'d-block w-100 rounded-circle']) ?>
-                            </div>
-                            <h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase">João Filipe</strong></h5>
-                            <h6 class="text-dark m-0">Advogado</h6>
-                            <p class="m-0 pt-3">Excepcional do início ao fim. Esta é a segunda visita a este restaurante. Tudo perfeito:
-                                atendimento caloroso , uma refeição perfeita e um chef que tem prazer em receber os clientes. Parabéns!</p>
+                    </div>
+                    <div class="carousel-inner mt-4">
+                        <div class="carousel-item text-center active">
+                            <?php foreach($comentarios as $comentario){
+                                if($comentario->id==1){
+                                    ?>
+                                    <div class="img-box p-1 border rounded-circle m-auto">
+                                        <?= Html::img('@web/images/quotations-button.png',['class'=>'d-block w-100 rounded-circle']) ?>
+                                    </div>
+                                    <h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase"><?= $comentario->profile->user->username ?></strong></h5>
+                                    <h6 class="text-dark m-0"><?= $comentario->titulo ?></h6>
+                                    <p class="m-0 pt-3"><?php $comentario->descricao ?></p>
+                                    <?php
+                                }
+                                ?>
+                                <?php
+                            } ?>
                         </div>
-                        <div class="carousel-item text-center">
-                            <div class="img-box p-1 border rounded-circle m-auto">
-                                <?= Html::img('@web/images/quotations-button.png',['class'=>'d-block w-100 rounded-circle']) ?>
-                            </div>
-                            <h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase">Margarida Correia </strong></h5>
-                            <h6 class="text-dark m-0">Analista</h6>
-                            <p class="m-0 pt-3"> Fomos jantar no restaurante e tivemos uma bela experiencia gastronômica, apesar do preço,
-                                exagerado. Garçons e maître extremamente atenciosos e eficientes. O restaurante em si é lindo,
-                                com as mesas tendo privacidade e jardins muito bonitos </p>
+                    </div>
+                    <div class="carousel-inner mt-4">
+                        <div class="carousel-item text-center active">
+                            <?php foreach($comentarios as $comentario){
+                                if($comentario->id==1){
+                                    ?>
+                                    <div class="img-box p-1 border rounded-circle m-auto">
+                                        <?= Html::img('@web/images/quotations-button.png',['class'=>'d-block w-100 rounded-circle']) ?>
+                                    </div>
+                                    <h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase"><?= $comentario->profile->user->username ?></strong></h5>
+                                    <h6 class="text-dark m-0"><?= $comentario->titulo ?></h6>
+                                    <p class="m-0 pt-3"><?php $comentario->descricao ?></p>
+                                    <?php
+                                }
+                                ?>
+                                <?php
+                            } ?>
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#reviews" role="button" data-slide="prev">
@@ -188,7 +212,7 @@ use yii\bootstrap5\Html; ?>
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- End Customer Reviews -->
 
 

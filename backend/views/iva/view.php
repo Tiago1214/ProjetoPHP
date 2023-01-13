@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /** @var yii\web\View $this */
 /** @var backend\models\Iva $model */
 
-$this->title = $model->descricao;
+$this->title = 'Iva :'.$model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Ivas', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);

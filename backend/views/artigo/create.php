@@ -5,13 +5,12 @@ use yii\helpers\Html;
 /** @var yii\web\View $this */
 /** @var backend\models\Artigo $model */
 
-$this->title = 'Create Artigo';
+$this->title = 'Criar Artigo';
 $this->params['breadcrumbs'][] = ['label' => 'Artigos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="artigo-create">
 
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_form', [
         'model' => $model,'iva'=>$iva,'categoria'=>$categoria

@@ -5,26 +5,27 @@ namespace common\models;
 use Yii;
 
 /**
- * This is the model class for table "linha_pedido".
+ * This is the model class for table "linhapedido".
  *
  * @property int $id
- * @property string $data
- * @property string $preco
- * @property string $iva
+ * @property int $quantidade
+ * @property float $valorunitario
+ * @property float $valoriva
+ * @property int $taxaiva
  * @property int $pedido_id
  * @property int $artigo_id
  *
  * @property Artigo $artigo
  * @property Pedido $pedido
  */
-class LinhaPedido extends \yii\db\ActiveRecord
+class Linhapedido extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'linha_pedido';
+        return 'linhapedido';
     }
 
     /**
@@ -33,10 +34,9 @@ class LinhaPedido extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['data', 'preco', 'iva', 'pedido_id', 'artigo_id'], 'required'],
-            [['data'], 'safe'],
-            [['pedido_id', 'artigo_id'], 'integer'],
-            [['preco', 'iva'], 'string', 'max' => 45],
+            [['quantidade', 'valorunitario', 'valoriva', 'taxaiva', 'pedido_id', 'artigo_id'], 'required'],
+            [['quantidade', 'taxaiva', 'pedido_id', 'artigo_id'], 'integer'],
+            [['valorunitario', 'valoriva'], 'number'],
             [['artigo_id'], 'exist', 'skipOnError' => true, 'targetClass' => Artigo::class, 'targetAttribute' => ['artigo_id' => 'id']],
             [['pedido_id'], 'exist', 'skipOnError' => true, 'targetClass' => Pedido::class, 'targetAttribute' => ['pedido_id' => 'id']],
         ];
@@ -49,11 +49,12 @@ class LinhaPedido extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'data' => 'Data',
-            'preco' => 'Preco',
-            'iva' => 'Iva',
-            'pedido_id' => 'Pedido ID',
-            'artigo_id' => 'Artigo ID',
+            'quantidade' => 'Quantidade',
+            'valorunitario' => 'Valorunitario',
+            'valoriva' => 'Valoriva',
+            'taxaiva' => 'Taxaiva',
+            'pedido_id' => 'Pedido ',
+            'artigo_id' => 'Artigo',
         ];
     }
 

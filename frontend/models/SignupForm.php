@@ -25,12 +25,12 @@ class SignupForm extends Model
     {
         return [
             ['username', 'trim'],
-            ['username', 'required'],
+            ['username', 'required','message'=>'Campo Obrigatório'],
             ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'Este nome de utilizador já existe.'],
             ['username', 'string', 'min' => 2, 'max' => 255],
 
             ['email', 'trim'],
-            ['email', 'required'],
+            ['email', 'required','message'=>'Campo Obrigatório'],
             ['email', 'email'],
             ['email', 'string', 'max' => 255],
             ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'Este email já foi introduzido por outro utilizador .'],
@@ -40,7 +40,7 @@ class SignupForm extends Model
 
             [['telemovel','numcontribuinte'],'unique','targetClass'=>'\common\models\Profile','message'=>'O campo telemóvel ou numcontribuinte 
             já foram usados por outros utilizadores'],
-            [['telemovel','numcontribuinte'],'required'],
+            [['telemovel','numcontribuinte'],'required','message'=>'Campo Obrigatório'],
             ['telemovel','string','min'=>9,'max'=>9],
             ['numcontribuinte','string','min'=>9,'max'=>9],
             [['telemovel','numcontribuinte'],'integer'],
@@ -73,14 +73,8 @@ class SignupForm extends Model
         $auth = \Yii::$app->authManager;
         $authorRole = $auth->getRole('cliente');
 
-        //Verificar se o utilizador e o perfil estão válidos para serem introduzidos na base de dados
-        if(!$user->validate()||!$profile->validate()){
-            return false;
-            return '';
-
-        }
         //Salvar utilizador e perfil
-        if(!$user->save()){
+        if($user->save(false)){
 
             //Atribuir o id de utilizador ao role a ao perfil depois do utilizador ser salvo
             $auth->assign($authorRole,$user->getId());

@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use backend\models\Metodopagamento;
 use Yii;
 
 /**
@@ -11,6 +12,7 @@ use Yii;
  * @property string $data
  * @property float $total
  * @property int $tipo_pedido
+ * @property int $estado
  * @property int $profile_id
  * @property int $metodo_pagamento_id
  * @property int $mesa_id
@@ -36,11 +38,12 @@ class Pedido extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['data', 'total', 'tipo_pedido', 'estado', 'profile_id', 'metodo_pagamento_id', 'mesa_id'],
+
+            [['data', 'total', 'tipo_pedido', 'estado', 'profile_id'],
                 'required','message'=>'Os campos selecionados são de preenchimento obrigatório'],
             [['data'], 'safe'],
             [['total'], 'number'],
-            [['estado'],'string','max'=>45,'message'=>'O campo nome tem um máximo de 45 carateres'],
+            [['estado'],'string','max'=>45,'message'=>'O campo estado tem um máximo de 45 carateres'],
             [['tipo_pedido', 'profile_id', 'metodo_pagamento_id', 'mesa_id'], 'integer'],
             [['mesa_id'], 'exist', 'skipOnError' => true, 'targetClass' => Mesa::class, 'targetAttribute' => ['mesa_id' => 'id']],
             [['metodo_pagamento_id'], 'exist', 'skipOnError' => true, 'targetClass' => MetodoPagamento::class, 'targetAttribute' => ['metodo_pagamento_id' => 'id']],
@@ -54,14 +57,14 @@ class Pedido extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
+            'id' => 'Número de Pedido',
             'data' => 'Data',
             'total' => 'Total',
             'tipo_pedido' => 'Tipo Pedido',
             'estado'=>'Estado',
-            'profile_id' => 'Profile ID',
-            'metodo_pagamento_id' => 'Metodo Pagamento ID',
-            'mesa_id' => 'Mesa ID',
+            'profile_id' => 'Utilizador',
+            'metodo_pagamento_id' => 'Método Pagamento ',
+            'mesa_id' => 'Mesa ',
         ];
     }
 
@@ -92,7 +95,7 @@ class Pedido extends \yii\db\ActiveRecord
      */
     public function getMetodoPagamento()
     {
-        return $this->hasOne(MetodoPagamento::class, ['id' => 'metodo_pagamento_id']);
+        return $this->hasOne(Metodopagamento::class, ['id' => 'metodo_pagamento_id']);
     }
 
     /**

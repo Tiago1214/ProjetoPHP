@@ -10,6 +10,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
 use Yii;
+use MQTT\Client;
 
 /**
  * ArtigoController implements the CRUD actions for Artigo model.
@@ -34,7 +35,7 @@ class ArtigoController extends Controller
                     'class' => AccessControl::class,
                     'rules' => [
                         /**
-                         *Nos artigos os funcionários só podem criar novos artigos, alterá-los e visualizá-los
+                         *Nos artigos os funcionários só podem criar artigos, alterá-los e visualizá-los
                          *Nos artigos os admins podem realizar todas as ações necessárias para o funcionamento dos mesmos
                          */
                         [
@@ -47,7 +48,7 @@ class ArtigoController extends Controller
                             'roles' => ['admin','funcionario'],
                         ],
                         [
-                            'actions'=>['estado','delete'],
+                            'actions'=>['estado'],
                             'allow'=>true,
                             'roles'=>['admin'],
                         ],
@@ -95,22 +96,31 @@ class ArtigoController extends Controller
      */
     public function actionCreate()
     {
+        //criar novo artigo
         $model = new Artigo();
-        $iva=\backend\models\Iva::find()->all();
-        $categoria=\common\models\Categoria::find()->all();
+        //selecionar todos os registos de iva com o estado ativo
+        $iva=\backend\models\Iva::find()->where(['estado'=>1])->all();
+        //selecionar todos os registos da categoria com o estado ativo
+        $categoria=\common\models\Categoria::find()->where(['estado'=>1])->all();
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {
                 $model->data=Yii::$app->formatter->asDatetime('now', 'php:Y-m-d H:i:s');
                 $model->save();
                 $artigoId=$model->id;
                 $image=UploadedFile::getInstance($model,'imagem');
-                $imgName='art_'. $artigoId . '.' . $image->getExtension();
-                $image->saveAs(Yii::getAlias('@artigoImgPath').'/'.$imgName);
-                $model->imagem=$imgName;
-                $model->imagemurl=Yii::getAlias('@imageurl').'/images/'.$model->imagem;
+                if($image!=null){
+                    $imgName='art_'. $artigoId . '.' . $image->getExtension();
+                    $image->saveAs(Yii::getAlias('@artigoImgPath').'/'.$imgName);
+                    $model->imagem=$imgName;
+                    $model->imagemurl=Yii::getAlias('@imageurl').'/images/'.$model->imagem;
+                }
                 $model->save();
-
-                return $this->redirect(['view', 'id' => $model->id,]);
+                //mqtt
+                $mqtt = new \PhpMqtt\Client\MqttClient('127.0.0.1', '1883', 'backend');
+                $mqtt->connect();
+                $mqtt->publish('Artigo', 'Artigo criado', 1);
+                $mqtt->disconnect();
+                return $this->redirect(['index']);
             }
         } else {
             $model->loadDefaultValues();
@@ -145,13 +155,18 @@ class ArtigoController extends Controller
                     $imgName='art_'. $artigoId . '.' . $image->getExtension();
                     $image->saveAs(Yii::getAlias('@artigoImgPath').'/'.$imgName);
                     $model->imagem=$imgName;
-                    $model->imagemurl=Yii::getAlias('@imageurl').'/'.$model->imagem;
+                    $model->imagemurl=Yii::getAlias('@imageurl') . '/images/' .$model->imagem;
                     $model->save();
                 }
                 else{
 
                 }
                 $model->save();
+                //mqtt
+                $mqtt = new \PhpMqtt\Client\MqttClient('127.0.0.1', '1883', 'backend');
+                $mqtt->connect();
+                $mqtt->publish('Artigo', 'Artigo atualizado', 1);
+                $mqtt->disconnect();
                 return $this->redirect(['view', 'id' => $model->id,]);
             }
         }
@@ -192,10 +207,20 @@ class ArtigoController extends Controller
         if($artigo->estado==0){
             $artigo->estado=1;
             $artigo->save();
+            //mqtt
+            $mqtt = new \PhpMqtt\Client\MqttClient('127.0.0.1', '1883', 'backend');
+            $mqtt->connect();
+            $mqtt->publish('Artigo', 'Estado de artigo atualizado', 1);
+            $mqtt->disconnect();
         }
         else if($artigo->estado==1){
             $artigo->estado=0;
             $artigo->save();
+            //mqtt
+            $mqtt = new \PhpMqtt\Client\MqttClient('127.0.0.1', '1883', 'backend');
+            $mqtt->connect();
+            $mqtt->publish('Artigo', 'Estado de artigo atualizado', 1);
+            $mqtt->disconnect();
         }
 
         return $this->redirect('../artigo/index');

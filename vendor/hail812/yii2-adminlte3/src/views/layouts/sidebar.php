@@ -11,7 +11,7 @@ use yii\bootstrap5\Html;
                 <img src="<?=$assetDir?>/img/AdminLTELogo.png" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="<?= Url::to('../site/index'); ?>" class="d-block"><?= Yii::$app->user->identity->username; ?></a>
+                <a href="<?= Url::to('../site/index'); ?>" class="d-block">GERSOFT</a>
             </div>
         </div>
 
@@ -36,9 +36,10 @@ use yii\bootstrap5\Html;
                     [
                         'label' => 'Pedido',
                         'icon' => 'th',
+                        'options'=>['id'=>'menu-lateral'],
                         'badge' => '<span class="right badge badge-info">3</span>',
                         'items' => [
-                            ['label' => 'Visualizar todos os pedidos', 'url' => ['pedido/index'], 'iconStyle' => 'far'],
+                            ['label' => 'Visualizar todos os pedidos', 'url' => ['pedido/index'],'options'=>['id'=>'pedido'], 'iconStyle' => 'far','id'=>'pedido'],
                             ['label' => 'Criar Pedido', 'iconStyle' => 'far','url' => ['pedido/create']],
                         ]
                     ],
@@ -47,8 +48,8 @@ use yii\bootstrap5\Html;
                         'icon' => 'th',
                         'badge' => '<span class="right badge badge-info">3</span>',
                         'items' => [
-                            ['label' => 'Visualizar todos os Utilizadores', 'url' => ['user/index'], 'iconStyle' => 'far'],
-                            ['label' => 'Criar Utilizador', 'iconStyle' => 'far','url' => ['user/create']],
+                            ['label' => 'Visualizar todos os Utilizadores', 'url' => ['profile/index'], 'iconStyle' => 'far'],
+                            ['label' => 'Criar Utilizador', 'iconStyle' => 'far','url' => ['profile/create']],
                         ]
                     ],
                     [
@@ -65,12 +66,16 @@ use yii\bootstrap5\Html;
                         'badge' => '<span class="right badge badge-info">2</span>',
                         'items' => [
                             ['label' => 'Visualizar Artigos', 'url' => ['artigo/index'], 'iconStyle' => 'far'],
-                            ['label' => 'Criar Artigo', 'iconStyle' => 'far'],
+
+                            ['label' => 'Criar Artigo', 'url' => ['artigo/create'], 'iconStyle' => 'far'],
+
                         ]
                     ],
                     ['label' => 'Categorias', 'iconStyle' => 'far','url' => ['categoria/index']],
                     ['label' => 'Ivas', 'iconStyle' => 'far','url' => ['iva/index']],
                     ['label' => 'Comentários', 'iconStyle' => 'far','url' => ['comentario/index']],
+                    ['label' => 'Métodos de Pagamento', 'iconStyle' => 'far','url' => ['metodopagamento/index']],
+                    ['label' => 'Mesas', 'iconStyle' => 'far','url' => ['mesa/index']],
                     ['label' => 'Empresa', 'iconStyle' => 'far','url' => ['empresa/index']],
                 ],
             ]);

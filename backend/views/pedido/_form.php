@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
+use kartik\select2\Select2;
 
 /** @var yii\web\View $this */
 /** @var backend\models\Pedido $model */
@@ -12,20 +14,26 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'data')->textInput() ?>
 
-    <?= $form->field($model, 'total')->textInput() ?>
+    <?= $form->field($model, 'tipo_pedido')->dropDownList([0=>'Restaurante',1=>'Takeaway']) ?>
 
-    <?= $form->field($model, 'tipo_pedido')->textInput() ?>
 
-    <?= $form->field($model, 'profile_id')->textInput() ?>
 
-    <?= $form->field($model, 'metodo_pagamento_id')->textInput() ?>
+    <?php
+    echo  $form->field($model,'profile_id')->widget(Select2::className(),[
+        'data' => ArrayHelper::map($profile, 'id','numcontribuinte'),
+        'name' => 'profile_id',
+        'attribute'=>'profile_id',
+        'size' => Select2::MEDIUM,
+        'options' => ['placeholder' => 'Selecione um cliente...'],
+        'pluginOptions' => [
+            'allowClear' => true
+        ],
+    ]) ?>
 
-    <?= $form->field($model, 'mesa_id')->textInput() ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Guardar', ['class' => 'btn btn-success','name'=>'pedido-button']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

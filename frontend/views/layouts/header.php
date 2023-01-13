@@ -15,23 +15,23 @@ use yii\bootstrap5\Html;
             </button>
             <div class="collapse navbar-collapse" id="navbars-rs-food">
                 <ul class="navbar-nav ml-auto">
+
                     <li class="nav-item active"><a class="nav-link" href="<?= Url::to('/site/index'); ?>">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?= Url::to('/site/menu'); ?>">Menu</a></li>
                     <?php if(Yii::$app->user->identity!=null){
                         ?>
-                        <li class="nav-item"><a class="nav-link" href="">Takeaway</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Reservas</a>
-                            <div class="dropdown-menu" aria-labelledby="dropdown-a">
-                                <a class="dropdown-item" href="<?= Url::to('/reserva/index'); ?>">Visualizar Reservas</a>
-                                <a class="dropdown-item" href="<?= Url::to('/reserva/create'); ?>">Marcar Reserva</a>
-                            </div>
-                        </li>
+                        <li class="nav-item"><a class="nav-link" href="<?= Url::to('/pedido/index');?>">Pedidos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?= Url::to('/reserva/index');?>">Reservas</a></li>
                     <?php
                     } ?>
-
+                    <li class="nav-item"><a class="nav-link" href="<?= Url::to('/comentario/index');?>">Comentários</a></li>
+                    <?php if(Yii::$app->user->identity!=null){
+                        ?>
+                        <li class="nav-item"><a class="nav-link" href="<?= Url::to('/comentario/meuscomentarios');?>">Meus Comentários</a></li>
+                    <?php
+                    }?>
                     <li class="nav-item"><a class="nav-link" href="<?= Url::to('/site/about'); ?>">Sobre Nós</a></li>
-                    <li class="nav-item"><a class="nav-link" href="<?= Url::to('/site/contact'); ?>">Contactos</a></li>
+              
 
                     <?php if(Yii::$app->user->isGuest){
                         ?>

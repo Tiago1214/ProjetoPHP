@@ -10,16 +10,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Reservas', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="reserva-create">
-    <div class="row"><p></p></div>
-    <div class="row"><p></p></div>
-    <div class="row"><p></p></div>
-    <div class="row"><p></p></div>
-    <div class="row"><p></p></div>
-    <div class="row"><p></p></div>
-    <div class="row"><p></p></div>
-    <div class="row"><p></p></div>
-    <div class="row"><p></p></div>
-    <h1><?= Html::encode($this->title) ?></h1>
+
 
     <?= $this->render('_form', [
         'model' => $model,
