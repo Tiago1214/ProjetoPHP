@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f392b587-6f44-44bb-9888-fc4e4ee43c46" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/config/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/config/main.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/modules/api/controllers/ArtigoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/api/controllers/ArtigoController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/modules/api/controllers/CategoriaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/api/controllers/CategoriaController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/modules/api/controllers/LinhapedidoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/api/controllers/LinhapedidoController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/modules/api/controllers/ReservaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/api/controllers/ReservaController.php" afterDir="false" />
-    </list>
+    <list default="true" id="f392b587-6f44-44bb-9888-fc4e4ee43c46" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -150,10 +143,6 @@
       <PhpTestRunnerSettings scope="ConfigurationFile" />
       <method v="2" />
     </configuration>
-    <configuration default="true" type="ComposerRunConfigurationType" factoryName="Composer Script">
-      <option name="pathToComposerJson" value="$PROJECT_DIR$/composer.json" />
-      <method v="2" />
-    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -164,7 +153,7 @@
       <option name="presentableId" value="Default" />
       <updated>1673474865148</updated>
       <workItem from="1673474866907" duration="5013000" />
-      <workItem from="1673535166449" duration="5850000" />
+      <workItem from="1673535166449" duration="6445000" />
     </task>
     <servers />
   </component>
