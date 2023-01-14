@@ -7,6 +7,12 @@
     <list default="true" id="f392b587-6f44-44bb-9888-fc4e4ee43c46" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/modules/api/controllers/PedidoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/api/controllers/PedidoController.php" afterDir="false" />
+
+      <change beforePath="$PROJECT_DIR$/backend/config/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/config/main.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/modules/api/controllers/ArtigoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/api/controllers/ArtigoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/modules/api/controllers/LinhapedidoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/api/controllers/LinhapedidoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/modules/api/controllers/PedidoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/api/controllers/PedidoController.php" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

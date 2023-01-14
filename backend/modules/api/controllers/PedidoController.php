@@ -84,7 +84,7 @@ class PedidoController extends ActiveController
         return 'Não existem pedidos concluídos';
     }
 
-    //mostrar todos os pedidos concluidos
+    //mostrar todos os pedidos cancelados
     public function actionPedidoscancelados(){
         $pedidos=Pedido::find()->where(['estado'=>'Cancelado',
             'profile_id'=>Profile::find()->where(['user_id'=>Yii::$app->params['id']])->select('id')])->all();

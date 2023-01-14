@@ -115,7 +115,7 @@ return [
                     ],
                     'extraPatterns' => [
                         'GET linhasdopedido/{id}'=>'linhasdopedido',
-                        'GET linhaspedidoestatisca/{id}'=>'linhaspedidoestatistica',
+                        'GET linhaspedidoestatistica/{id}'=>'linhaspedidoestatistica',
                     ],
                 ],
                 [
