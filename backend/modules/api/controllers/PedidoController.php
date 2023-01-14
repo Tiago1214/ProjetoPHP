@@ -67,15 +67,14 @@ class PedidoController extends ActiveController
 
     //selecionar os pedidos do utilizador com sessão iniciada
     public function actionMeuspedidos(){
-        $pedidos=Pedido::find()->where([
-            'profile_id'=>Profile::find()->where(['user_id'=>Yii::$app->params['id']])->select('id')])->all();
+        $pedidos=Pedido::find()->where(['profile_id'=>Profile::find()->where(['user_id'=>Yii::$app->params['id']])->select('id')])->all();
         if($pedidos!=null){
             return $pedidos;
         }
         return 'Não existem pedidos no seu registo';
     }
 
-    //mostrar todos os pedidos concluidos
+    //mostrar todos os pedidos concluidos do utilizador
     public function actionPedidosconcluidos(){
         $pedidos=Pedido::find()->where(['estado'=>'Concluído',
             'profile_id'=>Profile::find()->where(['user_id'=>Yii::$app->params['id']])->select('id')])->all();
