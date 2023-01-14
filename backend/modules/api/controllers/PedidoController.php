@@ -42,13 +42,13 @@ class PedidoController extends ActiveController
         $total=0.00;
         $pedidos=Pedido::find()->where((['profile_id'=>Profile::find()->where(['user_id'=>Yii::$app->params['id']])->select('id')]))->all();
         if($pedidos!=null){
-        foreach ($pedidos as $pedido)
-        {
-            $total=$total+$pedido->total;
+            foreach ($pedidos as $pedido)
+            {
+                $total=$total+$pedido->total;
+            }
+            return round($total,2);
         }
-        return round($total,2);
-        }
-        throw new  \yii\web\ForbiddenHttpException("Erro",'404');
+        throw new  \yii\web\ForbiddenHttpException("Não existem pedidos",'404');
     }
 
     //Função para saber quantos pedidos concluidos aquele cliente já teve no restaurante para dar a refeição de borla ao 10º
@@ -69,15 +69,14 @@ class PedidoController extends ActiveController
 
     //selecionar os pedidos do utilizador com sessão iniciada
     public function actionMeuspedidos(){
-        $pedidos=Pedido::find()->where([
-            'profile_id'=>Profile::find()->where(['user_id'=>Yii::$app->params['id']])->select('id')])->all();
+        $pedidos=Pedido::find()->where(['profile_id'=>Profile::find()->where(['user_id'=>Yii::$app->params['id']])->select('id')])->all();
         if($pedidos!=null){
             return $pedidos;
         }
         throw new  \yii\web\ForbiddenHttpException('Não existem pedidos no seu registo','404');
     }
 
-    //mostrar todos os pedidos concluidos
+    //mostrar todos os pedidos concluidos do utilizador
     public function actionPedidosconcluidos(){
         $pedidos=Pedido::find()->where(['estado'=>'Concluído',
             'profile_id'=>Profile::find()->where(['user_id'=>Yii::$app->params['id']])->select('id')])->all();
@@ -87,7 +86,7 @@ class PedidoController extends ActiveController
         throw new  \yii\web\ForbiddenHttpException('Não existem pedidos concluídos','404');
     }
 
-    //mostrar todos os pedidos concluidos
+    //mostrar todos os pedidos cancelados
     public function actionPedidoscancelados(){
         $pedidos=Pedido::find()->where(['estado'=>'Cancelado',
             'profile_id'=>Profile::find()->where(['user_id'=>Yii::$app->params['id']])->select('id')])->all();

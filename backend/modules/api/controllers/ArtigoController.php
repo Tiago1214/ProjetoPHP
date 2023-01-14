@@ -15,7 +15,7 @@ use Yii;
 use yii\web\ForbiddenHttpException;
 
 
-class ArtigoController extends ActiveController
+class rtigoController extends ActiveController
 {
     public $modelClass = 'common\models\Artigo';
 
@@ -52,15 +52,14 @@ class ArtigoController extends ActiveController
         if($artigos!=null){
             return $artigos;
         }
-        throw new \yii\web\ForbiddenHttpException('Não foi encontrado nenhum artigo','404');
+        throw new \yii\web\ForbiddenHttpException('Não foi encontrado nenhum artigo','403');
     }
 
-    //mostrar um artigo específico
-    public function actionView($id)
-    {
-        $artigos=Artigo::find()->where(['id'=>$id,'estado'=>1])->all();
-        if($artigos!=null){
-            return $artigos;
+    //redefinir a view
+    public function actionView($id){
+        $artigo=Artigo::find()->where(['estado'=>1,'id'=>$id])->one();
+        if($artigo!=null){
+            return $artigo;
         }
         throw new \yii\web\ForbiddenHttpException('Não foi encontrado nenhum artigo','404');
     }
