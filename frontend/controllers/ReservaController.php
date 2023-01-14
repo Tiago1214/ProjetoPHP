@@ -14,6 +14,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use Yii;
 use yii\data\ActiveDataProvider;
+use MQTT\Client;
 
 /**
  * ReservaController implements the CRUD actions for Reserva model.
@@ -88,6 +89,11 @@ class ReservaController extends Controller
         if($reserva->estado==0){
             $reserva->estado=2;
             $reserva->save();
+            //mqtt
+            $mqtt = new \PhpMqtt\Client\MqttClient('127.0.0.1', '1883', 'frontend');
+            $mqtt->connect();
+            $mqtt->publish('Reservas', 'Reserva cancelada', 1);
+            $mqtt->disconnect();
         }
         return $this->redirect('../reserva/index');
     }
@@ -126,6 +132,11 @@ class ReservaController extends Controller
                 $model->estado=0;
                 $model->profile_id=$profile_id;
                 $model->save();
+                //mqtt
+                $mqtt = new \PhpMqtt\Client\MqttClient('127.0.0.1', '1883', 'frontend');
+                $mqtt->connect();
+                $mqtt->publish('Reservas', 'Reserva Criada', 1);
+                $mqtt->disconnect();
                 return $this->redirect(['index']);
             }
         } else {
@@ -149,6 +160,11 @@ class ReservaController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+            //mqtt
+            $mqtt = new \PhpMqtt\Client\MqttClient('127.0.0.1', '1883', 'frontend');
+            $mqtt->connect();
+            $mqtt->publish('Reservas', 'Reserva atualizada', 1);
+            $mqtt->disconnect();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

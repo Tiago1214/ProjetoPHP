@@ -8,6 +8,7 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use MQTT\Client;
 
 /**
  * MetodoPagamentoController implements the CRUD actions for MetodoPagamento model.
@@ -99,6 +100,11 @@ class MetodopagamentoController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
+                //mqtt
+                $mqtt = new \PhpMqtt\Client\MqttClient('127.0.0.1', '1883', 'backend');
+                $mqtt->connect();
+                $mqtt->publish('Metodos', 'Metodos de pagamento criado', 1);
+                $mqtt->disconnect();
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
@@ -122,6 +128,11 @@ class MetodopagamentoController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+            //mqtt
+            $mqtt = new \PhpMqtt\Client\MqttClient('127.0.0.1', '1883', 'backend');
+            $mqtt->connect();
+            $mqtt->publish('Metodos', 'Metodos de pagamento atualizado', 1);
+            $mqtt->disconnect();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -157,10 +168,20 @@ class MetodopagamentoController extends Controller
         if($iva->estado==0){
             $iva->estado=1;
             $iva->save();
+            //mqtt
+            $mqtt = new \PhpMqtt\Client\MqttClient('127.0.0.1', '1883', 'backend');
+            $mqtt->connect();
+            $mqtt->publish('Metodos', 'Estado de metodo de pagamento atualizado', 1);
+            $mqtt->disconnect();
         }
         else if($iva->estado==1){
             $iva->estado=0;
             $iva->save();
+            //mqtt
+            $mqtt = new \PhpMqtt\Client\MqttClient('127.0.0.1', '1883', 'backend');
+            $mqtt->connect();
+            $mqtt->publish('Metodos', 'Estado de metodo de pagamento atualizado', 1);
+            $mqtt->disconnect();
         }
 
         return $this->redirect('../metodopagamento/index');

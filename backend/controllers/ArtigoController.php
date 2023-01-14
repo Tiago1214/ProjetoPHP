@@ -10,6 +10,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
 use Yii;
+use MQTT\Client;
 
 /**
  * ArtigoController implements the CRUD actions for Artigo model.
@@ -114,7 +115,11 @@ class ArtigoController extends Controller
                     $model->imagemurl=Yii::getAlias('@imageurl').'/images/'.$model->imagem;
                 }
                 $model->save();
-
+                //mqtt
+                $mqtt = new \PhpMqtt\Client\MqttClient('127.0.0.1', '1883', 'backend');
+                $mqtt->connect();
+                $mqtt->publish('Artigo', 'Artigo criado', 1);
+                $mqtt->disconnect();
                 return $this->redirect(['index']);
             }
         } else {
@@ -157,6 +162,11 @@ class ArtigoController extends Controller
 
                 }
                 $model->save();
+                //mqtt
+                $mqtt = new \PhpMqtt\Client\MqttClient('127.0.0.1', '1883', 'backend');
+                $mqtt->connect();
+                $mqtt->publish('Artigo', 'Artigo atualizado', 1);
+                $mqtt->disconnect();
                 return $this->redirect(['view', 'id' => $model->id,]);
             }
         }
@@ -197,10 +207,20 @@ class ArtigoController extends Controller
         if($artigo->estado==0){
             $artigo->estado=1;
             $artigo->save();
+            //mqtt
+            $mqtt = new \PhpMqtt\Client\MqttClient('127.0.0.1', '1883', 'backend');
+            $mqtt->connect();
+            $mqtt->publish('Artigo', 'Estado de artigo atualizado', 1);
+            $mqtt->disconnect();
         }
         else if($artigo->estado==1){
             $artigo->estado=0;
             $artigo->save();
+            //mqtt
+            $mqtt = new \PhpMqtt\Client\MqttClient('127.0.0.1', '1883', 'backend');
+            $mqtt->connect();
+            $mqtt->publish('Artigo', 'Estado de artigo atualizado', 1);
+            $mqtt->disconnect();
         }
 
         return $this->redirect('../artigo/index');

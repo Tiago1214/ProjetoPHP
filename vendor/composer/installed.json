@@ -2507,17 +2507,17 @@
         },
         {
             "name": "php-mqtt/client",
-            "version": "v1.7.0",
-            "version_normalized": "1.7.0.0",
+            "version": "v1.7.1",
+            "version_normalized": "1.7.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-mqtt/client.git",
-                "reference": "846f0de5c5713d947892998f868e6b28607fc0a0"
+                "reference": "dc40a6d282e057dfe6bd9440b5f65c2e7c9939be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-mqtt/client/zipball/846f0de5c5713d947892998f868e6b28607fc0a0",
-                "reference": "846f0de5c5713d947892998f868e6b28607fc0a0",
+                "url": "https://api.github.com/repos/php-mqtt/client/zipball/dc40a6d282e057dfe6bd9440b5f65c2e7c9939be",
+                "reference": "dc40a6d282e057dfe6bd9440b5f65c2e7c9939be",
                 "shasum": ""
             },
             "require": {
@@ -2533,7 +2533,7 @@
             "suggest": {
                 "ext-redis": "Required for the RedisRepository"
             },
-            "time": "2022-12-09T17:02:12+00:00",
+            "time": "2023-01-13T05:40:57+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -2561,7 +2561,7 @@
             ],
             "support": {
                 "issues": "https://github.com/php-mqtt/client/issues",
-                "source": "https://github.com/php-mqtt/client/tree/v1.7.0"
+                "source": "https://github.com/php-mqtt/client/tree/v1.7.1"
             },
             "install-path": "../php-mqtt/client"
         },

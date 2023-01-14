@@ -11,6 +11,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use Yii;
+use MQTT\Client;
 
 /**
  * ComentarioController implements the CRUD actions for Comentario model.
@@ -171,7 +172,6 @@ class ComentarioController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-
         return $this->redirect(['index']);
     }
 
