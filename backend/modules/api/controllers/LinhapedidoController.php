@@ -38,11 +38,6 @@ class LinhapedidoController extends ActiveController
         return $actions;
     }
 
-    public function actionIndex()
-    {
-        return $this->render('index');
-    }
-
     //linhas de pedido do pedido selecionado
     public function actionLinhasdopedido($id){
         $linha_search=Linhapedido::find()->where(['pedido_id'=>$id])->all();

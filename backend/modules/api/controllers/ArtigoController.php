@@ -15,7 +15,7 @@ use Yii;
 use yii\web\ForbiddenHttpException;
 
 
-class rtigoController extends ActiveController
+class ArtigoController extends ActiveController
 {
     public $modelClass = 'common\models\Artigo';
 
@@ -52,7 +52,7 @@ class rtigoController extends ActiveController
         if($artigos!=null){
             return $artigos;
         }
-        throw new \yii\web\ForbiddenHttpException('Não foi encontrado nenhum artigo','403');
+        throw new \yii\web\ForbiddenHttpException('Não foi encontrado nenhum artigo','404');
     }
 
     //redefinir a view

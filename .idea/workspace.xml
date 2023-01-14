@@ -6,20 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="f392b587-6f44-44bb-9888-fc4e4ee43c46" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-
       <change beforePath="$PROJECT_DIR$/backend/modules/api/controllers/ArtigoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/api/controllers/ArtigoController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/modules/api/controllers/CategoriaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/api/controllers/CategoriaController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/modules/api/controllers/ComentarioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/api/controllers/ComentarioController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/modules/api/controllers/DadosuserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/api/controllers/DadosuserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/modules/api/controllers/LinhapedidoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/api/controllers/LinhapedidoController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/modules/api/controllers/MesaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/api/controllers/MesaController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/modules/api/controllers/MetodopagamentoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/api/controllers/MetodopagamentoController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/modules/api/controllers/PedidoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/api/controllers/PedidoController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/modules/api/controllers/ReservaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/api/controllers/ReservaController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/modules/api/controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/api/controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/modules/api/controllers/PedidoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/api/controllers/PedidoController.php" afterDir="false" />
-
-      <change beforePath="$PROJECT_DIR$/backend/config/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/config/main.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +23,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -155,11 +154,6 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "node.js.selected.package.tslint": "(autodetect)"
-  }
-}]]></component>
   <component name="RunManager">
     <configuration name="codeception.yml" type="CodeceptionConfigurationType" factoryName="Codeception">
       <PhpTestRunnerSettings scope="ConfigurationFile" />

@@ -45,7 +45,7 @@ class ComentarioController extends ActiveController
         if($comentario_search!=null){
             return $comentario_search;
         }
-        throw new \yii\web\ForbiddenHttpException( 'Este utilizador não tem nenhum comentário criado','403');
+        throw new \yii\web\ForbiddenHttpException( 'Este utilizador não tem nenhum comentário criado','404');
     }
 
 
@@ -56,7 +56,7 @@ class ComentarioController extends ActiveController
         if($comentario_search!=null){
             return $comentario_search;
         }
-        throw new \yii\web\ForbiddenHttpException( 'Não existe nenhum comentário com este titulo','403');
+        throw new \yii\web\ForbiddenHttpException( 'Não existe nenhum comentário com este titulo','404');
     }
 
     //Apagar todos os comentários do utilizador com sessão iniciada
@@ -65,6 +65,6 @@ class ComentarioController extends ActiveController
         if($comentario_delete!=null){
             return 'Os comentários foram apagados com sucesso!';
         }
-        throw new \yii\web\ForbiddenHttpException('Este utilizador não tem nenhum comentário para apagar','403');
+        throw new \yii\web\ForbiddenHttpException('Este utilizador não tem nenhum comentário para apagar','404');
     }
 }

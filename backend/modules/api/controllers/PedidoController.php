@@ -93,7 +93,7 @@ class PedidoController extends ActiveController
         if($pedidos!=null){
             return $pedidos;
         }
-        throw new  \yii\web\ForbiddenHttpException('Não existem pedidos cancelados',404);
+        throw new  \yii\web\ForbiddenHttpException('Não existem pedidos cancelados','404');
     }
 
     //mudar o estado do pedido selecionado para cancelado
