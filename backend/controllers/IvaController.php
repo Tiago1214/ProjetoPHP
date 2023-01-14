@@ -99,6 +99,11 @@ class IvaController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
+                //mqtt
+                $mqtt = new \PhpMqtt\Client\MqttClient('127.0.0.1', '1883', 'backend');
+                $mqtt->connect();
+                $mqtt->publish('Ivas', 'Nova taxa de iva criada', 1);
+                $mqtt->disconnect();
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
@@ -122,6 +127,10 @@ class IvaController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+            $mqtt = new \PhpMqtt\Client\MqttClient('127.0.0.1', '1883', 'backend');
+            $mqtt->connect();
+            $mqtt->publish('Ivas', 'Taxa de iva atualizada', 1);
+            $mqtt->disconnect();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -156,10 +165,20 @@ class IvaController extends Controller
         if($iva->estado==0){
             $iva->estado=1;
             $iva->save();
+            //mqtt
+            $mqtt = new \PhpMqtt\Client\MqttClient('127.0.0.1', '1883', 'backend');
+            $mqtt->connect();
+            $mqtt->publish('Ivas', 'Estado de taxa de iva atualizada', 1);
+            $mqtt->disconnect();
         }
         else if($iva->estado==1){
             $iva->estado=0;
             $iva->save();
+            //mqtt
+            $mqtt = new \PhpMqtt\Client\MqttClient('127.0.0.1', '1883', 'backend');
+            $mqtt->connect();
+            $mqtt->publish('Ivas', 'Estado de taxa de iva atualizada', 1);
+            $mqtt->disconnect();
         }
 
         return $this->redirect('../iva/index');

@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f392b587-6f44-44bb-9888-fc4e4ee43c46" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/modules/api/controllers/DadosuserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/api/controllers/DadosuserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/IvaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/IvaController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,6 +150,12 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
   <component name="RunManager">
     <configuration name="codeception.yml" type="CodeceptionConfigurationType" factoryName="Codeception">
       <PhpTestRunnerSettings scope="ConfigurationFile" />
@@ -173,6 +179,7 @@
       <workItem from="1673618111601" duration="12958000" />
       <workItem from="1673656000875" duration="2005000" />
       <workItem from="1673700042261" duration="1563000" />
+      <workItem from="1673722549743" duration="1279000" />
     </task>
     <servers />
   </component>
