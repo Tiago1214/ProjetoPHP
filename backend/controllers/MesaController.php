@@ -8,6 +8,7 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use MQTT\Client;
 
 /**
  * MesaController implements the CRUD actions for Mesa model.
@@ -96,6 +97,11 @@ class MesaController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
+                //mqtt
+                $mqtt = new \PhpMqtt\Client\MqttClient('127.0.0.1', '1883', 'backend');
+                $mqtt->connect();
+                $mqtt->publish('Mesa', 'Mesa criada', 1);
+                $mqtt->disconnect();
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
@@ -119,6 +125,11 @@ class MesaController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+            //mqtt
+            $mqtt = new \PhpMqtt\Client\MqttClient('127.0.0.1', '1883', 'backend');
+            $mqtt->connect();
+            $mqtt->publish('Mesa', 'Mesa atualizada', 1);
+            $mqtt->disconnect();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -137,6 +148,11 @@ class MesaController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
+        //mqtt
+        $mqtt = new \PhpMqtt\Client\MqttClient('127.0.0.1', '1883', 'backend');
+        $mqtt->connect();
+        $mqtt->publish('Mesa', 'Mesa apagada', 1);
+        $mqtt->disconnect();
 
         return $this->redirect(['index']);
     }
