@@ -49,7 +49,7 @@ class PedidoController extends ActiveController
         }
         return round($total,2);
         }
-        return "Erro";
+        return "Não tem pedidos";
     }
 
     //Função para saber quantos pedidos concluidos aquele cliente já teve no restaurante para dar a refeição de borla ao 10º
