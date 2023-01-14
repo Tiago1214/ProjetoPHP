@@ -63,7 +63,7 @@ class ComentarioController extends ActiveController
     public function actionApagarmeuscomentarios(){
         $comentario_delete=Comentario::deleteAll(['profile_id'=>Profile::find()->where(['user_id'=>Yii::$app->params['id']])->select('id')]);
         if($comentario_delete!=null){
-            return 'Os comentário foram apagados com sucesso!';
+            return 'Os comentários foram apagados com sucesso!';
         }
         throw new \yii\web\ForbiddenHttpException('Este utilizador não tem nenhum comentário para apagar','404');
     }

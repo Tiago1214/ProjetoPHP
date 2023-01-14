@@ -29,7 +29,7 @@ class UserController extends Controller
 
     public function checkAccess($action, $model = null, $params = [])
     {
-        if($action==="delete"||$action==="update"||$action==="create"||$action==="index")
+        if($action==="delete"||$action==="update"||$action==="create"||$action==="index"||$action==="view")
         {
             throw new \yii\web\ForbiddenHttpException('Não pode realizar estas operações','403');
         }
@@ -39,7 +39,6 @@ class UserController extends Controller
     public function actions()
     {
         $actions= parent::actions();
-        unset($actions["delete"],$actions["update"],$actions["create"],$actions["index"]);
         return $actions;
     }
 

@@ -34,7 +34,6 @@ class PedidoController extends ActiveController
     public function actions()
     {
         $actions= parent::actions();
-        unset($actions["delete"]);
         return $actions;
     }
 

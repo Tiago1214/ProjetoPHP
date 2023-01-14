@@ -24,7 +24,7 @@ class MesaController extends ActiveController
     //atribuir permissões
     public function checkAccess($action, $model = null, $params = [])
     {
-        if($action==="update"||$action=="delete"||$action==="view")
+        if($action==="update"||$action=="delete"||$action==="view"||$action=="create")
         {
             throw new \yii\web\ForbiddenHttpException('Não pode realizar estas operações','403');
         }
@@ -33,7 +33,6 @@ class MesaController extends ActiveController
     public function actions()
     {
         $actions= parent::actions();
-        unset($actions['update'],$actions['delete'],$actions['view']);
         return $actions;
     }
 }

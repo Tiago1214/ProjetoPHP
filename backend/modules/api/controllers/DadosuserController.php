@@ -35,7 +35,6 @@ class DadosuserController extends ActiveController
     public function actions()
     {
         $actions= parent::actions();
-        unset($actions["delete"],$actions["update"],$actions["create"],$actions["index"],$actions["view"]);
         return $actions;
     }
 
