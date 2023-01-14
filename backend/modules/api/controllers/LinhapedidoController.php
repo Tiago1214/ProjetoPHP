@@ -48,7 +48,7 @@ class LinhapedidoController extends ActiveController
         if($linha_search!=null){
             return $linha_search;
         }
-        return 'Este pedido não tem linhas de pedido';
+        throw new  \yii\web\ForbiddenHttpException('Este pedido não tem linhas de pedido','404');
     }
 
     //saber preço total de pedido, iva total e preço total sem iva
@@ -69,5 +69,6 @@ class LinhapedidoController extends ActiveController
                 'totaliva'=>$totaliva,
             ];
         }
+        throw new  \yii\web\ForbiddenHttpException('Não existe valores neste pedido','404');
     }
 }

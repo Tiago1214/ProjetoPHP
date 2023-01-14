@@ -45,7 +45,7 @@ class ComentarioController extends ActiveController
         if($comentario_search!=null){
             return $comentario_search;
         }
-        return 'Este utilizador não tem nenhum comentário criado';
+        throw new \yii\web\ForbiddenHttpException( 'Este utilizador não tem nenhum comentário criado','404');
     }
 
 
@@ -56,7 +56,7 @@ class ComentarioController extends ActiveController
         if($comentario_search!=null){
             return $comentario_search;
         }
-        return 'Não existe nenhum comentário com este titulo';
+        throw new \yii\web\ForbiddenHttpException( 'Não existe nenhum comentário com este titulo','404');
     }
 
 
@@ -65,8 +65,8 @@ class ComentarioController extends ActiveController
     public function actionApagarmeuscomentarios(){
         $comentario_delete=Comentario::deleteAll(['profile_id'=>Profile::find()->where(['user_id'=>Yii::$app->params['id']])->select('id')]);
         if($comentario_delete!=null){
-            return 'Os comentário foi apagado com sucesso!';
+            return 'Os comentário foram apagados com sucesso!';
         }
-        return 'Este utilizador não tem nenhum comentário para apagar';
+        throw new \yii\web\ForbiddenHttpException('Este utilizador não tem nenhum comentário para apagar','404');
     }
 }

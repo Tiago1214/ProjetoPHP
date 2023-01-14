@@ -12,7 +12,7 @@ use common\models\Artigo;
 use yii\filters\auth\HttpBasicAuth;
 use yii\rest\ActiveController;
 use Yii;
-
+use yii\web\ForbiddenHttpException;
 
 
 class ArtigoController extends ActiveController
@@ -33,7 +33,7 @@ class ArtigoController extends ActiveController
     {
         if($action==="delete"||$action==="update"||$action==="create")
         {
-            throw new \yii\web\ForbiddenHttpException('Não pode realizar estas operações');
+            throw new \yii\web\ForbiddenHttpException('Não pode realizar estas operações','403');
         }
     }
 
@@ -52,7 +52,7 @@ class ArtigoController extends ActiveController
         if($artigos!=null){
             return $artigos;
         }
-        return 'Não existem artigos';
+        throw new \yii\web\ForbiddenHttpException('Não foi encontrado nenhum artigo','404');
     }
 
     //redefinir o view
@@ -61,7 +61,7 @@ class ArtigoController extends ActiveController
         if($artigo!=null){
             return $artigo;
         }
-        return 'Não existe nenhum artigo com este id ou este artigo não se encontra ativo';
+        throw new  \yii\web\ForbiddenHttpException('Não existe nenhum artigo com este id ou este artigo não se encontra ativo','404');
     }
 
     //Fazer pesquisa dos artigos pelo nome em vez de id, ou seja usar texto na url
@@ -70,7 +70,7 @@ class ArtigoController extends ActiveController
         if($artigo_search!=null){
             return $artigo_search;
         }
-        return 'Este artigo não existe';
+        throw new  \yii\web\ForbiddenHttpException('Este artigo não existe','404');
     }
 
     //Fazer pesquisa de todos os artigos de uma respetiva categoria
@@ -79,6 +79,6 @@ class ArtigoController extends ActiveController
         if($categoria_search!=null){
             return $categoria_search;
         }
-        return 'Erro';
+        throw new  \yii\web\ForbiddenHttpException('Não existe nenhum artigo nesta categoria','404');
     }
 }

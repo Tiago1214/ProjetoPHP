@@ -27,7 +27,7 @@ class CategoriaController extends ActiveController
     {
         if($action==="delete"||$action==="update"||$action==="create")
         {
-            throw new \yii\web\ForbiddenHttpException('Não pode realizar estas operações');
+            throw new \yii\web\ForbiddenHttpException('Não pode realizar estas operações','403');
         }
     }
 
@@ -46,7 +46,7 @@ class CategoriaController extends ActiveController
         if($categorias!=null){
             return $categorias;
         }
-        return 'Não existem categorias';
+        throw new \yii\web\ForbiddenHttpException('Não existem categorias','404');
     }
 
     //mostrar categoria
@@ -55,7 +55,7 @@ class CategoriaController extends ActiveController
         if($categorias!=null){
             return $categorias;
         }
-        return 'Esta categoria não existe ou não está ativa';
+        throw new  \yii\web\ForbiddenHttpException('Esta categoria não existe ou não está ativa','404');
     }
 
 
@@ -65,6 +65,6 @@ class CategoriaController extends ActiveController
         if($categorias!=null){
             return $categorias;
         }
-        return 'Não existe nenhuma categoria com este nome';
+        throw new \yii\web\ForbiddenHttpException('Não existe nenhuma categoria com este nome','404');
     }
 }

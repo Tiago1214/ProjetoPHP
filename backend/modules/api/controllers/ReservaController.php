@@ -27,7 +27,7 @@ class ReservaController extends ActiveController
     {
         if($action==="delete")
         {
-            throw new \yii\web\ForbiddenHttpException('Proibido');
+            throw new \yii\web\ForbiddenHttpException('Proibido','403');
         }
     }
 
@@ -41,7 +41,7 @@ class ReservaController extends ActiveController
         if($reserva_search!=null){
             return $reserva_search;
         }
-        return 'Este utilizador não tem nenhuma reserva criada';
+        throw new  \yii\web\ForbiddenHttpException('Este utilizador não tem nenhuma reserva criada','404');
     }
 
     //mudar o estado do pedido selecionado para cancelado
@@ -56,7 +56,7 @@ class ReservaController extends ActiveController
             }
             return $res;
         }
-        return 'Não foi selecionado nenhum pedido';
+        throw new  \yii\web\ForbiddenHttpException('Não foi selecionado nenhum pedido','404');
     }
 
     //mandar as reservas de hoje do cliente
@@ -66,6 +66,6 @@ class ReservaController extends ActiveController
         if($reserva!=null){
             return $reserva;
         }
-        return 'Não existe nenhuma reserva para hoje';
+        throw new  \yii\web\ForbiddenHttpException('Não existe nenhuma reserva para hoje','404');
     }
 }

@@ -27,7 +27,7 @@ class PedidoController extends ActiveController
     {
         if($action=="delete")
         {
-            throw new \yii\web\ForbiddenHttpException('Não pode realizar estas operações');
+            throw new \yii\web\ForbiddenHttpException('Não pode realizar estas operações','403');
         }
     }
 
@@ -49,7 +49,7 @@ class PedidoController extends ActiveController
         }
         return round($total,2);
         }
-        return "Erro";
+        throw new  \yii\web\ForbiddenHttpException("Erro",'404');
     }
 
     //Função para saber quantos pedidos concluidos aquele cliente já teve no restaurante para dar a refeição de borla ao 10º
@@ -62,7 +62,10 @@ class PedidoController extends ActiveController
         {
             $nrpedidos=$nrpedidos+1;
         }
-        return $nrpedidos;
+        if($nrpedidos!=null){
+            return $nrpedidos;
+        }
+        throw new  \yii\web\ForbiddenHttpException("Não existem pedidos",'404');
     }
 
     //selecionar os pedidos do utilizador com sessão iniciada
@@ -72,7 +75,7 @@ class PedidoController extends ActiveController
         if($pedidos!=null){
             return $pedidos;
         }
-        return 'Não existem pedidos no seu registo';
+        throw new  \yii\web\ForbiddenHttpException('Não existem pedidos no seu registo','404');
     }
 
     //mostrar todos os pedidos concluidos
@@ -82,7 +85,7 @@ class PedidoController extends ActiveController
         if($pedidos!=null){
             return $pedidos;
         }
-        return 'Não existem pedidos concluídos';
+        throw new  \yii\web\ForbiddenHttpException('Não existem pedidos concluídos','404');
     }
 
     //mostrar todos os pedidos concluidos
@@ -92,13 +95,13 @@ class PedidoController extends ActiveController
         if($pedidos!=null){
             return $pedidos;
         }
-        return 'Não existem pedidos cancelados';
+        throw new  \yii\web\ForbiddenHttpException('Não existem pedidos cancelados',404);
     }
 
     //mudar o estado do pedido selecionado para cancelado
     public function actionCancelarpedido($id){
-        if($id!=null){
-            $pedido=Pedido::find()->where(['id'=>$id])->all();
+        $pedido=Pedido::find()->where(['id'=>$id])->all();
+        if($pedido!=null){
             //tem de se fazer um foreach para poder alterar o estado devido ao pedido selecionado estar num array
             foreach($pedido as $ped){
                 $ped->estado='Cancelado';
@@ -106,6 +109,6 @@ class PedidoController extends ActiveController
             }
             return $ped;
         }
-        return 'Não foi selecionado nenhum pedido';
+        throw new  \yii\web\ForbiddenHttpException('Pedido não existente','404');
     }
 }
