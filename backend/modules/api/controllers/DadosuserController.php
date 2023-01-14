@@ -38,7 +38,7 @@ class DadosuserController extends ActiveController
         return $actions;
     }
 
-    //ir buscar os dados de utilizador
+    //ir buscar os dados do utilizador com sessão iniciada
     public function actionDadosutilizador(){
         $user=User::find()->where(['id'=>Yii::$app->params['id']])->one();
         $profile=Profile::find()->where(['user_id'=>Yii::$app->params['id']])->one();
