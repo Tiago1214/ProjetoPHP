@@ -18,8 +18,10 @@
 drop schema if exists gersoft;
 create schema gersoft;
 use gersoft;
+--
 -- Table structure for table `artigo`
 --
+
 
 DROP TABLE IF EXISTS `artigo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -29,7 +31,7 @@ CREATE TABLE `artigo` (
   `nome` varchar(200) NOT NULL,
   `descricao` varchar(255) NOT NULL,
   `referencia` varchar(45) NOT NULL,
-  `preco` float NOT NULL,
+  `preco` float(11,2) NOT NULL,
   `data` datetime NOT NULL,
   `imagem` longtext,
   `imagemurl` longtext,
@@ -51,7 +53,7 @@ CREATE TABLE `artigo` (
 
 LOCK TABLES `artigo` WRITE;
 /*!40000 ALTER TABLE `artigo` DISABLE KEYS */;
-INSERT INTO `artigo` VALUES (36,'Água','água','29789022200',1.2,'2023-01-09 05:25:39','art_36.jpg','http://localhost/gersoft/backend/web/images/art_36.jpg',1,4,5),(37,'Arroz Doce','Sobremesa Arroz Doce','234694572223',2.5,'2023-01-09 05:28:23','art_37.jpg','http://localhost/gersoft/backend/web/images/art_37.jpg',1,2,6),(38,'Arroz de Marisco(para 2 pessoas)','Arroz de Marisco para 2 pessoas','235565333267',49.5,'2023-01-09 05:31:03','art_38.jpg','http://localhost/gersoft/backend/web/images/art_38.jpg',1,2,2),(39,'Bacalhau á bras','Bacalhau á bras','236565674356',12,'2023-01-09 05:33:02','art_39.jpg','http://localhost/gersoft/backend/web/images/art_39.jpg',1,2,2),(40,'Café','café','153782086',0.7,'2023-01-09 05:34:09','art_40.jpg','http://localhost/gersoft/backend/web/images/art_40.jpg',1,3,6),(41,'Caldo Verde','Sopa de caldo verde','3457894536435',2.5,'2023-01-09 05:36:34','art_41.jpg','http://localhost/gersoft/backend/web/images/art_41.jpg',1,3,3),(42,'Canja','Canja ','3457894536344',2.5,'2023-01-09 05:37:21','art_42.jpg','http://localhost/gersoft/backend/web/images/art_42.jpg',1,3,3),(43,'Carne de Porco á alentejana','carne de porco á alentejana','2334564534532',12.5,'2023-01-09 05:39:08','art_43.jpg','http://localhost/gersoft/backend/web/images/art_43.jpg',1,3,1),(44,'Cerveja','Bebida cerveja','65423463647532',1.2,'2023-01-09 05:40:11','art_44.jpg','http://localhost/gersoft/backend/web/images/art_44.jpg',1,2,5),(45,'Cozido á Portuguesa','coziido á portuguesa','245534676575342',13.5,'2023-01-09 05:40:47','art_45.jpg','http://localhost/gersoft/backend/web/images/art_45.jpg',1,3,1),(46,'Jardineira','Jardineira','21356475632',9.5,'2023-01-09 05:41:37','art_46.jpg','http://localhost/gersoft/backend/web/images/art_46.jpg',1,3,1),(47,'Polvo á lagareiro','Polvo á lagareiro','23464536453',15,'2023-01-09 05:42:27','art_47.jpg','http://localhost/gersoft/backend/web/images/art_47.jpg',1,3,2),(48,'Sericaia','Sericaia','34265765324465',3.5,'2023-01-09 05:43:01','art_48.jpg','http://localhost/gersoft/backend/web/images/art_48.jpg',1,2,6),(49,'Sumo de Laranja','sumo','5346456675787546',1.5,'2023-01-09 05:43:32','art_49.jpg','http://localhost/gersoft/backend/web/images/art_49.jpg',1,2,5),(50,'Vinho Branco','Vinho Branco','435658746332546',7,'2023-01-09 05:44:06','art_50.jpg','http://localhost/gersoft/backend/web/images/art_50.jpg',1,2,5),(51,'Vinho Tinto','Vinho Tinto','23344675645',7,'2023-01-09 05:44:44','art_51.jpg','http://localhost/gersoft/backend/web/images/art_51.jpg',1,2,5),(52,'desativo','desativo','2345463453322',0,'2023-01-09 05:45:09','',NULL,0,2,1),(53,'teste','teste','12234235',22,'2023-01-09 05:47:35','',NULL,0,2,1),(55,'teste','teste de aceitacao','234253462',435,'2023-01-09 07:12:19','',NULL,1,3,1),(56,'teste','teste1','safasf',222,'2023-01-09 08:14:10','',NULL,0,2,1);
+INSERT INTO `artigo` VALUES (36,'Água','água','29789022200',1.20,'2023-01-09 05:25:39','art_36.jpg','http://localhost/gersoft/backend/web/images/art_36.jpg',1,4,5),(37,'Arroz Doce','Sobremesa Arroz Doce','234694572223',2.50,'2023-01-09 05:28:23','art_37.jpg','http://localhost/gersoft/backend/web/images/art_37.jpg',1,2,6),(38,'Arroz de Marisco(para 2 pessoas)','Arroz de Marisco para 2 pessoas','235565333267',49.50,'2023-01-09 05:31:03','art_38.jpg','http://localhost/gersoft/backend/web/images/art_38.jpg',1,2,2),(39,'Bacalhau á bras','Bacalhau á bras','236565674356',12.00,'2023-01-09 05:33:02','art_39.jpg','http://localhost/gersoft/backend/web/images/art_39.jpg',1,2,2),(40,'Café','café','153782086',0.70,'2023-01-09 05:34:09','art_40.jpg','http://localhost/gersoft/backend/web/images/art_40.jpg',1,3,6),(41,'Caldo Verde','Sopa de caldo verde','3457894536435',2.50,'2023-01-09 05:36:34','art_41.jpg','http://localhost/gersoft/backend/web/images/art_41.jpg',1,3,3),(42,'Canja','Canja ','3457894536344',2.50,'2023-01-09 05:37:21','art_42.jpg','http://localhost/gersoft/backend/web/images/art_42.jpg',1,3,3),(43,'Carne de Porco á alentejana','carne de porco á alentejana','2334564534532',12.50,'2023-01-09 05:39:08','art_43.jpg','http://localhost/gersoft/backend/web/images/art_43.jpg',1,3,1),(44,'Cerveja','Bebida cerveja','65423463647532',1.20,'2023-01-09 05:40:11','art_44.jpg','http://localhost/gersoft/backend/web/images/art_44.jpg',1,2,5),(45,'Cozido á Portuguesa','coziido á portuguesa','245534676575342',13.50,'2023-01-09 05:40:47','art_45.jpg','http://localhost/gersoft/backend/web/images/art_45.jpg',1,3,1),(46,'Jardineira','Jardineira','21356475632',9.50,'2023-01-09 05:41:37','art_46.jpg','http://localhost/gersoft/backend/web/images/art_46.jpg',1,3,1),(47,'Polvo á lagareiro','Polvo á lagareiro','23464536453',15.00,'2023-01-09 05:42:27','art_47.jpg','http://localhost/gersoft/backend/web/images/art_47.jpg',1,3,2),(48,'Sericaia','Sericaia','34265765324465',3.50,'2023-01-09 05:43:01','art_48.jpg','http://localhost/gersoft/backend/web/images/art_48.jpg',1,2,6),(49,'Sumo de Laranja','sumo','5346456675787546',1.50,'2023-01-09 05:43:32','art_49.jpg','http://localhost/gersoft/backend/web/images/art_49.jpg',1,2,5),(50,'Vinho Branco','Vinho Branco','435658746332546',7.00,'2023-01-09 05:44:06','art_50.jpg','http://localhost/gersoft/backend/web/images/art_50.jpg',1,2,5),(51,'Vinho Tinto','Vinho Tinto','23344675645',7.00,'2023-01-09 05:44:44','art_51.jpg','http://localhost/gersoft/backend/web/images/art_51.jpg',1,2,5),(52,'desativo','desativo','2345463453322',0.00,'2023-01-09 05:45:09','',NULL,0,2,1),(55,'teste','teste de aceitacao','234253462',435.00,'2023-01-09 07:12:19','',NULL,1,3,1),(56,'teste','teste1','safasf',222.00,'2023-01-09 08:14:10','',NULL,0,2,1);
 /*!40000 ALTER TABLE `artigo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -78,7 +80,7 @@ CREATE TABLE `auth_assignment` (
 
 LOCK TABLES `auth_assignment` WRITE;
 /*!40000 ALTER TABLE `auth_assignment` DISABLE KEYS */;
-INSERT INTO `auth_assignment` VALUES ('admin','32',1672752464),('admin','37',1672761325),('admin','5',1672148145),('cliente','25',1672148145),('cliente','28',1672148129),('cliente','29',1672148145),('cliente','30',1672752403),('cliente','31',1672752464),('cliente','43',1673257264),('funcionario','35',1672761003),('funcionario','36',1672761148),('funcionario','38',1672761435),('funcionario','39',1672854908),('funcionario','40',1672865786),('funcionario','41',1673220548),('funcionario','42',1673245061);
+INSERT INTO `auth_assignment` VALUES ('admin','32',1672752464),('admin','37',1672761325),('admin','5',1672148145),('cliente','25',1672148145),('cliente','28',1672148129),('cliente','29',1672148145),('cliente','30',1672752403),('cliente','31',1672752464),('cliente','43',1673257264),('cliente','45',1673633249),('funcionario','35',1672761003),('funcionario','36',1672761148),('funcionario','38',1672761435),('funcionario','39',1672854908),('funcionario','40',1672865786),('funcionario','41',1673220548),('funcionario','42',1673245061),('funcionario','44',1673266363);
 /*!40000 ALTER TABLE `auth_assignment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -208,7 +210,7 @@ CREATE TABLE `comentario` (
   PRIMARY KEY (`id`),
   KEY `fk_comentario_profile1_idx` (`profile_id`),
   CONSTRAINT `fk_comentario_profile1` FOREIGN KEY (`profile_id`) REFERENCES `profile` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -217,7 +219,7 @@ CREATE TABLE `comentario` (
 
 LOCK TABLES `comentario` WRITE;
 /*!40000 ALTER TABLE `comentario` DISABLE KEYS */;
-INSERT INTO `comentario` VALUES (1,'Ver para querer','Teste',10),(4,'Opnião sobre os artigos do menu','Na minha opnião o menu está muito completo.',2);
+INSERT INTO `comentario` VALUES (7,'sdgdfgdf','sdfhdgh',10),(8,'sdfgsdfgd','sdfgsdfg',1),(10,'sdfsd','sdfg',2);
 /*!40000 ALTER TABLE `comentario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -288,8 +290,8 @@ DROP TABLE IF EXISTS `linhapedido`;
 CREATE TABLE `linhapedido` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `quantidade` int(11) NOT NULL,
-  `valorunitario` float NOT NULL,
-  `valoriva` float NOT NULL,
+  `valorunitario` float(11,2) NOT NULL,
+  `valoriva` float(11,2) NOT NULL,
   `taxaiva` int(11) NOT NULL,
   `pedido_id` int(11) NOT NULL,
   `artigo_id` int(11) NOT NULL,
@@ -298,7 +300,7 @@ CREATE TABLE `linhapedido` (
   KEY `fk_linha_pedido_artigo_idx` (`artigo_id`),
   CONSTRAINT `fk_linha_pedido_artigo` FOREIGN KEY (`artigo_id`) REFERENCES `artigo` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_linha_pedido_pedido` FOREIGN KEY (`pedido_id`) REFERENCES `pedido` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -307,7 +309,7 @@ CREATE TABLE `linhapedido` (
 
 LOCK TABLES `linhapedido` WRITE;
 /*!40000 ALTER TABLE `linhapedido` DISABLE KEYS */;
-INSERT INTO `linhapedido` VALUES (35,2,49.5,22.77,23,31,38),(40,2,49.5,22.77,23,34,38),(41,2,2.5,1.15,23,34,37),(44,2,49.5,11.385,23,36,38),(45,2,1.2,0.072,6,36,36),(46,10,1.2,0.72,6,39,36),(47,10,1.2,0.72,6,40,36),(48,10,1.2,0.72,6,41,36),(49,10,1.2,0.72,6,42,36),(50,10,1.2,0.72,6,43,36),(51,10,1.2,0.72,6,44,36),(52,10,1.2,0.72,6,45,36),(53,10,1.2,0.72,6,46,36),(54,10,1.2,0.72,6,47,36),(55,3,1.2,0.072,6,48,36),(56,2,9.5,1.235,13,48,46),(57,10,1.2,0.72,6,49,36),(58,10,1.2,0.72,6,50,36);
+INSERT INTO `linhapedido` VALUES (40,2,49.50,22.77,23,34,38),(41,2,2.50,1.15,23,34,37),(44,2,49.50,11.39,23,36,38),(45,2,1.20,0.07,6,36,36),(47,10,1.20,0.72,6,40,36),(48,10,1.20,0.72,6,41,36),(49,10,1.20,0.72,6,42,36),(50,10,1.20,0.72,6,43,36),(51,10,1.20,0.72,6,44,36),(52,10,1.20,0.72,6,45,36),(53,10,1.20,0.72,6,46,36),(54,10,1.20,0.72,6,47,36),(55,3,1.20,0.07,6,48,36),(56,2,9.50,1.24,13,48,46),(57,10,1.20,0.72,6,49,36),(58,10,1.20,0.72,6,50,36),(59,10,1.20,0.72,6,51,36),(60,1,49.50,11.39,23,52,38),(61,10,1.20,0.72,6,53,36),(62,10,1.20,0.72,6,54,36),(63,2,13.50,1.75,13,55,45),(64,5,9.50,1.24,13,55,46),(65,2,12.00,2.76,23,56,39),(66,2,49.50,22.77,23,57,38),(67,10,1.20,0.72,6,58,36),(68,10,1.20,0.72,6,59,36),(69,2,2.50,1.15,23,38,37),(70,4,49.50,45.54,23,39,38),(71,6,2.50,3.45,23,39,37),(72,2,0.70,0.18,13,39,40),(73,2,13.50,3.51,13,39,45),(74,5,44.00,22.00,23,34,37);
 /*!40000 ALTER TABLE `linhapedido` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -349,7 +351,7 @@ CREATE TABLE `metodopagamento` (
   `nomepagamento` varchar(255) NOT NULL,
   `estado` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -358,7 +360,7 @@ CREATE TABLE `metodopagamento` (
 
 LOCK TABLES `metodopagamento` WRITE;
 /*!40000 ALTER TABLE `metodopagamento` DISABLE KEYS */;
-INSERT INTO `metodopagamento` VALUES (1,'MbWay',1),(2,' Multibanco',1),(3,'Dinheiro',1),(4,'Mastercard',1),(5,'Maestro',1),(6,'Visa',1),(7,'teste',0);
+INSERT INTO `metodopagamento` VALUES (1,'MbWay',0),(2,' Multibanco',1),(3,'Dinheiro',1),(4,'Mastercard',1),(5,'Maestro',1),(6,'Visa',1),(7,'teste',1),(8,'teste',0);
 /*!40000 ALTER TABLE `metodopagamento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -396,7 +398,7 @@ DROP TABLE IF EXISTS `pedido`;
 CREATE TABLE `pedido` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `data` datetime NOT NULL,
-  `total` float NOT NULL,
+  `total` float(11,2) NOT NULL,
   `tipo_pedido` int(11) NOT NULL,
   `estado` varchar(100) NOT NULL,
   `profile_id` int(11) NOT NULL,
@@ -409,7 +411,7 @@ CREATE TABLE `pedido` (
   CONSTRAINT `fk_pedido_mesa1` FOREIGN KEY (`mesa_id`) REFERENCES `mesa` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_pedido_metodo_pagamento1` FOREIGN KEY (`metodo_pagamento_id`) REFERENCES `metodopagamento` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_pedido_profile1` FOREIGN KEY (`profile_id`) REFERENCES `profile` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -418,7 +420,7 @@ CREATE TABLE `pedido` (
 
 LOCK TABLES `pedido` WRITE;
 /*!40000 ALTER TABLE `pedido` DISABLE KEYS */;
-INSERT INTO `pedido` VALUES (31,'2023-01-09 06:18:06',99,0,'Concluído',1,3,9),(32,'2023-01-09 06:22:46',0,0,'Cancelado',1,NULL,11),(34,'2023-01-09 06:32:29',127.92,0,'Concluído',7,1,11),(36,'2023-01-09 06:46:41',124.314,1,'Concluído',2,1,NULL),(37,'2023-01-09 08:08:39',0,0,'Em Processamento',1,NULL,1),(38,'2023-01-09 08:10:54',0,0,'Em Processamento',1,NULL,1),(39,'2023-01-09 08:11:54',0,0,'Em Processamento',1,NULL,1),(40,'2023-01-09 08:12:54',19.2,0,'Concluído',1,1,1),(41,'2023-01-09 08:14:54',19.2,0,'Concluído',1,1,1),(42,'2023-01-09 08:17:15',19.2,0,'Concluído',1,1,1),(43,'2023-01-09 08:20:15',0,0,'Em Processamento',1,NULL,1),(44,'2023-01-09 08:20:45',19.2,0,'Concluído',1,1,1),(45,'2023-01-09 08:22:00',19.2,0,'Concluído',1,1,1),(46,'2023-01-09 08:28:45',19.2,0,'Concluído',1,1,1),(47,'2023-01-09 08:39:00',19.2,0,'Concluído',1,1,1),(48,'2023-01-09 09:12:00',0,1,'Em Processamento',2,NULL,NULL),(49,'2023-01-09 10:49:01',19.2,0,'Concluído',1,1,1),(50,'2023-01-09 11:24:30',0,0,'Em Processamento',1,NULL,1);
+INSERT INTO `pedido` VALUES (31,'2023-01-09 06:18:06',99.00,0,'Concluído',1,3,9),(32,'2023-01-09 06:22:46',10.00,0,'Cancelado',1,NULL,11),(34,'2023-01-09 06:32:29',127.92,0,'Concluído',7,1,11),(36,'2023-01-09 06:46:41',124.31,1,'Concluído',2,1,NULL),(37,'2023-01-09 08:08:39',0.00,0,'Cancelado',1,NULL,1),(38,'2023-01-09 08:10:54',7.30,0,'Concluído',1,1,1),(39,'2023-01-09 08:11:54',451.64,0,'Concluído',1,2,1),(40,'2023-01-09 08:12:54',19.20,0,'Concluído',1,1,1),(41,'2023-01-09 08:14:54',19.20,0,'Concluído',1,1,1),(42,'2023-01-09 08:17:15',19.20,0,'Concluído',1,1,1),(43,'2023-01-09 08:20:15',0.00,0,'Em Processamento',1,NULL,1),(44,'2023-01-09 08:20:45',19.20,0,'Concluído',1,1,1),(45,'2023-01-09 08:22:00',19.20,0,'Concluído',1,1,1),(46,'2023-01-09 08:28:45',19.20,0,'Concluído',1,1,1),(47,'2023-01-09 08:39:00',19.20,0,'Concluído',1,1,1),(48,'2023-01-09 09:12:00',0.00,1,'Em Processamento',2,NULL,NULL),(49,'2023-01-09 10:49:01',19.20,0,'Concluído',1,1,1),(50,'2023-01-09 11:24:30',0.00,0,'Em Processamento',1,NULL,1),(51,'2023-01-09 11:54:30',19.20,0,'Concluído',1,1,1),(52,'2023-01-09 12:11:31',60.88,0,'Concluído',2,4,2),(53,'2023-01-09 12:25:45',19.20,0,'Concluído',1,1,1),(54,'2023-01-09 13:33:10',19.20,0,'Concluído',1,1,1),(55,'2023-01-09 15:49:48',84.18,1,'Concluído',2,4,NULL),(56,'2023-01-09 15:51:07',0.00,1,'Em Processamento',2,NULL,NULL),(57,'2023-01-09 15:57:58',144.54,0,'Concluído',17,3,10),(58,'2023-01-09 16:03:54',19.20,0,'Concluído',1,1,1),(59,'2023-01-10 19:09:35',19.20,0,'Concluído',6,1,1),(60,'2023-01-10 19:09:35',100.00,0,'Em Processamento',6,1,1),(61,'2023-01-13 00:43:00',0.00,1,'Em Processamento',2,NULL,NULL),(62,'2023-01-13 16:38:12',0.00,0,'Em Processamento',1,NULL,NULL),(63,'2023-01-13 16:47:54',0.00,0,'Em Processamento',5,NULL,NULL),(64,'2023-01-13 16:54:24',0.00,0,'Em Processamento',2,NULL,NULL),(65,'2023-01-09 06:18:06',10.00,1,'Em Processamento',6,3,9),(66,'2023-01-10 06:18:06',44.00,0,'Concluído',1,3,11);
 /*!40000 ALTER TABLE `pedido` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -439,7 +441,7 @@ CREATE TABLE `profile` (
   UNIQUE KEY `numcontribuinte_UNIQUE` (`numcontribuinte`),
   KEY `fk_profile_user1_idx` (`user_id`),
   CONSTRAINT `fk_profile_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -448,7 +450,7 @@ CREATE TABLE `profile` (
 
 LOCK TABLES `profile` WRITE;
 /*!40000 ALTER TABLE `profile` DISABLE KEYS */;
-INSERT INTO `profile` VALUES (1,'234555111','912345412',1,5),(2,'222222222','911111111',1,25),(5,'212222332','923567662',1,29),(6,'221112222','923456782',1,30),(7,'156789234','923456789',1,31),(8,'222333123','9222222655',1,32),(10,'223464777','915463221',1,35),(17,'246123555','965342888',1,42),(18,'256879666','935678341',1,43);
+INSERT INTO `profile` VALUES (1,'234555111','912345412',1,5),(2,'222222222','911111111',1,25),(5,'212222332','923567662',1,29),(6,'221112222','923456782',1,30),(7,'156789234','923456789',1,31),(8,'222333123','9222222655',1,32),(10,'223464777','915463221',1,35),(17,'246123555','965342888',1,42),(18,'256879666','935678341',1,43),(19,'243652777','915648999',1,44),(20,'122342555','924532333',1,45);
 /*!40000 ALTER TABLE `profile` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -469,7 +471,7 @@ CREATE TABLE `reserva` (
   PRIMARY KEY (`id`),
   KEY `fk_reserva_profile1_idx` (`profile_id`),
   CONSTRAINT `fk_reserva_profile1` FOREIGN KEY (`profile_id`) REFERENCES `profile` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -478,8 +480,36 @@ CREATE TABLE `reserva` (
 
 LOCK TABLES `reserva` WRITE;
 /*!40000 ALTER TABLE `reserva` DISABLE KEYS */;
-INSERT INTO `reserva` VALUES (1,'22/05/2023','13:30',5,2,2),(2,'22/05/2023','19:30',5,2,5),(3,'23/05/2022','20:00',5,2,2),(11,'31/05/2023','12:00',5,2,2),(12,'31/07/2022','13:00',5,1,2);
+INSERT INTO `reserva` VALUES (1,'22/05/2023','13:30',8,2,2),(2,'22/05/2023','19:30',5,2,5),(3,'23/05/2022','20:00',5,2,2),(11,'31/05/2023','12:00',5,2,2),(12,'31/07/2022','13:01',5,1,2),(13,'23/05/2022','12:05',5,1,2),(14,'30/12/2023','18:34',1,2,2),(15,'13/01/2023','20:00',2,1,6),(16,'23/05/2022','18:34',2,2,2),(17,'10/04/2023','12:00',5,2,2);
 /*!40000 ALTER TABLE `reserva` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tarefa`
+--
+
+DROP TABLE IF EXISTS `tarefa`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tarefa` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `descricao` varchar(200) NOT NULL,
+  `feito` int(11) NOT NULL,
+  `profile_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_tarefa_profile_idx` (`profile_id`),
+  CONSTRAINT `fk_tarefa_profile` FOREIGN KEY (`profile_id`) REFERENCES `profile` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tarefa`
+--
+
+LOCK TABLES `tarefa` WRITE;
+/*!40000 ALTER TABLE `tarefa` DISABLE KEYS */;
+INSERT INTO `tarefa` VALUES (2,'teste bernardo',1,2),(3,'dsfsdfs',0,5),(4,'sdfgdg',0,1),(5,'ddfgg',0,7),(6,'dfbcvb',0,1),(7,'dfgdfg',0,1),(8,'dfsdfgdsfg',1,2),(9,'dfdfh',0,1);
+/*!40000 ALTER TABLE `tarefa` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -504,7 +534,7 @@ CREATE TABLE `user` (
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `password_reset_token` (`password_reset_token`)
-) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -513,7 +543,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (5,'tiago','9R_Qb1NaNudneG5MeIp18aKV5NMTMhId','$2y$13$CjVWtfEzpginK0kcpDrwrOVViw1Pea36082nNNpMW5yqvzZS4QwEK',NULL,'tiagoamaro021@gmail.com',10,1669980396,1672957294,'uY9N-9PY38DKifKo3EOAVpO-2x9PSNp9_1669980396'),(25,'bernardo','SwqsYsSzen1wSXRZYb_-P1pPEbbFXcey','$2y$13$bQ6jSevGoFmHNUyniy67DOqcWdJRZZOR7b8C3Llq3QEfkn8PvTZg2',NULL,'bernardo@gmail.com',10,1671721707,1672958259,'7L5Q4ZqfHFjfML3rcYzCJaEA9Cu2PQsA_1671721707'),(29,'fabio','O45T70WzP2o1Mdn-pOV_Gd-HimtX9wG5','$2y$13$SrXmOSpUfF9IMVIXOgNI/uRDfSGW5rfwrZYtH71q/I6VdVMcczK9i',NULL,'fabio@gmail.com',10,1672148145,1672148145,'7-3Egl6UIZrrKsnBFq2M2bmjkuxJ8B9P_1672148145'),(30,'diogo','20ZfdmicVC-Q__b-yiFdH4T5PgcX_gBd','$2y$13$z9QkN.2Lt4Ua7BTan4NiHeXKP2bRR0Pxt0FQ8m776cLH/DMYotEzi',NULL,'diogo@hotmail.com',10,1672752403,1672752403,'27MY6UV4CRamrUDErLWStpy8SxJ6oOCK_1672752403'),(31,'joao','zcdbfdor4-O8EaML4kbAHG7H6PmBxtkk','$2y$13$bOPCzTccgAAS5eWky9LpjO.n1zX8RNjsUgsthKB6d2WWnKYCqd7Be',NULL,'joao@gmail.com',10,1672752464,1672752464,'z0T-O6HRKr3xi327IXiHJPOCIVs9mK11_1672752464'),(32,'admin','ZdT5-21tvDPssygmsg_xMiZ5UoJR90Qz','$2y$13$XD0xD1eawlk.Z1ntIXzqTOXpyIHlsipDOr314yjgkh1DK9Ew5njo2',NULL,'admin@admin.pt',10,1672760277,1672760277,'6M_Ht1BSboZXqEX-3fym81GqYHGumm90_1672760277'),(35,'funcionario','rfldxmx03ZScPptJLSEZP6ucbXrxX2z-','$2y$13$y6NgUkgFAYSuluvtPwp6ruB8HA0b4Cd0JD9pYjKyvwTTUCJUQNRh.',NULL,'funcionario@gmail.pt',10,1672761003,1672761003,'h0_C4TvHPxU_Hd2ifX4EwZAAyPfIYdbB_1672761003'),(42,'Fernando','VOJ6dOlOUhdhc6FxbdMWmrsZbG6K72SE','$2y$13$lCWXrDCO1dTnHJciYnEoC.hvz1oGlS8m8Bvj3u61y.9vmJ91Jx/iW',NULL,'fernando@gmail.com',10,1673245061,1673245061,'bOL1fla_iNd83eNpQPKxN55NCKOV0ljp_1673245061'),(43,'miguel','mq5XpHiHU_b1iLiuT5ntAFH6ND7N9PJt','$2y$13$hdXq/NOrbeu5OAR8kuRSJOAxbhu.lL3EWVOAV1pOdNA0WaNLmFe6.',NULL,'miguel@gmail.com',10,1673257264,1673257264,'mqkqnhzKkAixfaf5CiawCBwyfwiDLemA_1673257264');
+INSERT INTO `user` VALUES (5,'tiago','9R_Qb1NaNudneG5MeIp18aKV5NMTMhId','$2y$13$CjVWtfEzpginK0kcpDrwrOVViw1Pea36082nNNpMW5yqvzZS4QwEK',NULL,'tiagoamaro021@gmail.com',10,1669980396,1672957294,'uY9N-9PY38DKifKo3EOAVpO-2x9PSNp9_1669980396'),(25,'bernardo','SwqsYsSzen1wSXRZYb_-P1pPEbbFXcey','$2y$13$bQ6jSevGoFmHNUyniy67DOqcWdJRZZOR7b8C3Llq3QEfkn8PvTZg2',NULL,'bernardo@gmail.com',10,1671721707,1672958259,'7L5Q4ZqfHFjfML3rcYzCJaEA9Cu2PQsA_1671721707'),(29,'fabio','O45T70WzP2o1Mdn-pOV_Gd-HimtX9wG5','$2y$13$SrXmOSpUfF9IMVIXOgNI/uRDfSGW5rfwrZYtH71q/I6VdVMcczK9i',NULL,'fabio@gmail.com',10,1672148145,1672148145,'7-3Egl6UIZrrKsnBFq2M2bmjkuxJ8B9P_1672148145'),(30,'diogo','20ZfdmicVC-Q__b-yiFdH4T5PgcX_gBd','$2y$13$z9QkN.2Lt4Ua7BTan4NiHeXKP2bRR0Pxt0FQ8m776cLH/DMYotEzi',NULL,'diogo@hotmail.com',10,1672752403,1672752403,'27MY6UV4CRamrUDErLWStpy8SxJ6oOCK_1672752403'),(31,'joao','zcdbfdor4-O8EaML4kbAHG7H6PmBxtkk','$2y$13$bOPCzTccgAAS5eWky9LpjO.n1zX8RNjsUgsthKB6d2WWnKYCqd7Be',NULL,'joao@gmail.com',10,1672752464,1672752464,'z0T-O6HRKr3xi327IXiHJPOCIVs9mK11_1672752464'),(32,'admin','ZdT5-21tvDPssygmsg_xMiZ5UoJR90Qz','$2y$13$XD0xD1eawlk.Z1ntIXzqTOXpyIHlsipDOr314yjgkh1DK9Ew5njo2',NULL,'admin@admin.pt',10,1672760277,1672760277,'6M_Ht1BSboZXqEX-3fym81GqYHGumm90_1672760277'),(35,'funcionario','rfldxmx03ZScPptJLSEZP6ucbXrxX2z-','$2y$13$y6NgUkgFAYSuluvtPwp6ruB8HA0b4Cd0JD9pYjKyvwTTUCJUQNRh.',NULL,'funcionario@gmail.pt',10,1672761003,1672761003,'h0_C4TvHPxU_Hd2ifX4EwZAAyPfIYdbB_1672761003'),(42,'Fernando','VOJ6dOlOUhdhc6FxbdMWmrsZbG6K72SE','$2y$13$lCWXrDCO1dTnHJciYnEoC.hvz1oGlS8m8Bvj3u61y.9vmJ91Jx/iW',NULL,'fernando@gmail.com',10,1673245061,1673245061,'bOL1fla_iNd83eNpQPKxN55NCKOV0ljp_1673245061'),(43,'miguel','mq5XpHiHU_b1iLiuT5ntAFH6ND7N9PJt','$2y$13$hdXq/NOrbeu5OAR8kuRSJOAxbhu.lL3EWVOAV1pOdNA0WaNLmFe6.',NULL,'miguel@gmail.com',10,1673257264,1673257264,'mqkqnhzKkAixfaf5CiawCBwyfwiDLemA_1673257264'),(44,'masteradmin','0ZszWWMbUQW4N0m5NHHRIUdtyZYGuHH7','$2y$13$N8v1QR9A4tbvVpWF1onyeuH9lKV33ER16YUy9FYcy.atjbufINPuW',NULL,'masteradmin@gmail.com',10,1673266363,1673266363,'86unSCMHi8HLZcs5gplkV4GWzvDF3LC0_1673266363'),(45,'testeddoteste','NcpzZHnXdtPpYGAL8UH2LOyDyIjUNJlm','$2y$13$rL6PIGp/yx53vxjl2nTBUu6wTktwB9KTmp.e7QqN6/DB09zaTJrOC',NULL,'testedoteste@teste.pt',10,1673633249,1673633249,'hSh5WxNYO2Rdy5ZEaWPluxednCaJt-c7_1673633249');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -526,4 +556,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-09 11:40:08
+-- Dump completed on 2023-01-14 15:32:56
