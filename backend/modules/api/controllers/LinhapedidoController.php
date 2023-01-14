@@ -52,14 +52,14 @@ class LinhapedidoController extends ActiveController
     }
 
     //saber preço total de pedido, iva total e preço total sem iva
-    public function actionLinhaspedidoestatisca($id){
+    public function actionLinhaspedidoestatistica($id){
         $totalvaluni=0;
         $totaliva=0;
         $total=0;
         $linha_search=Linhapedido::find()->where(['pedido_id'=>$id])->all();
         foreach($linha_search as $linha){
-            $totalvaluni=$totalvaluni+$linha->valor_unitario*$linha->quantidade;
-            $totaliva=$totaliva+($linha->valor_unitario*$linha->taxaiva/100*$linha->quantidade);
+            $totalvaluni=$totalvaluni+$linha->valorunitario*$linha->quantidade;
+            $totaliva=$totaliva+($linha->valorunitario*$linha->taxaiva/100*$linha->quantidade);
         }
         $total=$totaliva+$totalvaluni;
         if($linha_search!=null){

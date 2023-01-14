@@ -15,7 +15,7 @@ use Yii;
 
 
 
-class ArtigoController extends ActiveController
+class rtigoController extends ActiveController
 {
     public $modelClass = 'common\models\Artigo';
 
@@ -55,7 +55,7 @@ class ArtigoController extends ActiveController
         return 'Não existem artigos';
     }
 
-    //redefinir o view
+    //redefinir a view
     public function actionView($id){
         $artigo=Artigo::find()->where(['estado'=>1,'id'=>$id])->one();
         if($artigo!=null){

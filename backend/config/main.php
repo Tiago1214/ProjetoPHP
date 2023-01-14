@@ -65,7 +65,7 @@ return [
                     ],
                     'extraPatterns' => [
                         'GET artigosdacategoria/{nome}'=>'artigosdacategoria',
-                        'GET artigoponome/{nome}'=>'artigoponome',
+                        'GET artigopornome/{nome}'=>'artigopornome',
                     ],
                 ],
                 [
@@ -115,7 +115,7 @@ return [
                     ],
                     'extraPatterns' => [
                         'GET linhasdopedido/{id}'=>'linhasdopedido',
-                        'GET linhaspedidoestatisca/{id}'=>'linhaspedidoestatistica',
+                        'GET linhaspedidoestatistica/{id}'=>'linhaspedidoestatistica',
                     ],
                 ],
                 [
