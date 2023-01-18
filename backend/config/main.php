@@ -173,6 +173,16 @@ return [
                         'GET dadosutilizador'=>'dadosutilizador',
                     ],
                 ],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'api/iva',
+                    'tokens' => [
+                        '{id}'    => '<id:\\d+>',
+                    ],
+                    'extraPatterns' => [
+
+                    ],
+                ],
             ],
         ],
     ],
