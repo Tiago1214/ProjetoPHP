@@ -98,10 +98,8 @@ class LinhapedidoController extends Controller
         $linhaspedido=LinhaPedido::find()->where(['pedido_id'=>$idp])->all();
         //selecionar os artigos que estão ativos
         $artigo=Artigo::find()->where(['estado'=>[1]])->all();
-
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {
-
                 //verificar se já existe uma linha de pedido igual, caso exista não se cria uma nova mas sim
                 //adiciona-se a quantidade desejada e muda-se o valor de iva
                 foreach($linhaspedido as $quant){
@@ -111,7 +109,7 @@ class LinhapedidoController extends Controller
                         $quant->quantidade=$quant->quantidade+$model->quantidade;
                         $quant->valoriva=($quant->valorunitario*$quant->quantidade)*($quant->artigo->iva->taxaiva/100);
                         //salvar a quantidade
-                        $quant->save(false);
+                        $quant->save();
                         return $this->redirect(['create', 'idp' => $idp]);
                     }
                 }
@@ -126,7 +124,7 @@ class LinhapedidoController extends Controller
                 $model->pedido_id=$idp;
 
                 //salvar nova linha de pedido
-                $model->save(false);
+                $model->save();
                 return $this->redirect(['create', 'idp' => $idp]);
             }
         } else {
