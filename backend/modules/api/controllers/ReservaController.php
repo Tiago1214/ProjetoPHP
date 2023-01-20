@@ -37,12 +37,10 @@ class ReservaController extends ActiveController
         return $actions;
     }
 
-    public function actionMinhasreservas($id){
-        $reserva_search=Reserva::find()->where(['profile_id'=>$id])->all();
-        if($reserva_search!=null){
-            return $reserva_search;
-        }
-        throw new  \yii\web\ForbiddenHttpException('Este utilizador não tem nenhuma reserva criada','404');
+    public function actionMinhasreservas(){
+        //aqui não se faz verificação porque caso o cliente não tenha nenhuma reserva pode entrar á mesma na aplicação android
+        $reserva_search=Reserva::find()->where(['profile_id'=>Profile::find()->where(['user_id'=>Yii::$app->params['id']])->select('id')])->all();
+        return $reserva_search;
     }
 
     //mudar o estado do pedido selecionado para cancelado

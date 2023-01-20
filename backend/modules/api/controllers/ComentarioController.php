@@ -41,11 +41,9 @@ class ComentarioController extends ActiveController
 
     //Fazer pesquisa dos comentarios do utilizador com sessão iniciada
     public function actionMeuscomentarios(){
+        //aqui não se faz verificação porque caso o cliente não tenha nenhuma reserva pode entrar á mesma na aplicação android
         $comentario_search=Comentario::find()->where(['profile_id'=>Profile::find()->where(['user_id'=>Yii::$app->params['id']])->select('id')])->all();
-        if($comentario_search!=null){
-            return $comentario_search;
-        }
-        throw new \yii\web\ForbiddenHttpException( 'Este utilizador não tem nenhum comentário criado','404');
+        return $comentario_search;
     }
 
 

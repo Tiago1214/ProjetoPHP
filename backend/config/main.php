@@ -101,7 +101,7 @@ return [
 
                     ],
                     'extraPatterns' => [
-                        'GET minhasreservas/{id}'=>'minhasreservas',
+                        'GET minhasreservas'=>'minhasreservas',
                         'PUT cancelarreserva/{id}'=>'cancelarreserva',
                         'GET reservashoje'=>'reservashoje',
                     ],
