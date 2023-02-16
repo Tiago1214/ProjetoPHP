@@ -18,6 +18,8 @@
 drop schema if exists gersoft_test;
 create schema gersoft_test;
 use gersoft_test;
+
+--
 -- Table structure for table `artigo`
 --
 
@@ -208,7 +210,7 @@ CREATE TABLE `comentario` (
   PRIMARY KEY (`id`),
   KEY `fk_comentario_profile1_idx` (`profile_id`),
   CONSTRAINT `fk_comentario_profile1` FOREIGN KEY (`profile_id`) REFERENCES `profile` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -217,7 +219,7 @@ CREATE TABLE `comentario` (
 
 LOCK TABLES `comentario` WRITE;
 /*!40000 ALTER TABLE `comentario` DISABLE KEYS */;
-INSERT INTO `comentario` VALUES (1,'Ver para querer','Teste',10),(4,'Opnião sobre os artigos do menu','Na minha opnião o menu está muito completo.',2);
+INSERT INTO `comentario` VALUES (1,'Ver para querer','Teste',10),(6,'dgfh','dfgj',2),(7,'dgfh','dfgj',2),(8,'dgfh','dfgj',2),(10,'vamososs','sdgsdfgh',2),(11,'vamososs','sdgsdfgh',2),(12,'vamososs','sdgsdfgh',2),(13,'dfghjfgj','xcvsdfgh',2),(14,'dfghjfgj','xcvsdfgh',2),(15,'dfghjfgj','xcvsdfgh',2),(16,'dfghjfgj','xcvsdfgh',2),(17,'dfghjfgj','xcvsdfgh',2),(18,'dfghjfgj','xcvsdfgh',2),(19,'gter','fdgh',2),(20,'sdfhdfgh','dfgh',2),(22,'teste do teste','sempre siga',2),(23,'xdxdxd','xdxdxd',2),(24,'dfghdfgh','dfgh',2),(25,'dgdf','dfgh',2),(26,'amsi','1234',2),(27,'testeAMSI','teste',2);
 /*!40000 ALTER TABLE `comentario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -298,7 +300,7 @@ CREATE TABLE `linhapedido` (
   KEY `fk_linha_pedido_artigo_idx` (`artigo_id`),
   CONSTRAINT `fk_linha_pedido_artigo` FOREIGN KEY (`artigo_id`) REFERENCES `artigo` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_linha_pedido_pedido` FOREIGN KEY (`pedido_id`) REFERENCES `pedido` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=143 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -307,7 +309,7 @@ CREATE TABLE `linhapedido` (
 
 LOCK TABLES `linhapedido` WRITE;
 /*!40000 ALTER TABLE `linhapedido` DISABLE KEYS */;
-INSERT INTO `linhapedido` VALUES (35,2,49.5,22.77,23,31,38),(40,2,49.5,22.77,23,34,38),(41,2,2.5,1.15,23,34,37),(44,2,49.5,11.385,23,36,38),(45,2,1.2,0.072,6,36,36),(46,10,1.2,0.72,6,39,36),(47,10,1.2,0.72,6,40,36),(48,10,1.2,0.72,6,41,36),(49,10,1.2,0.72,6,42,36),(50,10,1.2,0.72,6,43,36),(51,10,1.2,0.72,6,44,36),(52,10,1.2,0.72,6,45,36),(53,10,1.2,0.72,6,46,36),(54,10,1.2,0.72,6,47,36),(55,3,1.2,0.072,6,48,36),(56,2,9.5,1.235,13,48,46),(57,10,1.2,0.72,6,49,36),(58,10,1.2,0.72,6,50,36);
+INSERT INTO `linhapedido` VALUES (62,2,1.2,0.144,6,65,36),(63,5,12,13.8,23,65,39),(64,5,0.7,0.455,13,65,40),(65,2,2.5,0.325,13,66,42),(67,6,3.5,0.805,23,67,48),(68,2,1.2,0.276,23,67,44),(69,2,1.2,0.072,6,67,36),(76,2,1.2,0.276,23,72,36),(77,2,1.2,0.276,23,72,36),(81,2,1.2,0.276,23,73,36),(83,2,1.2,0.276,23,73,36),(84,2,1.2,0.276,23,73,36),(85,2,1.2,0.276,23,73,36),(88,2,12,2.76,23,73,39),(89,2,2.5,0.575,23,73,42),(90,4,0.7,0.161,23,72,40),(91,4,0.7,0.161,23,72,40),(99,2,1.2,0.276,23,72,36),(100,2,13.5,3.105,23,72,45),(101,2,13.5,3.105,23,72,45),(102,1,13.5,3.105,23,72,45),(105,5,12.5,2.875,23,69,43),(107,2,1.2,0.276,23,75,36),(108,2,1.2,0.276,23,75,36),(109,2,1.2,0.276,23,75,36),(110,2,1.2,0.276,23,75,36),(111,2,1.2,0.276,23,70,36),(112,2,1.2,0.276,23,68,36),(113,3,1.2,0.276,23,75,44),(117,1,12,2.76,23,68,39),(119,1,1.2,0.276,23,68,44),(121,3,1.2,0.276,23,69,36),(122,2,1.2,0.276,23,70,36),(123,2,1.2,0.276,23,70,36),(124,1,9.5,2.185,23,70,46),(126,1,1.2,0.276,23,75,36),(127,1,0.7,0.161,23,75,40),(128,1,0.7,0.161,23,75,40),(129,1,1.2,0.276,23,74,36),(132,6,15,3.45,23,83,47),(133,2,1.2,0.276,23,68,36),(134,2,1.2,0.276,23,76,36),(135,2,1.2,0.276,23,76,36),(136,1,2.5,0.575,23,76,41),(137,1,2.5,0.575,23,76,41),(138,2,1.2,0.276,23,83,36),(139,5,1.2,0.276,23,73,36),(140,2,1.2,0.276,23,72,44),(141,2,12.5,2.875,23,72,43),(142,3,15,3.45,23,72,47);
 /*!40000 ALTER TABLE `linhapedido` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -324,7 +326,7 @@ CREATE TABLE `mesa` (
   `nrlugares` int(11) NOT NULL,
   `tipomesa` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -333,7 +335,7 @@ CREATE TABLE `mesa` (
 
 LOCK TABLES `mesa` WRITE;
 /*!40000 ALTER TABLE `mesa` DISABLE KEYS */;
-INSERT INTO `mesa` VALUES (1,1,5,'quadrada'),(2,2,10,'quadrada'),(9,3,12,'retangular'),(10,4,4,'quadrada'),(11,5,6,'retangular'),(12,6,10,'circular'),(13,7,4,'quadrada'),(14,8,5,'circular'),(15,9,8,'retangular'),(16,10,6,'retangular');
+INSERT INTO `mesa` VALUES (1,1,5,'quadrada'),(2,2,10,'quadrada'),(3,3,12,'retangular'),(4,4,4,'quadrada'),(5,5,6,'retangular'),(6,6,10,'circular'),(7,7,4,'quadrada'),(8,8,5,'circular'),(9,9,8,'retangular'),(10,10,6,'retangular');
 /*!40000 ALTER TABLE `mesa` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -409,7 +411,7 @@ CREATE TABLE `pedido` (
   CONSTRAINT `fk_pedido_mesa1` FOREIGN KEY (`mesa_id`) REFERENCES `mesa` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_pedido_metodo_pagamento1` FOREIGN KEY (`metodo_pagamento_id`) REFERENCES `metodopagamento` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_pedido_profile1` FOREIGN KEY (`profile_id`) REFERENCES `profile` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=90 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -418,7 +420,7 @@ CREATE TABLE `pedido` (
 
 LOCK TABLES `pedido` WRITE;
 /*!40000 ALTER TABLE `pedido` DISABLE KEYS */;
-INSERT INTO `pedido` VALUES (31,'2023-01-09 06:18:06',99,0,'Concluído',1,3,9),(32,'2023-01-09 06:22:46',0,0,'Cancelado',1,NULL,11),(34,'2023-01-09 06:32:29',127.92,0,'Concluído',7,1,11),(36,'2023-01-09 06:46:41',124.314,1,'Concluído',2,1,NULL),(37,'2023-01-09 08:08:39',0,0,'Em Processamento',1,NULL,1),(38,'2023-01-09 08:10:54',0,0,'Em Processamento',1,NULL,1),(39,'2023-01-09 08:11:54',0,0,'Em Processamento',1,NULL,1),(40,'2023-01-09 08:12:54',19.2,0,'Concluído',1,1,1),(41,'2023-01-09 08:14:54',19.2,0,'Concluído',1,1,1),(42,'2023-01-09 08:17:15',19.2,0,'Concluído',1,1,1),(43,'2023-01-09 08:20:15',0,0,'Em Processamento',1,NULL,1),(44,'2023-01-09 08:20:45',19.2,0,'Concluído',1,1,1),(45,'2023-01-09 08:22:00',19.2,0,'Concluído',1,1,1),(46,'2023-01-09 08:28:45',19.2,0,'Concluído',1,1,1),(47,'2023-01-09 08:39:00',19.2,0,'Concluído',1,1,1),(48,'2023-01-09 09:12:00',0,1,'Em Processamento',2,NULL,NULL),(49,'2023-01-09 10:49:01',19.2,0,'Concluído',1,1,1),(50,'2023-01-09 11:24:30',0,0,'Em Processamento',1,NULL,1);
+INSERT INTO `pedido` VALUES (64,'2023-01-09 06:18:06',98,0,'Concluído',2,1,1),(65,'2023-01-09 06:18:06',137.463,0,'Concluído',2,3,NULL),(66,'2023-01-23 09:45:02',59.325,1,'Concluído',2,1,NULL),(67,'2023-01-23 09:45:16',31.326,1,'Concluído',2,1,NULL),(68,'2023-01-23 09:46:20',0,0,'Cancelado',2,NULL,7),(69,'2023-01-23 10:00:18',0,0,'Cancelado',2,NULL,4),(70,'2023-01-23 10:01:03',0,0,'Cancelado',2,NULL,5),(71,'2023-01-23 10:12:33',0,0,'Em Processamento',2,NULL,4),(72,'2023-01-23 10:12:46',0,0,'Em Processamento',2,NULL,4),(73,'2023-01-23 10:13:07',0,0,'Em Processamento',2,NULL,4),(74,'2023-01-23 10:18:31',0,0,'Em Processamento',2,NULL,4),(75,'2023-01-23 10:39:35',0,0,'Em Processamento',2,NULL,4),(76,'2023-01-23 11:35:55',0,1,'Em Processamento',2,NULL,NULL),(83,'2023-01-23 19:50:55',0,0,'Em Processamento',2,NULL,5),(84,'2023-01-27 12:37:20',0,0,'Em Processamento',2,NULL,7),(85,'2023-01-27 12:44:04',0,0,'Em Processamento',2,NULL,5),(86,'2023-02-08 14:59:56',0,0,'Em Processamento',6,NULL,NULL),(87,'2023-02-08 15:19:21',0,1,'Em Processamento',2,NULL,NULL),(88,'2023-02-08 17:58:29',0,1,'Em Processamento',2,NULL,NULL),(89,'2023-02-16 15:25:37',0,1,'Em Processamento',2,NULL,NULL);
 /*!40000 ALTER TABLE `pedido` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -469,7 +471,7 @@ CREATE TABLE `reserva` (
   PRIMARY KEY (`id`),
   KEY `fk_reserva_profile1_idx` (`profile_id`),
   CONSTRAINT `fk_reserva_profile1` FOREIGN KEY (`profile_id`) REFERENCES `profile` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -478,7 +480,7 @@ CREATE TABLE `reserva` (
 
 LOCK TABLES `reserva` WRITE;
 /*!40000 ALTER TABLE `reserva` DISABLE KEYS */;
-INSERT INTO `reserva` VALUES (1,'22/05/2023','13:30',5,2,2),(2,'22/05/2023','19:30',5,2,5),(3,'23/05/2022','20:00',5,2,2),(11,'31/05/2023','12:00',5,2,2),(12,'31/07/2022','13:00',5,1,2);
+INSERT INTO `reserva` VALUES (1,'21/01/2027','12:33',7,2,2),(2,'22/05/2023','19:30',5,0,5),(3,'23/05/2023','12:35',2,2,2),(11,'31/12/2100','27:30',3,2,2),(12,'31/05/2023','12:30',6,2,2),(13,'22/03/2023','15:30',5,2,2),(14,'24/12/2023','12:30',5,2,2),(15,'22/03/2023','13:20',5,0,2),(16,'12/03/2023','12:30',5,0,6),(17,'22/03/2023','12:45',6,2,2),(18,'27/02/2023','12:30',55,2,2),(19,'02/01/2023','17:30',2,2,2),(20,'01/02/2023','17:45',2,2,2);
 /*!40000 ALTER TABLE `reserva` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -526,4 +528,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-09 11:40:08
+-- Dump completed on 2023-02-16 21:55:53
