@@ -46,7 +46,7 @@ class CategoriaController extends ActiveController
         if($categorias!=null){
             return $categorias;
         }
-        throw new \yii\web\ForbiddenHttpException('Não existem categorias','404');
+        return null;
     }
 
 

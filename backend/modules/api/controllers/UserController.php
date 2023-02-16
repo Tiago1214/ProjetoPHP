@@ -43,7 +43,10 @@ class UserController extends Controller
     }
 
     public function actionAuth(){
-        return $this->user->auth_key;
+        $profile=Profile::findOne(['user_id'=>$this->user->id])->id;
+        $token=$this->user->auth_key;
+        Yii::$app->response->format=\yii\web\Response::FORMAT_JSON;
+        return ['token'=>$token,'profile_id'=>$profile];
     }
 
     public function auth($username, $password)

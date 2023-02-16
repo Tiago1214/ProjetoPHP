@@ -52,7 +52,7 @@ class ArtigoController extends ActiveController
         if($artigos!=null){
             return $artigos;
         }
-        throw new \yii\web\ForbiddenHttpException('Não foi encontrado nenhum artigo','404');
+        return null;
     }
 
     //redefinir a view
@@ -61,7 +61,7 @@ class ArtigoController extends ActiveController
         if($artigo!=null){
             return $artigo;
         }
-        throw new \yii\web\ForbiddenHttpException('Não foi encontrado nenhum artigo','404');
+        return null;
     }
 
     //Fazer pesquisa dos artigos pelo nome em vez de id, ou seja usar texto na url

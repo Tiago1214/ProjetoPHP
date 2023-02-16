@@ -48,7 +48,7 @@ class PedidoController extends ActiveController
             }
             return round($total,2);
         }
-        throw new  \yii\web\ForbiddenHttpException("Não existem pedidos",'404');
+        return null;
     }
 
     //Função para saber quantos pedidos concluidos aquele cliente já teve no restaurante para dar a refeição de borla ao 10º
@@ -64,7 +64,7 @@ class PedidoController extends ActiveController
         if($nrpedidos!=null){
             return $nrpedidos;
         }
-        throw new  \yii\web\ForbiddenHttpException("Não existem pedidos",'404');
+        return null;
     }
 
     //selecionar os pedidos do utilizador com sessão iniciada
@@ -73,7 +73,7 @@ class PedidoController extends ActiveController
         if($pedidos!=null){
             return $pedidos;
         }
-        throw new  \yii\web\ForbiddenHttpException('Não existem pedidos no seu registo','404');
+        return null;
     }
 
     //mostrar todos os pedidos concluidos do utilizador
@@ -83,7 +83,7 @@ class PedidoController extends ActiveController
         if($pedidos!=null){
             return $pedidos;
         }
-        throw new  \yii\web\ForbiddenHttpException('Não existem pedidos concluídos','404');
+        return null;
     }
 
     //mostrar todos os pedidos cancelados
@@ -93,7 +93,17 @@ class PedidoController extends ActiveController
         if($pedidos!=null){
             return $pedidos;
         }
-        throw new  \yii\web\ForbiddenHttpException('Não existem pedidos cancelados','404');
+        return null;
+    }
+
+    //mostrar todos os pedidos em processamento
+    public function actionPedidosemprocessamento(){
+        $pedidos=Pedido::find()->where(['estado'=>'Em Processamento',
+            'profile_id'=>Profile::find()->where(['user_id'=>Yii::$app->params['id']])->select('id')])->all();
+        if($pedidos!=null){
+            return $pedidos;
+        }
+        return null;
     }
 
     //mudar o estado do pedido selecionado para cancelado

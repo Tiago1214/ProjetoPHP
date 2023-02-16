@@ -44,10 +44,26 @@ class DadosuserController extends ActiveController
         $profile=Profile::find()->where(['user_id'=>Yii::$app->params['id']])->one();
         if($user!=null && $profile!=null){
             return [
-                $user->id,$user->username,$user->email,$profile->id,$profile->numcontribuinte,$profile->telemovel,
+                'user_id'=>$user->id,'username'=>$user->username,'email'=>$user->email,'profile_id'=>$profile->id,
+                'numcontribuinte'=>$profile->numcontribuinte,'telemovel'=>$profile->telemovel,
             ];
         }
+        return null;
+    }
+
+    //ir buscar os dados do utilizador com sessão iniciada
+    public function actionProfileid(){
+        $user=User::find()->where(['id'=>Yii::$app->params['id']])->one();
+        $profile=Profile::find()->where(['user_id'=>Yii::$app->params['id']])->one();
+        if($user!=null && $profile!=null){
+            return $profile->id;
+        }
         throw new  \yii\web\ForbiddenHttpException('Não existem dados deste utilizador','404');
+    }
+
+    public function actionUsers(){
+        $user=User::find()->all();
+        return $user;
     }
 }
 

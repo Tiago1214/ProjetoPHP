@@ -40,6 +40,7 @@ class ComposerStaticInit734d01053424e27e2149237ba3b6bf3c
         ),
         'k' => 
         array (
+            'kartik\\time\\' => 12,
             'kartik\\select2\\' => 15,
             'kartik\\date\\' => 12,
             'kartik\\bs5dropdown\\' => 19,
@@ -155,6 +156,10 @@ class ComposerStaticInit734d01053424e27e2149237ba3b6bf3c
         'yii\\' => 
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2',
+        ),
+        'kartik\\time\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-timepicker/src',
         ),
         'kartik\\select2\\' => 
         array (

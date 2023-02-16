@@ -49,7 +49,7 @@ class PedidoController extends Controller
                             'allow' => true,
                         ],
                         [
-                            'actions' => ['logout', 'index','create','update','view','finalizarpedido','fatura'], // add all actions to take guest to login page
+                            'actions' => ['logout', 'index','create','update','view','finalizarpedido','fatura','cancelar'], // add all actions to take guest to login page
                             'allow' => true,
                             'roles' => ['cliente','funcionario','admin'],
                         ],

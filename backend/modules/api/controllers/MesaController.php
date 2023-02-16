@@ -35,4 +35,9 @@ class MesaController extends ActiveController
         $actions= parent::actions();
         return $actions;
     }
+
+    public function actionEscolhermesa(){
+        $mesa=Mesa::find()->all();
+        return ["mesa"=>$mesa];
+    }
 }

@@ -3,7 +3,7 @@
         'name' => 'yiisoft/yii2-app-advanced',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'bc301dda2cc751b60750f23262c023912cfaa618',
+        'reference' => 'b93241bbbf6facf2312a474f66a1015136b510c0',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -331,6 +331,17 @@
             'install_path' => __DIR__ . '/../kartik-v/yii2-widget-select2',
             'aliases' => array(
                 0 => '2.2.x-dev',
+            ),
+            'dev_requirement' => false,
+        ),
+        'kartik-v/yii2-widget-timepicker' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '680aec2d79846e926c072da455cf6f33e1c3bb12',
+            'type' => 'yii2-extension',
+            'install_path' => __DIR__ . '/../kartik-v/yii2-widget-timepicker',
+            'aliases' => array(
+                0 => '1.0.x-dev',
             ),
             'dev_requirement' => false,
         ),
@@ -970,7 +981,7 @@
         'yiisoft/yii2-app-advanced' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'bc301dda2cc751b60750f23262c023912cfaa618',
+            'reference' => 'b93241bbbf6facf2312a474f66a1015136b510c0',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

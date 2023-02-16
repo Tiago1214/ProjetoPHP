@@ -131,6 +131,7 @@ return [
                         'GET pedidosconcluidos'=>'pedidosconcluidos',
                         'GET pedidoscancelados'=>'pedidoscancelados',
                         'PUT cancelarpedido/{id}'=>'cancelarpedido',
+                        'GET pedidosemprocessamento'=>'pedidosemprocessamento',
                     ],
                 ],
                 [
@@ -140,7 +141,7 @@ return [
                         '{id}'    => '<id:\\d+>',
                     ],
                     'extraPatterns' => [
-
+                        'GET escolhermesa'=>'escolhermesa',
                     ],
                 ],
                 [
@@ -171,6 +172,7 @@ return [
                     ],
                     'extraPatterns' => [
                         'GET dadosutilizador'=>'dadosutilizador',
+                        'GET profileid'=>'profileid',
                     ],
                 ],
                 [

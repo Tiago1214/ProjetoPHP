@@ -37,7 +37,7 @@ class AppAsset extends AssetBundle
         'js/images-loded.min.js',
         'js/isotope.min.js',
         'js/jquery.mapify.js',
-        'js/jquery-3.2.1.min.js',
+        //'js/jquery-3.2.1.min.js',
         'js/legacy.js',
         'js/picker.date.js',
         'js/picker.js',

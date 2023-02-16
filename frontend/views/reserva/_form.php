@@ -5,6 +5,7 @@ use yii\widgets\ActiveForm;
 use kartik\date\DatePicker;
 use kartik\time\TimePicker;
 use yii\bootstrap5\Modal;
+use kartik\icons\FontAwesomeAsset;
 
 /** @var yii\web\View $this */
 /** @var common\models\Reserva $model */
@@ -24,22 +25,46 @@ use yii\bootstrap5\Modal;
     <div class="container">
         <h1 style="text-align: center">Criar Reserva</h1>
         <?php $form = ActiveForm::begin(); ?>
+        <div class="col-4">
+            <?php
+            echo  $form->field($model,'data')->widget(DatePicker::className(),[
+                'value' => Yii::$app->formatter->asDate('now', 'php:d-m-Y'),
+                'removeButton' => false,
+                'layout' => '{picker} {remove} {input}',
+                'options' => [
+                    'type' => 'text',
+                    'readonly' => true,
+                    'class' => 'text-muted small',
+                ],
+                'pluginOptions' => [
+                    'autoclose' => true,
+                    'format' => 'dd/mm/yyyy',
+                ],
+            ]);
+            ?>
 
-        <?php
-        echo  '<label class="form-label">Birth Date</label>';
-        echo  $form->field($model,'data')->widget(DatePicker::className(),[
-            'value' => '01/29/2014',
-            'removeButton' => false,
-            'pluginOptions' => [
-                'autoclose' => true,
-                'format' => 'mm/dd/yyyy'
-            ]
-        ]);
-        ?>
 
-        <?=$form->field($model,'hora')->textInput()?>
+            <?php  echo  $form->field($model,'hora')->widget(TimePicker::className(),[
+                'name' => 'hora',
+                'attribute'=>'hora',
+                'pluginOptions' => [
+                    'showSeconds' => false,
+                    'showMeridian' => false,
+                    'minuteStep' => 15,
 
-        <?= $form->field($model, 'nrpessoas')->textInput() ?>
+                ],
+                'options' => [
+                    'type' => 'text',
+                    'readonly' => true,
+                    'class' => 'text-muted small',
+                ],
+
+            ]);
+            ?>
+
+            <?= $form->field($model, 'nrpessoas')->textInput() ?>
+
+        </div>
 
         <div class="form-group">
             <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

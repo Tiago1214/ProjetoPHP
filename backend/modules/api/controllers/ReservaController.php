@@ -55,7 +55,7 @@ class ReservaController extends ActiveController
             }
             return $res;
         }
-        throw new  \yii\web\ForbiddenHttpException('Não foi selecionado nenhum pedido','404');
+        return null;
     }
 
     //mandar as reservas de hoje do cliente
@@ -65,6 +65,6 @@ class ReservaController extends ActiveController
         if($reserva!=null){
             return $reserva;
         }
-        throw new  \yii\web\ForbiddenHttpException('Não existe nenhuma reserva para hoje','404');
+        return null;
     }
 }

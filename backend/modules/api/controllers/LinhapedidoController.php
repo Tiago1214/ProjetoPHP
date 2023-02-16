@@ -3,6 +3,7 @@
 namespace backend\modules\api\controllers;
 
 use backend\modules\api\components\CustomAuth;
+use common\models\Artigo;
 use common\models\Linhapedido;
 use yii\rest\ActiveController;
 use yii\filters\auth\QueryParamAuth;
@@ -44,7 +45,7 @@ class LinhapedidoController extends ActiveController
         if($linha_search!=null){
             return $linha_search;
         }
-        throw new  \yii\web\ForbiddenHttpException('Este pedido não tem linhas de pedido','404');
+        return null;
     }
 
     //saber preço total de pedido, iva total e preço total sem iva
@@ -65,6 +66,6 @@ class LinhapedidoController extends ActiveController
                 'totaliva'=>$totaliva,
             ];
         }
-        throw new  \yii\web\ForbiddenHttpException('Não existe valores neste pedido','404');
+        return null;
     }
 }

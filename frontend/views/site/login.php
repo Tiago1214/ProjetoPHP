@@ -7,7 +7,7 @@
 use yii\bootstrap5\Html;
 use yii\bootstrap5\ActiveForm;
 
-$this->title = 'Login';
+$this->title = 'Iniciar Sessão';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-login">
@@ -44,7 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-lg-4">
             <h1><?= Html::encode($this->title) ?></h1>
 
-            <p>Please fill out the following fields to login:</p>
+            <p>Por favor preencha os campos para iniciar sessão:</p>
             <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
 
                 <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
@@ -53,17 +53,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?= $form->field($model, 'rememberMe')->checkbox() ?>
 
-                <div class="my-1 mx-0" style="color:#999;">
-                    If you forgot your password you can <?= Html::a('reset it', ['site/request-password-reset']) ?>.
-                    <br>
-                    Need new verification email? <?= Html::a('Resend', ['site/resend-verification-email']) ?>
-                </div>
+
 
                 <div class="form-group">
                     <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
                 </div>
 
             <?php ActiveForm::end(); ?>
+            <p></p>
         </div>
     </div>
 </div>
